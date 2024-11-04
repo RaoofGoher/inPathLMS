@@ -1,7 +1,7 @@
 import React from 'react';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
-import BackgroundImage from '../assets/design-8.svg'; // Ensure this path is correct
+import BackgroundImage from '../assets/design-6.jpg'; // Ensure this path is correct
 import { useMediaQuery } from 'react-responsive';
 import LoginIcons from '../components/LoginIcons';
 

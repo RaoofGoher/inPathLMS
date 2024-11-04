@@ -1,7 +1,7 @@
 import React from 'react';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
-import BackgroundImage from '../assets/design-6.jpg'; // Ensure this path is correct
+import BackgroundImage from '../assets/design-8.svg'; // Ensure this path is correct
 import { useMediaQuery } from 'react-responsive';
 import LoginIcons from '../components/LoginIcons'
 const validationSchema = Yup.object({
@@ -30,7 +30,7 @@ const LoginForm = () => {
       {/* Right Column for Form */}
       <div className="w-full md:w-1/2 flex items-center justify-center p-8 bg-lightColor2">
         <div className={`bg-primaryColor bg-opacity-5 rounded-lg p-8 max-w-sm w-full   ${isMedium ? "mb-[0]" :"mb-[180px]"}`}>
-          <h2 className="text-2xl font-bold text-center font-lato">Login to Increase your awareness</h2>
+          <h2 className="text-2xl font-bold text-center font-lato">Login</h2>
           <Formik
             initialValues={{ email: '', password: '' }}
             validationSchema={validationSchema}

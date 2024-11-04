@@ -1,6 +1,7 @@
 // Navbar.js
 import React, { useState } from 'react';
 import { NavLink, Link } from 'react-router-dom';
+import SearchBar from './SearchBar';
 
 const Navbar = () => {
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
@@ -17,11 +18,7 @@ const Navbar = () => {
         <div className="flex items-center flex-1">
           <NavLink to={"/"}><img src={'text'} className='mr-4' alt="Logo" /></NavLink>
           {/* Search Bar on Larger Screens Only */}
-          <input
-            type="text"
-            placeholder="Search..."
-            className="hidden md:block px-4 py-2 bg-lightColor2 text-black rounded-md focus:outline-none focus:ring w-full md:w-auto"
-          />
+         <SearchBar/>
         </div>
 
         {/* Right Side: Drawer Button and Login & Signup Buttons */}
