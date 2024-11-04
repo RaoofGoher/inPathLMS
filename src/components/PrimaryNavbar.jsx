@@ -1,0 +1,102 @@
+// Navbar.js
+import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
+
+const Navbar = () => {
+  const [isDrawerOpen, setIsDrawerOpen] = useState(false);
+
+  const toggleDrawer = () => {
+    setIsDrawerOpen(!isDrawerOpen);
+  };
+
+  return (
+    <nav className="my-4 shadow-md px-6 py-4 bg-primaryColor">
+      <div className="container mx-auto flex items-center justify-between">
+        
+        {/* Left Side: Logo */}
+        <div className="flex items-center flex-1">
+          <img src={'text'} className='mr-4' alt="Logo" />
+          {/* Search Bar on Larger Screens Only */}
+          <input 
+            type="text" 
+            placeholder="Search..." 
+            className="hidden md:block px-4 py-2 bg-white text-black rounded-md focus:outline-none focus:ring w-full md:w-auto"
+          />
+        </div>
+
+        {/* Right Side: Drawer Button and Login & Signup Buttons */}
+        <div className="flex items-center">
+          <button 
+            className="md:hidden text-white" 
+            onClick={toggleDrawer}
+          >
+            {/* Icon for toggling drawer (hamburger icon) */}
+            <svg 
+              className="w-6 h-6" 
+              fill="none" 
+              stroke="currentColor" 
+              viewBox="0 0 24 24" 
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16m-7 6h7" />
+            </svg>
+          </button>
+
+          {/* Login & Signup Buttons */}
+          <div className="hidden md:flex space-x-4">
+            <Link>
+              <button className="px-4 py-2 hover:text-secondaryColor rounded-md text-white">
+                Teach On In Path
+              </button>
+            </Link>
+            <Link>
+              <button className="px-4 py-2 border text-white border-secondaryColor rounded-md hover:text-secondaryColor transition text-secondaryColor">
+                Login
+              </button>
+            </Link>
+            <Link>
+              <button className="px-4 py-2 border border-secondaryColor hover:text-secondaryColor rounded-md text-white">
+                Sign Up
+              </button>
+            </Link>
+          </div>
+        </div>
+      </div>
+
+      {/* Drawer Menu */}
+      {isDrawerOpen && (
+        <div className="fixed inset-0 z-50 bg-black bg-opacity-50 md:hidden">
+          <div className="absolute top-0 right-0 w-64 bg-primaryColor h-full shadow-lg">
+            <button 
+              className="p-4 text-white font-montserrat" 
+              onClick={toggleDrawer}
+            >
+              close
+            </button>
+            <div className="p-4">
+              {/* Search Bar in Drawer */}
+              <input 
+                type="text" 
+                placeholder="Search..." 
+                className="px-4 py-2 bg-white text-black rounded-md focus:outline-none focus:ring w-full"
+              />
+            </div>
+            <div className="flex flex-col p-4 space-y-2">
+              <Link to="/teach" onClick={toggleDrawer} className='border-b-2 border-secondaryColor'>
+                <button className="w-full text-left px-4 py-2 text-white hover:text-secondaryColor">Teach On In Path</button>
+              </Link>
+              <Link to="/login" onClick={toggleDrawer} className='border-b-2 border-secondaryColor'>
+                <button className="w-full text-left px-4 py-2 text-white hover:text-secondaryColor">Login</button>
+              </Link>
+              <Link to="/signup" onClick={toggleDrawer} className='border-b-2 border-secondaryColor'>
+                <button className="w-full text-left px-4 py-2 text-white hover:text-secondaryColor">Sign Up</button>
+              </Link>
+            </div>
+          </div>
+        </div>
+      )}
+    </nav>
+  );
+};
+
+export default Navbar;
