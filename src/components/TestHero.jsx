@@ -1,7 +1,7 @@
 import React from 'react';
-import HeroImage from "../assets/Hero.webp";
 
-const HeroSection = ({ bgColor = '#f0f4f8', cardBgColor = '#ffffff', textColor = '#022763' }) => {
+
+const HeroSection = ({ bgColor = '#f0f4f8', cardBgColor = '#ffffff', textColor = '#022763', HeroImage }) => {
     return (
         <section className="relative h-[400px] flex items-center justify-center overflow-hidden">
             {/* Background Image */}
@@ -17,20 +17,21 @@ const HeroSection = ({ bgColor = '#f0f4f8', cardBgColor = '#ffffff', textColor =
                 className="absolute inset-0"
                 style={{
                     backgroundColor: bgColor,
-                    clipPath: 'polygon(0 0, 50% 100%, 100% 100%, 0 100%)',
+                    clipPath: 'polygon(100% 0%, 100% 0, 100% 100%, 80% 100%)',
                 }}
             ></div>
 
             {/* Content */}
-            <div className="relative z-10 container mx-auto flex flex-col items-center">
+            <div className="relative z-10 container ">
                 {/* Search Card */}
                 <div
                     style={{ backgroundColor: cardBgColor, color: textColor }}
-                    className="w-full max-w-md p-6 rounded-lg shadow-lg text-center"
+                    className="w-full max-w-md p-6 rounded-lg shadow-lg text-center ml-[50px]"
                 >
                     <h1 className="text-4xl font-semibold mb-4 font-lato" style={{ color: textColor }}>
                         Welcome
                     </h1>
+                    <h2>Search your course</h2>
                     {/* Search Bar */}
                     <input
                         type="text"
