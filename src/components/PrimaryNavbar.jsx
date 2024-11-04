@@ -15,7 +15,7 @@ const Navbar = () => {
         
         {/* Left Side: Logo */}
         <div className="flex items-center flex-1">
-          <img src={'text'} className='mr-4' alt="Logo" />
+          <Link to={"/"}><img src={'text'} className='mr-4' alt="Logo" /></Link>
           {/* Search Bar on Larger Screens Only */}
           <input 
             type="text" 
@@ -49,7 +49,7 @@ const Navbar = () => {
                 Teach On In Path
               </button>
             </Link>
-            <Link>
+            <Link to={"/login"}>
               <button className="px-4 py-2 border text-white border-secondaryColor rounded-md hover:text-secondaryColor transition text-secondaryColor">
                 Login
               </button>
