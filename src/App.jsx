@@ -8,6 +8,8 @@ import {
 } from 'react-router-dom';
 import PrimaryLayout from './layouts/PrimaryLayout';
 import LoginForm from "./pages/Login";
+import ProSignUp from "./pages/ProSignUp";
+import StudentSignUp from "./pages/StudentSIgnUp";
 function App() {
   const router = createBrowserRouter(
     createRoutesFromElements(
@@ -15,6 +17,8 @@ function App() {
         <Route path="/" element={<PrimaryLayout />} >
         
           <Route path="/Login" element={<LoginForm />} />
+          <Route path="/teachersignup" element={<ProSignUp />} />
+          <Route path="/studentsignup" element={<StudentSignUp />} />
           {/* <Route index element={<Home />} /> */}
         </Route>
         

@@ -1,10 +1,14 @@
 import React from 'react';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
-import BackgroundImage from '../assets/design-8.svg'; // Ensure this path is correct
+import BackgroundImage from '../assets/design-6.jpg'; // Ensure this path is correct
 import { useMediaQuery } from 'react-responsive';
-import LoginIcons from '../components/LoginIcons'
+import LoginIcons from '../components/LoginIcons';
+
 const validationSchema = Yup.object({
+  fullName: Yup.string()
+    .min(2, 'Full Name must be at least 2 characters')
+    .required('Full Name is required'),
   email: Yup.string()
     .email('Invalid email format')
     .required('Email is required'),
@@ -13,12 +17,13 @@ const validationSchema = Yup.object({
     .required('Password is required'),
 });
 
-const LoginForm = () => {
+const TeacherSignUpForm = () => {
   const isMedium = useMediaQuery({
     query: '(max-width: 767px)',
   });
+
   return (
-    <div className={`min-h-screen ${isMedium ? 'flex-col' :"flex"}`}>
+    <div className={`min-h-screen ${isMedium ? 'flex-col' : 'flex'}`}>
       {/* Left Column for Image */}
       <div 
         className="md:flex md:w-1/2 bg-cover bg-center" 
@@ -29,10 +34,10 @@ const LoginForm = () => {
 
       {/* Right Column for Form */}
       <div className="w-full md:w-1/2 flex items-center justify-center p-8 bg-lightColor2">
-        <div className={`bg-primaryColor bg-opacity-5 rounded-lg p-8 max-w-sm w-full   ${isMedium ? "mb-[0]" :"mb-[180px]"}`}>
-          <h2 className="text-2xl font-bold text-center font-lato">Login</h2>
+        <div className={`bg-primaryColor bg-opacity-5 rounded-lg p-8 max-w-sm w-full ${isMedium ? 'mb-[0]' : 'mb-[180px]'}`}>
+          <h2 className="text-2xl font-bold text-center font-lato">Sign Up to Educate</h2>
           <Formik
-            initialValues={{ email: '', password: '' }}
+            initialValues={{ fullName: '', email: '', password: '' }}
             validationSchema={validationSchema}
             onSubmit={(values) => {
               console.log(values);
@@ -41,6 +46,16 @@ const LoginForm = () => {
           >
             {() => (
               <Form>
+                <div className="mb-4">
+                  <Field
+                    type="text"
+                    name="fullName"
+                    className="h-[60px] mt-1 p-2 block w-full border border-primaryColor bg-lightColor2 focus:ring focus:ring-opacity-50"
+                    placeholder="Enter your full name"
+                  />
+                  <ErrorMessage name="fullName" component="div" className="text-red-500 text-sm" />
+                </div>
+
                 <div className="mb-4">
                   <Field
                     type="email"
@@ -68,18 +83,13 @@ const LoginForm = () => {
                   Submit
                 </button>
               </Form>
-              
             )}
-            
           </Formik>
-         
         </div>
-       
       </div>
-      {isMedium && <LoginIcons/>}
+      {isMedium && <LoginIcons />}
     </div>
-
   );
 };
 
-export default LoginForm;
+export default TeacherSignUpForm;
