@@ -1,5 +1,5 @@
 import React from 'react';
-import Join from '../assets/joinUs.svg';
+import Join from '../assets/joinUS.svg';
 import { Link } from 'react-router-dom';
 
 const JoinOurTeam = () => {
