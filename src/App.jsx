@@ -10,6 +10,10 @@ import PrimaryLayout from './layouts/PrimaryLayout';
 import LoginForm from "./pages/Login";
 import ProSignUp from "./pages/ProSignUp";
 import StudentSignUp from "./pages/StudentSIgnUp";
+import Home from "./pages/Home";
+import 'slick-carousel/slick/slick.css';
+import 'slick-carousel/slick/slick-theme.css';
+
 function App() {
   const router = createBrowserRouter(
     createRoutesFromElements(
@@ -17,6 +21,7 @@ function App() {
         <Route path="/" element={<PrimaryLayout />} >
         
           <Route path="/Login" element={<LoginForm />} />
+          <Route path="/home" element={<Home />} />
           <Route path="/teachersignup" element={<ProSignUp />} />
           <Route path="/studentsignup" element={<StudentSignUp />} />
           {/* <Route index element={<Home />} /> */}

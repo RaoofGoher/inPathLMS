@@ -25,7 +25,7 @@ const PrimaryLayout = () => {
     <div className='bg-lightColor2'>
 
       {isNavbarLoading ? <Loader /> : <PrimaryNavbar />}     
-      {isTempNavbarLoading ? <Loader /> : <TemporaryNavbar />}     
+      {/* {isTempNavbarLoading ? <Loader /> : <TemporaryNavbar />}      */}
         <Outlet/>
     </div>
   );

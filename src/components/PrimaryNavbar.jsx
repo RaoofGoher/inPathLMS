@@ -16,7 +16,7 @@ const Navbar = () => {
 
         {/* Left Side: Logo */}
         <div className="flex items-center flex-1">
-          <NavLink to={"/"}><img src={'text'} className='mr-4' alt="Logo" /></NavLink>
+          <NavLink to={"/home"}><img src={'text'} className='mr-4' alt="Logo" /></NavLink>
           {/* Search Bar on Larger Screens Only */}
          <SearchBar/>
         </div>
