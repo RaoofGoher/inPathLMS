@@ -20,8 +20,8 @@ function App() {
       <>
         <Route path="/" element={<PrimaryLayout />} >
         
+          <Route index element={<Home />} />
           <Route path="/Login" element={<LoginForm />} />
-          <Route path="/home" element={<Home />} />
           <Route path="/teachersignup" element={<ProSignUp />} />
           <Route path="/studentsignup" element={<StudentSignUp />} />
           {/* <Route index element={<Home />} /> */}
