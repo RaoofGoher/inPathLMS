@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import PrimaryNavbar from '../components/PrimaryNavbar';
-
+import TemporaryNavbar from '../components/temporaryNavbar';
 // import Footer from '../components/Footer';
 
 import { Outlet } from 'react-router-dom';
@@ -12,9 +12,11 @@ const Loader = () => {
 const PrimaryLayout = () => {
  
   const [isNavbarLoading, setIsNavbarLoading] = useState(true);
+  const [isTempNavbarLoading, setIsTempNavbarLoading] = useState(true);
 
   useEffect(() => {
     setTimeout(() => setIsNavbarLoading(false), 1000);
+    setTimeout(() => setIsTempNavbarLoading(false), 1000);
   
   }, []);
 
@@ -23,6 +25,7 @@ const PrimaryLayout = () => {
     <div className='bg-lightColor2'>
 
       {isNavbarLoading ? <Loader /> : <PrimaryNavbar />}     
+      {isTempNavbarLoading ? <Loader /> : <TemporaryNavbar />}     
         <Outlet/>
     </div>
   );
