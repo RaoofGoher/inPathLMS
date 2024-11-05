@@ -11,6 +11,9 @@ import LoginForm from "./pages/Login";
 import ProSignUp from "./pages/ProSignUp";
 import StudentSignUp from "./pages/StudentSIgnUp";
 import Home from "./pages/Home";
+import DashboardLayout from "./layouts/DashboardLayout";
+import TeacherDashboard from './pages/TeacherDashboard'
+import StudentDashboard from './pages/StudentDashboard'
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 
@@ -24,7 +27,12 @@ function App() {
           <Route path="/Login" element={<LoginForm />} />
           <Route path="/teachersignup" element={<ProSignUp />} />
           <Route path="/studentsignup" element={<StudentSignUp />} />
-          {/* <Route index element={<Home />} /> */}
+         
+        </Route>
+        <Route path="/dashboard" element={<DashboardLayout />} >
+          <Route path="/dashboard/teacherdashboard" element={<TeacherDashboard />} />
+          <Route path="/dashboard/studentdashboard" element={<StudentDashboard />} />
+         
         </Route>
         
 

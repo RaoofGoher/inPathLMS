@@ -5,8 +5,8 @@ const TemporaryNavbar = () => {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <nav className="bg-gray-800 text-white">
-      <div className="container mx-auto px-4 py-4 flex justify-between items-center">
+    <nav className="mt-8 bg-gray-800 text-white">
+      <div className="container mx-auto px-4 py-4 flex justify-between items-center mt-4">
         
         {/* Logo */}
         <div className="text-xl font-bold">
@@ -28,44 +28,40 @@ const TemporaryNavbar = () => {
 
         {/* Links & Button (Visible on larger screens) */}
         <div className={`md:flex items-center ${isOpen ? 'block' : 'hidden'} space-x-4`}>
-          <NavLink to="/home" className="block px-4 py-2 hover:bg-gray-700 rounded" activeClassName="bg-gray-700">
+          <NavLink to="/" className="block px-4 py-2 hover:bg-gray-700 rounded" activeClassName="bg-gray-700">
             Home
           </NavLink>
-          <NavLink to="/services" className="block px-4 py-2 hover:bg-gray-700 rounded" activeClassName="bg-gray-700">
-            Services
+          <NavLink to="/dashboard/studentdashboard" className="block px-4 py-2 hover:bg-gray-700 rounded" activeClassName="bg-gray-700">
+            Student Dashobard
           </NavLink>
-          <NavLink to="/about" className="block px-4 py-2 hover:bg-gray-700 rounded" activeClassName="bg-gray-700">
-            About
+          <NavLink to="/dashboard/teacherdashboard" className="block px-4 py-2 hover:bg-gray-700 rounded" activeClassName="bg-gray-700">
+            Teacher Dashboard
           </NavLink>
-          <NavLink to="/contact" className="block px-4 py-2 hover:bg-gray-700 rounded" activeClassName="bg-gray-700">
+          <NavLink to="/" className="block px-4 py-2 hover:bg-gray-700 rounded" activeClassName="bg-gray-700">
             Contact
           </NavLink>
         </div>
 
         {/* Button */}
-        <button className="hidden md:block bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded ml-4">
-          Sign Up
-        </button>
+       
       </div>
 
       {/* Mobile Menu */}
       {isOpen && (
         <div className="md:hidden bg-gray-800">
-          <NavLink to="/home" className="block px-4 py-2 hover:bg-gray-700" activeClassName="bg-gray-700">
+          <NavLink to="/" className="block px-4 py-2 hover:bg-gray-700" activeClassName="bg-gray-700">
             Home
           </NavLink>
-          <NavLink to="/services" className="block px-4 py-2 hover:bg-gray-700" activeClassName="bg-gray-700">
+          <NavLink to="/" className="block px-4 py-2 hover:bg-gray-700" activeClassName="bg-gray-700">
             Services
           </NavLink>
-          <NavLink to="/about" className="block px-4 py-2 hover:bg-gray-700" activeClassName="bg-gray-700">
+          <NavLink to="/" className="block px-4 py-2 hover:bg-gray-700" activeClassName="bg-gray-700">
             About
           </NavLink>
-          <NavLink to="/contact" className="block px-4 py-2 hover:bg-gray-700" activeClassName="bg-gray-700">
+          <NavLink to="/" className="block px-4 py-2 hover:bg-gray-700" activeClassName="bg-gray-700">
             Contact
           </NavLink>
-          <button className="bg-blue-600 hover:bg-blue-700 text-white w-full px-4 py-2 mt-2 rounded">
-            Sign Up
-          </button>
+          
         </div>
       )}
     </nav>
