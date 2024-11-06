@@ -5,7 +5,7 @@ import TemporaryNavbar from '../components/temporaryNavbar';
 
 import { Outlet } from 'react-router-dom';
 import Footer from '../components/Footer';
-
+import SocialStrip from '../components/SocialStrip';
 
 
 const PrimaryLayout = () => {
@@ -17,6 +17,7 @@ const PrimaryLayout = () => {
 
       <PrimaryNavbar />    
         <Outlet/>
+        <SocialStrip/>
         <Footer/>
         <TemporaryNavbar />     
 

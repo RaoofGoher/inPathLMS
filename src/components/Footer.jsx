@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { FaTwitter, FaFacebookF, FaLinkedinIn, FaYoutube, FaInstagram } from "react-icons/fa";
+import SocialStrip from "./SocialStrip";
 
 const Footer = () => {
   const [expandedSection, setExpandedSection] = useState(null);
@@ -11,7 +12,7 @@ const Footer = () => {
 
   const menuData = [
     {
-      title: "Toggl Plan",
+      title: "In Path Lms",
       links: [
         { name: "Product", to: "/" },
         { name: "Pricing", to: "/" },
@@ -22,7 +23,7 @@ const Footer = () => {
       ],
     },
     {
-      title: "By Use Case",
+      title: "Use Case",
       links: [
         { name: "Project Planning", to: "/" },
         { name: "Resource Planning", to: "/" },
@@ -31,7 +32,7 @@ const Footer = () => {
       ],
     },
     {
-      title: "By Team",
+      title: "Team",
       links: [
         { name: "Creative Agencies", to: "/" },
         { name: "Consultancies", to: "/" },
@@ -39,7 +40,7 @@ const Footer = () => {
       ],
     },
     {
-      title: "Compare To",
+      title: "Compare",
       links: [
         { name: "Trello", to: "/" },
         { name: "Asana", to: "/" },
@@ -49,7 +50,7 @@ const Footer = () => {
       ],
     },
     {
-      title: "Useful Links",
+      title: "Useful",
       links: [
         { name: "Blog", to: "/" },
         { name: "Free Templates", to: "/" },
@@ -61,13 +62,14 @@ const Footer = () => {
   ];
 
   return (
-    <footer className="bg-purple-900 text-purple-200 p-6">
+    <footer className="bg-primaryColor text-white px-[5%] py-16">
+    
       <div className="container mx-auto">
         {/* Large screen layout */}
         <div className="hidden lg:flex justify-between">
           {menuData.map((section, index) => (
             <div key={index}>
-              <h4 className="font-semibold mb-4">{section.title}</h4>
+              <h4 className="font-semibold mb-4 font-lato">{section.title}</h4>
               <ul>
                 {section.links.map((link, idx) => (
                   <li key={idx} className="mb-2">
@@ -87,7 +89,7 @@ const Footer = () => {
             <div key={index} className="mb-4">
               <button
                 onClick={() => toggleSection(index)}
-                className="w-full flex justify-between items-center bg-purple-700 p-3 rounded"
+                className="w-full flex justify-between items-center bg-secondaryColor p-3 rounded"
               >
                 <span className="font-semibold">{section.title}</span>
                 <span>{expandedSection === index ? "▲" : "▼"}</span>
@@ -108,7 +110,7 @@ const Footer = () => {
         </div>
 
         {/* Social icons and copyright */}
-        <div className="mt-8 flex justify-between items-center text-purple-400">
+        <div className="mt-8 flex justify-between items-center text-lightColor1">
           <div className="flex space-x-4">
             <FaTwitter />
             <FaFacebookF />
@@ -116,7 +118,7 @@ const Footer = () => {
             <FaYoutube />
             <FaInstagram />
           </div>
-          <p>© 2024 Toggl Plan</p>
+          <p className="text-white">© 2024 In Path LMS</p>
         </div>
       </div>
     </footer>
