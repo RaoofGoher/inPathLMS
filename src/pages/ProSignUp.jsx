@@ -1,12 +1,14 @@
+// src/components/TeacherSignUpForm.js
 import React from 'react';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
-import BackgroundImage from '../assets/design-6.jpg'; // Ensure this path is correct
+import BackgroundImage from '../assets/design-6.jpg';
 import { useMediaQuery } from 'react-responsive';
-import LoginIcons from '../components/LoginIcons';
+import { useSignUpMutation } from '../features/auth/authApiSlice'; // Import the mutation hook
+import LoginIcons from '../components/LoginIcons'
 
 const validationSchema = Yup.object({
-  fullName: Yup.string()
+  full_name: Yup.string()
     .min(2, 'Full Name must be at least 2 characters')
     .required('Full Name is required'),
   email: Yup.string()
@@ -18,6 +20,7 @@ const validationSchema = Yup.object({
 });
 
 const TeacherSignUpForm = () => {
+  const [signUp, { isLoading, error }] = useSignUpMutation(); // Get the mutation function and loading state
   const isMedium = useMediaQuery({
     query: '(max-width: 767px)',
   });
@@ -25,23 +28,31 @@ const TeacherSignUpForm = () => {
   return (
     <div className={`min-h-screen ${isMedium ? 'flex-col' : 'flex'}`}>
       {/* Left Column for Image */}
-      <div 
-        className="md:flex md:w-1/2 bg-cover bg-center" 
+      <div
+        className="md:flex md:w-1/2 bg-cover bg-center"
         style={{ backgroundImage: `url(${BackgroundImage})` }}
-      >
-        {/* Optional: You can add any overlay or content here */}
-      </div>
+      ></div>
 
       {/* Right Column for Form */}
       <div className="w-full md:w-1/2 flex items-center justify-center p-8 bg-lightColor2">
-        <div className={`bg-primaryColor bg-opacity-5 rounded-lg p-8 max-w-sm w-full ${isMedium ? 'mb-[0]' : 'mb-[180px]'}`}>
+        <div
+          className={`bg-primaryColor bg-opacity-5 rounded-lg p-8 max-w-sm w-full ${isMedium ? 'mb-[0]' : 'mb-[180px]'}`}
+        >
           <h2 className="text-2xl font-bold text-center font-lato">Sign Up to Educate</h2>
           <Formik
-            initialValues={{ fullName: '', email: '', password: '' }}
+            initialValues={{ full_name: '', email: '', password: '' }}
             validationSchema={validationSchema}
-            onSubmit={(values) => {
-              console.log(values);
-              // Handle form submission
+            onSubmit={async (values) => {
+              try {
+                const formData = {
+                  ...values, // Spread the form values
+                  role: 'instructor', // Add the role field
+                };
+                const response = await signUp(formData).unwrap();
+                console.log("sign-up sucessful response", response) // Perform the sign-up request with the added role
+              } catch (error) {
+                console.error('Error signing up:', error);
+              }
             }}
           >
             {() => (
@@ -49,11 +60,11 @@ const TeacherSignUpForm = () => {
                 <div className="mb-4">
                   <Field
                     type="text"
-                    name="fullName"
+                    name="full_name"
                     className="h-[60px] mt-1 p-2 block w-full border border-primaryColor bg-lightColor2 focus:ring focus:ring-opacity-50"
                     placeholder="Enter your full name"
                   />
-                  <ErrorMessage name="fullName" component="div" className="text-red-500 text-sm" />
+                  <ErrorMessage name="full_name" component="div" className="text-red-500 text-sm" />
                 </div>
 
                 <div className="mb-4">
@@ -79,9 +90,11 @@ const TeacherSignUpForm = () => {
                 <button
                   type="submit"
                   className="w-full bg-primaryColor text-white font-bold py-2 rounded hover:bg-blue-700 transition duration-300"
+                  disabled={isLoading} // Disable while loading
                 >
-                  Submit
+                  {isLoading ? 'Signing Up...' : 'Submit'}
                 </button>
+                {error && <p className="text-red-500 text-center mt-2">{error.message}</p>}
               </Form>
             )}
           </Formik>

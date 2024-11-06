@@ -28,16 +28,16 @@ const TemporaryNavbar = () => {
 
         {/* Links & Button (Visible on larger screens) */}
         <div className={`md:flex items-center ${isOpen ? 'block' : 'hidden'} space-x-4`}>
-          <NavLink to="/" className="block px-4 py-2 hover:bg-gray-700 rounded" activeClassName="bg-gray-700">
+          <NavLink to="/" className="block px-4 py-2 hover:bg-gray-700 rounded" >
             Home
           </NavLink>
-          <NavLink to="/dashboard/studentdashboard" className="block px-4 py-2 hover:bg-gray-700 rounded" activeClassName="bg-gray-700">
+          <NavLink to="/dashboard/studentdashboard" className="block px-4 py-2 hover:bg-gray-700 rounded">
             Student Dashobard
           </NavLink>
-          <NavLink to="/dashboard/teacherdashboard" className="block px-4 py-2 hover:bg-gray-700 rounded" activeClassName="bg-gray-700">
+          <NavLink to="/dashboard/teacherdashboard" className="block px-4 py-2 hover:bg-gray-700 rounded" >
             Teacher Dashboard
           </NavLink>
-          <NavLink to="/" className="block px-4 py-2 hover:bg-gray-700 rounded" activeClassName="bg-gray-700">
+          <NavLink to="/" className="block px-4 py-2 hover:bg-gray-700 rounded">
             Contact
           </NavLink>
         </div>

@@ -16,6 +16,9 @@ import TeacherDashboard from './pages/TeacherDashboard'
 import StudentDashboard from './pages/StudentDashboard'
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
+import { Provider } from 'react-redux';
+import { store } from './store';
+
 
 function App() {
   const router = createBrowserRouter(
@@ -41,10 +44,11 @@ function App() {
   );
 
   return (
-    
+    <Provider store={store}>
     <React.StrictMode>
     <RouterProvider router={router} />
   </React.StrictMode>
+  </Provider>
     
   )
 }
