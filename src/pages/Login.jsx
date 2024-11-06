@@ -1,9 +1,11 @@
-import React from 'react';
+import React, {useState, useEffect} from 'react';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
 import BackgroundImage from '../assets/design-8.svg'; // Ensure this path is correct
 import { useMediaQuery } from 'react-responsive';
 import LoginIcons from '../components/LoginIcons'
+import Loader from '../components/Loader';
+
 const validationSchema = Yup.object({
   email: Yup.string()
     .email('Invalid email format')
@@ -14,12 +16,27 @@ const validationSchema = Yup.object({
 });
 
 const LoginForm = () => {
+  const [loading, setLoading] = useState(true);
+
   const isMedium = useMediaQuery({
     query: '(max-width: 767px)',
   });
+
+
+  useEffect(() => {
+    setTimeout(() => setLoading(false), 1000);  
+  
+  }, []);
+
+
   return (
+    <>
+    <Loader isLoading={loading} delay={300} slowLoadingThreshold={2000} />
+      {!loading && 
     <div className={`min-h-screen ${isMedium ? 'flex-col' :"flex"}`}>
       {/* Left Column for Image */}
+      
+    
       <div 
         className="md:flex md:w-1/2 bg-cover bg-center" 
         style={{ backgroundImage: `url(${BackgroundImage})` }}
@@ -78,7 +95,8 @@ const LoginForm = () => {
       </div>
       {isMedium && <LoginIcons/>}
     </div>
-
+          }
+          </>
   );
 };
 

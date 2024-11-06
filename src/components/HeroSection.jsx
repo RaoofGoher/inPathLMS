@@ -1,9 +1,9 @@
-import React, { useState } from 'react';
+import React, { useState,useEffect } from 'react';
 import Slider from 'react-slick';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSmile, faRocket, faStar, faUsers } from '@fortawesome/free-solid-svg-icons';
 import { useMediaQuery } from 'react-responsive'
-
+import Loader from '../components/Loader';
 import Image1 from '../assets/h1.jpg';
 import Image2 from '../assets/h2.jpg';
 import Image3 from '../assets/h3.jpg';
@@ -38,9 +38,17 @@ const heroData = [
 
 const HeroSection = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
+  const [loading, setLoading] = useState(true);
+
   const isSmall = useMediaQuery({
     query: '(max-width: 768px)'
   })
+
+  useEffect(() => {
+    setTimeout(() => setLoading(false), 1000);  
+  
+  }, []);
+
 
   const settings = {
     dots: false, // Shows dots for navigation
@@ -55,7 +63,7 @@ const HeroSection = () => {
   };
 
   return (
-    <div className={`flex ${isSmall ? "flex-col" : ""} w-full h-[80vh]`}>
+    <div className={`flex ${isSmall ? "flex-col" : ""} w-full h-[80vh] z-[20]`}>
      
 
       {/* Text Column */}
@@ -68,7 +76,8 @@ const HeroSection = () => {
       </div>
        {/* Slider Column */}
        <div className={`${isSmall ? 'w-full' : 'w-2/3'} h-full`}>
-        <Slider {...settings}>
+       <Loader isLoading={loading} delay={300} slowLoadingThreshold={2000} />
+       {!loading && <Slider {...settings}>
           {heroData.map((item, index) => (
             <div key={index} className="relative w-full h-full">
               <img
@@ -78,7 +87,8 @@ const HeroSection = () => {
               />
             </div>
           ))}
-        </Slider>
+        </Slider> }
+        
       </div>
     </div>
     
