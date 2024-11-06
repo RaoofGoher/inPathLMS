@@ -8,7 +8,7 @@ import { useSignUpMutation } from '../features/auth/authApiSlice'; // Import the
 import LoginIcons from '../components/LoginIcons'
 
 const validationSchema = Yup.object({
-  fullName: Yup.string()
+  full_name: Yup.string()
     .min(2, 'Full Name must be at least 2 characters')
     .required('Full Name is required'),
   email: Yup.string()
@@ -40,13 +40,13 @@ const TeacherSignUpForm = () => {
         >
           <h2 className="text-2xl font-bold text-center font-lato">Sign Up to Educate</h2>
           <Formik
-            initialValues={{ fullName: '', email: '', password: '' }}
+            initialValues={{ full_name: '', email: '', password: '' }}
             validationSchema={validationSchema}
             onSubmit={async (values) => {
               try {
                 const formData = {
                   ...values, // Spread the form values
-                  role: 'teacher', // Add the role field
+                  role: 'instructor', // Add the role field
                 };
                 const response = await signUp(formData).unwrap();
                 console.log("sign-up sucessful response", response) // Perform the sign-up request with the added role
@@ -60,11 +60,11 @@ const TeacherSignUpForm = () => {
                 <div className="mb-4">
                   <Field
                     type="text"
-                    name="fullName"
+                    name="full_name"
                     className="h-[60px] mt-1 p-2 block w-full border border-primaryColor bg-lightColor2 focus:ring focus:ring-opacity-50"
                     placeholder="Enter your full name"
                   />
-                  <ErrorMessage name="fullName" component="div" className="text-red-500 text-sm" />
+                  <ErrorMessage name="full_name" component="div" className="text-red-500 text-sm" />
                 </div>
 
                 <div className="mb-4">
