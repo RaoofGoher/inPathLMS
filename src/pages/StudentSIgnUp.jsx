@@ -7,6 +7,7 @@ import LoginIcons from '../components/LoginIcons';
 import { useSignUpMutation } from '../features/auth/authApiSlice'; // Import the mutation
 import { useDispatch } from 'react-redux';
 import { setAuth } from '../features/auth/authSlice';
+import { useNavigate } from 'react-router-dom';
 
 const validationSchema = Yup.object({
   full_name: Yup.string()
@@ -21,6 +22,7 @@ const validationSchema = Yup.object({
 });
 
 const StudentSignUpForm = () => {
+  const navigate = useNavigate();
   const dispatch = useDispatch();
   const isMedium = useMediaQuery({
     query: '(max-width: 767px)',
@@ -35,10 +37,17 @@ const StudentSignUpForm = () => {
         role:'student'
       }
       const response = await signUp(formData).unwrap(); // Trigger the signUp mutation
-      const { token, role } = response.data; 
+      const { token, role } = response; 
       dispatch(setAuth({ token, role }));
       console.log('User signed up:', response);
       resetForm();
+      if (role === 'student') {
+        navigate('/dashboard/studentdashboard'); // Redirect to user dashboard
+      } else if (role === 'instructor') {
+        navigate('/dashboard/studentdashboard'); // Redirect to teacher dashboard
+      } else if (role === 'admin') {
+        navigate('/admin-dashboard'); // Redirect to admin dashboard
+      }
     } catch (err) {
       console.error('Signup failed:', err);
       // Handle signup error here

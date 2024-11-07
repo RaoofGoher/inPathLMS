@@ -34,11 +34,19 @@ const LoginForm = () => {
   const handleLogin = async (values ,{ resetForm }) => {
     try {
       const response = await loginUser(values).unwrap(); 
-      const { token, role } = response.data; 
-      dispatch(setAuth({ token, role }));      
       console.log('Login successful', response);
+      const { token, role } = response; 
+      dispatch(setAuth({ token, role }));      
+     
       resetForm();
-      // Handle successful login (e.g., save token, redirect)
+      // Redirect based on role after successful login
+      if (role === 'student') {
+        navigate('/dashboard/studentdashboard'); // Redirect to user dashboard
+      } else if (role === 'instructor') {
+        navigate('/dashboard/studentdashboard'); // Redirect to teacher dashboard
+      } else if (role === 'admin') {
+        navigate('/admin-dashboard'); // Redirect to admin dashboard
+      }
     } catch (err) {
       console.error('Login failed:', err);
       // Handle error (e.g., show error message to the user)
