@@ -4,9 +4,12 @@ import * as Yup from 'yup';
 import BackgroundImage from '../assets/design-6.jpg'; // Ensure this path is correct
 import { useMediaQuery } from 'react-responsive';
 import LoginIcons from '../components/LoginIcons';
+import { useSignUpMutation } from '../features/auth/authApiSlice'; // Import the mutation
+import { useDispatch } from 'react-redux';
+import { setAuth } from '../features/auth/authSlice';
 
 const validationSchema = Yup.object({
-  fullName: Yup.string()
+  full_name: Yup.string()
     .min(2, 'Full Name must be at least 2 characters')
     .required('Full Name is required'),
   email: Yup.string()
@@ -18,9 +21,29 @@ const validationSchema = Yup.object({
 });
 
 const StudentSignUpForm = () => {
+  const dispatch = useDispatch();
   const isMedium = useMediaQuery({
     query: '(max-width: 767px)',
   });
+  
+  const [signUp, { isLoading, isError, error }] = useSignUpMutation(); // Use the mutation hook
+
+  const handleSubmit = async (values, { resetForm }) => {
+    try {
+      const formData = {
+        ...values,
+        role:'student'
+      }
+      const response = await signUp(formData).unwrap(); // Trigger the signUp mutation
+      const { token, role } = response.data; 
+      dispatch(setAuth({ token, role }));
+      console.log('User signed up:', response);
+      resetForm();
+    } catch (err) {
+      console.error('Signup failed:', err);
+      // Handle signup error here
+    }
+  };
 
   return (
     <div className={`min-h-screen ${isMedium ? 'flex-col' : 'flex'}`}>
@@ -37,23 +60,20 @@ const StudentSignUpForm = () => {
         <div className={`bg-primaryColor bg-opacity-5 rounded-lg p-8 max-w-sm w-full ${isMedium ? 'mb-[0]' : 'mb-[180px]'}`}>
           <h2 className="text-2xl font-bold text-center font-lato">Sign Up to Learn</h2>
           <Formik
-            initialValues={{ fullName: '', email: '', password: '' }}
+            initialValues={{ full_name: '', email: '', password: '' }}
             validationSchema={validationSchema}
-            onSubmit={(values) => {
-              console.log(values);
-              // Handle form submission
-            }}
+            onSubmit={handleSubmit} // Use handleSubmit as the submit handler
           >
             {() => (
               <Form>
                 <div className="mb-4">
                   <Field
                     type="text"
-                    name="fullName"
+                    name="full_name"
                     className="h-[60px] mt-1 p-2 block w-full border border-primaryColor bg-lightColor2 focus:ring focus:ring-opacity-50"
                     placeholder="Enter your full name"
                   />
-                  <ErrorMessage name="fullName" component="div" className="text-red-500 text-sm" />
+                  <ErrorMessage name="full_name" component="div" className="text-red-500 text-sm" />
                 </div>
 
                 <div className="mb-4">
@@ -79,9 +99,13 @@ const StudentSignUpForm = () => {
                 <button
                   type="submit"
                   className="w-full bg-primaryColor text-white font-bold py-2 rounded hover:bg-blue-700 transition duration-300"
+                  disabled={isLoading} // Disable button while loading
                 >
-                  Submit
+                  {isLoading ? 'Submitting...' : 'Submit'}
                 </button>
+
+                {/* Display error message if sign-up fails */}
+                {isError && <div className="text-red-500 text-sm mt-2">{error?.data?.message || 'Signup failed'}</div>}
               </Form>
             )}
           </Formik>

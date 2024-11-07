@@ -6,6 +6,8 @@ import { useLoginMutation } from '../features/auth/authApiSlice'; // Import the 
 import BackgroundImage from '../assets/design-8.svg'; 
 import { useMediaQuery } from 'react-responsive';
 import Loader from '../components/Loader';
+import { useDispatch } from 'react-redux';
+import { setAuth } from '../features/auth/authSlice';
 
 const validationSchema = Yup.object({
   email: Yup.string()
@@ -17,6 +19,7 @@ const validationSchema = Yup.object({
 });
 
 const LoginForm = () => {
+  const dispatch = useDispatch();
   const [loading, setLoading] = useState(true);
   const isMedium = useMediaQuery({
     query: '(max-width: 767px)',
@@ -28,10 +31,13 @@ const LoginForm = () => {
     setTimeout(() => setLoading(false), 1000);  
   }, []);
 
-  const handleLogin = async (values) => {
+  const handleLogin = async (values ,{ resetForm }) => {
     try {
-      const response = await loginUser(values).unwrap(); // Call the login mutation
+      const response = await loginUser(values).unwrap(); 
+      const { token, role } = response.data; 
+      dispatch(setAuth({ token, role }));      
       console.log('Login successful', response);
+      resetForm();
       // Handle successful login (e.g., save token, redirect)
     } catch (err) {
       console.error('Login failed:', err);
