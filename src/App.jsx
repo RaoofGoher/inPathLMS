@@ -14,6 +14,7 @@ import Home from "./pages/Home";
 import DashboardLayout from "./layouts/DashboardLayout";
 import TeacherDashboard from './pages/TeacherDashboard'
 import StudentDashboard from './pages/StudentDashboard'
+import PrivateRoute from "./components/PrivateRoute";
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 import { Provider } from 'react-redux';
@@ -30,11 +31,20 @@ function App() {
           <Route path="/Login" element={<LoginForm />} />
           <Route path="/teachersignup" element={<ProSignUp />} />
           <Route path="/studentsignup" element={<StudentSignUp />} />
-         
+
         </Route>
         <Route path="/dashboard" element={<DashboardLayout />} >
-          <Route path="/dashboard/teacherdashboard" element={<TeacherDashboard />} />
+        <Route element={<PrivateRoute allowedRoles={['student']} />}>
           <Route path="/dashboard/studentdashboard" element={<StudentDashboard />} />
+          </Route>
+        
+          <Route element={<PrivateRoute allowedRoles={['instructor']} />}>
+          <Route path="/dashboard/teacherdashboard" element={<TeacherDashboard />} />
+          </Route>
+        
+          {/* <Route element={<PrivateRoute allowedRoles={['admin']} />}>
+          <Route path="/admin-dashboard" element={<AdminDashboard />} />
+         </Route> */}
          
         </Route>
         

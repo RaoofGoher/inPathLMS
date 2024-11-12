@@ -1,5 +1,7 @@
 // src/features/auth/authApiSlice.js
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
+import { setAuth } from './authSlice'; // Import setAuth action
+import { useDispatch } from 'react-redux';
 
 export const authApi = createApi({
   reducerPath: 'authApi',
@@ -11,6 +13,11 @@ export const authApi = createApi({
         method: 'POST',
         body: userData,
       }),
+      // On successful signup, store the token and role
+      onQuerySuccess: (response, { dispatch }) => {
+        const { token, role } = response.data;
+        dispatch(setAuth({ token, role }));
+      },
     }),
 
     login: builder.mutation({
@@ -19,6 +26,11 @@ export const authApi = createApi({
         method: 'POST',
         body: userData,
       }),
+      // On successful login, store the token and role
+      onQuerySuccess: (response, { dispatch }) => {
+        const { token, role } = response.data;
+        dispatch(setAuth({ token, role }));
+      },
     }),
   }),
 });

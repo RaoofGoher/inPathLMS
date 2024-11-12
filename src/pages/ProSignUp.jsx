@@ -6,6 +6,9 @@ import BackgroundImage from '../assets/design-6.jpg';
 import { useMediaQuery } from 'react-responsive';
 import { useSignUpMutation } from '../features/auth/authApiSlice'; // Import the mutation hook
 import LoginIcons from '../components/LoginIcons'
+import { useDispatch } from 'react-redux';
+import { setAuth } from '../features/auth/authSlice';
+import { useNavigate } from 'react-router-dom';
 
 const validationSchema = Yup.object({
   full_name: Yup.string()
@@ -20,6 +23,8 @@ const validationSchema = Yup.object({
 });
 
 const TeacherSignUpForm = () => {
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
   const [signUp, { isLoading, error }] = useSignUpMutation(); // Get the mutation function and loading state
   const isMedium = useMediaQuery({
     query: '(max-width: 767px)',
@@ -42,14 +47,25 @@ const TeacherSignUpForm = () => {
           <Formik
             initialValues={{ full_name: '', email: '', password: '' }}
             validationSchema={validationSchema}
-            onSubmit={async (values) => {
+            onSubmit={async (values,{ resetForm }) => {
               try {
                 const formData = {
                   ...values, // Spread the form values
                   role: 'instructor', // Add the role field
                 };
                 const response = await signUp(formData).unwrap();
+                const { token, role } = response; 
+                dispatch(setAuth({ token, role }));
+                
                 console.log("sign-up sucessful response", response) // Perform the sign-up request with the added role
+                resetForm();
+                if (role === 'student') {
+                  navigate('/dashboard/studentdashboard'); // Redirect to user dashboard
+                } else if (role === 'instructor') {
+                  navigate('/dashboard/teacherdashboard'); // Redirect to teacher dashboard
+                } else if (role === 'admin') {
+                  navigate('/admin-dashboard'); // Redirect to admin dashboard
+                }
               } catch (error) {
                 console.error('Error signing up:', error);
               }
