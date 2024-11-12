@@ -4,10 +4,10 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSmile, faRocket, faStar, faUsers } from '@fortawesome/free-solid-svg-icons';
 import { useMediaQuery } from 'react-responsive'
 import Loader from '../components/Loader';
-import Image1 from '../assets/h1.jpg';
-import Image2 from '../assets/h2.jpg';
-import Image3 from '../assets/h3.jpg';
-import Image4 from '../assets/h4.jpg';
+import Image1 from '../assets/h5.svg';
+import Image2 from '../assets/h8.svg';
+import Image3 from '../assets/h9.svg';
+import Image4 from '../assets/h10.svg';
 
 const heroData = [
   {
@@ -83,7 +83,7 @@ const HeroSection = () => {
               <img
                 src={item.image}
                 alt={`Hero ${index + 1}`}
-                className="w-full h-[80vh] object-cover"
+                className="w-full h-[80vh] object-fill md:object-cover "
               />
             </div>
           ))}
