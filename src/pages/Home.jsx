@@ -3,6 +3,7 @@ import HeroSection from '../components/HeroSection'
 import HowItWorks from '../components/HowITWorks'
 import JoinOurTeam from '../components/JoinUs'
 import WhyTrustUs from '../components/WhyTrustUs'
+import CardComponent from '../components/CardCompoenent'
 
 const Home = () => {
   return (
@@ -11,6 +12,7 @@ const Home = () => {
       <HowItWorks />
       <JoinOurTeam/>
       <WhyTrustUs/>
+      <CardComponent/>
     </div>
   )
 }
