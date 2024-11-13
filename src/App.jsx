@@ -19,12 +19,14 @@ import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 import { Provider } from 'react-redux';
 import { store } from './store';
+import BillingPage from "./pages/Billing";
 
 
 function App() {
   const router = createBrowserRouter(
     createRoutesFromElements(
       <>
+      <Route path="/billing" element={<BillingPage/>} />
         <Route path="/" element={<PrimaryLayout />} >
         
           <Route index element={<Home />} />

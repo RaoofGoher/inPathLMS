@@ -1,3 +1,6 @@
+import buisness from "../assets/buisness.jpg"
+import development from "../assets/development.jpg"
+import software from "../assets/software.jpg"
 const navbarData = [
     { name: "Business" },
     { name: "Design" },
@@ -16,7 +19,7 @@ const cardData = [
         instructor: "Phil Ebiner",
         rating: 4.7,
         price: "$49.99",
-        image: "https://via.placeholder.com/300x200?text=Business+Course"
+        image:buisness
     },
     {
         id: 2,
@@ -25,7 +28,7 @@ const cardData = [
         instructor: "Daniel Carter",
         rating: 4.7,
         price: "$59.99",
-        image: "https://via.placeholder.com/300x200?text=Business+Course"
+        image:buisness
     },
     {
         id: 3,
@@ -34,7 +37,7 @@ const cardData = [
         instructor: "Nancy Shaw",
         rating: 4.5,
         price: "$39.99",
-        image: "https://via.placeholder.com/300x200?text=Business+Course"
+        image:buisness
     },
     {
         id: 4,
@@ -43,7 +46,7 @@ const cardData = [
         instructor: "Chris Parker",
         rating: 4.7,
         price: "$54.99",
-        image: "https://via.placeholder.com/300x200?text=Design+Course"
+        image: development
     },
     {
         id: 5,
@@ -52,7 +55,7 @@ const cardData = [
         instructor: "James Walker",
         rating: 4.6,
         price: "$54.99",
-        image: "https://via.placeholder.com/300x200?text=Design+Course"
+        image: development
     },
     {
         id: 6,
@@ -61,7 +64,7 @@ const cardData = [
         instructor: "Emily Roberts",
         rating: 4.8,
         price: "$79.99",
-        image: "https://via.placeholder.com/300x200?text=Design+Course"
+        image: development
     },
     {
         id: 7,
@@ -70,8 +73,8 @@ const cardData = [
         instructor: "Sarah Lee",
         rating: 4.5,
         price: "$49.99",
-        image: "https://via.placeholder.com/300x200?text=Photography+Course"
-    },
+        image: software
+     },
     {
         id: 8,
         category: "Photography & Video",
@@ -79,7 +82,7 @@ const cardData = [
         instructor: "David Miller",
         rating: 4.5,
         price: "$49.99",
-        image: "https://via.placeholder.com/300x200?text=Photography+Course"
+        image: development
     },
     {
         id: 9,
@@ -88,7 +91,7 @@ const cardData = [
         instructor: "Ethan James",
         rating: 4.6,
         price: "$59.99",
-        image: "https://via.placeholder.com/300x200?text=Photography+Course"
+        image: development
     },
     {
         id: 10,
@@ -97,7 +100,7 @@ const cardData = [
         instructor: "Olivia Parker",
         rating: 4.8,
         price: "$69.99",
-        image: "https://via.placeholder.com/300x200?text=Development+Course"
+        image: development
     },
     {
         id: 11,
@@ -106,7 +109,7 @@ const cardData = [
         instructor: "Emma Brown",
         rating: 4.7,
         price: "$45.99",
-        image: "https://via.placeholder.com/300x200?text=Development+Course"
+        image: development
     },
     {
         id: 12,
@@ -115,7 +118,7 @@ const cardData = [
         instructor: "Karim Elnabawy Balbaa",
         rating: 4.4,
         price: "$39.99",
-        image: "https://via.placeholder.com/300x200?text=Development+Course"
+        image: development
     },
     {
         id: 13,
@@ -124,7 +127,7 @@ const cardData = [
         instructor: "Anna Green",
         rating: 4.8,
         price: "$59.99",
-        image: "https://via.placeholder.com/300x200?text=Marketing+Course"
+        image: development
     },
     {
         id: 14,
@@ -133,7 +136,7 @@ const cardData = [
         instructor: "Lisa Adams",
         rating: 4.6,
         price: "$49.99",
-        image: "https://via.placeholder.com/300x200?text=Marketing+Course"
+        image: buisness
     },
     {
         id: 15,
@@ -142,7 +145,7 @@ const cardData = [
         instructor: "David Thompson",
         rating: 4.7,
         price: "$55.99",
-        image: "https://via.placeholder.com/300x200?text=Marketing+Course"
+        image: software
     },
     {
         id: 16,
@@ -151,7 +154,7 @@ const cardData = [
         instructor: "George Williams",
         rating: 4.9,
         price: "$89.99",
-        image: "https://via.placeholder.com/300x200?text=IT+Course"
+        image: development
     },
     {
         id: 17,
@@ -160,7 +163,7 @@ const cardData = [
         instructor: "David Johnson",
         rating: 4.8,
         price: "$55.99",
-        image: "https://via.placeholder.com/300x200?text=IT+Course"
+        image: buisness
     },
     {
         id: 18,
@@ -169,7 +172,7 @@ const cardData = [
         instructor: "Kunal Ghosh",
         rating: 4.6,
         price: "$49.99",
-        image: "https://via.placeholder.com/300x200?text=IT+Course"
+        image: development
     },
     {
         id: 19,
@@ -178,7 +181,7 @@ const cardData = [
         instructor: "John Smith",
         rating: 4.9,
         price: "$39.99",
-        image: "https://via.placeholder.com/300x200?text=Personal+Development+Course"
+        image: software
     },
     {
         id: 20,
@@ -187,7 +190,7 @@ const cardData = [
         instructor: "Rachel Green",
         rating: 4.8,
         price: "$39.99",
-        image: "https://via.placeholder.com/300x200?text=Personal+Development+Course"
+        image: software
     },
     {
         id: 21,
