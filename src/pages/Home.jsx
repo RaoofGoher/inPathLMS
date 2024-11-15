@@ -4,6 +4,8 @@ import HowItWorks from '../components/HowITWorks'
 import JoinOurTeam from '../components/JoinUs'
 import WhyTrustUs from '../components/WhyTrustUs'
 import CardComponent from '../components/CardCompoenent'
+import StatisticsSection from '../components/StatisticsSection'
+import InstructorSpotlight from '../components/InstructorSpotlight'
 // import LiveChat from '../components/LiveChat'
 
 const Home = () => {
@@ -13,7 +15,9 @@ const Home = () => {
       <HowItWorks />
       <CardComponent/>
       <JoinOurTeam/>
+      <InstructorSpotlight/>
       <WhyTrustUs/>
+      <StatisticsSection/>
       {/* <LiveChat/> */}
     </div>
   )

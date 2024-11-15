@@ -12,55 +12,56 @@ const Footer = () => {
 
   const menuData = [
     {
-      title: "In Path Lms",
+      title: "In Path LMS",
       links: [
-        { name: "Product", to: "/" },
-        { name: "Pricing", to: "/" },
-        { name: "Customer Stories", to: "/" },
-        { name: "Knowledge Base", to: "/" },
-        { name: "About", to: "/about" },
-        { name: "Work With Us", to: "/" },
+        {name: "Home", to: "/"},
+        { name: "Overview", to: "/overView" },
+        { name: "Features", to: "/features" },
+        { name: "Pricing", to: "/pricing" },
+        { name: "Case Studies", to: "/caseStudies" },
+        { name: "About Us", to: "/about" },
+        { name: "Careers", to: "/careers" },
       ],
     },
     {
-      title: "Use Case",
+      title: "Learn",
       links: [
-        { name: "Project Planning", to: "/" },
-        { name: "Resource Planning", to: "/" },
-        { name: "Task Management", to: "/" },
-        { name: "All Use Cases", to: "/" },
+        { name: "Courses", to: "/courses" },
+        { name: "Certifications", to: "/certifications" },
+        { name: "Learning Paths", to: "/learning-paths" },
+        { name: "FAQs", to: "/faq" },
       ],
     },
     {
-      title: "Team",
+      title: "For Teams",
       links: [
-        { name: "Creative Agencies", to: "/" },
-        { name: "Consultancies", to: "/" },
-        { name: "Implementation Teams", to: "/" },
+        { name: "Corporate Training", to: "/corporate-training" },
+        { name: "Custom Solutions", to: "/custom-solutions" },
+        { name: "Onboarding Programs", to: "/onboarding" },
       ],
     },
     {
       title: "Compare",
       links: [
-        { name: "Trello", to: "/" },
-        { name: "Asana", to: "/" },
-        { name: "Basecamp", to: "/" },
-        { name: "Monday.com", to: "/" },
-        { name: "MS Planner", to: "/" },
+        { name: "Trello Integration", to: "/trello" },
+        { name: "Asana Integration", to: "/asana" },
+        { name: "Basecamp Features", to: "/baseCamp" },
+        { name: "Monday.com Comparison", to: "/comparison" },
+        { name: "MS Planner Benefits", to: "/msPlanner" },
       ],
     },
     {
-      title: "Useful",
+      title: "Resources",
       links: [
-        { name: "Blog", to: "/" },
-        { name: "Free Templates", to: "/" },
-        { name: "Press Kit", to: "/" },
-        { name: "Terms of Use", to: "/" },
-        { name: "Privacy Policy", to: "/" },
+        { name: "Blog", to: "/blog" },
+        { name: "Help Center", to: "/help-center" },
+        { name: "Free Resources", to: "/free-resources" },
+        { name: "Terms of Service", to: "/terms" },
+        { name: "Privacy Policy", to: "/privacy" },
       ],
     },
   ];
-
+  
   return (
     <footer className="bg-primaryColor text-white px-[5%] py-16">
     
