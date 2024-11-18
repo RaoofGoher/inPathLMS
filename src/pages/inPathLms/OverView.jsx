@@ -1,4 +1,5 @@
 import React, { Suspense } from "react";
+import ScrollToTop from "../../components/ScrollToTop";
 
 
 //lazy load the InstructorSpotlit
@@ -19,6 +20,7 @@ const CardComponent = React.lazy(() =>
 const OverView = () => {
   return (
     <div>
+      <ScrollToTop/>
       {/* Suspense component to handle loading state */}
       <Suspense fallback={<div>Loading...</div>}>
         <CardComponent />

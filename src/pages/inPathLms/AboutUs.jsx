@@ -1,9 +1,18 @@
 import React from 'react'
+import AboutUsHeroSection from '../../components/AboutUsHeroSection';
+import InstructorSpotlight from '../../components/InstructorSpotlight';
+import WhyTrustUs from '../../components/WhyTrustUs';
+import StatisticsSection from '../../components/StatisticsSection';
+import ScrollToTop from '../../components/ScrollToTop';
 
 const AboutUs = () => {
   return (
     <div>
-      <h1>Here is About us</h1>
+      <ScrollToTop/>
+     <AboutUsHeroSection/>
+     <StatisticsSection/>
+     <InstructorSpotlight/>
+     <WhyTrustUs/>
     </div>
   )
 }

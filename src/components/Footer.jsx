@@ -41,15 +41,15 @@ const Footer = () => {
       ],
     },
     {
-      title: "Compare",
+      title: "Tools",
       links: [
-        { name: "Trello Integration", to: "/trello" },
-        { name: "Asana Integration", to: "/asana" },
-        { name: "Basecamp Features", to: "/baseCamp" },
-        { name: "Monday.com Comparison", to: "/comparison" },
-        { name: "MS Planner Benefits", to: "/msPlanner" },
+        { name: "Course Builder", to: "/tools" },  // Tool to create courses
+        { name: "Quiz & Assessment", to: "/tools" }, // Tool for creating quizzes/tests
+        { name: "Student Progress Tracker", to: "/tools" }, // Tool for tracking student progress
+        { name: "Gradebook", to: "/tools" },  // Tool for grading and evaluating students
+        { name: "Certificate Generator", to: "/tools" }, // Tool for generating completion certificates
       ],
-    },
+    },    
     {
       title: "Resources",
       links: [

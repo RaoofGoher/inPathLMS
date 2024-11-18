@@ -8,6 +8,7 @@ import { useMediaQuery } from 'react-responsive';
 import Loader from '../components/Loader';
 import { useDispatch } from 'react-redux';
 import { setAuth } from '../features/auth/authSlice';
+import ScrollToTop from '../components/ScrollToTop';
 
 const validationSchema = Yup.object({
   email: Yup.string()
@@ -55,6 +56,7 @@ const LoginForm = () => {
 
   return (
     <>
+    <ScrollToTop/>
       <Loader isLoading={loading || isLoading} delay={300} slowLoadingThreshold={2000} />
       {!loading && (
         <div className={`min-h-screen ${isMedium ? 'flex-col' : 'flex'}`}>
