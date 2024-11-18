@@ -1,5 +1,6 @@
 import React from 'react';
 import { FaBook, FaClipboardList, FaChartLine } from 'react-icons/fa';
+import ScrollToTop from '../components/ScrollToTop';
 
 function StudentDashboard() {
   return (
@@ -34,6 +35,7 @@ function StudentDashboard() {
           </div>
         </div>
       </div>
+      <ScrollToTop/>
     </div>
   );
 }

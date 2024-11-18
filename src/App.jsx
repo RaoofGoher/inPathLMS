@@ -5,6 +5,7 @@ import {
   createBrowserRouter,
   createRoutesFromElements,
   RouterProvider,
+  BrowserRouter,
 } from "react-router-dom";
 import PrimaryLayout from "./layouts/PrimaryLayout";
 import LoginForm from "./pages/Login";
@@ -23,7 +24,6 @@ import BillingPage from "./pages/Billing";
 import OverView from "./pages/inPathLms/OverView";
 import Features from "./pages/inPathLms/Features";
 import Pricing from "./pages/inPathLms/Pricing";
-import CaseStudies from "./pages/inPathLms/CaseStudies";
 import AboutUs from "./pages/inPathLms/AboutUs";
 import Careers from "./pages/inPathLms/Careers";
 import Courses from "./pages/learn/Courses";
@@ -33,20 +33,19 @@ import FAQs from "./pages/learn/FAQs";
 import CorporateTraining from "./pages/forTeams/CorporateTraining";
 import CustomSolutions from "./pages/forTeams/CustomSolutions";
 import OnBoardingPrograms from "./pages/forTeams/OnBoardingPrograms";
-import TrelloIntegration from "./pages/compare/TrelloIntegration";
-import AsanaIntegration from "./pages/compare/AsanaIntegration";
-import BaseCampFeatures from "./pages/compare/BasecampFeatures";
-import MondayComparison from "./pages/compare/MondayComparison";
-import MsPlannerBenefits from "./pages/compare/MsPlannerBenefits";
 import Blogs from "./pages/resources/Blogs";
 import FreeResources from "./pages/resources/FreeResources";
 import TermsOfService from "./pages/resources/TermsOfService";
 import PrivacyPolicy from "./pages/resources/PrivacyPolicy";
 import HelpCenter from "./pages/resources/HelpCenter";
+import CaseStudiesPage from "./pages/inPathLms/CaseStudiesPage";
+import Tools from "./pages/Tools";
+
 function App() {
   const router = createBrowserRouter(
     createRoutesFromElements(
-      <>
+  
+      <>    
         <Route path="/" element={<PrimaryLayout />}>
           <Route path="/billing" element={<BillingPage />} />
           <Route index element={<Home />} />
@@ -56,7 +55,7 @@ function App() {
           <Route path="/overView" element={<OverView />}></Route>
           <Route path="/features" element={<Features />}></Route>
           <Route path="/pricing" element={<Pricing />}></Route>
-          <Route path="/caseStudies" element={<CaseStudies />}></Route>
+          <Route path="/caseStudies" element={<CaseStudiesPage/>}></Route>
           <Route path="/about" element={<AboutUs />}></Route>
           <Route path="/careers" element={<Careers />}></Route>
           <Route path="/courses" element={<Courses />}></Route>
@@ -69,11 +68,7 @@ function App() {
           ></Route>
           <Route path="/custom-solutions" element={<CustomSolutions />}></Route>
           <Route path="/onboarding" element={<OnBoardingPrograms />}></Route>
-          <Route path="/trello" element={<TrelloIntegration />}></Route>
-          <Route path="/Asana" element={<AsanaIntegration />}></Route>
-          <Route path="/basecamp" element={<BaseCampFeatures />}></Route>
-          <Route path="/comparison" element={<MondayComparison />}></Route>
-          <Route path="/msPlanner" element={<MsPlannerBenefits />}></Route>
+          <Route path="tools" element={<Tools/>}></Route>
           <Route path="/blog" element={<Blogs />}></Route>
           <Route path="/help-center" element={<HelpCenter />}></Route>
           <Route path="/free-resources" element={<FreeResources />}></Route>

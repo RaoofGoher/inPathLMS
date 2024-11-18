@@ -1,9 +1,11 @@
 import React from 'react';
 import { FaChalkboardTeacher, FaClipboardList, FaChartLine, FaUserGraduate } from 'react-icons/fa';
+import ScrollToTop from '../components/ScrollToTop';
 
 function TeacherDashboard() {
   return (
     <div className="p-4">
+      <ScrollToTop/>
       <h1 className="text-2xl font-bold mb-6">Teacher Dashboard</h1>
 
       <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">

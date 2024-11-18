@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import ScrollToTop from '../components/ScrollToTop';
 
 const BillingPage = () => {
   const [billingDetails, setBillingDetails] = useState({
@@ -231,6 +232,7 @@ const BillingPage = () => {
           </div>
         </form>
       </div>
+      <ScrollToTop/>
     </div>
   );
 };

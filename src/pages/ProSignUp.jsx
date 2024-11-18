@@ -9,6 +9,7 @@ import LoginIcons from '../components/LoginIcons'
 import { useDispatch } from 'react-redux';
 import { setAuth } from '../features/auth/authSlice';
 import { useNavigate } from 'react-router-dom';
+import ScrollToTop from '../components/ScrollToTop';
 
 const validationSchema = Yup.object({
   full_name: Yup.string()
@@ -117,6 +118,7 @@ const TeacherSignUpForm = () => {
         </div>
       </div>
       {isMedium && <LoginIcons />}
+      <ScrollToTop/>
     </div>
   );
 };
