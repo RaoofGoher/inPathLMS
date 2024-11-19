@@ -9,7 +9,7 @@ const Tools = () => {
       <section className="bg-gradient-to-r from-primaryColor to-secondaryColor text-lightColor2 py-24 text-center">
         <h1 className="text-5xl font-bold text-white mb-6">Course Management Tools</h1>
         <p className="text-lg text-lightColor2 opacity-90 mb-6">
-          Explore our powerful tools to create courses, track progress, and manage assessments.
+          Explore our powerful tools to create courses, track progress, and manage assessments..
         </p>
       </section>
 
