@@ -2,6 +2,7 @@
 import React, { useState } from 'react';
 import { NavLink, Link } from 'react-router-dom';
 import SearchBar from './SearchBar';
+import Logo from "../assets/logos/Logo.png"
 
 const Navbar = () => {
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
@@ -16,7 +17,7 @@ const Navbar = () => {
 
         {/* Left Side: Logo */}
         <div className="flex items-center flex-1">
-          <NavLink to={"/"}><img src={'text'} className='mr-4' alt="Logo" /></NavLink>
+          <NavLink to={"/"}><img src={Logo} className='mr-16 w-[4rem]' alt="Logo" /></NavLink>
           {/* Search Bar on Larger Screens Only */}
          <SearchBar/>
         </div>
