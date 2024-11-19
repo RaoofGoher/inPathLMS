@@ -5,7 +5,6 @@ import {
   createBrowserRouter,
   createRoutesFromElements,
   RouterProvider,
-  BrowserRouter,
 } from "react-router-dom";
 import PrimaryLayout from "./layouts/PrimaryLayout";
 import LoginForm from "./pages/Login";
@@ -61,7 +60,7 @@ function App() {
           <Route path="/courses" element={<Courses />}></Route>
           <Route path="/certifications" element={<Certifications />}></Route>
           <Route path="/learning-paths" element={<LearningPaths />}></Route>
-          <Route path="/faq" element={<FAQs />}></Route>
+          <Route path="/faq" element={<FAQs/>}></Route>
           <Route
             path="/corporate-training"
             element={<CorporateTraining />}
