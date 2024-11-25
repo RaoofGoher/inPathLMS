@@ -73,10 +73,17 @@ const StepForm = () => {
   };
 
   const handlePrev = () => setStep(step - 1);
-
+  const progress = ((step - 1) / 4) * 100;
   return (
     <div className="p-6 max-w-lg mx-auto">
       <h1 className="text-2xl font-bold mb-4">Step {step} of 4</h1>
+            {/* Progress Bar */}
+            <div className="w-full bg-gray-200 h-2 mb-4 rounded">
+        <div
+          className="bg-secondaryColor h-2 rounded"
+          style={{ width: `${progress}%` }}
+        ></div>
+      </div>
       <form onSubmit={formik.handleSubmit}>
         {step === 1 && (
           <div>
@@ -87,7 +94,7 @@ const StepForm = () => {
               value={formik.values.courseName}
               onChange={formik.handleChange}
               onBlur={formik.handleBlur}
-              className="w-full border p-2 rounded"
+              className="w-full border p-2 rounded focus:outline-none focus:ring-2 focus:ring-secondaryColor"
             />
             {formik.touched.courseName && formik.errors.courseName && (
               <p className="text-red-500 text-sm">{formik.errors.courseName}</p>
@@ -103,7 +110,7 @@ const StepForm = () => {
               value={formik.values.courseDescription}
               onChange={formik.handleChange}
               onBlur={formik.handleBlur}
-              className="w-full border p-2 rounded"
+              className="w-full border p-2 rounded focus:outline-none focus:ring-2 focus:ring-secondaryColor"
             />
             {formik.touched.courseDescription &&
               formik.errors.courseDescription && (
@@ -124,7 +131,7 @@ const StepForm = () => {
               onChange={(e) => {
                 formik.setFieldValue("thumbnail", e.target.files[0]);
               }}
-              className="w-full border p-2 rounded"
+              className="w-full border p-2 rounded focus:outline-none focus:ring-2 focus:ring-secondaryColor"
             />
             {formik.errors.thumbnail && (
               <p className="text-red-500 text-sm">{formik.errors.thumbnail}</p>
@@ -142,7 +149,7 @@ const StepForm = () => {
               onChange={(e) => {
                 formik.setFieldValue("video", e.target.files[0]);
               }}
-              className="w-full border p-2 rounded"
+              className="w-full border p-2 rounded focus:outline-none focus:ring-2 focus:ring-secondaryColor"
             />
             {formik.errors.video && (
               <p className="text-red-500 text-sm">{formik.errors.video}</p>
@@ -163,7 +170,7 @@ const StepForm = () => {
           <button
             type="button"
             onClick={handleNext}
-            className="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600"
+            className="px-4 py-2 bg-primaryColor border-4  border-secondaryColor text-white rounded hover:bg-white hover:text-black"
           >
             {step === 4 ? "Submit" : "Next"}
           </button>
