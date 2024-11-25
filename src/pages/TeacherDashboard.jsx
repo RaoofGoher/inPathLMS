@@ -1,11 +1,19 @@
 import React from 'react';
-import { FaChalkboardTeacher, FaClipboardList, FaChartLine, FaUserGraduate } from 'react-icons/fa';
+import { 
+  FaChalkboardTeacher, 
+  FaClipboardList, 
+  FaChartLine, 
+  FaUserGraduate, 
+  FaPlusCircle, 
+  FaBook 
+} from 'react-icons/fa';
+import { Link } from 'react-router-dom';
 import ScrollToTop from '../components/ScrollToTop';
 
 function TeacherDashboard() {
   return (
     <div className="p-4">
-      <ScrollToTop/>
+      <ScrollToTop />
       <h1 className="text-2xl font-bold mb-6">Teacher Dashboard</h1>
 
       <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
@@ -42,6 +50,25 @@ function TeacherDashboard() {
           <div>
             <h2 className="text-xl font-semibold text-white">Student List</h2>
             <p className="text-white">View and manage students in your classes.</p>
+          </div>
+        </div>
+
+        {/* Add Course */}
+     
+        <div className="bg-primaryColor p-6 rounded-lg shadow-md flex items-center space-x-4">
+          <FaPlusCircle className="text-secondaryColor text-3xl" />
+          <div>
+            <h2 className="text-xl font-semibold text-white">Add Course</h2>
+            <Link to={'/dashboard/teacherdashboard/addCourse'}><p className="text-white">Click here to create and add new courses.</p></Link>
+          </div>
+        </div>
+        
+        {/* View Course */}
+        <div className="bg-primaryColor p-6 rounded-lg shadow-md flex items-center space-x-4">
+          <FaBook className="text-secondaryColor text-3xl" />
+          <div>
+            <h2 className="text-xl font-semibold text-white">View My Courses</h2>
+            <Link><p className="text-white">Click here to browse and manage courses.</p></Link>
           </div>
         </div>
       </div>

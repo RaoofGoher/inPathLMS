@@ -39,6 +39,7 @@ import PrivacyPolicy from "./pages/resources/PrivacyPolicy";
 import HelpCenter from "./pages/resources/HelpCenter";
 import CaseStudiesPage from "./pages/inPathLms/CaseStudiesPage";
 import Tools from "./pages/Tools";
+import AddCourseForm from "./components/course/AddCourse";
 
 function App() {
   const router = createBrowserRouter(
@@ -87,6 +88,11 @@ function App() {
               path="/dashboard/teacherdashboard"
               element={<TeacherDashboard />}
             />
+            <Route
+              path="/dashboard/teacherdashboard/addCourse"
+              element={<AddCourseForm />}
+            />
+            
           </Route>
 
           {/* <Route element={<PrivateRoute allowedRoles={['admin']} />}>

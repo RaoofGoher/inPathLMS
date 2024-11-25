@@ -75,7 +75,7 @@ const DashboardLayout = () => {
           <Outlet />
         </main>
       </div>
-    <TemporaryNavbar />     
+   
 
     </div>
   );
