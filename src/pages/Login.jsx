@@ -9,6 +9,7 @@ import Loader from '../components/Loader';
 import { useDispatch } from 'react-redux';
 import { setAuth } from '../features/auth/authSlice';
 import ScrollToTop from '../components/ScrollToTop';
+import { useNavigate } from 'react-router-dom';
 
 const validationSchema = Yup.object({
   email: Yup.string()
@@ -20,6 +21,7 @@ const validationSchema = Yup.object({
 });
 
 const LoginForm = () => {
+  const navigate = useNavigate(); // Use the navigate hook to redirect to other pages
   const dispatch = useDispatch();
   const [loading, setLoading] = useState(true);
   const isMedium = useMediaQuery({
@@ -44,7 +46,7 @@ const LoginForm = () => {
       if (role === 'student') {
         navigate('/dashboard/studentdashboard'); // Redirect to user dashboard
       } else if (role === 'instructor') {
-        navigate('/dashboard/studentdashboard'); // Redirect to teacher dashboard
+        navigate('/dashboard/teacherdashboard'); // Redirect to teacher dashboard
       } else if (role === 'admin') {
         navigate('/admin-dashboard'); // Redirect to admin dashboard
       }

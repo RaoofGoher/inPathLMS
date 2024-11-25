@@ -3,12 +3,20 @@ import { FaBars, FaTimes, FaTachometerAlt, FaUser, FaCog, FaSignOutAlt } from 'r
 import { Outlet, Link } from 'react-router-dom';
 import PrimaryNavbar from '../components/PrimaryNavbar';
 import TemporaryNavbar from '../components/temporaryNavbar';
+import { useDispatch } from 'react-redux';
+import { logout } from '../features/auth/authSlice';
 
 const DashboardLayout = () => {
+  const dispatch = useDispatch();
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
 
   const toggleSidebar = () => {
     setIsSidebarOpen(!isSidebarOpen);
+  };
+
+  const handleLogout = () => {
+    dispatch(logout()); // Dispatch the logout action
+    navigate('/'); // Redirect to the home page or login after logout
   };
 
   return (
@@ -46,7 +54,7 @@ const DashboardLayout = () => {
               <FaCog className="mr-2 text-secondaryColor" />
               Settings
             </Link>
-            <Link to="/logout" className="flex items-center py-2 px-4 hover:bg-secondaryColor rounded">
+            <Link className="flex items-center py-2 px-4 hover:bg-secondaryColor rounded" onClick={handleLogout}>
               <FaSignOutAlt className="mr-2 text-secondaryColor" />
               Logout
             </Link>
