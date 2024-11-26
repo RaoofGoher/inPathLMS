@@ -5,7 +5,7 @@ import { useFetchCourseCategoriesQuery } from '../../features/courseCategory/cou
 import { useDispatch, useSelector } from 'react-redux';
 import { setCategories } from '../../features/courseCategory/courseCategoriesSlice';
 import { useGetSubcategoriesQuery } from '../../features/courseCategory/subCategorySlice';
-
+import { useCreateCourseMutation } from '../../features/courseCategory/createCourseApi';
 const StepForm = () => {
   const dispatch = useDispatch();
   const { data: categories, isLoading, isError } = useFetchCourseCategoriesQuery();
@@ -14,6 +14,7 @@ const StepForm = () => {
   const [selectedCategoryId, setSelectedCategoryId] = useState(null);
   const { user_id } = useSelector((state) => state.auth);
   const published = false;  
+  const [createCourse] = useCreateCourseMutation();
   // Fetch subcategories based on selected category
   const { data: subcategories, isLoading: isSubcategoryLoading, isError: isSubcategoryError } = useGetSubcategoriesQuery(selectedCategoryId, {
     skip: !selectedCategoryId,  // Skip the query if no category is selected
@@ -48,14 +49,26 @@ const StepForm = () => {
       thumbnail: step === 4 ? Yup.mixed().required("Thumbnail is required").test("fileSize", "File size must be less than 200KB", (value) => value && value.size <= 200 * 1024) : Yup.mixed().nullable(),
       intro_video: step === 4 ? Yup.mixed().required("Video is required").test("fileSize", "File size must be less than 3MB", (value) => value && value.size <= 3 * 1024 * 1024) : Yup.mixed().nullable(),
     }),
-    onSubmit: (values) => {
-      const formData = {
-        ...values,
-       instructor: user_id,  // Adding user_id from the Redux state
-        published,  // Adding the publish flag as false
-      };
-      console.log("Form Values: ", formData);
-    },
+    onSubmit: async (values, { resetForm }) => {
+      console.log("onSubmit", values)
+      const formData = new FormData();
+      for (const key in values) {
+        formData.append(key, values[key]);
+      }
+      formData.append('instructor', user_id);
+      formData.append('published', published);
+      for (let [key, value] of formData.entries()) {
+        console.log(key, value);
+      }    
+      try {
+        const response = await createCourse(formData).unwrap();
+        alert('Course created successfully!');
+        resetForm();
+      } catch (error) {
+        console.error('Failed to create course:', error);
+        alert('Error creating course!');
+      }
+    }
   });
 
   const handleCategoryChange = (e) => {
@@ -100,7 +113,7 @@ const StepForm = () => {
       <div className="w-full bg-gray-200 h-2 mb-4 rounded">
         <div className="bg-secondaryColor h-2 rounded" style={{ width: `${progress}%` }}></div>
       </div>
-      <form onSubmit={formik.handleSubmit}>
+      <form onSubmit={formik.handleSubmit} >
         {step === 1 && (
           <>
             <div>
