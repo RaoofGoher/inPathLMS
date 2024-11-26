@@ -9,7 +9,7 @@ export const subcategoryApi = createApi({
   endpoints: (builder) => ({
     // Define the endpoint to fetch subcategories based on category ID
     getSubcategories: builder.query({
-      query: (categoryId) => `/courses/get/subcategories/${categoryId}`, // Endpoint to fetch subcategories
+      query: (categoryId) => `/courses/get/subcategories/${categoryId}/`, // Endpoint to fetch subcategories
     }),
   }),
 });
