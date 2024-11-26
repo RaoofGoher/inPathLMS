@@ -12,7 +12,8 @@ const StepForm = () => {
   const storedCategories = useSelector((state) => state.courseCategories.categories);
   const [step, setStep] = useState(1);
   const [selectedCategoryId, setSelectedCategoryId] = useState(null);
-
+  const { user_id } = useSelector((state) => state.auth);
+  const published = false;  
   // Fetch subcategories based on selected category
   const { data: subcategories, isLoading: isSubcategoryLoading, isError: isSubcategoryError } = useGetSubcategoriesQuery(selectedCategoryId, {
     skip: !selectedCategoryId,  // Skip the query if no category is selected
@@ -26,10 +27,10 @@ const StepForm = () => {
 
   const formik = useFormik({
     initialValues: {
-      courseName: "",
-      courseDescription: "",
+      title: "",
+      description: "",
       category: "",
-      subcategories: "",
+      subcategory: "",
       price: "",
       discount_percentage: "",
       discount_end_date: "",
@@ -37,10 +38,10 @@ const StepForm = () => {
       intro_video: null,
     },
     validationSchema: Yup.object({
-      courseName: step === 1 ? Yup.string().required("Course name is required") : Yup.mixed().nullable(),
-      courseDescription: step === 1 ? Yup.string().required("Course description is required") : Yup.mixed().nullable(),
+      title: step === 1 ? Yup.string().required("Course name is required") : Yup.mixed().nullable(),
+      description: step === 1 ? Yup.string().required("Course description is required") : Yup.mixed().nullable(),
       category: step === 2 ? Yup.string().required("Category is required") : Yup.mixed().nullable(),
-      subcategories: step === 2 ? Yup.string().required("Subcategory is required") : Yup.mixed().nullable(),
+      subcategory: step === 2 ? Yup.string().required("Subcategory is required") : Yup.mixed().nullable(),
       price: step === 3 ? Yup.number().required("Price is required").min(1, "Price must be at least 1") : Yup.mixed().nullable(),
       discount_percentage: step === 3 ? Yup.number().required("Discount percentage is required").min(0, "Discount must be at least 0%").max(100, "Discount cannot exceed 100%") : Yup.mixed().nullable(),
       discount_end_date: step === 3 ? Yup.date().required("Discount end date is required").min(new Date(), "Discount end date must be in the future") : Yup.mixed().nullable(),
@@ -48,7 +49,12 @@ const StepForm = () => {
       intro_video: step === 4 ? Yup.mixed().required("Video is required").test("fileSize", "File size must be less than 3MB", (value) => value && value.size <= 3 * 1024 * 1024) : Yup.mixed().nullable(),
     }),
     onSubmit: (values) => {
-      console.log("Form Values: ", values);
+      const formData = {
+        ...values,
+       instructor: user_id,  // Adding user_id from the Redux state
+        published,  // Adding the publish flag as false
+      };
+      console.log("Form Values: ", formData);
     },
   });
 
@@ -56,13 +62,13 @@ const StepForm = () => {
     const selectedCategory = e.target.value;
     formik.setFieldValue("category", selectedCategory);
     setSelectedCategoryId(selectedCategory);  // Store the selected category ID
-    formik.setFieldValue("subcategories", "");  // Reset subcategories on category change
+    formik.setFieldValue("subcategory", "");  // Reset subcategory on category change
   };
 
   const handleNext = () => {
     const fieldsToTouch = {
-      1: ["courseName", "courseDescription"],
-      2: ["category", "subcategories"],
+      1: ["title", "description"],
+      2: ["category", "subcategory"],
       3: ["price", "discount_percentage", "discount_end_date"],
       4: ["thumbnail", "intro_video"],
     };
@@ -101,27 +107,27 @@ const StepForm = () => {
               <label className="block mb-2 font-medium">Course Name</label>
               <input
                 type="text"
-                name="courseName"
-                value={formik.values.courseName}
+                name="title"
+                value={formik.values.title}
                 onChange={formik.handleChange}
                 onBlur={formik.handleBlur}
                 className="w-full border p-2 rounded focus:outline-none focus:ring-2 focus:ring-secondaryColor"
               />
-              {formik.touched.courseName && formik.errors.courseName && (
-                <p className="text-red-500 text-sm">{formik.errors.courseName}</p>
+              {formik.touched.title && formik.errors.title && (
+                <p className="text-red-500 text-sm">{formik.errors.title}</p>
               )}
             </div>
             <div>
               <label className="block mb-2 font-medium">Course Description</label>
               <textarea
-                name="courseDescription"
-                value={formik.values.courseDescription}
+                name="description"
+                value={formik.values.description}
                 onChange={formik.handleChange}
                 onBlur={formik.handleBlur}
                 className="w-full border p-2 rounded focus:outline-none focus:ring-2 focus:ring-secondaryColor"
               />
-              {formik.touched.courseDescription && formik.errors.courseDescription && (
-                <p className="text-red-500 text-sm">{formik.errors.courseDescription}</p>
+              {formik.touched.description && formik.errors.description && (
+                <p className="text-red-500 text-sm">{formik.errors.description}</p>
               )}
             </div>
           </>
@@ -153,8 +159,8 @@ const StepForm = () => {
             <div>
               <label className="block mb-2 font-medium">Subcategory</label>
               <select
-                name="subcategories"
-                value={formik.values.subcategories}
+                name="subcategory"
+                value={formik.values.subcategory}
                 onChange={formik.handleChange}
                 onBlur={formik.handleBlur}
                 className="w-full border p-2 rounded focus:outline-none focus:ring-2 focus:ring-secondaryColor"
@@ -171,8 +177,8 @@ const StepForm = () => {
                   ))
                 )}
               </select>
-              {formik.touched.subcategories && formik.errors.subcategories && (
-                <p className="text-red-500 text-sm">{formik.errors.subcategories}</p>
+              {formik.touched.subcategory && formik.errors.subcategory && (
+                <p className="text-red-500 text-sm">{formik.errors.subcategory}</p>
               )}
             </div>
           </>

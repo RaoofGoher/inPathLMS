@@ -12,7 +12,6 @@ const Navbar = () => {
   const navigate = useNavigate(); // Use the navigate hook to redirect to other pages
   const dispatch = useDispatch();
 
-console.log(token, role, isAuthenticated, user_id)
 
 
   const handleLogout = () => {
