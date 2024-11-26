@@ -1,10 +1,10 @@
-import React, { useState,useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { useFormik } from "formik";
 import * as Yup from "yup";
 import { useFetchCourseCategoriesQuery } from '../../features/courseCategory/courseCatgeoriesApiSlice';
 import { useDispatch, useSelector } from 'react-redux';
 import { setCategories } from '../../features/courseCategory/courseCategoriesSlice';
-
+import { useGetSubcategoriesQuery } from '../../features/courseCategory/subCategorySlice';
 
 const StepForm = () => {
   const dispatch = useDispatch();
@@ -16,16 +16,14 @@ const StepForm = () => {
     if (categories) {
       dispatch(setCategories(categories));
     }
-  }, [categories, dispatch]);
+  }, [categories]);
 
-
-console.log("storedCategories",storedCategories)
   const formik = useFormik({
     initialValues: {
       courseName: "",
       courseDescription: "",
       category: "",
-      subcategories:"",
+      subcategories: "",
       price: "",
       discount_percentage: "",
       discount_end_date: "",
@@ -51,14 +49,14 @@ console.log("storedCategories",storedCategories)
           )
         : Yup.mixed().nullable(),
 
-        subcategories: step === 2
+      subcategories: step === 2
         ? Yup.string()
-            .required("Subcategory is required")
-            .test(
-              "validSubcategory",
-              "Please select a valid subcategory",
-              (value) => value && value.trim() !== "" // Ensure the value is valid
-            )
+          .required("Subcategory is required")
+          .test(
+            "validSubcategory",
+            "Please select a valid subcategory",
+            (value) => value && value.trim() !== "" // Ensure the value is valid
+          )
         : Yup.mixed().nullable(),
       price: step === 3
         ? Yup.number()
@@ -196,11 +194,11 @@ console.log("storedCategories",storedCategories)
                 className="w-full border p-2 rounded focus:outline-none focus:ring-2 focus:ring-secondaryColor"
               >
                 <option value="">Select a category</option>
-                <option value="technology">Technology</option>
-                <option value="business">Business</option>
-                <option value="design">Design</option>
-                <option value="marketing">Marketing</option>
-                {/* Add more categories as needed */}
+                {storedCategories.map((category) => (
+                  <option key={category.id} value={category.name}>
+                    {category.name}
+                  </option>
+                ))}
               </select>
               {formik.touched.category && formik.errors.category && (
                 <p className="text-red-500 text-sm">{formik.errors.category}</p>

@@ -5,7 +5,7 @@ import { authApi } from './features/auth/authApiSlice';
 import authReducer from './features/auth/authSlice';
 import { courseCategoriesApi } from './features/courseCategory/courseCatgeoriesApiSlice';
 import courseCategoriesReducer from './features/courseCategory/courseCategoriesSlice';
-
+import {subcategoryApi} from './features/courseCategory/subCategorySlice';
 // Define the persist configuration for auth state
 const persistConfig = {
   key: 'auth',
@@ -21,9 +21,10 @@ export const store = configureStore({
     [authApi.reducerPath]: authApi.reducer,
     [courseCategoriesApi.reducerPath]: courseCategoriesApi.reducer,
     courseCategories: courseCategoriesReducer,
+    [subcategoryApi.reducerPath]: subcategoryApi.reducer,
   },
   middleware: (getDefaultMiddleware) =>
-    getDefaultMiddleware().concat(authApi.middleware, courseCategoriesApi.middleware),
+    getDefaultMiddleware().concat(authApi.middleware, courseCategoriesApi.middleware).concat(subcategoryApi.middleware),
 });
 
 // Create a persistor to be used with PersistGate in your app
