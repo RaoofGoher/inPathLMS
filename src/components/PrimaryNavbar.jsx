@@ -8,9 +8,13 @@ import { logout } from '../features/auth/authSlice';
 
 const Navbar = () => {
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
-  const { token, role, isAuthenticated } = useSelector((state) => state.auth);
+  const { token, role, isAuthenticated, user_id } = useSelector((state) => state.auth);
   const navigate = useNavigate(); // Use the navigate hook to redirect to other pages
   const dispatch = useDispatch();
+
+console.log(token, role, isAuthenticated, user_id)
+
+
   const handleLogout = () => {
     dispatch(logout())
     navigate('/login')

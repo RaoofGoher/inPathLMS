@@ -15,9 +15,10 @@ const authSlice = createSlice({
   reducers: {
     // Set token and role when user logs in or signs up
     setAuth: (state, action) => {
-      const { token, role } = action.payload;
+      const { token, role, user_id } = action.payload;
       state.token = token;
       state.role = role;
+      state.user_id = user_id;
       state.isAuthenticated = true;
 
       // Store token and role in localStorage for persistence

@@ -38,8 +38,8 @@ const LoginForm = () => {
     try {
       const response = await loginUser(values).unwrap(); 
       console.log('Login successful', response);
-      const { token, role } = response; 
-      dispatch(setAuth({ token, role }));      
+      const { token, role, user_id } = response; 
+      dispatch(setAuth({ token, role, user_id }));      
      
       resetForm();
       // Redirect based on role after successful login

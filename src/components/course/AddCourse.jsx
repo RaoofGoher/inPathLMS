@@ -15,7 +15,7 @@ const StepForm = () => {
       discount_percentage: "",
       discount_end_date: "",
       thumbnail: null,
-      video_intro: null,
+      intro_video: null,
     },
     validationSchema: Yup.object({
       courseName: step === 1
@@ -74,7 +74,7 @@ const StepForm = () => {
           )
         : Yup.mixed().nullable(),
 
-      video_intro: step === 4
+      intro_video: step === 4
         ? Yup.mixed()
           .required("Video is required")
           .test(
@@ -94,7 +94,7 @@ const StepForm = () => {
       1: ["courseName", "courseDescription"],
       2: ["category", "subcategories"],
       3: ["price", "discount_percentage", "discount_end_date"],
-      4: ["thumbnail", "video_intro"],
+      4: ["thumbnail", "intro_video"],
     };
 
     formik.setTouched(
@@ -314,15 +314,15 @@ const StepForm = () => {
               <label className="block mb-2 font-medium">Video (Max: 3MB)</label>
               <input
                 type="file"
-                name="video_intro"
+                name="intro_video"
                 accept="video/*"
                 onChange={(e) => {
-                  formik.setFieldValue("video_intro", e.target.files[0]);
+                  formik.setFieldValue("intro_video", e.target.files[0]);
                 }}
                 className="w-full border p-2 rounded focus:outline-none focus:ring-2 focus:ring-secondaryColor"
               />
-              {formik.touched.video_intro && formik.errors.video_intro && (
-                <p className="text-red-500 text-sm">{formik.errors.video_intro}</p>
+              {formik.touched.intro_video && formik.errors.intro_video && (
+                <p className="text-red-500 text-sm">{formik.errors.intro_video}</p>
               )}
             </div>
           </>
