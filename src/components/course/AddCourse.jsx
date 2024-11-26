@@ -1,10 +1,25 @@
-import React, { useState } from "react";
+import React, { useState,useEffect } from "react";
 import { useFormik } from "formik";
 import * as Yup from "yup";
+import { useFetchCourseCategoriesQuery } from '../../features/courseCategory/courseCatgeoriesApiSlice';
+import { useDispatch, useSelector } from 'react-redux';
+import { setCategories } from '../../features/courseCategory/courseCategoriesSlice';
+
 
 const StepForm = () => {
+  const dispatch = useDispatch();
+  const { data: categories, isLoading, isError } = useFetchCourseCategoriesQuery();
+  const storedCategories = useSelector((state) => state.courseCategories.categories);
   const [step, setStep] = useState(1);
 
+  useEffect(() => {
+    if (categories) {
+      dispatch(setCategories(categories));
+    }
+  }, [categories, dispatch]);
+
+
+console.log("storedCategories",storedCategories)
   const formik = useFormik({
     initialValues: {
       courseName: "",

@@ -18,7 +18,8 @@ import PrivateRoute from "./components/PrivateRoute";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import { Provider } from "react-redux";
-import { store } from "./store";
+import { store,persistor } from "./store";
+import { PersistGate } from 'redux-persist/integration/react';
 import BillingPage from "./pages/Billing";
 import OverView from "./pages/inPathLms/OverView";
 import Features from "./pages/inPathLms/Features";
@@ -105,9 +106,11 @@ function App() {
 
   return (
     <Provider store={store}>
+       <PersistGate loading={null} persistor={persistor}>
       <React.StrictMode>
         <RouterProvider router={router} />
       </React.StrictMode>
+      </PersistGate>
     </Provider>
   );
 }
