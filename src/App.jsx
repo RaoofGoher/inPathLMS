@@ -18,7 +18,7 @@ import PrivateRoute from "./components/PrivateRoute";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import { Provider } from "react-redux";
-import { store,persistor } from "./store";
+import { store, persistor } from "./store";
 import { PersistGate } from 'redux-persist/integration/react';
 import BillingPage from "./pages/Billing";
 import OverView from "./pages/inPathLms/OverView";
@@ -41,12 +41,13 @@ import HelpCenter from "./pages/resources/HelpCenter";
 import CaseStudiesPage from "./pages/inPathLms/CaseStudiesPage";
 import Tools from "./pages/Tools";
 import AddCourseForm from "./components/course/AddCourse";
+import ProfileHome from "./components/profiles/ProfileHome";
 
 function App() {
   const router = createBrowserRouter(
     createRoutesFromElements(
-  
-      <>    
+
+      <>
         <Route path="/" element={<PrimaryLayout />}>
           <Route path="/billing" element={<BillingPage />} />
           <Route index element={<Home />} />
@@ -56,20 +57,20 @@ function App() {
           <Route path="/overView" element={<OverView />}></Route>
           <Route path="/features" element={<Features />}></Route>
           <Route path="/pricing" element={<Pricing />}></Route>
-          <Route path="/caseStudies" element={<CaseStudiesPage/>}></Route>
+          <Route path="/caseStudies" element={<CaseStudiesPage />}></Route>
           <Route path="/about" element={<AboutUs />}></Route>
           <Route path="/careers" element={<Careers />}></Route>
           <Route path="/courses" element={<Courses />}></Route>
           <Route path="/certifications" element={<Certifications />}></Route>
           <Route path="/learning-paths" element={<LearningPaths />}></Route>
-          <Route path="/faq" element={<FAQs/>}></Route>
+          <Route path="/faq" element={<FAQs />}></Route>
           <Route
             path="/corporate-training"
             element={<CorporateTraining />}
           ></Route>
           <Route path="/custom-solutions" element={<CustomSolutions />}></Route>
           <Route path="/onboarding" element={<OnBoardingPrograms />}></Route>
-          <Route path="tools" element={<Tools/>}></Route>
+          <Route path="tools" element={<Tools />}></Route>
           <Route path="/blog" element={<Blogs />}></Route>
           <Route path="/help-center" element={<HelpCenter />}></Route>
           <Route path="/free-resources" element={<FreeResources />}></Route>
@@ -93,12 +94,21 @@ function App() {
               path="/dashboard/teacherdashboard/addCourse"
               element={<AddCourseForm />}
             />
-            
+
           </Route>
 
           {/* <Route element={<PrivateRoute allowedRoles={['admin']} />}>
           <Route path="/admin-dashboard" element={<AdminDashboard />} />
          </Route> */}
+
+
+          <Route element={<PrivateRoute allowedRoles={["instructor"]} />}>
+            <Route
+              path="dashboard/teacherprofile"
+              element={<ProfileHome />}
+            />
+          </Route>
+
         </Route>
       </>
     )
@@ -106,10 +116,10 @@ function App() {
 
   return (
     <Provider store={store}>
-       <PersistGate loading={null} persistor={persistor}>
-      <React.StrictMode>
-        <RouterProvider router={router} />
-      </React.StrictMode>
+      <PersistGate loading={null} persistor={persistor}>
+        <React.StrictMode>
+          <RouterProvider router={router} />
+        </React.StrictMode>
       </PersistGate>
     </Provider>
   );
