@@ -76,7 +76,7 @@ const ProfileComponent = () => {
 
   return (
     <div className="max-w-md mx-auto mt-10">
-      <h2 className="text-2xl font-semibold mb-4">Teacher Profile</h2>
+      <h2 className="text-2xl font-semibold mb-4 text-primaryColor">Teacher Profile</h2>
 
       {isEditing ? (
         // Display Update Form
@@ -158,26 +158,54 @@ const ProfileComponent = () => {
             >
               {isUpdating ? 'Submitting...' : 'Update Profile'}
             </button>
+            <button
+          onClick={()=>{setIsEditing(false)}}
+          className="bg-gray-500 text-white ml-8 px-6 py-2 rounded-lg shadow-md hover:bg-gray-600 focus:outline-none focus:ring-2 focus:ring-gray-300"
+        >
+          Back
+        </button>
           </div>
         </form>
       ) : (
         // Display Profile Data
-        <div>
-          <p><strong>Bio:</strong> {profile.bio}</p>
-          <p><strong>Degrees:</strong> {profile.degrees}</p>
-          <p><strong>Teaching Experience:</strong> {profile.teaching_experience} years</p>
-          <p><strong>Specialization:</strong> {profile.specialization}</p>
-          <p><strong>Teaching History:</strong> {profile.teaching_history}</p>
+        <div className="max-w-2xl mx-auto bg-secondaryColor text-white p-6 rounded-lg shadow-lg space-y-6">
+          <div className="space-y-4">
+            <div className="flex justify-between">
+              <p className="text-lg font-medium text-gray-700"><strong>Bio:</strong></p>
+              <p className="text-gray-600">{profile.bio || 'No bio available'}</p>
+            </div>
 
-          <div className="mt-4">
+            <div className="flex justify-between">
+              <p className="text-lg font-medium text-gray-700"><strong>Degrees:</strong></p>
+              <p className="text-gray-600">{profile.degrees || 'No degrees listed'}</p>
+            </div>
+
+            <div className="flex justify-between">
+              <p className="text-lg font-medium text-gray-700"><strong>Teaching Experience:</strong></p>
+              <p className="text-gray-600">{profile.teaching_experience} years</p>
+            </div>
+
+            <div className="flex justify-between">
+              <p className="text-lg font-medium text-gray-700"><strong>Specialization:</strong></p>
+              <p className="text-gray-600">{profile.specialization || 'No specialization listed'}</p>
+            </div>
+
+            <div className="flex justify-between">
+              <p className="text-lg font-medium text-gray-700"><strong>Teaching History:</strong></p>
+              <p className="text-gray-600">{profile.teaching_history || 'No teaching history available'}</p>
+            </div>
+          </div>
+
+          <div className="mt-6 text-center">
             <button
               onClick={() => setIsEditing(true)}
-              className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600"
+              className="bg-primaryColor text-white px-6 py-3 rounded-lg shadow-md hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-300"
             >
               Edit Profile
             </button>
           </div>
         </div>
+
       )}
     </div>
   );
