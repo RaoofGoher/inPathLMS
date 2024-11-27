@@ -1,6 +1,7 @@
 import React from 'react'
 import { useGetTeacherProfileQuery } from '../../features/profile/teacher/teacherProfile';
 import { useSelector, useDispatch } from 'react-redux';
+import CreateProfile from './teacher/CreateProfile';
 
 function ProfileHome() {
     const { token, role, isAuthenticated, user_id } = useSelector((state) => state.auth);
@@ -11,7 +12,7 @@ function ProfileHome() {
 
   return (
     <div>
-      {role === "instructor" && data ? <div>Profile Section</div> : <div>Create Profile</div>}
+      {role === "instructor" && data ? <div>Profile Section</div> : <CreateProfile/>}
     </div>
   )
 }
