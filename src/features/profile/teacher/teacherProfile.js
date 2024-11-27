@@ -13,7 +13,7 @@ export const teacherProfileApi = createApi({
     updateTeacherProfile: builder.mutation({
       query: ({ id, data }) => ({
         url: `teacher/profile/${id}/`,
-        method: 'PATCH',
+        method: 'PUT',
         body: data, // Data to update the teacher's profile
       }),
     }),
