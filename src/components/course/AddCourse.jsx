@@ -6,6 +6,8 @@ import { useDispatch, useSelector } from 'react-redux';
 import { setCategories } from '../../features/courseCategory/courseCategoriesSlice';
 import { useGetSubcategoriesQuery } from '../../features/courseCategory/subCategorySlice';
 import { useCreateCourseMutation } from '../../features/courseCategory/createCourseApi';
+import axios from 'axios';
+
 const StepForm = () => {
   const dispatch = useDispatch();
   const { data: categories, isLoading, isError } = useFetchCourseCategoriesQuery();
@@ -25,6 +27,42 @@ const StepForm = () => {
       dispatch(setCategories(categories));
     }
   }, [categories]);
+
+  const handleSubmit1 = async (values) => {
+    const formData = new FormData();
+  
+    // Append all form values to FormData
+    for (const key in values) {
+      if (values[key]) {
+        formData.append(key, values[key]);
+      }
+    }
+  
+    // Add additional fields if required
+    formData.append('instructor', user_id.toString());
+    formData.append('published', published.toString());
+  
+    // Debugging: Log FormData contents
+    for (let [key, value] of formData.entries()) {
+      console.log(`${key}: ${value}`);
+    }
+  
+    try {
+      const response = await axios.post('https://api.inpath.us/teacher/api/courses/', formData, {
+        headers: {
+          'Content-Type': 'multipart/form-data',
+        },
+      });
+  
+      console.log('Course created successfully:', response.data);
+      alert('Course created successfully!');
+    } catch (error) {
+      console.error('Error creating course:', error.response?.data || error.message);
+      alert('Failed to create course!');
+    }
+  };
+
+
 
   const formik = useFormik({
     initialValues: {
@@ -50,24 +88,8 @@ const StepForm = () => {
       intro_video: step === 4 ? Yup.mixed().required("Video is required").test("fileSize", "File size must be less than 3MB", (value) => value && value.size <= 3 * 1024 * 1024) : Yup.mixed().nullable(),
     }),
     onSubmit: async (values, { resetForm }) => {
-      console.log("onSubmit", values)
-      const formData = new FormData();
-      for (const key in values) {
-        formData.append(key, values[key]);
-      }
-      formData.append('instructor', user_id);
-      formData.append('published', published);
-      for (let [key, value] of formData.entries()) {
-        console.log(key, value);
-      }    
-      try {
-        const response = await createCourse(formData).unwrap();
-        alert('Course created successfully!');
-        resetForm();
-      } catch (error) {
-        console.error('Failed to create course:', error);
-        alert('Error creating course!');
-      }
+      await handleSubmit1(values);
+      resetForm();
     }
   });
 
