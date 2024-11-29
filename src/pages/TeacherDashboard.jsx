@@ -73,7 +73,7 @@ console.log("teacher data",data);
           <FaBook className="text-secondaryColor text-3xl" />
           <div>
             <h2 className="text-xl font-semibold text-white">View My Courses</h2>
-            <Link><p className="text-white">Click here to browse and manage courses.</p></Link>
+            <Link to={'/dashboard/teacherdashboard/viewCourse'}><p className="text-white">Click here to browse and manage courses.</p></Link>
           </div>
         </div>
       </div>
