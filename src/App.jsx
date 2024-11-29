@@ -42,6 +42,8 @@ import CaseStudiesPage from "./pages/inPathLms/CaseStudiesPage";
 import Tools from "./pages/Tools";
 import AddCourseForm from "./components/course/AddCourse";
 import ProfileHome from "./components/profiles/ProfileHome";
+import ViewCourses from "./components/course/ViewCourses";
+import EditCourse from "./components/course/EditCourse";
 
 function App() {
   const router = createBrowserRouter(
@@ -94,6 +96,12 @@ function App() {
               path="/dashboard/teacherdashboard/addCourse"
               element={<AddCourseForm />}
             />
+            <Route
+              path="/dashboard/teacherdashboard/viewCourse"
+              element={<ViewCourses />}
+            />
+             <Route path="/dashboard/teacherdashboard/editcourse/:courseId" element={<EditCourse />} />
+             {/* <Route path="dashboard/teacherdashboard/viewcourse/:courseId" element={<EditCourse />} /> */}
 
           </Route>
 
