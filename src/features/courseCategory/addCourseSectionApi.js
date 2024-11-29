@@ -1,8 +1,8 @@
 // src/features/courseSectionApiSlice.js
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 
-export const courseSectionApi = createApi({
-  reducerPath: 'courseSectionApi',
+export const addCourseSectionApi = createApi({
+  reducerPath: 'addCourseSectionApi',
   baseQuery: fetchBaseQuery({
     baseUrl: 'https://api.inpath.us/teacher/api/', // Base API URL
   }),
@@ -17,4 +17,4 @@ export const courseSectionApi = createApi({
   }),
 });
 
-export const { useAddCourseSectionMutation } = courseSectionApi; // Export the hook
+export const { useAddCourseSectionMutation } = addCourseSectionApi; // Export the hook
