@@ -1,7 +1,7 @@
 import React from "react";
 import GeneralQuestions from "../../components/GeneralQuestions";
-import ScrollToTop from "../../components/ScrollToTop"
-import {Link} from "react-router-dom"
+import ScrollToTop from "../../components/ScrollToTop";
+import { Link } from "react-router-dom";
 const FAQs = () => {
   const handleScrollToFAQ = () => {
     const section = document.getElementById("general-questions");
@@ -12,7 +12,7 @@ const FAQs = () => {
 
   return (
     <>
-    <ScrollToTop/>
+      <ScrollToTop />
       {/* Hero Section */}
       <section>
         <div className="bg-gradient-to-r from-primaryColor to-secondaryColor text-lightColor2 py-24 text-center ">
@@ -46,10 +46,10 @@ const FAQs = () => {
               If you didn’t find your question here, our support team is here to
               help!
             </p>
-            <Link to='/help-center'>
-            <button className="px-6 py-2 bg-primaryColor text-dark1 font-semibold rounded-md hover:bg-lightColor1">
-              Contact Support
-            </button>
+            <Link to="/help-center">
+              <button className="px-6 py-2 bg-primaryColor text-dark1 font-semibold rounded-md hover:bg-lightColor1">
+                Contact Support
+              </button>
             </Link>
           </div>
         </div>
@@ -63,10 +63,10 @@ const FAQs = () => {
         <div className="bg-gradient-to-r from-primaryColor to-secondaryColor text-lightColor2 py-12 text-center">
           <h2 className="text-3xl font-bold mb-4">Still Have Questions?</h2>
           <p className="mb-6">We’re here to help. Reach out to us anytime.</p>
-          <Link to='/help-center'>
-          <button className="px-6 py-2 bg-lightColor1 text-dark1 font-semibold rounded-md hover:bg-primaryColor">
-            Contact Us
-          </button>
+          <Link to="/help-center">
+            <button className="px-6 py-2 bg-lightColor1 text-dark1 font-semibold rounded-md hover:bg-primaryColor">
+              Contact Us
+            </button>
           </Link>
         </div>
       </section>

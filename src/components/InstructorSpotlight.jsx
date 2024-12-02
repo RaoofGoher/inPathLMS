@@ -1,11 +1,11 @@
 import React from 'react';
-import instructor1 from "../assets/student1.jpg";
+import instructor1 from "../assets/student6.jpg";
 import instructor2 from "../assets/student5.jpg";
 import instructor3 from "../assets/student9.jpg";
 
 const instructors = [
   {
-    name: "Dr. John Smith",
+    name: "Dr. Nancy Jhon",
     expertise: "Artificial Intelligence",
     image: instructor1,
   },
