@@ -13,6 +13,9 @@ const ViewCourses = () => {
   const handleEditCourse = (courseId) => {
     navigate(`/dashboard/teacherdashboard/editcourse/${courseId}`);
   };
+  const handleViewCourse = (courseId) => {
+    navigate(`/dashboard/teacherdashboard/viewcourse/viecoursesections/${courseId}`);
+  };
 
   return (
     <div className="container mx-auto p-4">
@@ -35,7 +38,7 @@ const ViewCourses = () => {
               <h3 className="text-lg font-semibold">{course.title}</h3>
               <p className="text-sm text-gray-600">{course.description}</p>
               <div className="mt-4 flex space-x-4">
-                <button className="bg-blue-500 text-white py-2 px-4 rounded" onClick={() => navigate(`/viewcourse/${course.id}`)}>View Course</button>
+                <button className="bg-blue-500 text-white py-2 px-4 rounded" onClick={() => handleViewCourse(course.id)}>View Course</button>
                 <button className="bg-green-500 text-white py-2 px-4 rounded" onClick={() => handleEditCourse(course.id)}>Edit Course</button>
               </div>
             </div>
