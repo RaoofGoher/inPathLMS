@@ -10,11 +10,14 @@ const ViewCourses = () => {
   const navigate = useNavigate();
 
   // Navigate to EditCourse component with courseId
-  const handleEditCourse = (courseId) => {
+  const handleAddCourseSection = (courseId) => {
     navigate(`/dashboard/teacherdashboard/editcourse/${courseId}`);
   };
-  const handleViewCourse = (courseId) => {
+  const handleViewCourseSection = (courseId) => {
     navigate(`/dashboard/teacherdashboard/viewcourse/viecoursesections/${courseId}`);
+  };
+  const handleViewCourse = (courseId) => {
+    navigate(`/dashboard/teacherdashboard/viewcourse/${courseId}`)
   };
 
   return (
@@ -38,8 +41,9 @@ const ViewCourses = () => {
               <h3 className="text-lg font-semibold">{course.title}</h3>
               <p className="text-sm text-gray-600">{course.description}</p>
               <div className="mt-4 flex space-x-4">
-                <button className="bg-blue-500 text-white py-2 px-4 rounded" onClick={() => handleViewCourse(course.id)}>View Course</button>
-                <button className="bg-green-500 text-white py-2 px-4 rounded" onClick={() => handleEditCourse(course.id)}>Edit Course</button>
+                <button className="bg-blue-500 text-white py-2 px-4 rounded" onClick={() => handleViewCourseSection(course.id)}>View Course Section</button>
+                <button className="bg-green-500 text-white py-2 px-4 rounded" onClick={() => handleAddCourseSection(course.id)}>Add Course Section</button>
+                <button className="bg-red-500 text-white py-2 px-4 rounded" onClick={() => handleViewCourse(course.id)}>View Course</button>
               </div>
             </div>
           </div>
