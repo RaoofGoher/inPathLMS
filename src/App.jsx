@@ -45,6 +45,7 @@ import ProfileHome from "./components/profiles/ProfileHome";
 import ViewCourses from "./components/course/ViewCourses";
 import EditCourse from "./components/course/EditCourse";
 import ViewCourseSections from "./components/course/ViewCourseSections";
+import ViewCourse from "./components/course/ViewCourse";
 
 function App() {
   const router = createBrowserRouter(
@@ -103,6 +104,7 @@ function App() {
             />
              <Route path="/dashboard/teacherdashboard/editcourse/:courseId" element={<EditCourse />} />
              <Route path="/dashboard/teacherdashboard/viewcourse/viecoursesections/:courseId" element={<ViewCourseSections />} />
+             <Route path="/dashboard/teacherdashboard/viewcourse/:courseId" element={<ViewCourse />} />
 
           </Route>
 

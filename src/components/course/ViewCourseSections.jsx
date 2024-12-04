@@ -1,7 +1,8 @@
-import { useState } from 'react';
+import { useState,useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import { useGetCourseSectionsQuery } from '../../features/courseCategory/getCourseSection';
 import AddLectureOverlay from './AddLectureOverlay';
+import AddAssignmentOverlay from "./AddAssignmentOverlay";
 
 // Video Modal Component
 const VideoModal = ({ videoUrl, onClose }) => {
@@ -16,7 +17,7 @@ const VideoModal = ({ videoUrl, onClose }) => {
         </button>
         <video
           className="w-full rounded-md"
-          src= "https://www.w3schools.com/html/mov_bbb.mp4"
+          src="https://www.w3schools.com/html/mov_bbb.mp4"
           controls
           autoPlay
         />
@@ -27,16 +28,46 @@ const VideoModal = ({ videoUrl, onClose }) => {
 
 const ViewCourseSection = () => {
   const { courseId } = useParams();
-  const { data, error, isLoading } = useGetCourseSectionsQuery(courseId);
+  const { data, error, isLoading, refetch  } = useGetCourseSectionsQuery(courseId);
   const [sections, setSections] = useState([]);
   const [isOverlayOpen, setIsOverlayOpen] = useState(false);
   const [selectedSectionId, setSelectedSectionId] = useState(null);
   const [videoUrl, setVideoUrl] = useState(null);
+  const [isAssignmentOverlayOpen, setIsAssignmentOverlayOpen] = useState(false);
 
+
+  const handleAddAssignmentClick = (sectionId) => {
+    setSelectedSectionId(sectionId);
+    setIsAssignmentOverlayOpen(true);
+  };
+
+  const handleAssignmentOverlayClose = () => {
+    setIsAssignmentOverlayOpen(false);
+    setSelectedSectionId(null);
+  };
+
+  const handleAssignmentAdded = (newAssignment) => {
+    setSections((prevSections) =>
+      prevSections.map((section) =>
+        section.section_id === selectedSectionId
+          ? {
+            ...section,
+            assignments: [...(section.assignments || []), newAssignment],
+          }
+          : section
+      )
+    );
+    handleAssignmentOverlayClose(); // Close the overlay after successful addition
+  };
+
+
+  
   // Sync sections from API response
-  if (!isLoading && !error && data && sections.length === 0) {
-    setSections(data.sections);
-  }
+  useEffect(() => {
+    if (!isLoading && !error && data && sections.length === 0) {
+      setSections(data.sections);
+    }
+  }, [isLoading, error, data, sections.length]);
 
   const handleAddLectureClick = (sectionId) => {
     setSelectedSectionId(sectionId);
@@ -53,13 +84,19 @@ const ViewCourseSection = () => {
       prevSections.map((section) =>
         section.section_id === selectedSectionId
           ? {
-              ...section,
-              lectures: [...section.lectures, newLecture],
-            }
+            ...section,
+            lectures: [...section.lectures, newLecture],
+          }
           : section
       )
     );
     handleOverlayClose(); // Close the overlay
+    refetch().then((response) => {
+      // After refetch, update sections with the new data
+      if (response?.data?.sections) {
+        setSections(response.data.sections);
+      }
+    });
   };
 
   const handleLectureClick = (videoUrl) => {
@@ -103,6 +140,12 @@ const ViewCourseSection = () => {
             >
               Add Lecture
             </button>
+            {/* <button
+              onClick={() => handleAddAssignmentClick(section.section_id)}
+              className="mt-2 bg-green-500 text-white px-4 py-2 rounded"
+            >
+              Add Assignment
+            </button> */}
           </div>
         ))}
       </div>
@@ -114,6 +157,13 @@ const ViewCourseSection = () => {
         />
       )}
       {videoUrl && <VideoModal videoUrl={videoUrl} onClose={handleVideoClose} />}
+      {isAssignmentOverlayOpen && (
+        <AddAssignmentOverlay
+          sectionId={selectedSectionId}
+          onClose={handleAssignmentOverlayClose}
+          onSuccess={handleAssignmentAdded}
+        />
+      )}
     </div>
   );
 };

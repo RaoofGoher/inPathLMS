@@ -15,7 +15,7 @@ const StepForm = () => {
   const [step, setStep] = useState(1);
   const [selectedCategoryId, setSelectedCategoryId] = useState(null);
   const { user_id } = useSelector((state) => state.auth);
-  const published = false;  
+  const published = "False";  
   const [createCourse] = useCreateCourseMutation();
   // Fetch subcategories based on selected category
   const { data: subcategories, isLoading: isSubcategoryLoading, isError: isSubcategoryError } = useGetSubcategoriesQuery(selectedCategoryId, {
@@ -39,7 +39,7 @@ const StepForm = () => {
     }
   
     // Add additional fields if required
-    formData.append('instructor', user_id.toString());
+    formData.append('instructor', user_id);
     formData.append('published', published.toString());
   
     // Debugging: Log FormData contents

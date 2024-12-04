@@ -31,12 +31,11 @@ const AddLectureOverlay = ({ sectionId, onClose, onSuccess }) => {
     payload.append('title', formData.title);
     payload.append('order', formData.order);
     payload.append('video_file', formData.video);
-    payload.append('section', sectionId);
+    payload.append('section_id', sectionId);
     payload.append('instructor', user_id);
-
     try {
       const response = await axios.post(
-        'https://api.inpath.us/teacher/api/lectures/',
+        'https://api.inpath.us/teacher/lectures/',
         payload
       );
       onSuccess(response.data);
