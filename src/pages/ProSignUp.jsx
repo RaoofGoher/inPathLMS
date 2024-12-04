@@ -55,8 +55,8 @@ const TeacherSignUpForm = () => {
                   role: 'instructor', // Add the role field
                 };
                 const response = await signUp(formData).unwrap();
-                const { token, role } = response; 
-                dispatch(setAuth({ token, role }));
+                const { token, role, user_id } = response; 
+                dispatch(setAuth({ token, role, user_id }));
                 
                 console.log("sign-up sucessful response", response) // Perform the sign-up request with the added role
                 resetForm();
