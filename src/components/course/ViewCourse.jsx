@@ -34,7 +34,7 @@ const ViewCourse = () => {
   if (isError || !courses) return <div>Error loading course sections.</div>;
 
   return (
-    <div style={{ display: "flex", height: "100vh" }}>
+    <div style={{ display: "flex", height: "60vh" }}>
       {/* Video Player Section */}
       <div style={{ flex: 2, padding: "20px" }}>
         {currentVideo ? (
@@ -43,7 +43,7 @@ const ViewCourse = () => {
             Your browser does not support the video tag.
           </video>
         ) : (
-          <div>No video selected.</div>
+          <div>Welcome to the course please select a video to continue.</div>
         )}
       </div>
 
