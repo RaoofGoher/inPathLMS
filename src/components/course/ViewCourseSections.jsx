@@ -28,7 +28,7 @@ const VideoModal = ({ videoUrl, onClose }) => {
 
 const ViewCourseSection = () => {
   const { courseId } = useParams();
-  const { data, error, isLoading } = useGetCourseSectionsQuery(courseId);
+  const { data, error, isLoading, refetch  } = useGetCourseSectionsQuery(courseId);
   const [sections, setSections] = useState([]);
   const [isOverlayOpen, setIsOverlayOpen] = useState(false);
   const [selectedSectionId, setSelectedSectionId] = useState(null);
@@ -61,6 +61,7 @@ const ViewCourseSection = () => {
   };
 
 
+  
   // Sync sections from API response
   useEffect(() => {
     if (!isLoading && !error && data && sections.length === 0) {
@@ -90,6 +91,12 @@ const ViewCourseSection = () => {
       )
     );
     handleOverlayClose(); // Close the overlay
+    refetch().then((response) => {
+      // After refetch, update sections with the new data
+      if (response?.data?.sections) {
+        setSections(response.data.sections);
+      }
+    });
   };
 
   const handleLectureClick = (videoUrl) => {
@@ -133,12 +140,12 @@ const ViewCourseSection = () => {
             >
               Add Lecture
             </button>
-            <button
+            {/* <button
               onClick={() => handleAddAssignmentClick(section.section_id)}
               className="mt-2 bg-green-500 text-white px-4 py-2 rounded"
             >
               Add Assignment
-            </button>
+            </button> */}
           </div>
         ))}
       </div>
