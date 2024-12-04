@@ -14,7 +14,6 @@ import { useGetTeacherProfileQuery } from '../features/profile/teacher/teacherPr
 function TeacherDashboard() {
   const { token, role, isAuthenticated, user_id } = useSelector((state) => state.auth);
   const { data, error, isLoading } = useGetTeacherProfileQuery(user_id);
-
 console.log("teacher data",data);
   return (
     <div className="p-4">
