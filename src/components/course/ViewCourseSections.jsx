@@ -17,7 +17,7 @@ const VideoModal = ({ videoUrl, onClose }) => {
         </button>
         <video
           className="w-full rounded-md"
-          src="https://www.w3schools.com/html/mov_bbb.mp4"
+          src= {videoUrl}
           controls
           autoPlay
         />
@@ -101,6 +101,7 @@ const ViewCourseSection = () => {
 
   const handleLectureClick = (videoUrl) => {
     setVideoUrl(videoUrl);
+    console.log("video lecture", videoUrl)
   };
 
   const handleVideoClose = () => {
