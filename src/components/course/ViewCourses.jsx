@@ -35,7 +35,7 @@ const ViewCourses = () => {
           <div key={course.id} className="bg-white rounded-lg shadow-md overflow-hidden">
             <div className="relative">
               <img
-                src={`https://api.inpath.us${course.thumbnail}`}
+                src={course.thumbnail}
                 alt={course.title}
                 className="w-full h-48 object-cover"
               />
