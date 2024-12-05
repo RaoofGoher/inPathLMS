@@ -41,7 +41,7 @@ const CardComponent = () => {
 
   const closeModal = () => {
     setIsModalOpen(false); // Close modal
-    navigate("/billing"); // Redirect to the billing page when the modal is closed
+    navigate("/shopping"); // Redirect to the billing page when the modal is closed
   };
 
   return (
