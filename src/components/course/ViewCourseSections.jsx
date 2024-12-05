@@ -118,8 +118,7 @@ const ViewCourseSection = () => {
 
   if (isLoading) return <div>Loading...</div>;
   if (error) return <div>Error: {error.message}</div>;
-console.log("course section profile " , profile)
-console.log("hello")
+console.log("sections",sections)
   return (
     <div className="p-6">
       {profile ? <>
@@ -134,7 +133,9 @@ console.log("hello")
             <p>Order: {section.order}</p>
             <p>Lectures: {section.lectures.length}</p>
             <ul className="list-disc pl-4">
+            <li className='underline list-none'>Videos</li>
               {section.lectures.map((lecture) => (
+                <>
                 <li key={lecture.lecture_id}>
                   <button
                     className="text-blue-500 underline"
@@ -143,6 +144,23 @@ console.log("hello")
                     {lecture.lecture_title}
                   </button>
                 </li>
+                </>
+              ))}
+            </ul>
+            <ul className="list-disc pl-4">
+              <li className='underline list-none'>Assignments</li>
+              {section.assignments.map((lecture) => (
+                <>
+                <li key={lecture.lecture_id}>
+                  <a
+                  href={lecture.doc_files}
+                    className="text-blue-500 underline"
+                    // onClick={() => handleLectureClick(lecture.video_file)}
+                  >
+                    {lecture.assignment_title}
+                  </a>
+                </li>
+                </>
               ))}
             </ul>
             <button
@@ -151,12 +169,12 @@ console.log("hello")
             >
               Add Lecture
             </button>
-            {/* <button
+            <button
               onClick={() => handleAddAssignmentClick(section.section_id)}
               className="mt-2 bg-green-500 text-white px-4 py-2 rounded"
             >
               Add Assignment
-            </button> */}
+            </button>
           </div>
         ))}
       </div>

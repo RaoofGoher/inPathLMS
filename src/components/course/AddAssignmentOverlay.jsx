@@ -44,7 +44,8 @@ const AddAssignmentOverlay = ({ sectionId, onClose, onSuccess }) => {
           },
         }
       );
-      onSuccess(response.data); // Pass the new assignment to the parent
+      onSuccess(response.data); 
+      console.log("assignemnt",response.data)// Pass the new assignment to the parent
       onClose(); // Close the overlay
     } catch (error) {
       setError("Failed to add assignment. Please try again.");
