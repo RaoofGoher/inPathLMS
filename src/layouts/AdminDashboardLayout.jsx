@@ -136,7 +136,7 @@ const AdminDashboardLayout = () => {
         >
           <div className="flex items-center justify-between p-4 md:hidden">
             <div className="bg-gradient-to-br from-lightColor2 to-primaryColor p-2 rounded-lg">
-              <img src={Logo} alt="Logo" className="h-10 w-15" />
+              <img src={Logo} alt="Logo" className="h-12 w-15" />
             </div>
             <button onClick={toggleSidebar} className="text-white">
               <FaTimes size={20} />
