@@ -3,7 +3,11 @@ import { useParams } from 'react-router-dom';
 import { useGetCourseSectionsQuery } from '../../features/courseCategory/getCourseSection';
 import AddLectureOverlay from './AddLectureOverlay';
 import AddAssignmentOverlay from "./AddAssignmentOverlay";
+import { useSelector } from 'react-redux';
 
+import {
+  useGetTeacherProfileQuery,
+} from '../../features/profile/teacher/teacherProfile';
 // Video Modal Component
 const VideoModal = ({ videoUrl, onClose }) => {
   return (
@@ -34,6 +38,10 @@ const ViewCourseSection = () => {
   const [selectedSectionId, setSelectedSectionId] = useState(null);
   const [videoUrl, setVideoUrl] = useState(null);
   const [isAssignmentOverlayOpen, setIsAssignmentOverlayOpen] = useState(false);
+  const { user_id } = useSelector((state) => state.auth);
+  const { data: profile, } = useGetTeacherProfileQuery(user_id, {
+    skip: !user_id, // Avoid fetching if user_id is not available
+  });
 
 
   const handleAddAssignmentClick = (sectionId) => {
@@ -110,10 +118,12 @@ const ViewCourseSection = () => {
 
   if (isLoading) return <div>Loading...</div>;
   if (error) return <div>Error: {error.message}</div>;
-
+console.log("course section profile " , profile)
+console.log("hello")
   return (
     <div className="p-6">
-      <h1 className="text-xl font-bold mb-4">Course Sections for {data.course_title}</h1>
+      {profile ? <>
+        <h1 className="text-xl font-bold mb-4">Course Sections for {data.course_title}</h1>
       <div className="grid gap-4 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
         {sections.map((section) => (
           <div
@@ -165,6 +175,8 @@ const ViewCourseSection = () => {
           onSuccess={handleAssignmentAdded}
         />
       )}
+      </> : "please create your profile first"}
+   
     </div>
   );
 };
