@@ -12,7 +12,7 @@ import {
 import { Outlet, Link } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { logout } from "../features/auth/authSlice";
-// import Logo from "../assets/logos/logo.png";
+import Logo from "../assets/logos/logo.png";
 
 const AdminDashboardLayout = () => {
   const dispatch = useDispatch();
@@ -146,7 +146,7 @@ const AdminDashboardLayout = () => {
           <nav className="flex flex-col p-4 space-y-2">
             {/* Dashboard Link */}
             <Link
-              to="admin/dashboard"
+              to="/admin/dashboard"
               className="flex items-center py-3 px-4 text-lg rounded-lg transition-colors duration-200 hover:bg-lightColor1"
             >
               <FaTachometerAlt className="mr-2 text-white" />
@@ -182,6 +182,7 @@ const AdminDashboardLayout = () => {
 
             {/* Logout Link */}
             <Link
+            to={'/'}
               onClick={handleLogout}
               className="flex items-center py-3 px-4 text-lg rounded-lg transition-colors duration-200 hover:bg-dark2"
             >

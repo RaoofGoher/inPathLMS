@@ -135,7 +135,7 @@ function App() {
         {/* Admin Routes */}
         <Route path="/admin" element={<AdminDashboardLayout />}>
           <Route index element={<AdminDashboard />} />
-          <Route path="admin/dashboard" element={<AdminDashboard />} />
+          <Route path="/admin/dashboard" element={<AdminDashboard />} />
           <Route path='/admin/manage-teachers' element={<ManageTeachers/>} />
           <Route path="/admin/manage-students" element={<ManageStudents />} />
           <Route path="/admin/analytics" element={<Analytics />} />
