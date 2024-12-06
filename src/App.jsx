@@ -19,7 +19,7 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import { Provider } from "react-redux";
 import { store, persistor } from "./store";
-import { PersistGate } from 'redux-persist/integration/react';
+import { PersistGate } from "redux-persist/integration/react";
 import BillingPage from "./pages/Billing";
 import OverView from "./pages/inPathLms/OverView";
 import Features from "./pages/inPathLms/Features";
@@ -47,13 +47,20 @@ import EditCourse from "./components/course/EditCourse";
 import ViewCourseSections from "./components/course/ViewCourseSections";
 import ViewCourse from "./components/course/ViewCourse";
 
+import ShoppingPage from "./pages/ShoppingPage";
+import AdminDashboardLayout from "./layouts/AdminDashboardLayout";
+import AdminDashboard from "./pages/AdminDashboard";
+import ManageTeachers from "./pages/ManageTeachers";
+import ManageStudents from "./pages/ManageStudents";
+import Analytics from "./pages/Analytics";
+
 function App() {
   const router = createBrowserRouter(
     createRoutesFromElements(
-
       <>
         <Route path="/" element={<PrimaryLayout />}>
           <Route path="/billing" element={<BillingPage />} />
+          <Route path="/shopping" element={<ShoppingPage />} />
           <Route index element={<Home />} />
           <Route path="/Login" element={<LoginForm />} />
           <Route path="/teachersignup" element={<ProSignUp />} />
@@ -102,24 +109,36 @@ function App() {
               path="/dashboard/teacherdashboard/viewCourse"
               element={<ViewCourses />}
             />
-             <Route path="/dashboard/teacherdashboard/editcourse/:courseId" element={<EditCourse />} />
-             <Route path="/dashboard/teacherdashboard/viewcourse/viecoursesections/:courseId" element={<ViewCourseSections />} />
-             <Route path="/dashboard/teacherdashboard/viewcourse/:courseId" element={<ViewCourse />} />
-
+            <Route
+              path="/dashboard/teacherdashboard/editcourse/:courseId"
+              element={<EditCourse />}
+            />
+            <Route
+              path="/dashboard/teacherdashboard/viewcourse/viecoursesections/:courseId"
+              element={<ViewCourseSections />}
+            />
+            <Route
+              path="/dashboard/teacherdashboard/viewcourse/:courseId"
+              element={<ViewCourse />}
+            />
           </Route>
 
           {/* <Route element={<PrivateRoute allowedRoles={['admin']} />}>
           <Route path="/admin-dashboard" element={<AdminDashboard />} />
          </Route> */}
 
-
           <Route element={<PrivateRoute allowedRoles={["instructor"]} />}>
-            <Route
-              path="dashboard/teacherprofile"
-              element={<ProfileHome />}
-            />
+            <Route path="dashboard/teacherprofile" element={<ProfileHome />} />
           </Route>
+        </Route>
 
+        {/* Admin Routes */}
+        <Route path="/admin" element={<AdminDashboardLayout />}>
+          <Route index element={<AdminDashboard />} />
+          <Route path="admin/dashboard" element={<AdminDashboard />} />
+          <Route path='/admin/manage-teachers' element={<ManageTeachers/>} />
+          <Route path="/admin/manage-students" element={<ManageStudents />} />
+          <Route path="/admin/analytics" element={<Analytics />} />
         </Route>
       </>
     )

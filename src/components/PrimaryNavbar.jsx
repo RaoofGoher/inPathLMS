@@ -73,7 +73,7 @@ const Navbar = () => {
                   }
                   end
                 >
-                  <button className="px-4 py-2 border text-white border-secondaryColor rounded-md hover:text-secondaryColor transition text-secondaryColor">
+                  <button className="px-4 py-2 border  border-secondaryColor rounded-md hover:text-secondaryColor transition text-secondaryColor">
                     Dashboard
                   </button>
                 </NavLink>
@@ -109,7 +109,7 @@ const Navbar = () => {
                     isActive ? "bg-lightColor1 rounded-md" : ""
                   }
                 >
-                  <button className="px-4 py-2 border text-white border-secondaryColor rounded-md hover:text-secondaryColor transition text-secondaryColor">
+                  <button className="px-4 py-2 border border-secondaryColor rounded-md hover:text-secondaryColor transition text-secondaryColor">
                     Login
                   </button>
                 </NavLink>
