@@ -12,7 +12,7 @@ import {
 import { Outlet, Link } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { logout } from "../features/auth/authSlice";
-import Logo from "../assets/logos/logo.png";
+// import Logo from "../assets/logos/logo.png";
 
 const AdminDashboardLayout = () => {
   const dispatch = useDispatch();
