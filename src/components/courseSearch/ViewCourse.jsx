@@ -14,6 +14,7 @@ const ViewCourse = () => {
       <Categories
         selectedCategory={selectedCategory}
         onSelectCategory={setSelectedCategory}
+        onSelectSubCategory={setSelectedSubCategory}
       />
 
       {/* SubCategories Component */}

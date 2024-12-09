@@ -1,6 +1,6 @@
 import React from "react";
 import {useFetchCourseCategoriesQuery} from '../../features/courseCategory/courseCatgeoriesApiSlice'
-const Categories = ({ selectedCategory, onSelectCategory }) => {
+const Categories = ({ selectedCategory, onSelectCategory,onSelectSubCategory }) => {
   const {
     data: categories,
     isLoading,
@@ -18,7 +18,7 @@ const Categories = ({ selectedCategory, onSelectCategory }) => {
                 ? "bg-blue-500 text-white"
                 : "bg-gray-200"
             }`}
-            onClick={() => onSelectCategory(category.id)}
+            onClick={() => {onSelectCategory(category.id);onSelectSubCategory(null)}}
           >
             {category.name}
           </li>
