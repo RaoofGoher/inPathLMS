@@ -27,7 +27,7 @@ const AdminDashboardLayout = () => {
     },
     {
       id: 2,
-      message: "Teacher Mark Johnson submitted new course material.",
+      message: "Teacher Mark Johnson submitted new course materials.",
       type: "teacher",
       name: "Mark Johnson",
       avatar: "https://via.placeholder.com/40",
