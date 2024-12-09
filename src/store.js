@@ -10,7 +10,8 @@ import { createCourseApi } from './features/courseCategory/createCourseApi';
 import { teacherProfileApi } from './features/profile/teacher/teacherProfile';
 import { getcoursesByTeacherApi } from './features/courseCategory/getCourse';
 import { addCourseSectionApi } from './features/courseCategory/addCourseSectionApi';
-import {courseSectionApi} from "./features/courseCategory/getCourseSection"
+import {courseSectionApi} from "./features/courseCategory/getCourseSection";
+import {courseApiThroughSubCategory} from './features/searchCourse/courseSlice'
 // Define the persist configuration for auth state
 const persistConfig = {
   key: 'auth',
@@ -32,9 +33,11 @@ export const store = configureStore({
     [getcoursesByTeacherApi.reducerPath]: getcoursesByTeacherApi.reducer,
     [addCourseSectionApi.reducerPath]: addCourseSectionApi.reducer,
     [courseSectionApi.reducerPath]: courseSectionApi.reducer,
+    [courseApiThroughSubCategory.reducerPath]: courseApiThroughSubCategory.reducer,
+
   },
   middleware: (getDefaultMiddleware) =>
-    getDefaultMiddleware().concat(authApi.middleware, courseCategoriesApi.middleware).concat(subcategoryApi.middleware).concat(createCourseApi.middleware).concat(teacherProfileApi.middleware).concat(getcoursesByTeacherApi.middleware).concat(addCourseSectionApi.middleware).concat(courseSectionApi.middleware),
+    getDefaultMiddleware().concat(authApi.middleware, courseCategoriesApi.middleware).concat(subcategoryApi.middleware).concat(createCourseApi.middleware).concat(teacherProfileApi.middleware).concat(getcoursesByTeacherApi.middleware).concat(addCourseSectionApi.middleware).concat(courseSectionApi.middleware).concat(courseApiThroughSubCategory.middleware),
 });
 
 // Create a persistor to be used with PersistGate in your app
