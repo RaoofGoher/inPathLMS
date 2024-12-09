@@ -31,7 +31,7 @@ const AddLectureOverlay = ({ sectionId, onClose, onSuccess }) => {
     payload.append('title', formData.title);
     payload.append('order', formData.order);
     payload.append('video_file', formData.video);
-    payload.append('section_id', sectionId);
+    payload.append('section', sectionId);
     payload.append('instructor', user_id);
     try {
       const response = await axios.post(
@@ -41,6 +41,7 @@ const AddLectureOverlay = ({ sectionId, onClose, onSuccess }) => {
       onSuccess(response.data);
       onClose(); // Close the overlay on success
     } catch (err) {
+      console.log(err.response?.data)
       setError(err.response?.data?.message || 'Something went wrong');
     } finally {
       setLoading(false);

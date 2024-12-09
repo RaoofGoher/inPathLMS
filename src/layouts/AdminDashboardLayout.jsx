@@ -27,7 +27,7 @@ const AdminDashboardLayout = () => {
     },
     {
       id: 2,
-      message: "Teacher Mark Johnson submitted new course material.",
+      message: "Teacher Mark Johnson submitted new course materials.",
       type: "teacher",
       name: "Mark Johnson",
       avatar: "https://via.placeholder.com/40",
@@ -146,7 +146,7 @@ const AdminDashboardLayout = () => {
           <nav className="flex flex-col p-4 space-y-2">
             {/* Dashboard Link */}
             <Link
-              to="admin/dashboard"
+              to="/admin/dashboard"
               className="flex items-center py-3 px-4 text-lg rounded-lg transition-colors duration-200 hover:bg-lightColor1"
             >
               <FaTachometerAlt className="mr-2 text-white" />
@@ -182,6 +182,7 @@ const AdminDashboardLayout = () => {
 
             {/* Logout Link */}
             <Link
+            to={'/'}
               onClick={handleLogout}
               className="flex items-center py-3 px-4 text-lg rounded-lg transition-colors duration-200 hover:bg-dark2"
             >
