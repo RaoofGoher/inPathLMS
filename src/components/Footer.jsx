@@ -35,9 +35,9 @@ const Footer = () => {
     {
       title: "For Teams",
       links: [
-        { name: "Corporate Training", to: "/corporate-training" },
-        { name: "Custom Solutions", to: "/custom-solutions" },
-        { name: "Onboarding Programs", to: "/onboarding" },
+        { name: "Corporate Training", to: "/for-team" },
+        { name: "Custom Solutions", to: "/for-team" },
+        { name: "Onboarding Programs", to: "/for-team" },
       ],
     },
     {
@@ -47,7 +47,7 @@ const Footer = () => {
         { name: "Quiz & Assessment", to: "/tools" }, // Tool for creating quizzes/tests
         { name: "Student Progress Tracker", to: "/tools" }, // Tool for tracking student progress
         { name: "Gradebook", to: "/tools" },  // Tool for grading and evaluating students
-        { name: "Certificate Generator", to: "/tools" }, // Tool for generating completion certificates
+        // { name: "Certificate Generator", to: "/tools" }, // Tool for generating completion certificates
       ],
     },    
     {

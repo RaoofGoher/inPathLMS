@@ -1,5 +1,5 @@
-import React, { useState } from 'react'
-import ScrollToTop from '../../components/ScrollToTop'
+import React, { useState } from 'react';
+import ScrollToTop from '../../components/ScrollToTop';
 
 const HelpCenter = () => {
   const [activeFAQ, setActiveFAQ] = useState(null);
@@ -11,17 +11,17 @@ const HelpCenter = () => {
   return (
     <>
       <ScrollToTop />
-      <div className="bg-gradient-to-br from-secondaryColor to-primaryColor py-16">
+      <div className="bg-lightGray py-16">
         <div className="max-w-7xl mx-auto px-6">
-          <h1 className="text-4xl font-bold text-center text-gray-900 mb-8">Help Center</h1>
+          <h1 className="text-4xl font-extrabold text-dark1 text-center mb-8">Help Center</h1>
 
-          <section id="faq" className="bg-white shadow-lg rounded-lg p-8 mb-8">
-            <h2 className="text-2xl font-semibold text-gray-800 mb-4">Frequently Asked Questions</h2>
-
+          {/* FAQ Section */}
+          <section id="faq" className="bg-white shadow-lg rounded-lg p-8 mb-8 border border-gray-200">
+            <h2 className="text-2xl font-semibold text-dark1 mb-6">Frequently Asked Questions</h2>
             <div className="space-y-6">
               <div className="border-b pb-4">
                 <h3
-                  className="text-xl font-medium text-gray-800 cursor-pointer"
+                  className="text-xl font-medium text-dark1 cursor-pointer hover:text-primaryColor transition-all duration-300"
                   onClick={() => toggleFAQ(0)}
                 >
                   How do I reset my password?
@@ -35,7 +35,7 @@ const HelpCenter = () => {
 
               <div className="border-b pb-4">
                 <h3
-                  className="text-xl font-medium text-gray-800 cursor-pointer"
+                  className="text-xl font-medium text-dark1 cursor-pointer hover:text-primaryColor transition-all duration-300"
                   onClick={() => toggleFAQ(1)}
                 >
                   How can I update my profile information?
@@ -49,7 +49,7 @@ const HelpCenter = () => {
 
               <div className="border-b pb-4">
                 <h3
-                  className="text-xl font-medium text-gray-800 cursor-pointer"
+                  className="text-xl font-medium text-dark1 cursor-pointer hover:text-primaryColor transition-all duration-300"
                   onClick={() => toggleFAQ(2)}
                 >
                   What should I do if I encounter a technical issue?
@@ -63,7 +63,7 @@ const HelpCenter = () => {
 
               <div>
                 <h3
-                  className="text-xl font-medium text-gray-800 cursor-pointer"
+                  className="text-xl font-medium text-dark1 cursor-pointer hover:text-primaryColor transition-all duration-300"
                   onClick={() => toggleFAQ(3)}
                 >
                   How do I cancel my subscription?
@@ -77,8 +77,9 @@ const HelpCenter = () => {
             </div>
           </section>
 
-          <section id="contact" className="bg-white shadow-lg rounded-lg p-8 mb-8">
-            <h2 className="text-2xl font-semibold text-gray-800 mb-4">Contact Support</h2>
+          {/* Contact Support Section */}
+          <section id="contact" className="bg-white shadow-lg rounded-lg p-8 mb-8 border border-gray-200">
+            <h2 className="text-2xl font-semibold text-dark1 mb-6">Contact Support</h2>
             <p className="text-lg text-gray-600 mb-6">
               If you can't find an answer to your question in the FAQ or need further assistance, feel free to reach out to our support team. We're here to help!
             </p>
@@ -88,29 +89,29 @@ const HelpCenter = () => {
             </div>
           </section>
 
-          <section id="troubleshooting" className="bg-white shadow-lg rounded-lg p-8">
-            <h2 className="text-2xl font-semibold text-gray-800 mb-4">Troubleshooting</h2>
+          {/* Troubleshooting Section */}
+          <section id="troubleshooting" className="bg-white shadow-lg rounded-lg p-8 border border-gray-200">
+            <h2 className="text-2xl font-semibold text-dark1 mb-6">Troubleshooting</h2>
             <p className="text-lg text-gray-600 mb-6">
               If you're experiencing issues with our services, here are some common solutions to try before reaching out to our support team.
             </p>
-            
             <div className="space-y-6">
               <div>
-                <h3 className="text-xl font-medium text-gray-800">Issue 1: Unable to Log In</h3>
+                <h3 className="text-xl font-medium text-dark1">Issue 1: Unable to Log In</h3>
                 <p className="text-lg text-gray-600">
                   Make sure you're using the correct email and password. If you've forgotten your password, click on "Forgot Password" to reset it.
                 </p>
               </div>
 
               <div>
-                <h3 className="text-xl font-medium text-gray-800">Issue 2: Page Not Loading</h3>
+                <h3 className="text-xl font-medium text-dark1">Issue 2: Page Not Loading</h3>
                 <p className="text-lg text-gray-600">
                   Try refreshing the page or clearing your browser's cache and cookies. If the issue continues, try using a different browser or device.
                 </p>
               </div>
 
               <div>
-                <h3 className="text-xl font-medium text-gray-800">Issue 3: Missing Features</h3>
+                <h3 className="text-xl font-medium text-dark1">Issue 3: Missing Features</h3>
                 <p className="text-lg text-gray-600">
                   If you're missing certain features, make sure your account is active and you have the correct subscription plan. You can view and manage your subscription in your account settings.
                 </p>

@@ -44,8 +44,8 @@ const AddAssignmentOverlay = ({ sectionId, onClose, onSuccess }) => {
           },
         }
       );
-      onSuccess(response.data); 
-      console.log("assignemnt",response.data)// Pass the new assignment to the parent
+      onSuccess(response.data);
+      console.log("assignemnt", response.data); // Pass the new assignment to the parent
       onClose(); // Close the overlay
     } catch (error) {
       setError("Failed to add assignment. Please try again.");
@@ -98,14 +98,14 @@ const AddAssignmentOverlay = ({ sectionId, onClose, onSuccess }) => {
             <button
               type="button"
               onClick={onClose}
-              className="bg-gray-500 text-white px-4 py-2 rounded"
+              className="bg-lightColor2 hover:bg-lightColor1 text-dark1 px-4 py-2 rounded focus:outline-none focus:ring-2 focus:ring-primaryColor"
             >
               Cancel
             </button>
             <button
               type="submit"
               disabled={loading}
-              className="bg-blue-500 text-white px-4 py-2 rounded"
+              className="bg-primaryColor hover:bg-secondaryColor text-white px-4 py-2 rounded focus:outline-none focus:ring-2 focus:ring-lightColor1"
             >
               {loading ? "Adding..." : "Add Assignment"}
             </button>
