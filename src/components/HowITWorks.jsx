@@ -11,7 +11,7 @@ const HowItWorks = () => {
       {/* Title and Description */}
       <div className="lg:flex lg:justify-between lg:items-center">
         <div className="lg:w-1/2">
-          <h2 className="text-4xl font-bold text-gray-900 mb-4">How Our InPath Works</h2>
+          <h2 className="text-4xl font-bold text-secondaryColor mb-4">How Our InPath Works</h2>
           <p className="text-gray-600 mb-8">
             Our platform is designed to make learning easy, engaging, and accessible. Explore how our LMS empowers students and educators through a seamless blend of technology and personalized learning experiences.
           </p>

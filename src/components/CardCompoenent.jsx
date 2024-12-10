@@ -36,19 +36,19 @@ const CardComponent = () => {
   };
 
   const handleBuyNowClick = () => {
-    setIsModalOpen(true); // Open modal when "Buy Now" is clicked
+    navigate("/courses"); // Open modal when "Buy Now" is clicked
   };
 
-  const closeModal = () => {
-    setIsModalOpen(false); // Close modal
-    navigate("/shopping"); // Redirect to the billing page when the modal is closed
-  };
+  // const closeModal = () => {
+  //   setIsModalOpen(false); // Close modal
+  //    // Redirect to the billing page when the modal is closed
+  // };
 
   return (
     <div className="flex justify-center py-12 bg-gray-50">
       <div className="w-full max-w-7xl px-4 sm:px-6 lg:px-8">
         {/* Navbar */}
-        <nav className="bg-gradient-to-r from-[#4A90E2] to-[#50E3C2] shadow-lg rounded-lg hover:shadow-xl transition-shadow duration-300">
+        {/* <nav className="bg-gradient-to-r from-[#4A90E2] to-[#50E3C2] shadow-lg rounded-lg hover:shadow-xl transition-shadow duration-300">
           <div className="flex space-x-4 overflow-x-auto py-4 px-6">
             <button
               onClick={() => handleCategoryClick("All")}
@@ -76,7 +76,7 @@ const CardComponent = () => {
               </button>
             ))}
           </div>
-        </nav>
+        </nav> */}
 
         {/* Slider Section */}
         <div className="relative mt-8">
@@ -129,7 +129,7 @@ const CardComponent = () => {
                     onClick={handleBuyNowClick}
                     className="w-full mt-4 bg-[#F5A623] text-white font-semibold py-2 rounded-xl shadow-md hover:bg-[#4A90E2] transition duration-300"
                   >
-                    Buy Now
+                    Explore
                   </button>
                 </div>
               </div>
@@ -145,27 +145,6 @@ const CardComponent = () => {
         </div>
       </div>
 
-      {/* Modal */}
-      {isModalOpen && (
-        <div className="fixed inset-0 flex items-center justify-center bg-gray-900 bg-opacity-50 z-50">
-          <div className="bg-white rounded-xl p-8 max-w-md w-full shadow-xl transform transition-all duration-300 scale-105">
-            <h2 className="text-2xl font-bold text-center text-[#F5A623]">
-              Thank You!
-            </h2>
-            <p className="text-lg text-center text-gray-700 mt-4">
-              Thank you for buying our course. We hope you enjoy learning!
-            </p>
-            <div className="flex justify-center mt-6">
-              <button
-                onClick={closeModal} // Close modal and navigate to billing page
-                className="px-6 py-3 bg-[#F5A623] text-white font-semibold rounded-lg shadow-md hover:bg-[#50E3C2] transition duration-300"
-              >
-                Next
-              </button>
-            </div>
-          </div>
-        </div>
-      )}
     </div>
   );
 };

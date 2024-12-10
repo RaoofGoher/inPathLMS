@@ -4,7 +4,7 @@ import HowItWorks from '../components/HowITWorks'
 import JoinOurTeam from '../components/JoinUs'
 import WhyTrustUs from '../components/WhyTrustUs'
 import CardComponent from '../components/CardCompoenent'
-import ViewCourse from "../components/courseSearch/ViewCourse"
+// import ViewCourse from "../components/courseSearch/ViewCourse"
 import StatisticsSection from '../components/StatisticsSection'
 import InstructorSpotlight from '../components/InstructorSpotlight'
 import ScrollToTop from '../components/ScrollToTop'
@@ -16,8 +16,8 @@ const Home = () => {
       <ScrollToTop/>
       <HeroSection className = "mt-[-140px]"/>
       <HowItWorks />
-      {/* <CardComponent/> */}
-      <ViewCourse/>
+      <CardComponent/>
+      {/* <ViewCourse/> */}
       <JoinOurTeam/>
       <InstructorSpotlight/>
       <WhyTrustUs/>

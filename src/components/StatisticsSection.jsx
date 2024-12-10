@@ -2,7 +2,7 @@ import React from 'react';
 
 const StatisticsSection = () => {
   return (
-    <section className="py-12" style={{ backgroundColor: "#F7F9FC" }}> {/* lightColor2 */}
+    <section className="py-12" > {/* lightColor2 */}
       <div className="container mx-auto px-6 text-center">
         <h2 className="text-3xl font-semibold mb-6" style={{ color: "#4A90E2" }}>Our Achievements</h2> {/* primaryColor */}
         <p className="text-xl mb-12" style={{ color: "#7F8C8D" }}>
