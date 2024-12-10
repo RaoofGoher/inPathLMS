@@ -30,9 +30,6 @@ import Courses from "./pages/learn/Courses";
 import Certifications from "./pages/learn/Certification";
 import LearningPaths from "./pages/learn/LearningPaths";
 import FAQs from "./pages/learn/FAQs";
-import CorporateTraining from "./pages/forTeams/CorporateTraining";
-import CustomSolutions from "./pages/forTeams/CustomSolutions";
-import OnBoardingPrograms from "./pages/forTeams/OnBoardingPrograms";
 import Blogs from "./pages/resources/Blogs";
 import FreeResources from "./pages/resources/FreeResources";
 import TermsOfService from "./pages/resources/TermsOfService";
@@ -53,6 +50,9 @@ import AdminDashboard from "./pages/AdminDashboard";
 import ManageTeachers from "./pages/ManageTeachers";
 import ManageStudents from "./pages/ManageStudents";
 import Analytics from "./pages/Analytics";
+import BlogDetail from "./pages/resources/BlogDetails";
+import ForTeams from "./pages/ForTeams";
+
 
 function App() {
   const router = createBrowserRouter(
@@ -75,12 +75,7 @@ function App() {
           <Route path="/certifications" element={<Certifications />}></Route>
           <Route path="/learning-paths" element={<LearningPaths />}></Route>
           <Route path="/faq" element={<FAQs />}></Route>
-          <Route
-            path="/corporate-training"
-            element={<CorporateTraining />}
-          ></Route>
-          <Route path="/custom-solutions" element={<CustomSolutions />}></Route>
-          <Route path="/onboarding" element={<OnBoardingPrograms />}></Route>
+         <Route path="/for-team" element={<ForTeams/>}></Route>
           <Route path="tools" element={<Tools />}></Route>
           <Route path="/blog" element={<Blogs />}></Route>
           <Route path="/help-center" element={<HelpCenter />}></Route>
@@ -140,6 +135,10 @@ function App() {
           <Route path="/admin/manage-students" element={<ManageStudents />} />
           <Route path="/admin/analytics" element={<Analytics />} />
         </Route>
+
+{/* Blog Routes */}
+        <Route path="/" element={<Blogs/>} />
+        <Route path="/blogs/:id" element={<BlogDetail/>} />
       </>
     )
   );

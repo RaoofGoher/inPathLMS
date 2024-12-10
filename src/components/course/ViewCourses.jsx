@@ -1,7 +1,7 @@
 import React from "react";
 import { useSelector } from "react-redux";
 import { useGetCoursesByTeacherIdQuery } from "../../features/courseCategory/getCourse";
-import { useNavigate } from "react-router-dom";
+import { useNavigate , Link } from "react-router-dom";
 import { useGetTeacherProfileQuery } from "../../features/profile/teacher/teacherProfile";
 
 const ViewCourses = () => {
@@ -16,7 +16,9 @@ const ViewCourses = () => {
     navigate(`/dashboard/teacherdashboard/editcourse/${courseId}`);
   };
   const handleViewCourseSection = (courseId) => {
-    navigate(`/dashboard/teacherdashboard/viewcourse/viecoursesections/${courseId}`);
+    navigate(
+      `/dashboard/teacherdashboard/viewcourse/viecoursesections/${courseId}`
+    );
   };
   const handleViewCourse = (courseId) => {
     navigate(`/dashboard/teacherdashboard/viewcourse/${courseId}`);
@@ -24,6 +26,17 @@ const ViewCourses = () => {
 
   return (
     <div className="container mx-auto p-6">
+      <div className="w-full flex justify-end items-center mb-8">
+        <Link to={"/dashboard/teacherdashboard"}>
+          <button
+            className="  bg-dark2 font-semibold text-white px-2 py-2 rounded-md shadow-md 
+                 hover:bg-light3 hover:text-dark1 transition-all"
+          >
+            Back
+          </button>
+        </Link>
+      </div>
+
       <h2 className="text-3xl font-extrabold text-center text-primaryColor mb-8">
         Your Courses
       </h2>
@@ -42,7 +55,9 @@ const ViewCourses = () => {
               >
                 <div className="relative">
                   <img
-                    src={course.thumbnail || "https://via.placeholder.com/300x200"}
+                    src={
+                      course.thumbnail || "https://via.placeholder.com/300x200"
+                    }
                     alt={course.title}
                     className="w-full h-56 object-cover rounded-t-lg"
                   />
@@ -93,7 +108,9 @@ const ViewCourses = () => {
             </p>
             <button
               className="bg-primaryColor text-white py-2 px-6 rounded hover:bg-secondaryColor transition-all"
-              onClick={() => navigate("/dashboard/teacherdashboard/createcourse")}
+              onClick={() =>
+                navigate("/dashboard/teacherdashboard/createcourse")
+              }
             >
               Create Course
             </button>
@@ -111,7 +128,9 @@ const ViewCourses = () => {
           </p>
           <button
             className="bg-primaryColor text-white py-2 px-6 rounded hover:bg-secondaryColor transition-all"
-            onClick={() => navigate("/dashboard/teacherdashboard/createprofile")}
+            onClick={() =>
+              navigate("/dashboard/teacherdashboard/createprofile")
+            }
           >
             Create Profile
           </button>

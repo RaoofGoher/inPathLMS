@@ -1,13 +1,13 @@
-import { useState } from 'react';
-import axios from 'axios';
-import { useSelector } from 'react-redux';
+import { useState } from "react";
+import axios from "axios";
+import { useSelector } from "react-redux";
 
 const AddLectureOverlay = ({ sectionId, onClose, onSuccess }) => {
   const { user_id } = useSelector((state) => state.auth);
 
   const [formData, setFormData] = useState({
-    title: '',
-    order: '',
+    title: "",
+    order: "",
     video: null,
   });
   const [loading, setLoading] = useState(false);
@@ -28,21 +28,21 @@ const AddLectureOverlay = ({ sectionId, onClose, onSuccess }) => {
     setError(null);
 
     const payload = new FormData();
-    payload.append('title', formData.title);
-    payload.append('order', formData.order);
-    payload.append('video_file', formData.video);
-    payload.append('section', sectionId);
-    payload.append('instructor', user_id);
+    payload.append("title", formData.title);
+    payload.append("order", formData.order);
+    payload.append("video_file", formData.video);
+    payload.append("section", sectionId);
+    payload.append("instructor", user_id);
     try {
       const response = await axios.post(
-        'https://api.inpath.us/teacher/lectures/',
+        "https://api.inpath.us/teacher/lectures/",
         payload
       );
       onSuccess(response.data);
       onClose(); // Close the overlay on success
     } catch (err) {
-      console.log(err.response?.data)
-      setError(err.response?.data?.message || 'Something went wrong');
+      console.log(err.response?.data);
+      setError(err.response?.data?.message || "Something went wrong");
     } finally {
       setLoading(false);
     }
@@ -51,10 +51,13 @@ const AddLectureOverlay = ({ sectionId, onClose, onSuccess }) => {
   return (
     <div className="fixed inset-0 bg-gray-800 bg-opacity-75 flex items-center justify-center">
       <div className="bg-white rounded-lg p-6 w-96">
-        <h2 className="text-xl font-semibold mb-4">Add Lecture</h2>
+        <h2 className="text-xl font-semibold mb-4 text-dark1">Add Lecture</h2>
         <form onSubmit={handleSubmit}>
           <div className="mb-4">
-            <label htmlFor="title" className="block font-medium mb-1">
+            <label
+              htmlFor="title"
+              className="block font-medium mb-1 text-dark1"
+            >
               Lecture Title
             </label>
             <input
@@ -63,12 +66,15 @@ const AddLectureOverlay = ({ sectionId, onClose, onSuccess }) => {
               name="title"
               value={formData.title}
               onChange={handleInputChange}
-              className="w-full border rounded p-2"
+              className="w-full border border-lightColor3 rounded p-2 text-dark1 focus:outline-none focus:ring-2 focus:ring-primaryColor"
               required
             />
           </div>
           <div className="mb-4">
-            <label htmlFor="order" className="block font-medium mb-1">
+            <label
+              htmlFor="order"
+              className="block font-medium mb-1 text-dark1"
+            >
               Order
             </label>
             <input
@@ -77,12 +83,15 @@ const AddLectureOverlay = ({ sectionId, onClose, onSuccess }) => {
               name="order"
               value={formData.order}
               onChange={handleInputChange}
-              className="w-full border rounded p-2"
+              className="w-full border border-lightColor3 rounded p-2 text-dark1 focus:outline-none focus:ring-2 focus:ring-primaryColor"
               required
             />
           </div>
           <div className="mb-4">
-            <label htmlFor="video" className="block font-medium mb-1">
+            <label
+              htmlFor="video"
+              className="block font-medium mb-1 text-dark1"
+            >
               Video File
             </label>
             <input
@@ -90,7 +99,7 @@ const AddLectureOverlay = ({ sectionId, onClose, onSuccess }) => {
               id="video"
               name="video"
               onChange={handleFileChange}
-              className="w-full"
+              className="w-full text-dark1 focus:outline-none focus:ring-2 focus:ring-primaryColor"
               required
             />
           </div>
@@ -99,16 +108,16 @@ const AddLectureOverlay = ({ sectionId, onClose, onSuccess }) => {
             <button
               type="button"
               onClick={onClose}
-              className="bg-gray-300 hover:bg-gray-400 px-4 py-2 rounded"
+              className="bg-lightColor3 hover:bg-lightColor1 text-dark1 px-4 py-2 rounded focus:outline-none focus:ring-2 focus:ring-primaryColor"
             >
               Cancel
             </button>
             <button
               type="submit"
-              className="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded"
+              className="bg-primaryColor hover:bg-secondaryColor text-white px-4 py-2 rounded focus:outline-none focus:ring-2 focus:ring-lightColor1"
               disabled={loading}
             >
-              {loading ? 'Submitting...' : 'Add Lecture'}
+              {loading ? "Submitting..." : "Add Lecture"}
             </button>
           </div>
         </form>
