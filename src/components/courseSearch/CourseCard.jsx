@@ -1,12 +1,14 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { addToCart } from "../../features/cart/cartSlice"; // Adjust path if needed
+import { Navigate, useNavigate } from "react-router-dom";
 
 const CourseCard = ({ course }) => {
   const dispatch = useDispatch();
-
+  const navigate = useNavigate();
   // Access cart state
   const cartItems = useSelector((state) => state.cart.items);
+  const isInCart = cartItems.some((item) => item.id === course.id);
 
   // Function to handle "Add to Cart"
   const handleAddToCart = () => {
@@ -26,6 +28,9 @@ const CourseCard = ({ course }) => {
     }
   };
 
+  const handleCheckout = ()=>{
+    navigate("/shopping")
+  }
   return (
     <div className="p-2 border-2 border-primaryColor rounded-lg shadow-lg">
       {/* Course Thumbnail */}
@@ -60,14 +65,15 @@ const CourseCard = ({ course }) => {
         </button>
 
         <button
+        disabled={isInCart}
           onClick={handleAddToCart}
           className="flex-1 px-4 py-2 bg-green-600 text-white rounded-md hover:bg-green-700 flex items-center justify-center gap-2 transition-all duration-300 md:px-6 md:py-3"
         >
-          Add to Cart
+           {isInCart ? "In Cart" : "Add to Cart"}
         </button>
 
-        <button className="flex-1 px-4 py-2 bg-orange-500 text-white rounded-md hover:bg-orange-600 flex items-center justify-center gap-2 transition-all duration-300 md:px-6 md:py-3">
-          View Cart
+        <button onClick={handleCheckout} className="flex-1 px-4 py-2 bg-orange-500 text-white rounded-md hover:bg-orange-600 flex items-center justify-center gap-2 transition-all duration-300 md:px-6 md:py-3">
+          checkout
         </button>
       </div>
     </div>

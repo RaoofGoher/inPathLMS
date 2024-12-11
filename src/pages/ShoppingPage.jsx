@@ -6,47 +6,19 @@ import {
   FaCcAmex,
 } from "react-icons/fa"; // Importing the icons
 import ScrollToTop from "../components/ScrollToTop";
+import { useSelector, useDispatch } from "react-redux";
+import { removeFromCart } from "../features/cart/cartSlice";
 
 const ShoppingPage = () => {
-  const [cartItems, setCartItems] = useState([
-    {
-      id: 1,
-      name: "React for Beginners",
-      description: "Learn the basics of React, a popular JavaScript library.",
-      price: 100,
-      discountPrice: 80,
-      quantity: 1,
-      image: "https://via.placeholder.com/150?text=React",
-    },
-    {
-      id: 2,
-      name: "Advanced JavaScript",
-      description: "Dive deep into JavaScript and master the language.",
-      price: 120,
-      discountPrice: 100,
-      quantity: 2,
-      image: "https://via.placeholder.com/150?text=JavaScript",
-    },
-    {
-      id: 3,
-      name: "CSS Mastery",
-      description: "Become an expert in styling with CSS and Flexbox.",
-      price: 80,
-      discountPrice: 60,
-      quantity: 1,
-      image: "https://via.placeholder.com/150?text=CSS",
-    },
-  ]);
-
+  const cartItems = useSelector((state) => state.cart.items);
+  const dispatch = useDispatch();
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [cardNumber, setCardNumber] = useState("");
   const [expirationDate, setExpirationDate] = useState("");
   const [cvv, setCvv] = useState("");
 
   const removeFromCart = (id) => {
-    setCartItems((prevCartItems) =>
-      prevCartItems.filter((item) => item.id !== id)
-    );
+    dispatch(removeFromCart(id));
   };
 
   const totalPrice = cartItems.reduce(
