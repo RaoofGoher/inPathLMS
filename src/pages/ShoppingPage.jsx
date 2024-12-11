@@ -8,8 +8,10 @@ import {
 import ScrollToTop from "../components/ScrollToTop";
 import { useSelector, useDispatch } from "react-redux";
 import { removeFromCart as removeItem } from "../features/cart/cartSlice"; // Renamed here
+import { useEnrollMultipleCoursesMutation } from "../features/enrollments/enrollApi";
 
 const ShoppingPage = () => {
+  const [enrollMultipleCourses, { isLoading, isSuccess, isError, error }] = useEnrollMultipleCoursesMutation();
   const cartItems = useSelector((state) => state.cart.items);
   const { token, role, isAuthenticated, user_id } = useSelector(
     (state) => state.auth
@@ -37,10 +39,19 @@ const ShoppingPage = () => {
 
   const openModal = () => setIsModalOpen(true);
   const closeModal = () => setIsModalOpen(false);
+console.log("user.id", user_id)
+  const handleEnroll = async () => {
+    // Extract course IDs from cartItems
+    const course_ids = cartItems.map((item) => item.id);
+    console.log('Payload being sent:', { user_id, course_ids });
 
-  const handleEnroll = ()=>{
-    console.log(JSON.stringify(cartItems),user_id)
-  }
+    try {
+      const response = await enrollMultipleCourses({ user_id, course_ids }).unwrap();
+      console.log('Enrollment successful:', response);
+    } catch (err) {
+      console.error('Failed to enroll:', err);
+    }
+  };
 
   return (
     <>
