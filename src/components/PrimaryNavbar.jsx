@@ -5,7 +5,7 @@ import SearchBar from "./SearchBar";
 import Logo from "../assets/logos/Logo.png";
 import { useSelector, useDispatch } from "react-redux";
 import { logout } from "../features/auth/authSlice";
-
+import Cart from "../components/cart/Cart";
 const Navbar = () => {
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
   const { token, role, isAuthenticated, user_id } = useSelector(
@@ -77,6 +77,7 @@ const Navbar = () => {
                     Dashboard
                   </button>
                 </NavLink>
+                <Cart/>
                 <NavLink>
                   <button
                     onClick={handleLogout}
