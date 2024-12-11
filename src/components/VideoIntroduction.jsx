@@ -4,7 +4,7 @@ const VideoIntroduction = () => {
   const [isHovered, setIsHovered] = useState(false);
 
   return (
-    <section className="py-20" style={{ backgroundColor: "#F7F9FC" }}>
+    <section className="py-20 bg-lightColor2" >
       {/* lightColor2 */}
       <div className="container mx-auto px-6 text-center lg:text-left flex flex-col lg:flex-row items-center">
         {/* Left Column - Video Embed Section */}
@@ -34,15 +34,15 @@ const VideoIntroduction = () => {
 
         {/* Right Column - Content Section */}
         <div className="lg:w-1/2 text-center lg:text-left ml-9">
-          <h2 className="text-5xl font-extrabold mb-6" style={{ color: "#4A90E2" }}>
-            {/* primaryColor */}
+          <h2 className="text-5xl font-extrabold mb-6 text-secondaryColor">
+          
             Explore Our Platform
           </h2>
-          <p className="text-lg max-w-2xl mx-auto lg:mx-0 mb-12" style={{ color: "#7F8C8D" }}>
+          <p className="text-lg max-w-2xl mx-auto lg:mx-0 mb-12 text-light3" >
             {/* light3 */}
             Watch this quick video to see how our LMS helps students and instructors connect and thrive.
           </p>
-          <ul className="list-disc list-inside text-lg text-gray-700">
+          <ul className="list-disc list-inside text-lg text-light3">
             <li>Seamless course management</li>
             <li>Interactive tools for instructors and students</li>
             <li>Personalized learning paths for every student</li>
@@ -50,8 +50,7 @@ const VideoIntroduction = () => {
           </ul>
           <div className="mt-10">
             <button
-              className="px-8 py-3 rounded-full text-white font-semibold text-lg shadow-md hover:opacity-90 transition-opacity"
-              style={{ backgroundColor: "#50E3C2" }} // secondaryColor
+              className="px-8 py-3 bg-secondaryColor hover:bg-lightColor1 rounded-full text-white font-semibold text-lg shadow-md hover:opacity-90 transition-opacity"
             >
               Start Your Journey Now
             </button>

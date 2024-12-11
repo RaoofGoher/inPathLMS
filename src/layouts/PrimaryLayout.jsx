@@ -17,9 +17,9 @@ const PrimaryLayout = () => {
 
       <PrimaryNavbar />    
         <Outlet/>
-        <SocialStrip/>
+        {/* <SocialStrip/> */}
         <Footer/>
-        <TemporaryNavbar />     
+        {/* <TemporaryNavbar />      */}
 
     </div>
   );

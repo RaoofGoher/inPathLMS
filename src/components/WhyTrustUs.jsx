@@ -31,7 +31,7 @@ const WhyTrustUs = () => {
   }, [currentIndex, settings.autoplaySpeed, settings.autoplay]);
   return (
     <>
-      <div className=" mt-72 md:mt-24 mx-4 md:mx-16 flex flex-col-reverse sm:flex-row ">
+      <div className=" mx-4 md:mx-16 flex flex-col-reverse sm:flex-row ">
       <div className="w-full h-[80vh] overflow-hidden relative shadow-2xl rounded-2xl">
       <div className="w-full h-screen">
         <div
