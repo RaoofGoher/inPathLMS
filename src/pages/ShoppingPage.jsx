@@ -11,6 +11,9 @@ import { removeFromCart as removeItem } from "../features/cart/cartSlice"; // Re
 
 const ShoppingPage = () => {
   const cartItems = useSelector((state) => state.cart.items);
+  const { token, role, isAuthenticated, user_id } = useSelector(
+    (state) => state.auth
+  );
   const dispatch = useDispatch();
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [cardNumber, setCardNumber] = useState("");
@@ -34,6 +37,11 @@ const ShoppingPage = () => {
 
   const openModal = () => setIsModalOpen(true);
   const closeModal = () => setIsModalOpen(false);
+
+  const handleEnroll = ()=>{
+    console.log(JSON.stringify(cartItems),user_id)
+  }
+
   return (
     <>
       <ScrollToTop />
@@ -124,11 +132,17 @@ const ShoppingPage = () => {
                 <span className="text-secondaryColor">${totalPrice}</span>
               </div>
             </div>
-            <button
+            {/* <button
               onClick={openModal}
               className="w-full py-3 bg-lightColor1 text-white font-semibold rounded-md hover:bg-primaryColor transition"
             >
               Proceed to Checkout
+            </button> */}
+            <button
+              onClick={handleEnroll}
+              className="w-full py-3 bg-lightColor1 text-white font-semibold rounded-md hover:bg-primaryColor transition"
+            >
+              Enroll Now
             </button>
           </div>
         </div>
