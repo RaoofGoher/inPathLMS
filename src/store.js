@@ -11,7 +11,8 @@ import { teacherProfileApi } from './features/profile/teacher/teacherProfile';
 import { getcoursesByTeacherApi } from './features/courseCategory/getCourse';
 import { addCourseSectionApi } from './features/courseCategory/addCourseSectionApi';
 import {courseSectionApi} from "./features/courseCategory/getCourseSection";
-import {courseApiThroughSubCategory} from './features/searchCourse/courseSlice'
+import {courseApiThroughSubCategory} from './features/searchCourse/courseSlice';
+import cartReducer from './features/cart/cartSlice';
 // Define the persist configuration for auth state
 const persistConfig = {
   key: 'auth',
@@ -34,6 +35,7 @@ export const store = configureStore({
     [addCourseSectionApi.reducerPath]: addCourseSectionApi.reducer,
     [courseSectionApi.reducerPath]: courseSectionApi.reducer,
     [courseApiThroughSubCategory.reducerPath]: courseApiThroughSubCategory.reducer,
+    cart: cartReducer,
 
   },
   middleware: (getDefaultMiddleware) =>

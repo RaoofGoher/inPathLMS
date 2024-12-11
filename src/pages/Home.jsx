@@ -9,12 +9,18 @@ import StatisticsSection from '../components/StatisticsSection'
 import InstructorSpotlight from '../components/InstructorSpotlight'
 import ScrollToTop from '../components/ScrollToTop'
 // import LiveChat from '../components/LiveChat'
-
+import { useDispatch } from 'react-redux';
+import { addToCart } from '../features/cart/cartSlice';
 const Home = () => {
+  // const dispatch = useDispatch();
+  // const handleAddToCart = () => {
+  //   // Example: adding an item to the cart
+  //   dispatch(addToCart({ ...product, quantity: 1 }));
+  // };
   return (
     <div>
-      <ScrollToTop/>
-      <HeroSection className = "mt-[-140px]"/>
+      <ScrollToTop />
+      <HeroSection className="mt-[-140px]" />
       <HowItWorks />
       <CardComponent/>
       {/* <ViewCourse/> */}
