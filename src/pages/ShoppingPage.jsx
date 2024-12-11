@@ -4,10 +4,10 @@ import {
   FaCcMastercard,
   FaCcDiscover,
   FaCcAmex,
-} from "react-icons/fa"; // Importing the icons
+} from "react-icons/fa"; 
 import ScrollToTop from "../components/ScrollToTop";
 import { useSelector, useDispatch } from "react-redux";
-import { removeFromCart } from "../features/cart/cartSlice";
+import { removeFromCart as removeItem } from "../features/cart/cartSlice"; // Renamed here
 
 const ShoppingPage = () => {
   const cartItems = useSelector((state) => state.cart.items);
@@ -17,8 +17,9 @@ const ShoppingPage = () => {
   const [expirationDate, setExpirationDate] = useState("");
   const [cvv, setCvv] = useState("");
 
-  const removeFromCart = (id) => {
-    dispatch(removeFromCart(id));
+  // Rename the local function to avoid conflict with the Redux action
+  const handleRemoveFromCart = (id) => {
+    dispatch(removeItem(id)); // Dispatching the Redux action here
   };
 
   const totalPrice = cartItems.reduce(
@@ -33,10 +34,8 @@ const ShoppingPage = () => {
 
   const openModal = () => setIsModalOpen(true);
   const closeModal = () => setIsModalOpen(false);
-
   return (
     <>
-      {" "}
       <ScrollToTop />
       <div className="min-h-screen bg-lightColor2 p-6">
         <h1 className="text-4xl font-semibold text-primaryColor text-center mb-8">
@@ -73,8 +72,7 @@ const ShoppingPage = () => {
                     {/* Price Information */}
                     <div className="text-sm sm:text-base">
                       <div className="line-through text-light3">
-                        <span className="text-xs">Actual Price:</span> $
-                        {item.price}
+                        <span className="text-xs">Actual Price:</span> $ {item.price}
                       </div>
                       <div className="text-lg text-secondaryColor">
                         <span className="text-xs">Discount Price:</span> $
@@ -86,7 +84,7 @@ const ShoppingPage = () => {
                       </div>
                     </div>
                     <button
-                      onClick={() => removeFromCart(item.id)}
+                      onClick={() => handleRemoveFromCart(item)} // Updated function call
                       className="mt-2 sm:mt-0 text-red-500 hover:text-red-700"
                     >
                       Remove
@@ -150,9 +148,8 @@ const ShoppingPage = () => {
                     value={cardNumber}
                     onChange={(e) => setCardNumber(e.target.value)}
                     placeholder="1234 5678 9876 5432"
-                    className="w-full p-2 border border-gray-300 rounded-md pr-10" // Add padding-right for icon
+                    className="w-full p-2 border border-gray-300 rounded-md pr-10" 
                   />
-
                   <div className="absolute top-1/2 flex gap-2 right-3 transform -translate-y-1/2">
                     <FaCcVisa className="text-blue-700" />
                     <FaCcMastercard className="text-red-500" />
