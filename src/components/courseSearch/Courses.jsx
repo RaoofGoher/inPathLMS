@@ -30,8 +30,8 @@ const Courses = ({ subCategory }) => {
 
   return (
     <div className="mt-4">
-      <h2 className="text-xl font-semibold mb-2">Courses in {subCategory.id}</h2>
-      <ul className="grid grid-cols-3 gap-4">
+      <h2 className="text-xl sm:text-2xl text-lightColor2 mb-4 text-center font-semibold">Courses </h2>
+      <ul className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3  mx-6 gap-4">
         {currentCourses?.map((course) => (
           <li key={course.id} className="px-4 py-2 bg-gray-100 rounded shadow-md">
             <CourseCard course={course} />

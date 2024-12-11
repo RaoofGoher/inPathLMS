@@ -1,20 +1,23 @@
 import React from "react";
-import CardCompoenent from "../../components/CardCompoenent";
-import ScrollToTop from "../../components/ScrollToTop";
-import StudentsTestimonials from "../../components/StudentsTestimonials";
+import ViewCourse from "../../components/courseSearch/ViewCourse"
+// import CardCompoenent from "../../components/CardCompoenent";
+// import ScrollToTop from "../../components/ScrollToTop";
+// import StudentsTestimonials from "../../components/StudentsTestimonials";
 const Courses = () => {
   // Catogeries for catogery section
-  const categories = [
-    { title: "Web Development", color: "bg-lightColor1" },
-    { title: "Data Science", color: "bg-secondaryColor" },
-    { title: "Design", color: "bg-light3" },
-    { title: "Marketing", color: "bg-dark2" },
-  ];
+  // const categories = [
+  //   { title: "Web Development", color: "bg-lightColor1" },
+  //   { title: "Data Science", color: "bg-secondaryColor" },
+  //   { title: "Design", color: "bg-light3" },
+  //   { title: "Marketing", color: "bg-dark2" },
+  // ];
 
   return (
     <>
+    <ViewCourse/>
+
       {/* here is my hero Section */}
-      <section>
+      {/* <section>
         <div className="bg-primaryColor text-lightColor2 py-12 text-center">
           <h1 className="text-4xl font-bold mb-4">Explore Our Courses</h1>
           <p className="text-lg mb-6">
@@ -34,7 +37,7 @@ const Courses = () => {
       </section>
 
       {/* here is my catogery secion */}
-      <section>
+      {/* <section>
         <div className="py-12 bg-lightColor2">
           <h2 className="text-2xl font-bold text-dark1 text-center mb-8">
             Browse by Categories
@@ -50,12 +53,12 @@ const Courses = () => {
             ))}
           </div>
         </div>
-      </section>
-      {/* import here students testimonial component */}
-      <StudentsTestimonials />
+      </section> */}
+     
+      {/* <StudentsTestimonials />
       <ScrollToTop />
-      {/* import here cardcomponent */}
-      <CardCompoenent />
+      
+      <CardCompoenent /> */}
     </>
   );
 };

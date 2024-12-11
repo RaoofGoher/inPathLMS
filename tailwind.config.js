@@ -1,4 +1,5 @@
 /** @type {import('tailwindcss').Config} */
+const plugin = require('tailwind-scrollbar');
 export default {
   content: [
     "./index.html",
@@ -22,7 +23,10 @@ export default {
       },
     },
   },
-  plugins: [function ({ addUtilities }) {
+  plugins: [
+    plugin({ nocompatible: true }), // Enable the plugin
+    
+    function ({ addUtilities }) {
     addUtilities({
       '.scrollbar-hide': {
         /* Hide scrollbar for WebKit-based browsers */

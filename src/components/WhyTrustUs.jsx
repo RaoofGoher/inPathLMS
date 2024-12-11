@@ -53,7 +53,7 @@ const WhyTrustUs = () => {
       </div>
     </div>
         <div className=" p-6 lg:p-8  bg-primaryColor rounded-lg md:h-[80vh]  md:ml-4">
-          <h1 className=" lg:mb-2 font-bold text-[2rem] lg:text-[2.9rem] text-center text-secondaryColor">
+          <h1 className=" lg:mb-2 font-bold text-[2rem] lg:text-[2.9rem] text-center text-lightColor2">
                 Why Trust Us?
             </h1>
             <ul className="flex flex-col gap-1 lg:gap-2 text-white ">
