@@ -64,9 +64,9 @@ const AdminDashboardLayout = () => {
       {/* Header */}
       <header className="w-full md:px-14 bg-primaryColor text-white flex items-center justify-between py-4 px-6 relative">
         {/* <h1 className="text-2xl font-bold">Admin Dashboard</h1> */}
-        <div className="bg-gradient-to-br from-lightColor2 to-secondaryColor p-2 rounded-lg">
+        {/* <div className="bg-gradient-to-br from-lightColor2 to-secondaryColor p-2 rounded-lg">
           <img src={Logo} alt="Logo" className="h-10 w-15" />
-        </div>
+        </div> */}
 
         {/* Notification Button with Badge */}
         <div className="flex items-center gap-4">
@@ -135,9 +135,9 @@ const AdminDashboardLayout = () => {
           } transition-transform duration-300 md:relative md:translate-x-0`}
         >
           <div className="flex items-center justify-between p-4 md:hidden">
-            <div className="bg-gradient-to-br from-lightColor2 to-primaryColor p-2 rounded-lg">
+            {/* <div className="bg-gradient-to-br from-lightColor2 to-primaryColor p-2 rounded-lg">
               <img src={Logo} alt="Logo" className="h-12 w-15" />
-            </div>
+            </div> */}
             <button onClick={toggleSidebar} className="text-white">
               <FaTimes size={20} />
             </button>
