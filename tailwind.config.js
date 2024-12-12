@@ -41,3 +41,6 @@ export default {
   },],
 }
 
+// blue : "#00438D" 
+// ligthBlue:"#E5F2FF "
+// gray:"#96989A"
