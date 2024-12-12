@@ -37,7 +37,7 @@ const ViewCourse = () => {
   };
 
   if (isLoading) return <div>Loading...</div>;
-  if (isError || !courses) return <div>Error loading course sections.</div>;
+  if (isError || !courses) return <div>Error loading course.</div>;
 
   return (
     <div className="flex flex-col lg:flex-row-reverse bg-lightColor2 h-screen rounded-lg shadow-md overflow-hidden">

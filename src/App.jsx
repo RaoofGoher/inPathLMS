@@ -52,7 +52,7 @@ import ManageStudents from "./pages/ManageStudents";
 import Analytics from "./pages/Analytics";
 import BlogDetail from "./pages/resources/BlogDetails";
 import ForTeams from "./pages/ForTeams";
-
+import EnrolledCourses from './components/EnrolledCourses'
 
 function App() {
   const router = createBrowserRouter(
@@ -88,6 +88,14 @@ function App() {
             <Route
               path="/dashboard/studentdashboard"
               element={<StudentDashboard />}
+            />
+            <Route
+              path="/dashboard/studentdashboard/mycourses/:user_id"
+              element={<EnrolledCourses />}
+            />
+            <Route
+              path="/dashboard/studentdashboard/mycourses/viewcourse/:course_id"
+              element={<ViewCourse />}
             />
           </Route>
 
