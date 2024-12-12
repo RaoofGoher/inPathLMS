@@ -1,8 +1,16 @@
 import React from 'react';
 import { FaBook, FaClipboardList, FaChartLine } from 'react-icons/fa';
 import ScrollToTop from '../components/ScrollToTop';
+import { Link,useNavigate } from 'react-router-dom';
+import { useSelector, useDispatch } from "react-redux";
 
 function StudentDashboard() {
+  const navigate = useNavigate(); // Use the navigate hook to redirect to other pages
+  const dispatch = useDispatch();
+  const { token, role, isAuthenticated, user_id } = useSelector(
+    (state) => state.auth
+  );
+
   return (
     <div className="p-4">
       <h1 className="text-2xl font-bold mb-6">Student Dashboard</h1>
@@ -13,7 +21,7 @@ function StudentDashboard() {
           <FaBook className="text-secondaryColor text-3xl" />
           <div>
             <h2 className="text-xl text-white font-semibold">My Courses</h2>
-            <p className="text-white">View all enrolled courses.</p>
+            <Link to={`/dashboard/studentdashboard/mycourses/${user_id}`}> <p className="text-white">View all enrolled courses.</p> </Link>
           </div>
         </div>
 
@@ -35,7 +43,7 @@ function StudentDashboard() {
           </div>
         </div>
       </div>
-      <ScrollToTop/>
+      <ScrollToTop />
     </div>
   );
 }
