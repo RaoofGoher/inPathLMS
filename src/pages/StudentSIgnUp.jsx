@@ -38,8 +38,8 @@ const StudentSignUpForm = () => {
         role:'student'
       }
       const response = await signUp(formData).unwrap(); // Trigger the signUp mutation
-      const { token, role } = response; 
-      dispatch(setAuth({ token, role }));
+      const { token, role, user_id } = response; 
+      dispatch(setAuth({ token, role, user_id }));
       console.log('User signed up:', response);
       resetForm();
       if (role === 'student') {

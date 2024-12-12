@@ -1,7 +1,37 @@
-// import { FaCartPlus, FaShoppingCart, FaInfoCircle } from "react-icons/fa";
+import React from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { addToCart } from "../../features/cart/cartSlice"; // Adjust path if needed
+import { Navigate, useNavigate } from "react-router-dom";
 
 const CourseCard = ({ course }) => {
-  return ( 
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+  // Access cart state
+  const cartItems = useSelector((state) => state.cart.items);
+  const isInCart = cartItems.some((item) => item.id === course.id);
+
+  // Function to handle "Add to Cart"
+  const handleAddToCart = () => {
+    const existingItem = cartItems.find((item) => item.id === course.id);
+
+    if (existingItem) {
+      alert("This course is already in your cart!");
+    } else {
+      dispatch(
+        addToCart({
+          id: course.id,
+          name: course.title,
+          price: course.final_price,
+          quantity: 1,
+        })
+      );
+    }
+  };
+
+  const handleCheckout = ()=>{
+    navigate("/shopping")
+  }
+  return (
     <div className="p-2 border-2 border-primaryColor rounded-lg shadow-lg">
       {/* Course Thumbnail */}
       <img
@@ -34,12 +64,16 @@ const CourseCard = ({ course }) => {
           View Course
         </button>
 
-        <button className="flex-1 px-4 py-2 bg-green-600 text-white rounded-md hover:bg-green-700 flex items-center justify-center gap-2 transition-all duration-300 md:px-6 md:py-3">
-         Add to Cart
+        <button
+        disabled={isInCart}
+          onClick={handleAddToCart}
+          className="flex-1 px-4 py-2 bg-green-600 text-white rounded-md hover:bg-green-700 flex items-center justify-center gap-2 transition-all duration-300 md:px-6 md:py-3"
+        >
+           {isInCart ? "In Cart" : "Add to Cart"}
         </button>
 
-        <button className="flex-1 px-4 py-2 bg-orange-500 text-white rounded-md hover:bg-orange-600 flex items-center justify-center gap-2 transition-all duration-300 md:px-6 md:py-3">
-          Buy Now
+        <button onClick={handleCheckout} className="flex-1 px-4 py-2 bg-orange-500 text-white rounded-md hover:bg-orange-600 flex items-center justify-center gap-2 transition-all duration-300 md:px-6 md:py-3">
+          checkout
         </button>
       </div>
     </div>

@@ -4,49 +4,31 @@ import {
   FaCcMastercard,
   FaCcDiscover,
   FaCcAmex,
-} from "react-icons/fa"; // Importing the icons
+} from "react-icons/fa"; 
 import ScrollToTop from "../components/ScrollToTop";
+import { useSelector, useDispatch } from "react-redux";
+import { removeFromCart as removeItem } from "../features/cart/cartSlice"; // Renamed here
+import { useEnrollMultipleCoursesMutation } from "../features/enrollments/enrollApi";
+import { clearCart } from '../features/cart/cartSlice';
+import { useNavigate } from "react-router-dom";
+
 
 const ShoppingPage = () => {
-  const [cartItems, setCartItems] = useState([
-    {
-      id: 1,
-      name: "React for Beginners",
-      description: "Learn the basics of React, a popular JavaScript library.",
-      price: 100,
-      discountPrice: 80,
-      quantity: 1,
-      image: "https://via.placeholder.com/150?text=React",
-    },
-    {
-      id: 2,
-      name: "Advanced JavaScript",
-      description: "Dive deep into JavaScript and master the language.",
-      price: 120,
-      discountPrice: 100,
-      quantity: 2,
-      image: "https://via.placeholder.com/150?text=JavaScript",
-    },
-    {
-      id: 3,
-      name: "CSS Mastery",
-      description: "Become an expert in styling with CSS and Flexbox.",
-      price: 80,
-      discountPrice: 60,
-      quantity: 1,
-      image: "https://via.placeholder.com/150?text=CSS",
-    },
-  ]);
-
+  const [enrollMultipleCourses, { isLoading, isSuccess, isError, error }] = useEnrollMultipleCoursesMutation();
+  const cartItems = useSelector((state) => state.cart.items);
+  const { token, role, isAuthenticated, user_id } = useSelector(
+    (state) => state.auth
+  );
+  const dispatch = useDispatch();
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [cardNumber, setCardNumber] = useState("");
   const [expirationDate, setExpirationDate] = useState("");
   const [cvv, setCvv] = useState("");
+  const navigate = useNavigate();
 
-  const removeFromCart = (id) => {
-    setCartItems((prevCartItems) =>
-      prevCartItems.filter((item) => item.id !== id)
-    );
+  // Rename the local function to avoid conflict with the Redux action
+  const handleRemoveFromCart = (id) => {
+    dispatch(removeItem(id)); // Dispatching the Redux action here
   };
 
   const totalPrice = cartItems.reduce(
@@ -62,9 +44,22 @@ const ShoppingPage = () => {
   const openModal = () => setIsModalOpen(true);
   const closeModal = () => setIsModalOpen(false);
 
+  const handleEnroll = async () => {
+    // Extract course IDs from cartItems
+    const course_ids = cartItems.map((item) => item.id);
+   
+
+    try {
+      const response = await enrollMultipleCourses({ user_id, course_ids }).unwrap();
+      dispatch(clearCart());
+      navigate("/")
+    } catch (err) {
+      console.error('Failed to enroll:', err);
+    }
+  };
+
   return (
     <>
-      {" "}
       <ScrollToTop />
       <div className="min-h-screen bg-lightColor2 p-6">
         <h1 className="text-4xl font-semibold text-primaryColor text-center mb-8">
@@ -101,8 +96,7 @@ const ShoppingPage = () => {
                     {/* Price Information */}
                     <div className="text-sm sm:text-base">
                       <div className="line-through text-light3">
-                        <span className="text-xs">Actual Price:</span> $
-                        {item.price}
+                        <span className="text-xs">Actual Price:</span> $ {item.price}
                       </div>
                       <div className="text-lg text-secondaryColor">
                         <span className="text-xs">Discount Price:</span> $
@@ -114,7 +108,7 @@ const ShoppingPage = () => {
                       </div>
                     </div>
                     <button
-                      onClick={() => removeFromCart(item.id)}
+                      onClick={() => handleRemoveFromCart(item)} // Updated function call
                       className="mt-2 sm:mt-0 text-red-500 hover:text-red-700"
                     >
                       Remove
@@ -154,11 +148,17 @@ const ShoppingPage = () => {
                 <span className="text-secondaryColor">${totalPrice}</span>
               </div>
             </div>
-            <button
+            {/* <button
               onClick={openModal}
               className="w-full py-3 bg-lightColor1 text-white font-semibold rounded-md hover:bg-primaryColor transition"
             >
               Proceed to Checkout
+            </button> */}
+            <button
+              onClick={handleEnroll}
+              className="w-full py-3 bg-lightColor1 text-white font-semibold rounded-md hover:bg-primaryColor transition"
+            >
+              Enroll Now
             </button>
           </div>
         </div>
@@ -178,9 +178,8 @@ const ShoppingPage = () => {
                     value={cardNumber}
                     onChange={(e) => setCardNumber(e.target.value)}
                     placeholder="1234 5678 9876 5432"
-                    className="w-full p-2 border border-gray-300 rounded-md pr-10" // Add padding-right for icon
+                    className="w-full p-2 border border-gray-300 rounded-md pr-10" 
                   />
-
                   <div className="absolute top-1/2 flex gap-2 right-3 transform -translate-y-1/2">
                     <FaCcVisa className="text-blue-700" />
                     <FaCcMastercard className="text-red-500" />

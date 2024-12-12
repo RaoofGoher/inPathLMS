@@ -6,6 +6,7 @@ import Logo from "../assets/logos/Logo.png";
 import { useSelector, useDispatch } from "react-redux";
 import { logout } from "../features/auth/authSlice";
 import Cart from "../components/cart/Cart";
+import { clearCart } from '../features/cart/cartSlice';
 const Navbar = () => {
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
   const { token, role, isAuthenticated, user_id } = useSelector(
@@ -17,6 +18,8 @@ const Navbar = () => {
   const handleLogout = () => {
     dispatch(logout());
     navigate("/login");
+    dispatch(clearCart());
+
   };
 
   const toggleDrawer = () => {

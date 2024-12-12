@@ -75,7 +75,7 @@ function App() {
           <Route path="/certifications" element={<Certifications />}></Route>
           <Route path="/learning-paths" element={<LearningPaths />}></Route>
           <Route path="/faq" element={<FAQs />}></Route>
-         <Route path="/for-team" element={<ForTeams/>}></Route>
+          <Route path="/for-team" element={<ForTeams />}></Route>
           <Route path="tools" element={<Tools />}></Route>
           <Route path="/blog" element={<Blogs />}></Route>
           <Route path="/help-center" element={<HelpCenter />}></Route>
@@ -131,14 +131,14 @@ function App() {
         <Route path="/admin" element={<AdminDashboardLayout />}>
           <Route index element={<AdminDashboard />} />
           <Route path="/admin/dashboard" element={<AdminDashboard />} />
-          <Route path='/admin/manage-teachers' element={<ManageTeachers/>} />
+          <Route path='/admin/manage-teachers' element={<ManageTeachers />} />
           <Route path="/admin/manage-students" element={<ManageStudents />} />
           <Route path="/admin/analytics" element={<Analytics />} />
         </Route>
 
-{/* Blog Routes */}
-        <Route path="/" element={<Blogs/>} />
-        <Route path="/blogs/:id" element={<BlogDetail/>} />
+        {/* Blog Routes */}
+        <Route path="/" element={<Blogs />} />
+        <Route path="/blogs/:id" element={<BlogDetail />} />
       </>
     )
   );
