@@ -8,40 +8,44 @@ const FeatureHighlights = () => {
       title: "Interactive Learning",
       description:
         "Engage with interactive content, including quizzes, video lessons, and more, making learning both fun and effective.",
-    },
+      flipDescription: "Learn at your own pace with our interactive learning platform.",
+      },
     {
       icon: <FaComments size={40} />, // Icon for Community Interaction
       title: "Community Interaction",
       description:
         "Connect with peers and instructors, ask questions, share resources, and build a supportive learning community.",
-    },
+      flipDescription: "Join a community of learners and instructors to enhance your learning experience.",
+      },
     {
       icon: <FaLaptop size={40} />, // Icon for Customizable Courses
       title: "Customizable Courses",
       description:
         "Create, modify, and personalize your courses to fit your learning needs, whether you're a student or an instructor.",
-    },
+      flipDescription: "Tailor your learning experience to your unique needs with customizable courses.",
+      },
     {
       icon: <FaLock size={40} />, // Icon for Secure & Private
       title: "Secure , Private & Safe",
       description:
         "Your data and progress are protected with top-notch security and privacy measures to ensure your learning is safe.",
-    },
+      flipDescription: "Rest assured, your data and progress are secure and private.",
+      },
   ];
 
   return (
-    <section className="py-20" style={{ backgroundColor: "#F7F9FC" }}> {/* lightColor2 */}
+    <section className="py-20 bg-lightColor2"> {/* lightColor2 */}
       <div className="container mx-auto px-6 text-center">
         {/* Section Header */}
         <h2
-          className="text-5xl font-extrabold mb-6"
-          style={{ color: "#4A90E2" }} // primaryColor
+          className="text-5xl font-extrabold mb-6 text-primaryColor"
+      
         >
           Key Features of Our Platform
         </h2>
         <p
-          className="text-lg max-w-2xl mx-auto mb-12"
-          style={{ color: "#7F8C8D" }} // light3
+          className="text-lg max-w-2xl mx-auto mb-12 text-light3"
+         
         >
           Explore the key features that make our learning platform unique and effective for students and instructors.
         </p>
@@ -55,24 +59,21 @@ const FeatureHighlights = () => {
             >
               {/* Card container */}
               <div
-                className="relative bg-white p-8 rounded-3xl shadow-xl hover:shadow-2xl transition-transform transform-style-preserve-3d"
+                className="relative border-primaryColor border-2 hover:border-none bg-white p-8 rounded-3xl shadow-xl hover:shadow-2xl transition-transform transform-style-preserve-3d"
                 style={{
-                  border: "2px solid #50E3C2", // secondaryColor
                   transformStyle: "preserve-3d",
                 }}
               >
                 {/* Icon Section */}
                 <div
-                  className="flex justify-center items-center mb-6"
-                  style={{ color: "#F5A623" }} // lightColor1
+                  className="flex justify-center items-center mb-6 text-lightColor1" // lightColor1
                 >
                   {feature.icon}
                 </div>
 
                 {/* Title Section */}
                 <h3
-                  className="text-2xl font-bold mb-4"
-                  style={{ color: "#4A90E2" }} // primaryColor
+                  className="text-2xl font-bold mb-4 text-primaryColor" // primaryColor
                 >
                   {feature.title}
                 </h3>
@@ -82,15 +83,11 @@ const FeatureHighlights = () => {
 
                 {/* Flip Effect (Back of the Card) */}
                 <div
-                  className="absolute inset-0 bg-[#50E3C2] p-8 rounded-3xl flex flex-col items-center justify-center text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300"
-                  style={{
-                    backfaceVisibility: "hidden",
-                    transform: "rotateY(180deg)",
-                  }}
+                  className="absolute inset-0 bg-primaryColor p-8 rounded-3xl flex flex-col items-center justify-center text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+                  
                 >
-                  <h3 className="text-2xl font-semibold mb-4">Learn More</h3>
                   <p className="text-md text-white">
-                    Dive deeper into the features and learn how they can help enhance your learning experience.
+                   {feature.flipDescription}
                   </p>
                 </div>
               </div>

@@ -8,6 +8,7 @@ import CardComponent from '../components/CardCompoenent'
 import StatisticsSection from '../components/StatisticsSection'
 import InstructorSpotlight from '../components/InstructorSpotlight'
 import ScrollToTop from '../components/ScrollToTop'
+import CurrentTrends from '../components/CurrentTrends'
 // import LiveChat from '../components/LiveChat'
 import { useDispatch } from 'react-redux';
 import { addToCart } from '../features/cart/cartSlice';
@@ -22,12 +23,13 @@ const Home = () => {
       <ScrollToTop />
       <HeroSection className="mt-[-140px]" />
       <HowItWorks />
-      <CardComponent/>
+      {/* <CardComponent/> */}
       {/* <ViewCourse/> */}
       <JoinOurTeam/>
       <InstructorSpotlight/>
       <WhyTrustUs/>
       <StatisticsSection/>
+      <CurrentTrends/>
       {/* <LiveChat/> */}
     </div>
   )

@@ -26,10 +26,10 @@ const testimonials = [
 
 const StudentsTestimonials = () => {
   return (
-    <section className="bg-lightColor2 py-12" style={{ backgroundColor: "#F7F9FC" }}>
+    <section className="bg-lightColor2 py-12">
       <div className="container mx-auto px-6 text-center">
         <h2 className="text-3xl font-semibold" style={{ color: "#4A90E2" }}>What Our Students Say</h2>
-        <p className="text-xl mb-12 mt-4" style={{ color: "#7F8C8D" }}>
+        <p className="text-xl mb-12 mt-4 text-light3">
           See how our platform has helped students achieve their goals.
         </p>
 
@@ -37,20 +37,19 @@ const StudentsTestimonials = () => {
           {testimonials.map((testimonial, index) => (
             <div
               key={index}
-              className="p-8 rounded-lg shadow-lg transition-transform duration-300 hover:scale-105"
-              style={{ backgroundColor: "#FFFFFF", borderColor: "#50E3C2", borderWidth: "1px" }}
+              className="p-8 rounded-lg shadow-xl transition-transform duration-300 hover:scale-105"
+              style={{ backgroundColor: "#FFFFFF"}}
             >
               <img
                 src={testimonial.image}
                 alt={testimonial.name}
-                className="w-24 h-24 rounded-full mx-auto mb-6 border-4"
-                style={{ borderColor: "#F5A623" }}
+                className="w-24 h-24 rounded-full mx-auto mb-6 border-4 border-primaryColor"
               />
-              <p className="text-lg italic mb-4" style={{ color: "#333333" }}>
+              <p className="text-lg italic mb-4 text-light3" >
                 "{testimonial.feedback}"
               </p>
-              <p className="text-xl font-semibold" style={{ color: "#E74C3C" }}>{testimonial.name}</p>
-              <p className="text-sm" style={{ color: "#4A90E2" }}>{testimonial.course}</p>
+              <p className="text-xl font-semibold text-primaryColor">{testimonial.name}</p>
+              <p className="text-sm text-dark2">{testimonial.course}</p>
             </div>
           ))}
         </div>

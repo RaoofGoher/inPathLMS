@@ -12,9 +12,10 @@
   "dependencies": {
     "@fortawesome/free-solid-svg-icons": "^6.6.0",
     "@fortawesome/react-fontawesome": "^0.2.2",
+    "@google-cloud/translate": "^8.5.0",
     "@heroicons/react": "^2.2.0",
     "@reduxjs/toolkit": "^2.3.0",
-    "axios": "^1.7.8",
+    "axios": "^1.7.9",
     "chart.js": "^4.4.7",
     "formik": "^2.4.6",
     "framer-motion": "^11.13.5",
