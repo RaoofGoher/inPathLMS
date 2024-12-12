@@ -9,6 +9,9 @@ import ScrollToTop from "../components/ScrollToTop";
 import { useSelector, useDispatch } from "react-redux";
 import { removeFromCart as removeItem } from "../features/cart/cartSlice"; // Renamed here
 import { useEnrollMultipleCoursesMutation } from "../features/enrollments/enrollApi";
+import { clearCart } from '../features/cart/cartSlice';
+import { useNavigate } from "react-router-dom";
+
 
 const ShoppingPage = () => {
   const [enrollMultipleCourses, { isLoading, isSuccess, isError, error }] = useEnrollMultipleCoursesMutation();
@@ -21,6 +24,7 @@ const ShoppingPage = () => {
   const [cardNumber, setCardNumber] = useState("");
   const [expirationDate, setExpirationDate] = useState("");
   const [cvv, setCvv] = useState("");
+  const navigate = useNavigate();
 
   // Rename the local function to avoid conflict with the Redux action
   const handleRemoveFromCart = (id) => {
@@ -39,15 +43,16 @@ const ShoppingPage = () => {
 
   const openModal = () => setIsModalOpen(true);
   const closeModal = () => setIsModalOpen(false);
-console.log("user.id", user_id)
+
   const handleEnroll = async () => {
     // Extract course IDs from cartItems
     const course_ids = cartItems.map((item) => item.id);
-    console.log('Payload being sent:', { user_id, course_ids });
+   
 
     try {
       const response = await enrollMultipleCourses({ user_id, course_ids }).unwrap();
-      console.log('Enrollment successful:', response);
+      dispatch(clearCart());
+      navigate("/")
     } catch (err) {
       console.error('Failed to enroll:', err);
     }
