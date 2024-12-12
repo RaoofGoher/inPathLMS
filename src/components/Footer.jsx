@@ -8,6 +8,7 @@ import {
   FaMicrosoft,
   FaFacebook,
 } from "react-icons/fa";
+import GoogleTranslator from "./GoogleTranslator";
 
 const Footer = () => {
   const [expandedSection, setExpandedSection] = useState(null);
@@ -68,67 +69,78 @@ const Footer = () => {
     {
       title: "Certifications by Issuer",
       items: [
-        "Amazon Web Services (AWS) Certifications",
-        "Six Sigma Certifications",
-        "Microsoft Certifications",
-        "Cisco Certifications",
-        "Tableau Certifications",
+        { name: "Amazon Web Services (AWS) Certifications", link: "/certifications/aws" },
+        { name: "Six Sigma Certifications", link: "/certifications/six-sigma" },
+        { name: "Microsoft Certifications", link: "/certifications/microsoft" },
+        { name: "Cisco Certifications", link: "/certifications/cisco" },
+        { name: "Tableau Certifications", link: "/certifications/tableau" },
       ],
     },
     {
       title: "IT Certifications",
       items: [
-        "AWS Certified Cloud Practitioner",
-        "AZ-900: Microsoft Azure Fundamentals",
-        "AWS Certified Solutions Architect - Associate",
-        "Kubernetes",
+        { name: "AWS Certified Cloud Practitioner", link: "/certifications/aws-cloud-practitioner" },
+        { name: "AZ-900: Microsoft Azure Fundamentals", link: "/certifications/az-900" },
+        { name: "AWS Certified Solutions Architect - Associate", link: "/certifications/aws-solutions-architect" },
+        { name: "Kubernetes", link: "/certifications/kubernetes" },
       ],
     },
     {
       title: "Leadership",
       items: [
-        "Management Skills",
-        "Project Management",
-        "Personal Productivity",
-        "Emotional Intelligence",
+        { name: "Management Skills", link: "/certifications/management-skills" },
+        { name: "Project Management", link: "/certifications/project-management" },
+        { name: "Personal Productivity", link: "/certifications/personal-productivity" },
+        { name: "Emotional Intelligence", link: "/certifications/emotional-intelligence" },
       ],
     },
     {
       title: "Certifications by Skill",
       items: [
-        "Cybersecurity Certification",
-        "Project Management Certification",
-        "Cloud Certification",
-        "Data Analytics Certification",
-        "HR Management Certification",
+        { name: "Cybersecurity Certification", link: "/certifications/cybersecurity" },
+        { name: "Project Management Certification", link: "/certifications/project-management" },
+        { name: "Cloud Certification", link: "/certifications/cloud" },
+        { name: "Data Analytics Certification", link: "/certifications/data-analytics" },
+        { name: "HR Management Certification", link: "/certifications/hr-management" },
       ],
     },
     {
       title: "Data Science",
-      items: ["Python", "Machine Learning", "ChatGPT", "Deep Learning"],
+      items: [
+        { name: "Python", link: "/certifications/python" },
+        { name: "Machine Learning", link: "/certifications/machine-learning" },
+        { name: "ChatGPT", link: "/certifications/chatgpt" },
+        { name: "Deep Learning", link: "/certifications/deep-learning" },
+      ],
     },
     {
       title: "Communication",
       items: [
-        "Communication Skills",
-        "Presentation Skills",
-        "Public Speaking",
-        "Writing",
-        "PowerPoint",
+        { name: "Communication Skills", link: "/certifications/communication-skills" },
+        { name: "Presentation Skills", link: "/certifications/presentation-skills" },
+        { name: "Public Speaking", link: "/certifications/public-speaking" },
+        { name: "Writing", link: "/certifications/writing" },
+        { name: "PowerPoint", link: "/certifications/powerpoint" },
       ],
     },
     {
       title: "Web Development",
-      items: ["Web Development", "JavaScript", "React JS", "Angular", "Java"],
+      items: [
+        { name: "Web Development", link: "/certifications/web-development" },
+        { name: "JavaScript", link: "/certifications/javascript" },
+        { name: "React JS", link: "/certifications/react-js" },
+        { name: "Angular", link: "/certifications/angular" },
+        { name: "Java", link: "/certifications/java" },
+      ],
     },
     {
       title: "Business Analytics & Intelligence",
       items: [
-        "Microsoft Excel",
-        "SQL",
-        "Microsoft Power BI",
-        "Data Analysis",
-        "Business Analysis",
+        { name: "Microsoft Excel", link: "/certifications/microsoft-excel" },
+        { name: "SQL", link: "/certifications/sql" },
+        { name: "Microsoft Power BI", link: "/certifications/power-bi" },
+        { name: "Data Analysis", link: "/certifications/data-analysis" },
+        { name: "Business Analysis", link: "/certifications/business-analysis" },
       ],
     },
   ];
@@ -166,7 +178,8 @@ const Footer = () => {
           </ul>
         </div>
       </section>
-      {/* large screen certification layout */}
+
+      {/* Large screen certifications layout */}
       <section className="hidden md:block bg-gray-800/90 text-white px-16 p-8">
         <h2 className="text-2xl font-semibold text-start mb-6">
           Explore top skills and certifications
@@ -174,11 +187,15 @@ const Footer = () => {
 
         <div className="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
           {certificationsData.map((section, index) => (
-            <div key={index} className="  rounded">
+            <div key={index} className="rounded">
               <h3 className="font-semibold text-xl mb-4">{section.title}</h3>
               <ul className="flex flex-col space-y-2">
                 {section.items.map((item, idx) => (
-                  <li key={idx}>{item}</li>
+                  <li key={idx}>
+                    <Link to={item.link} className="hover:underline">
+                      {item.name}
+                    </Link>
+                  </li>
                 ))}
               </ul>
             </div>
@@ -186,7 +203,7 @@ const Footer = () => {
         </div>
       </section>
 
-      {/* Certifications mobile screen layout  */}
+      {/* Certifications mobile screen layout */}
       <section className="md:hidden bg-gray-800/90 text-white px-12 p-8">
         <h2 className="text-2xl font-semibold text-start mb-6">
           Explore top skills and certifications
@@ -205,7 +222,11 @@ const Footer = () => {
               {expandedCertifications === index && (
                 <ul className="mt-2 flex flex-col space-y-2 pl-4">
                   {section.items.map((item, idx) => (
-                    <li key={idx}>{item}</li>
+                    <li key={idx}>
+                      <Link to={item.link} className="hover:underline">
+                        {item.name}
+                      </Link>
+                    </li>
                   ))}
                 </ul>
               )}
@@ -220,9 +241,7 @@ const Footer = () => {
           <div className="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
             {menuData.map((section, index) => (
               <div key={index}>
-                <h4 className="font-semibold mb-4 font-lato">
-                  {section.title}
-                </h4>
+                <h4 className="font-semibold mb-4 font-lato">{section.title}</h4>
                 <ul>
                   {section.links.map((link, idx) => (
                     <li key={idx} className="mb-2">
@@ -237,9 +256,14 @@ const Footer = () => {
           </div>
         </div>
       </footer>
-      <div className=" bg-gray-800 p-4 px-16 flex gap-4 border-t-2 border-primaryColor items-center text-lightColor1">
-        <img src={image} alt="Logo" width={50} />
-        <p className="text-white">© 2024 In Path LMS</p>
+      <div className="flex-col sm:flex-row bg-gray-800 p-4 px-16 justify-between flex gap-4 border-t-2 border-primaryColor items-center text-lightColor1">
+        <div className="flex gap-4 items-center">
+          <img src={image} alt="Logo" width={50} />
+          <p className="text-white">© 2024 In Path LMS</p>
+        </div>
+        <div>
+          <GoogleTranslator />
+        </div>
       </div>
     </>
   );

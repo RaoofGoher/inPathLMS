@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom"; // Import the Link component from react-router-dom
 
 const CurrentTrends = () => {
   return (
@@ -11,7 +12,7 @@ const CurrentTrends = () => {
         </div>
         <div className="border-t-2 border-primaryColor"></div>
       </section>
-      <section className="bg-white px-8 md:px-16 gap-8  pt-4 pb-12 grid grid-cols-1 sm:grid-cols-3 md:grid-cols-4 ">
+      <section className="bg-white px-8 md:px-16 gap-8 pt-4 pb-12 grid grid-cols-1 sm:grid-cols-3 md:grid-cols-4">
         <ul>
           {/* First Item: ChatGPT Skill */}
           <li className="flex flex-col gap-8">
@@ -19,33 +20,49 @@ const CurrentTrends = () => {
               ChatGPT is a top skill
             </h1>
             <h2 className="flex flex-col gap-2 text-primaryColor font-bold">
-              {"View ChatGPT courses  > "}
+              <Link to="/chatgpt-courses" className="hover:text-dark1">
+                View ChatGPT courses &gt;
+              </Link>
               <span className="text-dark1">3,858,936 learners</span>
             </h2>
-            <button className="p-2 border-2 border-primaryColor text-primaryColor hover:bg-lightColor1 hover:border-none font-bold hover:text-dark1 duration-300">
-              View all trending skills
-            </button>
+            <Link to="/trending-skills">
+              <button className="p-2 w-full border-2 border-primaryColor text-primaryColor hover:bg-lightColor1 hover:border-none font-bold hover:text-dark1 duration-300">
+                {" "}
+                View all trending skills
+              </button>
+            </Link>
           </li>
         </ul>
         {/* Second Item: Development Categories */}
-
-        <ul className="flex flex-col gap-6 sm:pl-12 ">
+        <ul className="flex flex-col gap-6 sm:pl-12">
           <h1 className="font-bold text-2xl text-dark1">Development</h1>
           <li className="flex flex-col text-primaryColor">
-            <span className=" font-bold">{"Python  >"}</span>
-            <span className="text-dark1 font-thin text-sm ">
+            <Link to="/python-courses" className="font-bold hover:text-dark1">
+              Python &gt;
+            </Link>
+            <span className="text-dark1 font-thin text-sm">
               46,557,222 learners
             </span>
           </li>
           <li className="flex flex-col text-primaryColor">
-            <span className=" font-bold">{"Web Development >"}</span>
-            <span className="text-dark1 font-thin text-sm ">
+            <Link
+              to="/web-development-courses"
+              className="font-bold hover:text-dark1"
+            >
+              Web Development &gt;
+            </Link>
+            <span className="text-dark1 font-thin text-sm">
               46,557,222 learners
             </span>
           </li>
           <li className="flex flex-col text-primaryColor">
-            <span className=" font-bold">{"Data Science  >"}</span>
-            <span className="text-dark1 font-thin text-sm ">
+            <Link
+              to="/data-science-courses"
+              className="font-bold hover:text-dark1"
+            >
+              Data Science &gt;
+            </Link>
+            <span className="text-dark1 font-thin text-sm">
               46,557,222 learners
             </span>
           </li>
@@ -53,24 +70,34 @@ const CurrentTrends = () => {
 
         {/* Second Category */}
         <ul className="flex flex-col gap-6">
-          <h1 className="font-bold text-2xl text-dark1">desgin</h1>
+          <h1 className="font-bold text-2xl text-dark1">Design</h1>
           <li className="flex flex-col text-primaryColor">
-            <span className=" font-bold">{"Blender  >"}</span>
-            <span className="text-dark1 font-thin text-sm ">
+            <Link to="/blender-courses" className="font-bold hover:text-dark1">
+              Blender &gt;
+            </Link>
+            <span className="text-dark1 font-thin text-sm">
               46,557,222 learners
             </span>
           </li>
           <li className="flex flex-col text-primaryColor">
-            <span className=" font-bold">{"Graphic desgin  >"}</span>
-            <span className="text-dark1 font-thin text-sm ">
+            <Link
+              to="/graphic-design-courses"
+              className="font-bold hover:text-dark1"
+            >
+              Graphic Design &gt;
+            </Link>
+            <span className="text-dark1 font-thin text-sm">
               46,557,222 learners
             </span>
           </li>
           <li className="flex flex-col text-primaryColor">
-            <span className=" font-bold">
-              {"User Experience (UX) Desgin  >"}
-            </span>
-            <span className="text-dark1 font-thin text-sm ">
+            <Link
+              to="/ux-design-courses"
+              className="font-bold hover:text-dark1"
+            >
+              User Experience (UX) Design &gt;
+            </Link>
+            <span className="text-dark1 font-thin text-sm">
               46,557,222 learners
             </span>
           </li>
@@ -78,24 +105,31 @@ const CurrentTrends = () => {
 
         {/* Third Category */}
         <ul className="flex flex-col gap-6">
-          <h1 className="font-bold text-2xl text-dark1">Buisness Skills</h1>
+          <h1 className="font-bold text-2xl text-dark1">Business Skills</h1>
           <li className="flex flex-col text-primaryColor">
-            <span className=" font-bold">
-              {"PMI Project Management Professional (PMP) >"}
-            </span>
-            <span className="text-dark1 font-thin text-sm ">
+            <Link to="/pmp-courses" className="font-bold hover:text-dark1">
+              PMI Project Management Professional (PMP) &gt;
+            </Link>
+            <span className="text-dark1 font-thin text-sm">
               46,557,222 learners
             </span>
           </li>
           <li className="flex flex-col text-primaryColor">
-            <span className=" font-bold">{"Microsoft Power BI  >"}</span>
-            <span className="text-dark1 font-thin text-sm ">
+            <Link to="/power-bi-courses" className="font-bold hover:text-dark1">
+              Microsoft Power BI &gt;
+            </Link>
+            <span className="text-dark1 font-thin text-sm">
               46,557,222 learners
             </span>
           </li>
           <li className="flex flex-col text-primaryColor">
-            <span className=" font-bold">{"Project Management  >"}</span>
-            <span className="text-dark1 font-thin text-sm ">
+            <Link
+              to="/project-management-courses"
+              className="font-bold hover:text-dark1"
+            >
+              Project Management &gt;
+            </Link>
+            <span className="text-dark1 font-thin text-sm">
               46,557,222 learners
             </span>
           </li>
