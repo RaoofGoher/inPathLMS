@@ -7,7 +7,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { logout } from "../features/auth/authSlice";
 import Cart from "../components/cart/Cart";
 import { clearCart } from '../features/cart/cartSlice';
-import Dropdown from "./explore/DropDOwn";
+import Dropdown from "./explore/ExploreDropDown";
 const Navbar = () => {
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
