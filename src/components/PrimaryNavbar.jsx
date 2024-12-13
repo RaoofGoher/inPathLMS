@@ -7,8 +7,10 @@ import { useSelector, useDispatch } from "react-redux";
 import { logout } from "../features/auth/authSlice";
 import Cart from "../components/cart/Cart";
 import { clearCart } from '../features/cart/cartSlice';
+import Dropdown from "./explore/ExploreDropDown";
 const Navbar = () => {
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
+  const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const { token, role, isAuthenticated, user_id } = useSelector(
     (state) => state.auth
   );
@@ -34,9 +36,11 @@ const Navbar = () => {
           <NavLink to={"/"}>
             <img src={Logo} className="mr-16 w-[4rem]" alt="Logo" />
           </NavLink>
-          <NavLink className="mx-8 text-grayColor">
+          <NavLink className="mx-8 text-grayColor" onMouseEnter={() => setIsDropdownOpen(true)}
+             >
             Explore
           </NavLink>
+          {isDropdownOpen && <Dropdown closeDropdown={() => setIsDropdownOpen(false)} />}
           {/* {/ Search Bar on Larger Screens Only /} */}
           <SearchBar />
         </div>
@@ -69,10 +73,10 @@ const Navbar = () => {
                     role === "admin"
                       ? "/admin-dashboard"
                       : role === "instructor"
-                      ? "/dashboard/teacherdashboard"
-                      : role === "student"
-                      ? "/dashboard/studentdashboard"
-                      : "/login"
+                        ? "/dashboard/teacherdashboard"
+                        : role === "student"
+                          ? "/dashboard/studentdashboard"
+                          : "/login"
                   }
                   className={({ isActive }) =>
                     isActive ? "bg-lightColor1 rounded-md" : ""
@@ -83,7 +87,7 @@ const Navbar = () => {
                     Dashboard
                   </button>
                 </NavLink>
-                <Cart/>
+                <Cart />
                 <NavLink>
                   <button
                     onClick={handleLogout}
@@ -109,7 +113,7 @@ const Navbar = () => {
                     inPATHBusiness
                   </button>
                 </NavLink>
-               
+
                 <NavLink
                   end
                   to={"/studentsignup"}
