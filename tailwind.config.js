@@ -18,7 +18,11 @@ export default {
         'lightColor2': '#F7F9FC',//light gray
         'dark1':'#333333 ', //dark gray
         'light3':'#7F8C8D ', //gray
-        'dark2':'#E74C3C ' //red
+        'dark2':'#E74C3C ', //red
+        //new colors
+        "blueColor":"#00438D",
+        "lightBlue":"#E5F2FF",
+        "grayColor":"#96989A",
         
       },
     },
