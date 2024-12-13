@@ -53,6 +53,8 @@ import Analytics from "./pages/Analytics";
 import BlogDetail from "./pages/resources/BlogDetails";
 import ForTeams from "./pages/ForTeams";
 import EnrolledCourses from './components/EnrolledCourses'
+import ForgotPassword from "./components/forgotPassword/ForgotPassword";
+import ResetPassword from "./components/forgotPassword/ResetPassword";
 
 function App() {
   const router = createBrowserRouter(
@@ -82,6 +84,8 @@ function App() {
           <Route path="/free-resources" element={<FreeResources />}></Route>
           <Route path="/terms" element={<TermsOfService />}></Route>
           <Route path="/privacy" element={<PrivacyPolicy />}></Route>
+          <Route path="/forgotpassword" element={<ForgotPassword />}></Route>
+          <Route path="/resetpassword/:uid/:token" element={<ResetPassword />}></Route>
         </Route>
         <Route path="/dashboard" element={<DashboardLayout />}>
           <Route element={<PrivateRoute allowedRoles={["student"]} />}>
