@@ -9,12 +9,14 @@ const ForgotPassword = () => {
     e.preventDefault();
     
     try {
-      const response = await axios.post('http://your-django-api-url/send-reset-link/', { email });
+      const response = await axios.post('https://api.inpath.us/users/forgot-password/', { email });
+      console.log("hello",response)
       setMessage(response.data.message);
     } catch (error) {
       setMessage('Error sending reset email');
     }
   };
+  
 
   return (
     <form onSubmit={handleSubmit} className='m-8'> 
