@@ -9,7 +9,7 @@ import Loader from '../components/Loader';
 import { useDispatch } from 'react-redux';
 import { setAuth } from '../features/auth/authSlice';
 import ScrollToTop from '../components/ScrollToTop';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 
 const validationSchema = Yup.object({
   email: Yup.string()
@@ -105,11 +105,13 @@ const LoginForm = () => {
                     >
                       Submit
                     </button>
+                    <Link to={"/forgotPassword"}>Reset Password</Link>
                   </Form>
                 )}
               </Formik>
               {isError && <div className="text-red-500 text-sm mt-4">{error?.data?.detail || 'Login failed. Please try again.'}</div>}
             </div>
+           
           </div>
         </div>
       )}
