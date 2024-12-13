@@ -30,9 +30,12 @@ const Navbar = () => {
     <nav className="my-4 shadow-md px-16 py-4 bg-white">
       <div className="container mx-auto flex items-center justify-between">
         {/* {/ Left Side: Logo /} */}
-        <div className="flex items-center flex-1">
+        <div className="flex items-center">
           <NavLink to={"/"}>
             <img src={Logo} className="mr-16 w-[4rem]" alt="Logo" />
+          </NavLink>
+          <NavLink className="mx-8 text-grayColor">
+            Explore
           </NavLink>
           {/* {/ Search Bar on Larger Screens Only /} */}
           <SearchBar />
@@ -102,8 +105,20 @@ const Navbar = () => {
                     isActive ? "bg-lightColor1 rounded-md" : ""
                   }
                 >
-                  <button className="px-4 py-2 hover:text-secondaryColor rounded-md text-white">
-                    Teach On In Path
+                  <button className="px-4 py-2 hover:text-blueColor rounded-md text-grayColor">
+                    inPATHBusiness
+                  </button>
+                </NavLink>
+               
+                <NavLink
+                  end
+                  to={"/studentsignup"}
+                  className={({ isActive }) =>
+                    isActive ? "bg-lightColor1 rounded-md" : ""
+                  }
+                >
+                  <button className="px-4 py-2 hover:border-blueColor hover:text-blueColor rounded-md text-grayColor">
+                    Sign Up
                   </button>
                 </NavLink>
                 <NavLink
@@ -113,19 +128,8 @@ const Navbar = () => {
                     isActive ? "bg-lightColor1 rounded-md" : ""
                   }
                 >
-                  <button className="px-4 py-2 border border-secondaryColor rounded-md hover:text-secondaryColor transition text-secondaryColor">
+                  <button className="px-4 py-2 border bg-blueColor border-blueColor rounded-md hover:text-blueColor hover:bg-white transition text-white">
                     Login
-                  </button>
-                </NavLink>
-                <NavLink
-                  end
-                  to={"/studentsignup"}
-                  className={({ isActive }) =>
-                    isActive ? "bg-lightColor1 rounded-md" : ""
-                  }
-                >
-                  <button className="px-4 py-2 border border-secondaryColor hover:text-secondaryColor rounded-md text-white">
-                    Sign Up
                   </button>
                 </NavLink>
               </div>
