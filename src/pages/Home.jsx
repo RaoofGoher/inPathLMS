@@ -15,6 +15,7 @@ import { addToCart } from "../features/cart/cartSlice";
 import CourseOfferings from "../components/CourseOfferings";
 import PartnersLog from "../components/PartnersLog";
 import HomeHero from "../components/HomeHero";
+import SkillSection from "../components/skillSection/SkillSection"
 const Home = () => {
   // const dispatch = useDispatch();
   // const handleAddToCart = () => {
@@ -32,6 +33,7 @@ const Home = () => {
       <HomeHero />
       <HowItWorks />
       <CourseOfferings />
+      <SkillSection/>
       <PartnersLog />
       <CurrentTrends />
       <WhyTrustUs />
