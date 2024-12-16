@@ -1,56 +1,74 @@
 import React, { useState } from "react";
-import { FaChevronRight, FaTimes  } from "react-icons/fa"; // Importing the chevron-right icon
-
-const dummyCategories = [
-  {
-    name: "Technology",
-    subcategories: ["Web Development", "AI & Machine Learning", "Mobile Apps"],
-  },
-  {
-    name: "Design",
-    subcategories: ["Graphic Design", "UI/UX", "Animation"],
-  },
-  {
-    name: "Business",
-    subcategories: [],
-  },
-];
+import { FaChevronRight, FaTimes } from "react-icons/fa";
+import { useGetCoursesQuery } from "../../features/explore/getall";
 
 const Dropdown = ({ closeDropdown }) => {
   const [activeCategory, setActiveCategory] = useState(null);
+  const [activeSubcategory, setActiveSubcategory] = useState(null); // State to track the active subcategory
+
+  // Fetch data using RTK Query
+  const { data: categories, isLoading, isError } = useGetCoursesQuery();
+
+  if (isLoading) return <div>Loading...</div>;
+  if (isError) return <div>Failed to load categories.</div>;
 
   return (
+    <div onMouseLeave={closeDropdown} style={{ zIndex: 10 }} className="absolute bg-white shadow-lg rounded-md mt-[400px] ml-[100px] w-[70vw] max-w-[400px] p-4 h-[50vh]" >
     <div
-      className="absolute bg-white shadow-lg rounded-md mt-[200px] ml-[100px] w-[70vw] max-w-[200px] p-4"
-      style={{ zIndex: 10 }}
-      onMouseLeave={closeDropdown} // Close the dropdown when mouse leaves
+      
+      
+       // Close the dropdown when mouse leaves
     >
-
       <ul className="flex flex-col space-y-2">
-        {dummyCategories.map((category, index) => (
+        {categories.map((category, index) => (
           <li
-            key={index}
+            key={category.categoryId}
             className="relative group"
             onMouseEnter={() => setActiveCategory(index)}
-            onMouseLeave={() => setActiveCategory(null)}
+            onMouseLeave={() => {
+              setActiveCategory(null);
+              setActiveSubcategory(null); // Reset subcategory on category leave
+            }}
           >
-            <span className="block px-4 py-2 hover:bg-gray-100 rounded-md cursor-pointer flex items-center">
+            <span className="block px-4 py-2 hover:bg-gray-100 rounded-md cursor-pointer flex items-center ">
               {category.name}
-              {/* Conditionally render the chevron icon for categories with subcategories */}
               {category.subcategories.length > 0 && (
                 <FaChevronRight className="ml-2" />
               )}
             </span>
             {activeCategory === index && category.subcategories.length > 0 && (
               <ul
-                className="absolute top-0 left-full ml-2 bg-white shadow-lg rounded-md p-2 w-48"
+                className="absolute w-[200px] top-0 left-[300px] ml-2 bg-white shadow-lg rounded-md p-2 z-50"
+                
               >
                 {category.subcategories.map((subcategory, subIndex) => (
                   <li
-                    key={subIndex}
-                    className="px-4 py-2 hover:bg-gray-100 rounded-md cursor-pointer"
+                    key={subcategory.subcategoryId}
+                    className="relative group"
+                    onMouseEnter={() => setActiveSubcategory(subIndex)}
+                    onMouseLeave={() => setActiveSubcategory(null)}
                   >
-                    {subcategory}
+                    <span className="block px-4 py-2 hover:bg-gray-100 rounded-md cursor-pointer flex items-center">
+                      {subcategory.name}
+                      {subcategory.courses?.length > 0 && (
+                        <FaChevronRight className="ml-2" />
+                      )}
+                    </span>
+                    {activeSubcategory === subIndex &&
+                      subcategory.courses?.length > 0 && (
+                        <ul
+                          className="absolute top-0 left-[100px] ml-2 bg-white shadow-lg rounded-md p-2 w-48"
+                        >
+                          {subcategory.courses.map((course) => (
+                            <li
+                              key={course.courseId}
+                              className="px-4 py-2 hover:bg-gray-100 rounded-md cursor-pointer"
+                            >
+                              {course.title}
+                            </li>
+                          ))}
+                        </ul>
+                      )}
                   </li>
                 ))}
               </ul>
@@ -64,6 +82,7 @@ const Dropdown = ({ closeDropdown }) => {
       >
         <FaTimes />
       </button>
+    </div>
     </div>
   );
 };
