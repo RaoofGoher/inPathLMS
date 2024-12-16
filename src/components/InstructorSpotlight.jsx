@@ -52,7 +52,7 @@ const InstructorSpotlight = () => {
   };
 
   return (
-    <section className="sm:py-20 py-6 px-6  sm:px-16 bg-blueColor">
+    <section className="hidden sm:block sm:py-20 py-6 px-6  sm:px-16 bg-blueColor">
       <div className="text-center">
         <h2 className="text-5xl font-extrabold mb-2 text-white underline">
           Meet Our Instructors

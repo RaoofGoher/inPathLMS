@@ -45,8 +45,8 @@ const CardComponent = () => {
   // };
 
   return (
-    <div className="flex justify-center py-12 bg-gray-50">
-      <div className="w-full max-w-7xl px-4 sm:px-6 lg:px-8">
+    <div className="flex justify-center py-12 bg-white">
+      <div className="w-full max-w-7xl px-4 sm:px-6 lg:px-8 bg-white">
         {/* Navbar */}
         {/* <nav className="bg-gradient-to-r from-[#4A90E2] to-[#50E3C2] shadow-lg rounded-lg hover:shadow-xl transition-shadow duration-300">
           <div className="flex space-x-4 overflow-x-auto py-4 px-6">
@@ -82,14 +82,14 @@ const CardComponent = () => {
         <div className="relative mt-8">
           <button
             onClick={scrollLeft}
-            className="absolute z-10 -left-4 top-1/2 transform -translate-y-1/2 bg-[#4A90E2] text-white p-4 rounded-full shadow-lg hover:bg-[#50E3C2] hover:scale-110 transition-all duration-300"
+            className="absolute z-10 -left-4 top-1/2 transform -translate-y-1/2 bg-blueColor text-white p-4 rounded-full shadow-lg hover:bg-blueColor/90 hover:scale-110 transition-all duration-300"
           >
             <FaArrowLeft className="w-5 h-5" />
           </button>
 
           <div
             ref={sliderRef}
-            className="flex space-x-8 overflow-x-auto py-4 scrollbar-hide"
+            className="flex space-x-8 overflow-x-auto py-4 scrollbar-hide "
           >
             {filteredCards.map((card) => (
               <div
@@ -105,13 +105,13 @@ const CardComponent = () => {
                   <div className="absolute top-0 left-0 right-0 bottom-0 bg-gradient-to-b from-transparent to-black opacity-20"></div>
                 </div>
                 <div className="p-6">
-                  <h3 className="text-xl font-semibold text-gray-800 hover:text-[#F5A623] transition duration-300">
+                  <h3 className="text-xl font-semibold text-blueColor hover:text-blueColor/90 transition duration-300">
                     {card.title}
                   </h3>
-                  <div className="text-gray-600 mt-2">
+                  <div className="text-light3 mt-2">
                     <span className="block">
                       Instructor:{" "}
-                      <span className="font-semibold text-gray-800">
+                      <span className="font-semibold text-dark1">
                         {card.instructor}
                       </span>
                     </span>
@@ -127,7 +127,7 @@ const CardComponent = () => {
                   </p>
                   <button
                     onClick={handleBuyNowClick}
-                    className="w-full mt-4 bg-[#F5A623] text-white font-semibold py-2 rounded-xl shadow-md hover:bg-[#4A90E2] transition duration-300"
+                    className="w-full mt-4 bg-blueColor text-white font-semibold py-2 rounded-xl shadow-md hover:bg-blueColor/90 transition duration-300"
                   >
                     Explore
                   </button>
@@ -138,7 +138,7 @@ const CardComponent = () => {
 
           <button
             onClick={scrollRight}
-            className="absolute -right-4 top-1/2 transform -translate-y-1/2 bg-[#4A90E2] text-white p-4 rounded-full shadow-lg hover:bg-[#50E3C2] hover:scale-110 transition-all duration-300"
+            className="absolute -right-4 top-1/2 transform -translate-y-1/2 bg-blueColor text-white p-4 rounded-full shadow-lg hover:bg-blueColor/90 hover:scale-110 transition-all duration-300"
           >
             <FaArrowRight className="w-5 h-5" />
           </button>

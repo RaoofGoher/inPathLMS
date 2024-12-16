@@ -26,10 +26,10 @@ const testimonials = [
 
 const StudentsTestimonials = () => {
   return (
-    <section className="bg-lightColor2 py-12">
+    <section className="bg-white py-12">
       <div className="container mx-auto px-6 text-center">
-        <h2 className="text-3xl font-semibold" style={{ color: "#4A90E2" }}>What Our Students Say</h2>
-        <p className="text-xl mb-12 mt-4 text-light3">
+        <h2 className="text-3xl font-semibold text-blueColor">What Our Students Say</h2>
+        <p className="text-xl mb-12 mt-4 text-grayColor">
           See how our platform has helped students achieve their goals.
         </p>
 
@@ -43,13 +43,13 @@ const StudentsTestimonials = () => {
               <img
                 src={testimonial.image}
                 alt={testimonial.name}
-                className="w-24 h-24 rounded-full mx-auto mb-6 border-4 border-primaryColor"
+                className="w-24 h-24 rounded-full mx-auto mb-6 border-4 border-blueColor"
               />
-              <p className="text-lg italic mb-4 text-light3" >
+              <p className="text-lg italic mb-4 text-grayColor" >
                 "{testimonial.feedback}"
               </p>
-              <p className="text-xl font-semibold text-primaryColor">{testimonial.name}</p>
-              <p className="text-sm text-dark2">{testimonial.course}</p>
+              <p className="text-xl font-semibold text-blueColor">{testimonial.name}</p>
+              <p className="text-sm text-blueColor/70">{testimonial.course}</p>
             </div>
           ))}
         </div>
