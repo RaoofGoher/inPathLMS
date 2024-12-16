@@ -1,66 +1,43 @@
-import React from 'react';
+import React from "react";
+import image1 from "../assets/Courses-Available.png";
+import image2 from "../assets/Students-Enrolled.png";
+import image4 from "../assets/Courses-Completed.png";
+import image3 from "../assets/instructor.png";
+
+
+const statisticsData = [
+  { number: "350+", label: "Courses Available", image: image1 },
+  { number: "10,000+", label: "Students Enrolled", image: image2 },
+  { number: "500+", label: "Certified Instructors", image: image3 },
+  { number: "7,500+", label: "Courses Completed", image: image4 },
+];
 
 const StatisticsSection = () => {
   return (
-    <section className="py-12" > {/* lightColor2 */}
+    <section className="py-12 bg-white ">
       <div className="container mx-auto px-6 text-center">
-        <h2 className="text-3xl font-semibold mb-6 text-secondaryColor">Our Achievements</h2> {/* primaryColor */}
-        <p className="text-xl mb-12" style={{ color: "#7F8C8D" }}>
+        <h2 className="text-4xl font-semibold font-montserrat  mb-4 text-blueColor underline">
+          Our Achievements
+        </h2>
+        <p className="text-xl mb-12">
           Join thousands of learners and instructors in our growing community.
         </p>
-
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10">
-          {/* Number of Courses */}
-          <div
-            className="p-8 rounded-lg shadow-lg"
-            style={{ backgroundColor: "#FFFFFF", borderColor: "#50E3C2", borderWidth: "1px" }} // secondaryColor
-          >
-            <div className="text-4xl font-bold mb-2 text-primaryColor"> {/* primaryColor */}
-              350+
+        {/* Card Section */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-y-12 gap-6 justify-around items-center">
+          {statisticsData.map((stat, index) => (
+            <div
+              key={index}
+              className="flex flex-row justify-center items-center"
+            >
+              <div className="border-2 p-2 sm:p-0 border-blueColor border-e-0 rounded-s-xl w-24 h-24 mt-3 flex justify-center items-center mb-4">
+                <img src={stat.image} alt={stat.label} className="w-16 h-16" />
+              </div>
+              <div className="bg-blueColor rounded-xl text-white font-bold text-2xl p-8 text-center">
+                <h1 className="font-montserrat">{stat.number}</h1>
+                <h2 className="font-montserrat">{stat.label}</h2>
+              </div>
             </div>
-            <p className="text-xl" style={{ color: "#333333" }}> {/* dark1 */}
-              Courses Available
-            </p>
-          </div>
-
-          {/* Number of Students */}
-          <div
-            className="p-8 rounded-lg shadow-lg"
-            style={{ backgroundColor: "#FFFFFF", borderColor: "#50E3C2", borderWidth: "1px" }} // secondaryColor
-          >
-            <div className="text-4xl font-bold mb-2 text-dark2"> {/* dark2 */}
-              10,000+
-            </div>
-            <p className="text-xl" style={{ color: "#333333" }}> {/* dark1 */}
-              Students Enrolled
-            </p>
-          </div>
-
-          {/* Number of Instructors */}
-          <div
-            className="p-8 rounded-lg shadow-lg"
-            style={{ backgroundColor: "#FFFFFF", borderColor: "#50E3C2", borderWidth: "1px" }} // secondaryColor
-          >
-            <div className="text-4xl font-bold mb-2 text-secondaryColor" > {/* secondaryColor */}
-              500+
-            </div>
-            <p className="text-xl" style={{ color: "#333333" }}> {/* dark1 */}
-              Certified Instructors
-            </p>
-          </div>
-
-          {/* Completed Courses */}
-          <div
-            className="p-8 rounded-lg shadow-lg"
-            style={{ backgroundColor: "#FFFFFF", borderColor: "#50E3C2", borderWidth: "1px" }} // secondaryColor
-          >
-            <div className="text-4xl font-bold mb-2 text-lightColor1" > {/* lightColor1 */}
-              7,500+
-            </div>
-            <p className="text-xl" style={{ color: "#333333" }}> {/* dark1 */}
-              Courses Completed
-            </p>
-          </div>
+          ))}
         </div>
       </div>
     </section>

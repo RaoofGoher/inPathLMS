@@ -148,14 +148,14 @@ const Footer = () => {
   return (
     <>
       {/* Top companies choose section */}
-      <section className="bg-gray-800/90 text-white px-16 p-8 flex flex-col md:flex-row gap-8 justify-between items-center  border-b-2 border-primaryColor">
+      <section className="bg-blueColor/90 text-white px-16 p-8 flex flex-col md:flex-row gap-8 justify-between items-center  border-b-2 border-grayColor">
         <div>
-          <h1 className="text-xl font-semibold text-center md:text-left">
+          <h1 className="text-xl text-center md:text-left">
             Top companies choose{" "}
-            <span className="text-primaryColor hover:underline">
-              <a href="#">inPathLMS Business</a>
+            <span className=" font-semibold hover:underline">
+              <a href="#">inPathLMS </a>
             </span>{" "}
-            to build in-demand career skills.
+            Business to build in-demand career skills.
           </h1>
         </div>
         <div>
@@ -180,7 +180,7 @@ const Footer = () => {
       </section>
 
       {/* Large screen certifications layout */}
-      <section className="hidden md:block bg-gray-800/90 text-white px-16 p-8">
+      <section className="hidden md:block bg-blueColor/90 text-white px-16 p-8">
         <h2 className="text-2xl font-semibold text-start mb-6">
           Explore top skills and certifications
         </h2>
@@ -204,7 +204,7 @@ const Footer = () => {
       </section>
 
       {/* Certifications mobile screen layout */}
-      <section className="md:hidden bg-gray-800/90 text-white px-12 p-8">
+      <section className="md:hidden bg-blueColor/90 text-white px-12 p-8">
         <h2 className="text-2xl font-semibold text-start mb-6">
           Explore top skills and certifications
         </h2>
@@ -214,7 +214,7 @@ const Footer = () => {
             <div key={index}>
               <button
                 onClick={() => toggleCertification(index)}
-                className="w-full flex justify-between items-center border-b-2 border-primaryColor  p-3 "
+                className="w-full flex justify-between items-center border-b-2 border-grayColor  p-3 "
               >
                 <span className="font-semibold">{section.title}</span>
                 <span>{expandedCertifications === index ? "▲" : "▼"}</span>
@@ -235,7 +235,7 @@ const Footer = () => {
         </div>
       </section>
 
-      <footer className="bg-gray-800 px-16 py-8 text-white">
+      <footer className="bg-blueColor px-16 py-8 text-white">
         <div className="container mx-auto">
           {/* Large screen layout */}
           <div className="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
@@ -256,7 +256,7 @@ const Footer = () => {
           </div>
         </div>
       </footer>
-      <div className="flex-col sm:flex-row bg-gray-800 p-4 px-16 justify-between flex gap-4 border-t-2 border-primaryColor items-center text-lightColor1">
+      <div className="flex-col sm:flex-row bg-blueColor p-4 px-16 justify-between flex gap-4 border-t-2 border-grayColor items-center text-lightColor1">
         <div className="flex gap-4 items-center">
           <img src={image} alt="Logo" width={50} />
           <p className="text-white">© 2024 In Path LMS</p>

@@ -44,7 +44,7 @@ const GoogleTranslator = () => {
       {/* Button to show the popup */}
       <button
         onClick={togglePopup}
-        className="flex items-center bg-blue-500 text-white p-2 rounded-lg shadow-md hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-400"
+        className="flex items-center bg-grayColor text-white p-2 rounded-lg shadow-md hover:bg-grayColor/90 focus:outline-none focus:ring-2 focus:ring-blue-400"
       >
         <FaLanguage className="mr-2" /> {/* Translate Icon */}
         Translate
