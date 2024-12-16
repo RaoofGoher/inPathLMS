@@ -11,7 +11,7 @@
 .slider-container {
   padding: 2rem;
   font-family: Arial, sans-serif;
-  background-color: #f9f9f9;
+  background-color: #ffffff;
   border-radius: 10px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
@@ -25,7 +25,8 @@
   font-size: 1.5rem;
   font-weight: bold;
   margin-bottom: 1rem;
-  color: #333;
+  color: #00438D;
+  background-color: #ffffff;
 }
 
 /* Slider Wrapper */
@@ -65,7 +66,7 @@
 }
 
 .active-item {
-  border: 2px solid #007bff;
+  border: none;
 }
 
 /* Buttons */
@@ -74,8 +75,8 @@
   top: 50%;
   transform: translateY(-50%);
   z-index: 5;
-  background-color: #007bff;
-  color: white;
+  background-color: #fff;
+  color: black;
   border: none;
   padding: 0.5rem 1rem;
   cursor: pointer;

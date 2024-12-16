@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useRef } from "react";
 import { useGetCoursesQuery } from "../../features/explore/getall"; // Adjust import path
+import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
 
 const SliderComponent = () => {
   const { data, isLoading, isError } = useGetCoursesQuery();
@@ -31,14 +32,16 @@ const SliderComponent = () => {
     <div className="slider-container">
       {/* Categories Section */}
       <div className="slider-section">
-        <h2 className="section-title">Categories</h2>
+        <h2 className="section-title">All the skills you need in one place</h2>
+        <p>From critical skills to technical topics, InPATH supports your professional development.</p>
         <div className="slider-wrapper">
           <button
             className="slider-button left-button"
             onClick={() => handleScroll(categoryRef, "left")}
           >
-            ◀
+            <FaChevronLeft/>
           </button>
+          
           <div className="slider-content" ref={categoryRef}>
             {data.map((category) => (
               <div
@@ -61,21 +64,20 @@ const SliderComponent = () => {
             className="slider-button right-button"
             onClick={() => handleScroll(categoryRef, "right")}
           >
-            ▶
+            <FaChevronRight/>
           </button>
         </div>
       </div>
 
       {/* Subcategories Section */}
       {selectedCategory && (
-        <div className="slider-section">
-          <h2 className="section-title">Subcategories</h2>
+        <div className="slider-section" style={{background:"#E5F2FF"}}>
           <div className="slider-wrapper">
             <button
               className="slider-button left-button"
               onClick={() => handleScroll(subcategoryRef, "left")}
             >
-              ◀
+              <FaChevronLeft/>
             </button>
             <div className="slider-content" ref={subcategoryRef}>
               {selectedCategory.subcategories.map((subcategory) => (
@@ -97,7 +99,7 @@ const SliderComponent = () => {
               className="slider-button right-button"
               onClick={() => handleScroll(subcategoryRef, "right")}
             >
-              ▶
+              <FaChevronRight/>
             </button>
           </div>
         </div>
@@ -112,7 +114,7 @@ const SliderComponent = () => {
               className="slider-button left-button"
               onClick={() => handleScroll(courseRef, "left")}
             >
-              ◀
+              <FaChevronLeft/>
             </button>
             <div className="slider-content" ref={courseRef}>
               {selectedSubcategory.courses.map((course) => (
@@ -132,7 +134,7 @@ const SliderComponent = () => {
               className="slider-button right-button"
               onClick={() => handleScroll(courseRef, "right")}
             >
-              ▶
+              <FaChevronRight/>
             </button>
           </div>
         </div>
