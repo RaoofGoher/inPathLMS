@@ -38,7 +38,7 @@ const Dropdown = ({ closeDropdown }) => {
             </span>
             {activeCategory === index && category.subcategories.length > 0 && (
               <ul
-                className="absolute top-0 -left-1 ml-2 bg-white shadow-lg rounded-md p-2 z-50"
+                className="absolute w-[200px] top-0 left-[300px] ml-2 bg-white shadow-lg rounded-md p-2 z-50"
                 
               >
                 {category.subcategories.map((subcategory, subIndex) => (
@@ -57,7 +57,7 @@ const Dropdown = ({ closeDropdown }) => {
                     {activeSubcategory === subIndex &&
                       subcategory.courses?.length > 0 && (
                         <ul
-                          className="absolute top-0 left-full ml-2 bg-white shadow-lg rounded-md p-2 w-48"
+                          className="absolute top-0 left-[100px] ml-2 bg-white shadow-lg rounded-md p-2 w-48"
                         >
                           {subcategory.courses.map((course) => (
                             <li
