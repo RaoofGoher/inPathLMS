@@ -4,7 +4,7 @@ const VideoIntroduction = () => {
   const [isHovered, setIsHovered] = useState(false);
 
   return (
-    <section className="py-20 bg-lightColor2" >
+    <section className="py-20 bg-white" >
       {/* lightColor2 */}
       <div className="container mx-auto px-6 text-center lg:text-left flex flex-col lg:flex-row items-center">
         {/* Left Column - Video Embed Section */}
@@ -16,7 +16,7 @@ const VideoIntroduction = () => {
           <div
             className="relative rounded-lg shadow-lg overflow-hidden w-full h-64 sm:h-96"
             style={{
-              border: "3px solid #50E3C2", // secondaryColor
+              border: "3px solid #00438D", // secondaryColor
             }}
           >
             <iframe
@@ -34,7 +34,7 @@ const VideoIntroduction = () => {
 
         {/* Right Column - Content Section */}
         <div className="lg:w-1/2 text-center lg:text-left ml-9">
-          <h2 className="text-5xl font-extrabold mb-6 text-secondaryColor">
+          <h2 className="text-5xl font-extrabold mb-6 text-blueColor">
           
             Explore Our Platform
           </h2>
@@ -50,7 +50,7 @@ const VideoIntroduction = () => {
           </ul>
           <div className="mt-10">
             <button
-              className="px-8 py-3 bg-secondaryColor hover:bg-lightColor1 rounded-full text-white font-semibold text-lg shadow-md hover:opacity-90 transition-opacity"
+              className="px-8 py-3 bg-blueColor hover:bg-blueColor/90 rounded-full text-white font-semibold text-lg shadow-md hover:opacity-90 transition-opacity"
             >
               Start Your Journey Now
             </button>

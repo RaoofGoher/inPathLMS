@@ -24,7 +24,7 @@ const AboutUsHeroSection = () => {
   }, []);
 
   return (
-    <div className="relative py-32 bg-gradient-to-r from-primaryColor to-secondaryColor h-screen flex items-center justify-center overflow-hidden">
+    <div className="relative py-32 bg-white h-screen flex items-center justify-center overflow-hidden">
       {/* Parallax Effect for the Background */}
       <div className="absolute inset-0 bg-cover bg-center transform scale-110" 
            style={{ transition: 'transform 1.5s ease-out' }}></div>
@@ -32,7 +32,7 @@ const AboutUsHeroSection = () => {
       <div className="container mx-auto text-center px-6 relative z-10">
         {/* Initial Statement with Zoom-In and Fade */}
         <h1
-          className={`text-5xl lg:text-6xl font-extrabold text-white mb-6 transition-all duration-1500 ease-out transform ${
+          className={`text-5xl lg:text-6xl font-extrabold  text-blueColor mb-6 transition-all duration-1500 ease-out transform ${
             animate ? 'opacity-0 translate-y-12 scale-110' : 'opacity-100 translate-y-0'
           }`}
         >
@@ -40,7 +40,7 @@ const AboutUsHeroSection = () => {
         </h1>
 
         <p
-          className={`text-lg lg:text-2xl text-white max-w-2xl mx-auto mb-8 transition-all duration-1500 ease-out transform ${
+          className={`text-lg lg:text-2xl text-grayColor  max-w-2xl mx-auto mb-8 transition-all duration-1500 ease-out transform ${
             animate ? 'opacity-0 translate-y-6' : 'opacity-100 translate-y-0'
           }`}
         >
@@ -50,10 +50,10 @@ const AboutUsHeroSection = () => {
         {/* New Content with Fade and Slide-In Effect */}
         {showNewContent && (
           <div className="transition-all duration-1500 ease-out transform opacity-100 translate-y-0 scale-105">
-            <h2 className="text-3xl font-bold text-white mb-6 animate__animated animate__fadeInUp animate__delay-1s">
+            <h2 className="text-3xl font-bold  text-blueColor mb-6 animate__animated animate__fadeInUp animate__delay-1s">
               Innovating the Future of Education
             </h2>
-            <p className="text-lg lg:text-xl text-white max-w-2xl mx-auto mb-8 animate__animated animate__fadeInUp animate__delay-1.5s">
+            <p className="text-lg lg:text-xl text-grayColor max-w-2xl mx-auto mb-8 animate__animated animate__fadeInUp animate__delay-1.5s">
               With a focus on personalized learning, we empower educators and students to reach their fullest potential using innovative tools.
             </p>
           </div>
@@ -62,7 +62,7 @@ const AboutUsHeroSection = () => {
         <div className="flex justify-center mt-8">
           <Link
             to="/"
-            className="bg-lightColor1 text-primaryColor py-4 px-10 rounded-full text-xl font-semibold shadow-lg transition-all duration-500 ease-in-out hover:scale-110 hover:shadow-2xl hover:bg-primaryColor hover:text-lightColor1 transform focus:outline-none focus:ring-4 focus:ring-turquoise focus:ring-opacity-50"
+            className="bg-blueColor text-white py-4 px-10 rounded-full text-xl font-semibold shadow-lg  hover:bg-blueColor/90 "
           >
             Explore Us
           </Link>

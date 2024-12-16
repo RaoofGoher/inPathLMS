@@ -34,11 +34,11 @@ const FeatureHighlights = () => {
   ];
 
   return (
-    <section className="py-20 bg-lightColor2"> {/* lightColor2 */}
+    <section className="py-20 bg-white"> {/* lightColor2 */}
       <div className="container mx-auto px-6 text-center">
         {/* Section Header */}
         <h2
-          className="text-5xl font-extrabold mb-6 text-primaryColor"
+          className="text-5xl font-extrabold mb-6 text-blueColor"
       
         >
           Key Features of Our Platform
@@ -59,31 +59,31 @@ const FeatureHighlights = () => {
             >
               {/* Card container */}
               <div
-                className="relative border-primaryColor border-2 hover:border-none bg-white p-8 rounded-3xl shadow-xl hover:shadow-2xl transition-transform transform-style-preserve-3d"
+                className="relative border-blueColor border-2 hover:border-none bg-white p-8 rounded-3xl shadow-xl hover:shadow-2xl transition-transform transform-style-preserve-3d"
                 style={{
                   transformStyle: "preserve-3d",
                 }}
               >
                 {/* Icon Section */}
                 <div
-                  className="flex justify-center items-center mb-6 text-lightColor1" // lightColor1
+                  className="flex justify-center items-center mb-6 text-blueColor " 
                 >
                   {feature.icon}
                 </div>
 
                 {/* Title Section */}
                 <h3
-                  className="text-2xl font-bold mb-4 text-primaryColor" // primaryColor
+                  className="text-2xl font-bold mb-4 text-blueColor" 
                 >
                   {feature.title}
                 </h3>
 
                 {/* Description */}
-                <p className="text-md text-gray-500 mb-6">{feature.description}</p>
+                <p className="text-md text-light3 mb-6">{feature.description}</p>
 
                 {/* Flip Effect (Back of the Card) */}
                 <div
-                  className="absolute inset-0 bg-primaryColor p-8 rounded-3xl flex flex-col items-center justify-center text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+                  className="absolute inset-0 bg-blueColor p-8 rounded-3xl flex flex-col items-center justify-center text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300"
                   
                 >
                   <p className="text-md text-white">

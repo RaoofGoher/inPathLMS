@@ -42,9 +42,9 @@ const PricingPlans = () => {
   ];
 
   return (
-    <section className="py-20 bg-lightColor2 overflow-hidden">
+    <section className="py-20 bg-white overflow-hidden">
       <div className="container mx-auto px-6">
-        <h2 className="text-4xl text-center font-bold mb-6 text-primaryColor">
+        <h2 className="text-4xl text-center font-bold mb-6 text-blueColor">
           Choose Your Plan
         </h2>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10">
@@ -52,16 +52,16 @@ const PricingPlans = () => {
             <div
               key={index}
               className={`p-8 bg-white rounded-lg shadow-xl transition-transform transform hover:scale-105 hover:shadow-2xl ${
-                plan.isPopular ? "bg-primaryColor text-white" : "bg-white"
+                plan.isPopular ? "bg-blueColor " : "bg-white"
               }`}
               style={{
-                border: plan.isPopular ? "4px solid #50E3C2" : "2px solid #E5E7EB", // Highlight popular plan
+                border: plan.isPopular ? "4px solid #00438D" : "2px solid #E5E7EB", // Highlight popular plan
               }}
             >
               {/* Plan Name */}
               <h3 className="text-2xl font-semibold mb-4 flex items-center justify-center">
                 {plan.isPopular && (
-                  <FaFire className="mr-2 text-xl font-bold text-yellow-500" />
+                  <FaFire className="mr-2 text-xl font-bold text-blueColor/90" />
                 )}
                 {plan.name}
               </h3>
@@ -69,7 +69,7 @@ const PricingPlans = () => {
               {/* Monthly Price */}
               <p
                 className={`text-lg font-semibold text-center mb-4 ${
-                  plan.isPopular ? "text-white" : "text-primaryColor"
+                  plan.isPopular ? "text-white" : "text-blueColor"
                 }`}
               >
                 {plan.price}
@@ -77,7 +77,7 @@ const PricingPlans = () => {
 
               {/* Yearly Price (only for Pro Plan, if applicable) */}
               {plan.yearlyPrice && (
-                <p className="text-sm text-center mb-4 text-gray-600 line-through">
+                <p className="text-sm text-center mb-4 text-light3 line-through">
                   {plan.yearlyPrice}
                 </p>
               )}
@@ -87,16 +87,16 @@ const PricingPlans = () => {
                 {plan.features.map((feature, i) => (
                   <li
                     key={i}
-                    className="flex items-center justify-center mb-2 text-gray-500 text-sm"
+                    className="flex items-center justify-center mb-2 text-dark1 text-sm"
                   >
-                    <FaCheckCircle className="mr-2 text-green-500" />
+                    <FaCheckCircle className="mr-2 text-blueColor" />
                     {feature}
                   </li>
                 ))}
               </ul>
 
               {/* CTA Button */}
-              <button className="bg-primaryColor text-white py-2 px-6 rounded-full w-full hover:bg-turquoise transition-colors duration-300 transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-primaryColor focus:ring-opacity-50">
+              <button className="bg-blueColor text-white py-2 px-6 rounded-full w-full hover:bg-blueColor/90 transition-colors duration-300 transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-primaryColor focus:ring-opacity-50">
                 Get Started
               </button>
             </div>

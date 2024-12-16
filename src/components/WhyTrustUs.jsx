@@ -3,7 +3,8 @@ import React from "react";
 const WhyTrustUs = () => {
   return (
     <>
-      <div className="px-6 py-8 sm:px-16 sm:py-16 bg-white grid grid-cols-1 gap-8  lg:grid-cols-2 xl:grid-cols-2 justify-center items-center">
+    <section className="hidden sm:block">
+      <div className=" px-6 py-8 sm:px-16 sm:py-16 bg-white grid grid-cols-1 gap-8  lg:grid-cols-2 xl:grid-cols-2 justify-center items-center">
         {/* Left Content */}
         <div className="flex items-center justify-center">
           <div className=" text-center sm:text-start ">
@@ -65,6 +66,7 @@ const WhyTrustUs = () => {
           </ul>
         </div>
       </div>
+      </section>
     </>
   );
 };

@@ -17,12 +17,12 @@ const Features = () => {
         description="Be part of a thriving community transforming education."
         textColorDescription="text-light3"
         buttonText="Sign Up Now"
-        buttonColor="bg-secondaryColor text-white"
-        buttonHoverColor="bg-lightColor1"
-        textColor="text-secondaryColor"
+        buttonColor="bg-blueColor text-white"
+        buttonHoverColor="bg-blueColor/90"
+        textColor="text-blueColor"
         imageSrc={image}
-        bgColor="bg-lightColor2"
-        imageShadowColor="secondaryColor"
+        bgColor="bg-white"
+        imageShadowColor="blueColor"
       />
       ;
     </div>

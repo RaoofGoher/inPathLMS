@@ -22,7 +22,7 @@ const PartnersLog = () => {
   ];
 
   return (
-    <section className="bg-white py-10 px-16">
+    <section className="hidden  sm:block bg-white py-10 px-16">
       <h1 className="text-center text-grayColor mb-6">
         Trusted by over 16,000 companies and millions of learners around the world
       </h1>

@@ -17,14 +17,14 @@ const Pricing = () => {
       <CallToAction
         title="Get Started Today and Transform Your Learning Experience!"
         description="Sign up now to start your 14-day free trial and explore all the premium features!"
-        textColor="text-primaryColor"
-        textColorDescription="text-light3"
+        textColor="text-blueColor"
+        textColorDescription="text-grayColor"
         buttonText="Sign Up Now"
-        buttonColor="bg-primaryColor text-white"
-        buttonHoverColor="bg-lightColor1"
+        buttonColor="bg-blueColor text-white"
+        buttonHoverColor="bg-blueColor/90"
         imageSrc={image}
-        bgColor="bg-lightColor2"
-        imageShadowColor="primaryColor"
+        bgColor="bg-white"
+        imageShadowColor="blueColor"
       />
     </div>
   );

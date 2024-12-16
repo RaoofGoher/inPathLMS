@@ -22,9 +22,9 @@ const OverView = () => {
     <div>
       <ScrollToTop/>
       {/* Suspense component to handle loading state */}
-      <Suspense fallback={<div>Loading...</div>}>
+      {/* <Suspense fallback={<div>Loading...</div>}>
         <CardComponent />
-      </Suspense>
+      </Suspense> */}
       <Suspense fallback={<div>Loading...</div>}>
         <StatisticsSection />
       </Suspense>
