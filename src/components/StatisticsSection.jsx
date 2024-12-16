@@ -1,8 +1,9 @@
 import React from "react";
 import image1 from "../assets/Courses-Available.png";
 import image2 from "../assets/Students-Enrolled.png";
-import image3 from "../assets/Certified-instructors.png";
 import image4 from "../assets/Courses-Completed.png";
+import image3 from "../assets/instructor.png";
+
 
 const statisticsData = [
   { number: "350+", label: "Courses Available", image: image1 },
