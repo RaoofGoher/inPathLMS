@@ -15,6 +15,7 @@ import { courseApiThroughSubCategory } from './features/searchCourse/courseSlice
 import cartReducer from './features/cart/cartSlice';
 import { enrolledCourseApi } from './features/enrollments/enrolledCourseAPi';
 import { enrollApi } from './features/enrollments/enrollApi';
+import {getAllCourses} from "./features/explore/getall";
 // Define the persist configuration for auth state
 const persistAuthConfig = {
   key: 'auth',
@@ -47,6 +48,7 @@ export const store = configureStore({
     [courseApiThroughSubCategory.reducerPath]: courseApiThroughSubCategory.reducer,
     [enrollApi.reducerPath]: enrollApi.reducer,
     [enrolledCourseApi.reducerPath]: enrolledCourseApi.reducer,
+    [getAllCourses.reducerPath]: getAllCourses.reducer,
   },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware()
@@ -60,7 +62,9 @@ export const store = configureStore({
       .concat(courseSectionApi.middleware)
       .concat(courseApiThroughSubCategory.middleware)
       .concat(enrollApi.middleware)
-      .concat(enrolledCourseApi.middleware),
+      .concat(enrolledCourseApi.middleware)
+      .concat(getAllCourses.middleware)
+      ,
 });
 
 // Create a persistor to be used with PersistGate in your app
