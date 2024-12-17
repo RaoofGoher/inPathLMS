@@ -30,7 +30,7 @@ const CourseOfferings = () => {
 
       <div className="grid  grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-2 sm:gap-12">
         {/* Mapping through courseTitles array to create buttons */}
-        {categories.map((course, index) => (
+        {categories?.map((course, index) => (
           <button
             key={index}
             className="hover:bg-blueColor text-xs sm:text-lg  font-bold hover:text-white border-2 hover:border-white hover:ring-2 ring-blueColor border-blueColor text-blueColor px-4 py-2 rounded-xl"
