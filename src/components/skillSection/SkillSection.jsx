@@ -6,11 +6,46 @@ const SliderWithPopup = () => {
   const { data, isLoading, isError } = useGetCoursesQuery();
   const [selectedCategory, setSelectedCategory] = useState(null);
   const [selectedSubcategory, setSelectedSubcategory] = useState(null);
-  const [hoveredCourse, setHoveredCourse] = useState(null); // State for hovered course
+  const [hoveredCourse, setHoveredCourse] = useState(null);
 
   const categoryRef = useRef(null);
   const subcategoryRef = useRef(null);
   const courseRef = useRef(null);
+
+  const [showCategoryScroll, setShowCategoryScroll] = useState({
+    left: false,
+    right: false,
+  });
+  const [showSubcategoryScroll, setShowSubcategoryScroll] = useState({
+    left: false,
+    right: false,
+  });
+  const [showCourseScroll, setShowCourseScroll] = useState({
+    left: false,
+    right: false,
+  });
+
+  // Function to check scroll visibility
+  const checkScrollButtons = (ref, setShowScroll) => {
+    if (ref.current) {
+      const { scrollLeft, scrollWidth, clientWidth } = ref.current;
+
+      setShowScroll({
+        left: scrollLeft > 0,
+        right: scrollLeft + clientWidth < scrollWidth,
+      });
+    }
+  };
+
+  // Scroll handler
+  const handleScroll = (ref, direction, setShowScroll) => {
+    if (ref.current) {
+      const scrollAmount = direction === "left" ? -300 : 300;
+      ref.current.scrollBy({ left: scrollAmount, behavior: "smooth" });
+
+      setTimeout(() => checkScrollButtons(ref, setShowScroll), 300);
+    }
+  };
 
   useEffect(() => {
     if (data && !selectedCategory) {
@@ -19,12 +54,17 @@ const SliderWithPopup = () => {
     }
   }, [data]);
 
-  const handleScroll = (ref, direction) => {
-    if (ref.current) {
-      const scrollAmount = direction === "left" ? -300 : 300;
-      ref.current.scrollBy({ left: scrollAmount, behavior: "smooth" });
-    }
-  };
+  useEffect(() => {
+    checkScrollButtons(categoryRef, setShowCategoryScroll);
+  }, [data]);
+
+  useEffect(() => {
+    checkScrollButtons(subcategoryRef, setShowSubcategoryScroll);
+  }, [selectedCategory]);
+
+  useEffect(() => {
+    checkScrollButtons(courseRef, setShowCourseScroll);
+  }, [selectedSubcategory]);
 
   if (isLoading) return <div>Loading...</div>;
   if (isError) return <div>Error fetching data</div>;
@@ -33,16 +73,24 @@ const SliderWithPopup = () => {
     <div className="slider-container">
       {/* Categories Section */}
       <div className="slider-section">
-        <h2 className="section-title">All the skills you need in one place</h2>
-        <p>From critical skills to technical topics, InPATH supports your professional development.</p>
+        <h1 className="section-title">All the skills you need in one place</h1>
+        <p className="text-3xl mb-4">
+          From critical skills to technical topics, InPATH supports your professional development.
+        </p>
         <div className="slider-wrapper">
-          <button
-            className="slider-button left-button"
-            onClick={() => handleScroll(categoryRef, "left")}
+          {showCategoryScroll.left && (
+            <button
+              className="slider-button left-button"
+              onClick={() => handleScroll(categoryRef, "left", setShowCategoryScroll)}
+            >
+              <FaChevronLeft />
+            </button>
+          )}
+          <div
+            className="slider-content"
+            ref={categoryRef}
+            onScroll={() => checkScrollButtons(categoryRef, setShowCategoryScroll)}
           >
-            <FaChevronLeft />
-          </button>
-          <div className="slider-content" ref={categoryRef}>
             {data.map((category) => (
               <div
                 key={category.id}
@@ -58,32 +106,42 @@ const SliderWithPopup = () => {
               </div>
             ))}
           </div>
-          <button
-            className="slider-button right-button"
-            onClick={() => handleScroll(categoryRef, "right")}
-          >
-            <FaChevronRight />
-          </button>
+          {showCategoryScroll.right && (
+            <button
+              className="slider-button right-button"
+              onClick={() => handleScroll(categoryRef, "right", setShowCategoryScroll)}
+            >
+              <FaChevronRight />
+            </button>
+          )}
         </div>
       </div>
 
       {/* Subcategories Section */}
       {selectedCategory && (
-        <div className="slider-section" style={{ background: "#E5F2FF" }}>
+        <div className="slider-section">
           <div className="slider-wrapper">
-            <button
-              className="slider-button left-button"
-              onClick={() => handleScroll(subcategoryRef, "left")}
+            {showSubcategoryScroll.left && (
+              <button
+                className="slider-button left-button"
+                onClick={() =>
+                  handleScroll(subcategoryRef, "left", setShowSubcategoryScroll)
+                }
+              >
+                <FaChevronLeft />
+              </button>
+            )}
+            <div
+              className="slider-content"
+              ref={subcategoryRef}
+              onScroll={() => checkScrollButtons(subcategoryRef, setShowSubcategoryScroll)}
             >
-              <FaChevronLeft />
-            </button>
-            <div className="slider-content" ref={subcategoryRef}>
               {selectedCategory.subcategories.map((subcategory) => (
                 <div
                   key={subcategory.id}
                   className={`slider-item ${
                     selectedSubcategory?.id === subcategory.id
-                      ? "active-item"
+                      ? "active-item2"
                       : ""
                   }`}
                   onClick={() => setSelectedSubcategory(subcategory)}
@@ -92,35 +150,43 @@ const SliderWithPopup = () => {
                 </div>
               ))}
             </div>
-            <button
-              className="slider-button right-button"
-              onClick={() => handleScroll(subcategoryRef, "right")}
-            >
-              <FaChevronRight />
-            </button>
+            {showSubcategoryScroll.right && (
+              <button
+                className="slider-button right-button"
+                onClick={() =>
+                  handleScroll(subcategoryRef, "right", setShowSubcategoryScroll)
+                }
+              >
+                <FaChevronRight />
+              </button>
+            )}
           </div>
         </div>
       )}
 
       {/* Courses Section */}
       {selectedSubcategory && (
-        <div className="slider-section">
-          <h2 className="section-title">Courses</h2>
+        <div className="slider-section p-8" style={{backgroundColor:"#f9f9f9f9"}}>
           <div className="slider-wrapper">
-            <button
-              className="slider-button left-button"
-              onClick={() => handleScroll(courseRef, "left")}
+            {showCourseScroll.left && (
+              <button
+                className="slider-button left-button"
+                onClick={() => handleScroll(courseRef, "left", setShowCourseScroll)}
+              >
+                <FaChevronLeft />
+              </button>
+            )}
+            <div
+              className="slider-content"
+              ref={courseRef}
+              onScroll={() => checkScrollButtons(courseRef, setShowCourseScroll)}
             >
-              <FaChevronLeft />
-            </button>
-            <div className="slider-content" ref={courseRef} style={{position:"relative"}}>
               {selectedSubcategory.courses.map((course) => (
                 <div
                   key={course.id}
                   className="course-card"
-                  onMouseEnter={() => setHoveredCourse(course)} // Show popup on hover
-                  onMouseLeave={() => setHoveredCourse(null)} // Hide popup when leaving
-                  
+                  onMouseEnter={() => setHoveredCourse(course)}
+                  onMouseLeave={() => setHoveredCourse(null)}
                 >
                   <img
                     src={course.thumbnail}
@@ -128,10 +194,10 @@ const SliderWithPopup = () => {
                     className="course-thumbnail"
                   />
                   <h3>{course.title}</h3>
+                  <p>{course.description}</p>
 
                   {/* Hover Popup */}
                   {hoveredCourse?.id === course.id && (
-                   
                     <div className="popup-card" style={popupStyles}>
                       <h3>{hoveredCourse.title}</h3>
                       <p>{hoveredCourse.description}</p>
@@ -145,17 +211,18 @@ const SliderWithPopup = () => {
                       </p>
                       <button className="add-to-cart-button">Add to Cart</button>
                     </div>
-                    
                   )}
                 </div>
               ))}
             </div>
-            <button
-              className="slider-button right-button"
-              onClick={() => handleScroll(courseRef, "right")}
-            >
-              <FaChevronRight />
-            </button>
+            {showCourseScroll.right && (
+              <button
+                className="slider-button right-button"
+                onClick={() => handleScroll(courseRef, "right", setShowCourseScroll)}
+              >
+                <FaChevronRight />
+              </button>
+            )}
           </div>
         </div>
       )}
@@ -164,7 +231,7 @@ const SliderWithPopup = () => {
 };
 
 const popupStyles = {
-position: "absolute",
+  position: "absolute",
   top: "0",
   left: "90%",
   width: "300px",
@@ -172,7 +239,7 @@ position: "absolute",
   boxShadow: "0 4px 6px rgba(0, 0, 0, 0.1)",
   padding: "15px",
   borderRadius: "8px",
-  zIndex:100
+  zIndex: 100,
 };
 
 export default SliderWithPopup;
