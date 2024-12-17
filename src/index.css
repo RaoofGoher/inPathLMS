@@ -66,9 +66,9 @@
   border-bottom: 2px solid black;
 }
 .active-item2 {
-  background-color: #4c4c4c;
+  background-color: black;
   color: white;
-  border-radius: 50px;
+  border-radius: 40px;
 }
 
 /* Buttons */

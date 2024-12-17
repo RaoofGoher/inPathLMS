@@ -194,6 +194,7 @@ const SliderWithPopup = () => {
                     className="course-thumbnail"
                   />
                   <h3>{course.title}</h3>
+                  <p>{course.description}</p>
 
                   {/* Hover Popup */}
                   {hoveredCourse?.id === course.id && (
