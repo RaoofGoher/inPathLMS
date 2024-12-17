@@ -74,7 +74,7 @@
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
-  /* z-index: 5; */
+  z-index: 5;
   background-color: #fff;
   color: black;
   border: none;
