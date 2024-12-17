@@ -180,13 +180,13 @@ const StepForm = () => {
   const progress = (step / 4) * 100;
 
   return (
-    <div className="p-6 mt-8 max-w-lg mx-auto shadow-xl shadow-light3 rounded-md bg-gradient-to-bl from-primaryColor to-secondaryColor ">
+    <div className="p-6 mt-8 max-w-lg mx-auto shadow-xl shadow-grayColor rounded-md bg-blueColor ">
       <h1 className="text-2xl font-bold mb-4 text-center text-white">
         Step {step} of 4
       </h1>
-      <div className="w-full bg-gray-200 h-2 mb-4 rounded">
+      <div className="w-full bg-white h-2 mb-4 rounded">
         <div
-          className="bg-lightColor1 h-2 rounded"
+          className="bg-grayColor h-2 rounded"
           style={{ width: `${progress}%` }}
         ></div>
       </div>
@@ -203,10 +203,10 @@ const StepForm = () => {
                 value={formik.values.title}
                 onChange={formik.handleChange}
                 onBlur={formik.handleBlur}
-                className="w-full border p-2 rounded focus:outline-none focus:ring-2 focus:ring-secondaryColor"
+                className="w-full border p-2 rounded "
               />
               {formik.touched.title && formik.errors.title && (
-                <p className="text-red-500 text-sm">{formik.errors.title}</p>
+                <p className="text-grayColor text-sm">{formik.errors.title}</p>
               )}
             </div>
             <div>
@@ -218,10 +218,10 @@ const StepForm = () => {
                 value={formik.values.description}
                 onChange={formik.handleChange}
                 onBlur={formik.handleBlur}
-                className="w-full border p-2 rounded focus:outline-none focus:ring-2 focus:ring-secondaryColor"
+                className="w-full border p-2 rounded "
               />
               {formik.touched.description && formik.errors.description && (
-                <p className="text-red-500 text-sm">
+                <p className="text-grayColor text-sm">
                   {formik.errors.description}
                 </p>
               )}
@@ -240,7 +240,7 @@ const StepForm = () => {
                 value={formik.values.category}
                 onChange={handleCategoryChange} // Updated to handle category change
                 onBlur={formik.handleBlur}
-                className="w-full border shadow-sm shadow-lightColor1  p-2  font-semibold rounded focus:outline-none focus:ring-2 focus:ring-lightColor1"
+                className="w-full border shadow-sm   p-2  font-semibold rounded "
               >
                 <option value="">Select a category</option>
                 {storedCategories.map((category) => (
@@ -250,7 +250,7 @@ const StepForm = () => {
                 ))}
               </select>
               {formik.touched.category && formik.errors.category && (
-                <p className="text-red-500 text-sm">{formik.errors.category}</p>
+                <p className="text-grayColor text-sm">{formik.errors.category}</p>
               )}
             </div>
 
@@ -263,7 +263,7 @@ const StepForm = () => {
                 value={formik.values.subcategory}
                 onChange={formik.handleChange}
                 onBlur={formik.handleBlur}
-                className="w-full border font-semibold p-2 rounded focus:outline-none focus:ring-2 focus:ring-lightColor1 shadow-sm shadow-lightColor1"
+                className="w-full border font-semibold p-2 rounded "
               >
                 <option value="">Select a subcategory</option>
                 {/* Dynamically display subcategories fetched from the API */}
@@ -278,7 +278,7 @@ const StepForm = () => {
                 )}
               </select>
               {formik.touched.subcategory && formik.errors.subcategory && (
-                <p className="text-red-500 text-sm">
+                <p className="text-grayColor text-sm">
                   {formik.errors.subcategory}
                 </p>
               )}
@@ -296,10 +296,10 @@ const StepForm = () => {
                 value={formik.values.price}
                 onChange={formik.handleChange}
                 onBlur={formik.handleBlur}
-                className="w-full border p-2 rounded focus:outline-none focus:ring-2 focus:ring-secondaryColor"
+                className="w-full border p-2 rounded "
               />
               {formik.touched.price && formik.errors.price && (
-                <p className="text-red-500 text-sm">{formik.errors.price}</p>
+                <p className="text-grayColor text-sm">{formik.errors.price}</p>
               )}
             </div>
             <div>
@@ -312,11 +312,11 @@ const StepForm = () => {
                 value={formik.values.discount_percentage}
                 onChange={formik.handleChange}
                 onBlur={formik.handleBlur}
-                className="w-full border p-2 rounded focus:outline-none focus:ring-2 focus:ring-secondaryColor"
+                className="w-full border p-2 rounded "
               />
               {formik.touched.discount_percentage &&
                 formik.errors.discount_percentage && (
-                  <p className="text-red-500 text-sm">
+                  <p className="text-grayColor text-sm">
                     {formik.errors.discount_percentage}
                   </p>
                 )}
@@ -331,11 +331,11 @@ const StepForm = () => {
                 value={formik.values.discount_end_date}
                 onChange={formik.handleChange}
                 onBlur={formik.handleBlur}
-                className="w-full border p-2 rounded focus:outline-none focus:ring-2 focus:ring-secondaryColor"
+                className="w-full border p-2 rounded "
               />
               {formik.touched.discount_end_date &&
                 formik.errors.discount_end_date && (
-                  <p className="text-red-500 text-sm">
+                  <p className="text-grayColor text-sm">
                     {formik.errors.discount_end_date}
                   </p>
                 )}
@@ -357,10 +357,10 @@ const StepForm = () => {
                   formik.setFieldValue("thumbnail", e.target.files[0])
                 }
                 onBlur={formik.handleBlur}
-                className="w-full  shadow-sm shadow-lightColor1 p-2 rounded-md focus:outline-none focus:ring-2 focus:ring-lightColor1"
+                className="w-full  shadow-sm  bg-white p-2 rounded-md text-blueColor"
               />
               {formik.touched.thumbnail && formik.errors.thumbnail && (
-                <p className="text-red-500 text-sm">
+                <p className="text-grayColor text-sm">
                   {formik.errors.thumbnail}
                 </p>
               )}
@@ -377,10 +377,10 @@ const StepForm = () => {
                   formik.setFieldValue("intro_video", e.target.files[0])
                 }
                 onBlur={formik.handleBlur}
-                className="w-full  shadow-sm shadow-lightColor1 p-2 rounded-md focus:outline-none focus:ring-2 focus:ring-lightColor1"
+                className="w-full  shadow-sm bg-white p-2 rounded-md text-blueColor"
               />
               {formik.touched.intro_video && formik.errors.intro_video && (
-                <p className="text-red-500 text-sm">
+                <p className="text-grayColor text-sm">
                   {formik.errors.intro_video}
                 </p>
               )}
@@ -393,7 +393,7 @@ const StepForm = () => {
             <button
               type="button"
               onClick={handlePrev}
-              className="py-2 px-4 bg-light3  text-white rounded-md shadow-sm shadow-lightColor1 hover:text-light3 hover:bg-lightColor2"
+              className="py-2 px-4 bg-white  text-blueColor rounded-md shadow-sm "
             >
               Previous
             </button>
@@ -401,7 +401,7 @@ const StepForm = () => {
           <button
             type="button"
             onClick={handleNext}
-            className="py-2 px-4  bg-primaryColor hover:bg-secondaryColor text-white rounded-md shadow-sm shadow-lightColor1"
+            className="py-2 px-4  bg-white  text-blueColor rounded-md "
           >
             {step === 4 ? "Submit" : "Next"}
           </button>

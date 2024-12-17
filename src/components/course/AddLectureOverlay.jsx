@@ -51,7 +51,7 @@ const AddLectureOverlay = ({ sectionId, onClose, onSuccess }) => {
   return (
     <div className="fixed inset-0 bg-gray-800 bg-opacity-75 flex items-center justify-center">
       <div className="bg-white rounded-lg p-6 w-96">
-        <h2 className="text-xl font-semibold mb-4 text-dark1">Add Lecture</h2>
+        <h2 className="text-xl font-semibold mb-4 text-blueColor">Add Lecture</h2>
         <form onSubmit={handleSubmit}>
           <div className="mb-4">
             <label
@@ -66,7 +66,7 @@ const AddLectureOverlay = ({ sectionId, onClose, onSuccess }) => {
               name="title"
               value={formData.title}
               onChange={handleInputChange}
-              className="w-full border border-lightColor3 rounded p-2 text-dark1 focus:outline-none focus:ring-2 focus:ring-primaryColor"
+              className="w-full rounded p-2 text-dark1 focus:outline-none focus:ring-2 focus:ring-blueColor"
               required
             />
           </div>
@@ -83,7 +83,7 @@ const AddLectureOverlay = ({ sectionId, onClose, onSuccess }) => {
               name="order"
               value={formData.order}
               onChange={handleInputChange}
-              className="w-full border border-lightColor3 rounded p-2 text-dark1 focus:outline-none focus:ring-2 focus:ring-primaryColor"
+              className="w-full border border-lightColor3 rounded p-2 text-dark1 focus:outline-none focus:ring-2 focus:ring-blueColor"
               required
             />
           </div>
@@ -99,22 +99,22 @@ const AddLectureOverlay = ({ sectionId, onClose, onSuccess }) => {
               id="video"
               name="video"
               onChange={handleFileChange}
-              className="w-full text-dark1 focus:outline-none focus:ring-2 focus:ring-primaryColor"
+              className="w-full text-blueColor focus:outline-none focus:ring-2 focus:ring-blueColor p-2 rounded-md"
               required
             />
           </div>
-          {error && <p className="text-red-600 mb-4">{error}</p>}
+          {error && <p className="text-grayColor mb-4">{error}</p>}
           <div className="flex justify-end space-x-4">
             <button
               type="button"
               onClick={onClose}
-              className="bg-lightColor3 hover:bg-lightColor1 text-dark1 px-4 py-2 rounded focus:outline-none focus:ring-2 focus:ring-primaryColor"
+              className="bg-grayColor text-white hover:bg-grayColor/90 px-4 py-2 rounded focus:outline-none focus:ring-2 focus:ring-primaryColor"
             >
               Cancel
             </button>
             <button
               type="submit"
-              className="bg-primaryColor hover:bg-secondaryColor text-white px-4 py-2 rounded focus:outline-none focus:ring-2 focus:ring-lightColor1"
+              className="bg-blueColor hover:bg-blueColor/90 text-white px-4 py-2 rounded focus:outline-none focus:ring-2 focus:ring-lightColor1"
               disabled={loading}
             >
               {loading ? "Submitting..." : "Add Lecture"}

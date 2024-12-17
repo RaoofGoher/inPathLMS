@@ -28,7 +28,7 @@ const Navbar = () => {
   };
 
   return (
-    <nav className="my-4  px-16 py-4 bg-white">
+    <nav className=" px-16 py-4 border-b-2 bg-white">
       <div className="container mx-auto flex items-center justify-between">
         {/* {/ Left Side: Logo /} */}
         <div className="flex items-center">
@@ -82,11 +82,11 @@ const Navbar = () => {
                       : "/login"
                   }
                   className={({ isActive }) =>
-                    isActive ? "bg-blueColor/90 rounded-md" : ""
+                    isActive ? "bg-blueColor/90 text-white rounded-md" : " text-blueColor"
                   }
                   end
                 >
-                  <button className="px-4 py-2 border  border-grayColor rounded-md hover:text-white transition text-secondaryColor">
+                  <button className="px-4 py-2 border  border-grayColor rounded-md   transition">
                     Dashboard
                   </button>
                 </NavLink>
@@ -94,7 +94,7 @@ const Navbar = () => {
                 <NavLink>
                   <button
                     onClick={handleLogout}
-                    className="px-4 py-2 border border-secondaryColor hover:text-secondaryColor rounded-md text-white"
+                    className="px-4 py-2 border border-blueColor  rounded-md text-blueColor hover:bg-blueColor hover:text-white"
                   >
                     Logout
                   </button>
@@ -109,10 +109,10 @@ const Navbar = () => {
                   end
                   to={"/teachersignup"}
                   className={({ isActive }) =>
-                    isActive ? "bg-lightColor1 rounded-md" : ""
+                    isActive ? "bg-blueColor text-white rounded-md" : " text-grayColor"
                   }
                 >
-                  <button className="px-4 py-2 hover:text-blueColor rounded-md text-grayColor">
+                  <button className="px-4 py-2 hover:bg-blueColor hover:text-white   rounded-md ">
                     inPATHBusiness
                   </button>
                 </NavLink>
@@ -121,10 +121,10 @@ const Navbar = () => {
                   end
                   to={"/studentsignup"}
                   className={({ isActive }) =>
-                    isActive ? "bg-lightColor1 rounded-md" : ""
+                    isActive ? "bg-blueColor text-white rounded-md" : " text-grayColor"
                   }
                 >
-                  <button className="px-4 py-2 hover:border-blueColor hover:text-blueColor rounded-md text-grayColor">
+                  <button className="px-4 py-2   hover:bg-blueColor hover:text-white rounded-md ">
                     Sign Up
                   </button>
                 </NavLink>
@@ -148,7 +148,7 @@ const Navbar = () => {
       {/* {/ Drawer Menu /} */}
       {isDrawerOpen && (
         <div className="fixed inset-0 z-50 bg-black bg-opacity-50 md:hidden">
-          <div className="absolute top-0 right-0 w-64 bg-primaryColor h-full shadow-lg">
+          <div className="absolute top-0 right-0 w-64 bg-blueColor h-full shadow-lg">
             <button
               className="p-4 text-white font-montserrat"
               onClick={toggleDrawer}
@@ -169,11 +169,11 @@ const Navbar = () => {
                 onClick={toggleDrawer}
                 className={({ isActive }) =>
                   isActive
-                    ? "bg-lightColor1"
-                    : "border-b-2 border-secondaryColor"
+                    ? "bg-grayColor rounded-md"
+                    : "border-b-2 border-white"
                 }
               >
-                <button className="w-full text-left px-4 py-2 text-white hover:text-secondaryColor">
+                <button className="w-full text-left px-4 py-2 text-white hover:bg-grayColor ">
                   Teach On In Path
                 </button>
               </NavLink>
@@ -182,11 +182,11 @@ const Navbar = () => {
                 onClick={toggleDrawer}
                 className={({ isActive }) =>
                   isActive
-                    ? "bg-lightColor1"
-                    : "border-b-2 border-secondaryColor"
+                    ? "bg-grayColor rounded-md"
+                    : "border-b-2 border-white"
                 }
               >
-                <button className="w-full text-left px-4 py-2 text-white hover:text-secondaryColor">
+                <button className="w-full text-left px-4 py-2 text-white hover:bg-grayColor">
                   Login
                 </button>
               </NavLink>
@@ -195,11 +195,11 @@ const Navbar = () => {
                 onClick={toggleDrawer}
                 className={({ isActive }) =>
                   isActive
-                    ? "bg-lightColor1"
-                    : "border-b-2 border-secondaryColor"
+                    ? "bg-grayColor rounded-md"
+                    : "border-b-2 border-white"
                 }
               >
-                <button className="w-full text-left px-4 py-2 text-white hover:text-secondaryColor">
+                <button className="w-full text-left px-4 py-2 text-white hover:bg-grayColor">
                   Sign Up
                 </button>
               </NavLink>

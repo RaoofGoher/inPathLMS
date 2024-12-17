@@ -68,19 +68,19 @@ const ManageTeachers = () => {
   };
 
   return (
-    <div className="p-4 sm:p-6 bg-gray-100 min-h-screen">
+    <div className="p-4 sm:p-6 bg-white min-h-screen">
       <div className="mb-8">
-        <h1 className="text-3xl sm:text-4xl font-bold text-primaryColor">
+        <h1 className="text-3xl sm:text-4xl font-bold text-blueColor">
           Manage Teachers
         </h1>
-        <p className="text-sm sm:text-base text-gray-600">
+        <p className="text-sm sm:text-base text-grayColor">
           Edit or remove teachers from the system.
         </p>
       </div>
 
       {/* Pie Chart Section */}
-      <div className="bg-white shadow-lg rounded-lg p-6 mb-8">
-        <h2 className="text-lg sm:text-2xl font-bold text-secondaryColor mb-4">
+      <div className="bg-white shadow-lg shadow-grayColor rounded-lg p-6 mb-8">
+        <h2 className="text-lg sm:text-2xl font-bold text-blueColor mb-4">
           Teacher Distribution by Subject
         </h2>
         <div
@@ -98,8 +98,8 @@ const ManageTeachers = () => {
       </div>
 
       {/* Search/Filter Section */}
-      <div className="bg-white shadow-lg rounded-lg p-6 mb-8">
-        <h2 className="text-lg sm:text-2xl font-bold text-secondaryColor mb-4">
+      <div className="bg-white shadow-lg shadow-grayColor rounded-lg p-6 mb-8">
+        <h2 className="text-lg sm:text-2xl font-bold text-blueColor mb-4">
           Search Teachers
         </h2>
         <div className="flex items-center gap-4">
@@ -110,7 +110,7 @@ const ManageTeachers = () => {
             placeholder="Search by name or subject"
             className="w-full sm:w-1/2 p-2 border rounded-md"
           />
-          <button className="bg-primaryColor text-white p-2 rounded-md flex items-center gap-2">
+          <button className="bg-blueColor hover:bg-blueColor/90 text-white p-2 rounded-md flex items-center gap-2">
             <FaSearch />
             Search
           </button>
@@ -118,15 +118,15 @@ const ManageTeachers = () => {
       </div>
 
       {/* Teachers Table Section */}
-      <div className="bg-white shadow-lg rounded-lg p-6 mb-8">
-        <h2 className="text-lg sm:text-2xl font-bold text-secondaryColor mb-4">
+      <div className="bg-white shadow-lg shadow-grayColor rounded-lg p-6 mb-8">
+        <h2 className="text-lg sm:text-2xl font-bold text-blueColor mb-4">
           All Teachers
         </h2>
         {filteredTeachers.length === 0 ? (
-          <p className="text-center text-gray-600">No teachers found</p>
+          <p className="text-center text-blueColor">No teachers found</p>
         ) : (
-          <table className="w-full table-auto text-left text-gray-700">
-            <thead>
+          <table className="w-full table-auto text-left text-grayColor">
+            <thead className="text-dark1">
               <tr>
                 <th className="p-2 border-b">Name</th>
                 <th className="p-2 border-b">Subject</th>

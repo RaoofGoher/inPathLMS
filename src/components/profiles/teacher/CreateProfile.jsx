@@ -46,8 +46,8 @@ const CreateProfile = () => {
     }
   };
   return (
-    <div className="max-w-lg mx-auto bg-gradient-to-r from-primaryColor to-secondaryColor shadow-md shadow-secondaryColor rounded-md p-6 mt-10">
-      <h2 className="text-2xl text-center font-semibold text-lightColor2 bold mb-4">
+    <div className="max-w-lg mx-auto bg- shadow-md shadow-grayColor rounded-md p-6 mt-10">
+      <h2 className="text-2xl text-center font-semibold text-blueColor text-bold mb-4">
         Create Profile
       </h2>
       <Formik
@@ -59,7 +59,7 @@ const CreateProfile = () => {
           <Form className="grid sm:grid-cols-2 gap-4 ">
             {/* User ID */}
             <div className="mb-4">
-              <label htmlFor="user" className="block text-lightColor2 mb-1">
+              <label htmlFor="user" className="block text-dark1 mb-1">
                 User ID
               </label>
               <Field
@@ -67,7 +67,7 @@ const CreateProfile = () => {
                 id="user"
                 name="user"
                 placeholder="Enter user ID"
-                className="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                className="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blueColor"
               />
               <ErrorMessage
                 name="user"
@@ -78,7 +78,7 @@ const CreateProfile = () => {
 
             {/* Degrees */}
             <div className="mb-4">
-              <label htmlFor="degrees" className="block text-lightColor2 mb-1">
+              <label htmlFor="degrees" className="block text-dark1 mb-1">
                 Degrees
               </label>
               <Field
@@ -86,7 +86,7 @@ const CreateProfile = () => {
                 id="degrees"
                 name="degrees"
                 placeholder="Enter your degrees"
-                className="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                className="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blueColor"
               />
               <ErrorMessage
                 name="degrees"
@@ -99,7 +99,7 @@ const CreateProfile = () => {
             <div className="mb-4">
               <label
                 htmlFor="teaching_experience"
-                className="block text-lightColor2 mb-1"
+                className="block text-dark1 mb-1"
               >
                 Teaching Experience (Years)
               </label>
@@ -108,7 +108,7 @@ const CreateProfile = () => {
                 id="teaching_experience"
                 name="teaching_experience"
                 placeholder="Enter teaching experience"
-                className="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                className="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blueColor"
               />
               <ErrorMessage
                 name="teaching_experience"
@@ -121,7 +121,7 @@ const CreateProfile = () => {
             <div className="mb-4">
               <label
                 htmlFor="specialization"
-                className="block text-lightColor2 mb-1"
+                className="block text-dark1 mb-1"
               >
                 Specialization
               </label>
@@ -130,7 +130,7 @@ const CreateProfile = () => {
                 id="specialization"
                 name="specialization"
                 placeholder="Enter your specialization"
-                className="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                className="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blueColor"
               />
               <ErrorMessage
                 name="specialization"
@@ -143,7 +143,7 @@ const CreateProfile = () => {
             <div className="mb-4">
               <label
                 htmlFor="teaching_history"
-                className="block text-lightColor2 mb-1"
+                className="block text-dark1 mb-1"
               >
                 Teaching History
               </label>
@@ -152,7 +152,7 @@ const CreateProfile = () => {
                 id="teaching_history"
                 name="teaching_history"
                 placeholder="Enter teaching history"
-                className="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                className="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blueColor"
               />
               <ErrorMessage
                 name="teaching_history"
@@ -162,7 +162,7 @@ const CreateProfile = () => {
             </div>
             {/* Bio */}
             <div className="mb-4">
-              <label htmlFor="bio" className="block text-lightColor2 mb-1">
+              <label htmlFor="bio" className="block text-dark1 mb-1">
                 Bio
               </label>
               <Field
@@ -171,7 +171,7 @@ const CreateProfile = () => {
                 name="bio"
                 placeholder="Enter your bio"
                 rows="3"
-                className="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                className="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blueColor"
               />
               <ErrorMessage
                 name="bio"
@@ -185,7 +185,7 @@ const CreateProfile = () => {
               <button
                 type="submit"
                 disabled={isSubmitting}
-                className="bg-primaryColor shadow-sm shadow-lightColor1 text-white px-4 py-2 rounded-md hover:bg-lightColor1 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                className="bg-blueColor  text-white px-4 py-2 rounded-md hover:bg-blueColor/90 focus:outline-none focus:ring-2 focus:ring-blue-500"
               >
                 {isSubmitting ? "Submitting..." : "Submit"}
               </button>

@@ -81,17 +81,17 @@ const ProfileComponent = () => {
   if (isError) return <p>Error fetching profile. Please try again.</p>;
 
   return (
-    <div className=" max-w-2xl mx-auto mt-10  p-6 rounded-md shadow-xl bg-gradient-to-r from-secondaryColor to-primaryColor shadow-primaryColor">
-      <h2 className="text-2xl font-semibold mb-4 text-center text-lightColor2">
+    <div className=" max-w-2xl mx-auto mt-10  p-6   bg-white">
+      <h2 className="text-2xl font-semibold mb-4 text-center text-blueColor">
         Teacher Profile
       </h2>
 
       {isEditing ? (
         // Display Update Form
-        <form onSubmit={handleSubmit} className=" gap-4 sm:gap-6   grid sm:grid-cols-2 ">
+        <form onSubmit={handleSubmit} className=" gap-4 sm:gap-6  shadow-md shadow-grayColor p-4  grid sm:grid-cols-2 ">
           {/* Degrees */}
           <div>
-            <label htmlFor="degrees" className="block text-lightColor2">
+            <label htmlFor="degrees" className="block text-blueColor">
               Degrees
             </label>
             <input
@@ -101,7 +101,7 @@ const ProfileComponent = () => {
               value={formData.degrees}
               onChange={handleChange}
               placeholder="Enter your degrees"
-              className="w-full px-4 py-2 border rounded focus:outline-none focus:ring"
+              className="w-full px-4 py-2 border rounded "
             />
           </div>
 
@@ -109,7 +109,7 @@ const ProfileComponent = () => {
           <div>
             <label
               htmlFor="teaching_experience"
-              className="block text-lightColor2"
+              className="block text-blueColor"
             >
               Teaching Experience
             </label>
@@ -120,13 +120,13 @@ const ProfileComponent = () => {
               value={formData.teaching_experience}
               onChange={handleChange}
               placeholder="Enter teaching experience in years"
-              className="w-full px-4 py-2 border rounded focus:outline-none focus:ring"
+              className="w-full px-4 py-2 border rounded "
             />
           </div>
 
           {/* Teaching History */}
           <div>
-            <label htmlFor="teaching_history" className="block text-lightColor2">
+            <label htmlFor="teaching_history" className="block text-blueColor">
               Teaching History
             </label>
             <textarea
@@ -135,12 +135,12 @@ const ProfileComponent = () => {
               value={formData.teaching_history}
               onChange={handleChange}
               placeholder="Enter teaching history"
-              className="w-full px-4 py-2 border rounded focus:outline-none focus:ring"
+              className="w-full px-4 py-2 border rounded "
             />
           </div>
           {/* Bio */}
           <div>
-            <label htmlFor="bio" className="block text-lightColor2">
+            <label htmlFor="bio" className="block text-blueColor">
               Bio
             </label>
             <textarea
@@ -149,12 +149,12 @@ const ProfileComponent = () => {
               value={formData.bio}
               onChange={handleChange}
               placeholder="Enter your bio"
-              className="w-full px-4 py-2 border rounded focus:outline-none focus:ring"
+              className="w-full px-4 py-2 border rounded "
             />
           </div>
           {/* Specialization */}
           <div>
-            <label htmlFor="specialization" className="block text-lightColor2">
+            <label htmlFor="specialization" className="block text-blueColor">
               Specialization
             </label>
             <input
@@ -173,7 +173,7 @@ const ProfileComponent = () => {
             <button
               type="submit"
               disabled={isUpdating}
-              className="bg-blue-500 text-sm text-white sm:h-[80%] px-4 py-2 shadow-md hover:bg-lightColor1 rounded-md"
+              className="bg-blueColor text-sm text-white sm:h-[80%] px-4 py-2 shadow-md hover:bg-blueColor/90 rounded-md"
             >
               {isUpdating ? "Submitting..." : "Update Profile"}
             </button>
@@ -181,7 +181,7 @@ const ProfileComponent = () => {
               onClick={() => {
                 setIsEditing(false);
               }}
-              className="bg-dark1 hover:bg-dark2 text-sm text-white  sm:h-[80%] px-4 py-2 rounded-lg shadow-md  focus:outline-none focus:ring-2 focus:ring-gray-300"
+              className="bg-grayColor hover:bg-grayColor/90 text-sm text-white  sm:h-[80%] px-4 py-2 rounded-lg shadow-md  "
             >
               Back
             </button>
@@ -189,49 +189,49 @@ const ProfileComponent = () => {
         </form>
       ) : (
         // Display Profile Data
-        <div className="max-w-2xl mx-auto bg-gradient-to-r from-primaryColor to-secondaryColor text-white p-6 rounded-lg shadow-lg space-y-6">
+        <div className="max-w-2xl mx-auto bg-white text-blueColor p-6 rounded-lg shadow-lg  shadow-grayColor space-y-6">
           <div className="space-y-4">
             <div className="flex justify-between">
-              <p className="text-lg font-medium text-lightColor2">
+              <p className="text-lg font-medium ">
                 <strong>Bio:</strong>
               </p>
-              <p className="text-gray-600">
+              <p className="text-grayColor">
                 {profile.bio || "No bio available"}
               </p>
             </div>
 
             <div className="flex justify-between">
-              <p className="text-lg font-medium text-lightColor2">
+              <p className="text-lg font-medium ">
                 <strong>Degrees:</strong>
               </p>
-              <p className="text-gray-600">
+              <p className="text-grayColor">
                 {profile.degrees || "No degrees listed"}
               </p>
             </div>
 
             <div className="flex justify-between">
-              <p className="text-lg font-medium text-lightColor2">
+              <p className="text-lg font-medium ">
                 <strong>Teaching Experience:</strong>
               </p>
-              <p className="text-gray-600">
+              <p className="text-grayColor">
                 {profile.teaching_experience} years
               </p>
             </div>
 
             <div className="flex justify-between">
-              <p className="text-lg font-medium text-lightColor2">
+              <p className="text-lg font-medium ">
                 <strong>Specialization:</strong>
               </p>
-              <p className="text-gray-600">
+              <p className="text-grayColor">
                 {profile.specialization || "No specialization listed"}
               </p>
             </div>
 
             <div className="flex justify-between">
-              <p className="text-lg font-medium text-lightColor2">
+              <p className="text-lg font-medium ">
                 <strong>Teaching History:</strong>
               </p>
-              <p className="text-gray-600">
+              <p className="text-grayColor">
                 {profile.teaching_history || "No teaching history available"}
               </p>
             </div>
@@ -240,7 +240,7 @@ const ProfileComponent = () => {
           <div className="mt-6 text-center">
             <button
               onClick={() => setIsEditing(true)}
-              className="bg-primaryColor text-white px-6 py-3 rounded-lg shadow-md hover:bg-lightColor1 focus:outline-none focus:ring-2 focus:ring-blue-300"
+              className="bg-blueColor text-white px-6 py-3 rounded-lg shadow-md hover:bg-blueColor/90 "
             >
               Edit Profile
             </button>

@@ -2,7 +2,7 @@
 import React from 'react';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
-import BackgroundImage from '../assets/design-6.jpg';
+import BackgroundImage from '../assets/desgin-6.jpg';
 import { useMediaQuery } from 'react-responsive';
 import { useSignUpMutation } from '../features/auth/authApiSlice'; // Import the mutation hook
 import LoginIcons from '../components/LoginIcons'
@@ -40,11 +40,11 @@ const TeacherSignUpForm = () => {
       ></div>
 
       {/* Right Column for Form */}
-      <div className="w-full md:w-1/2 flex items-center justify-center p-8 bg-lightColor2">
+      <div className="w-full md:w-1/2 flex items-center justify-center p-8 bg-white">
         <div
-          className={`bg-primaryColor bg-opacity-5 rounded-lg p-8 max-w-sm w-full ${isMedium ? 'mb-[0]' : 'mb-[180px]'}`}
+          className={`bg-grayColor bg-opacity-5 rounded-lg p-8 max-w-sm w-full ${isMedium ? 'mb-[0]' : 'mb-[180px]'}`}
         >
-          <h2 className="text-2xl font-bold text-center font-lato">Sign Up to Educate</h2>
+          <h2 className="text-2xl font-bold text-center text-blueColor ">Sign Up to Educate</h2>
           <Formik
             initialValues={{ full_name: '', email: '', password: '' }}
             validationSchema={validationSchema}
@@ -78,7 +78,7 @@ const TeacherSignUpForm = () => {
                   <Field
                     type="text"
                     name="full_name"
-                    className="h-[60px] mt-1 p-2 block w-full border border-primaryColor bg-lightColor2 focus:ring focus:ring-opacity-50"
+                    className="h-[60px] mt-1 p-2 block w-full border border-blueColor bg-white rounded-md"
                     placeholder="Enter your full name"
                   />
                   <ErrorMessage name="full_name" component="div" className="text-red-500 text-sm" />
@@ -88,7 +88,7 @@ const TeacherSignUpForm = () => {
                   <Field
                     type="email"
                     name="email"
-                    className="h-[60px] mt-1 p-2 block w-full border border-primaryColor bg-lightColor2 focus:ring focus:ring-opacity-50"
+                    className="h-[60px] mt-1 p-2 block w-full border border-blueColor bg-white rounded-md"
                     placeholder="Enter your email"
                   />
                   <ErrorMessage name="email" component="div" className="text-red-500 text-sm" />
@@ -98,7 +98,7 @@ const TeacherSignUpForm = () => {
                   <Field
                     type="password"
                     name="password"
-                    className="h-[60px] mt-1 p-2 block w-full border bg-lightColor2 border-primaryColor shadow-sm focus:ring focus:ring-opacity-50"
+                    className="h-[60px] mt-1 p-2 block w-full border border-blueColor bg-white rounded-md"
                     placeholder="Enter your password"
                   />
                   <ErrorMessage name="password" component="div" className="text-red-500 text-sm" />
@@ -106,7 +106,7 @@ const TeacherSignUpForm = () => {
 
                 <button
                   type="submit"
-                  className="w-full bg-primaryColor text-white font-bold py-2 rounded hover:bg-blue-700 transition duration-300"
+                  className="w-full bg-blueColor text-white font-bold py-2 rounded-md hover:bg-blueColor/90 transition duration-300"
                   disabled={isLoading} // Disable while loading
                 >
                   {isLoading ? 'Signing Up...' : 'Submit'}
