@@ -3,7 +3,7 @@ import React, { useState, useEffect } from 'react';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
 import { useLoginMutation } from '../features/auth/authApiSlice'; // Import the login mutation
-import BackgroundImage from '../assets/design-8.svg'; 
+import BackgroundImage from '../assets/desgin-8.png'; 
 import { useMediaQuery } from 'react-responsive';
 import Loader from '../components/Loader';
 import { useDispatch } from 'react-redux';
@@ -61,7 +61,7 @@ const LoginForm = () => {
     <ScrollToTop/>
       <Loader isLoading={loading || isLoading} delay={300} slowLoadingThreshold={2000} />
       {!loading && (
-        <div className={`min-h-screen ${isMedium ? 'flex-col' : 'flex'}`}>
+        <div className={`min-h-screen   ${isMedium ? 'flex-col' : 'flex'}`}>
           {/* Left Column for Image */}
           <div
             className="md:flex md:w-1/2 bg-cover bg-center"
@@ -69,9 +69,9 @@ const LoginForm = () => {
           ></div>
 
           {/* Right Column for Form */}
-          <div className="w-full md:w-1/2 flex items-center justify-center p-8 bg-lightColor2">
-            <div className={`bg-primaryColor bg-opacity-5 rounded-lg p-8 max-w-sm w-full ${isMedium ? 'mb-[0]' : 'mb-[180px]'}`}>
-              <h2 className="text-2xl font-bold text-center font-lato">Login</h2>
+          <div className="w-full md:w-1/2 flex items-center justify-center p-8 bg-white">
+            <div className={`bg-grayColor bg-opacity-10 rounded-lg p-8 max-w-sm w-full ${isMedium ? 'mb-[0]' : 'mb-[180px]'}`}>
+              <h2 className="text-2xl font-bold text-center font-lato text-blueColor">Login</h2>
               <Formik
                 initialValues={{ email: '', password: '' }}
                 validationSchema={validationSchema}
@@ -83,7 +83,7 @@ const LoginForm = () => {
                       <Field
                         type="email"
                         name="email"
-                        className="h-[60px] mt-1 p-2 block w-full border border-primaryColor bg-lightColor2 focus:ring focus:ring-opacity-50"
+                        className="h-[60px] mt-1 p-2 block w-full rounded-md border border-blueColor bg-white "
                         placeholder="Enter your email"
                       />
                       <ErrorMessage name="email" component="div" className="text-red-500 text-sm" />
@@ -93,7 +93,7 @@ const LoginForm = () => {
                       <Field
                         type="password"
                         name="password"
-                        className="h-[60px] mt-1 p-2 block w-full border bg-lightColor2 border-primaryColor shadow-sm focus:ring focus:ring-opacity-50"
+                        className="h-[60px] mt-1 p-2 block w-full rounded-md border border-blueColor bg-white"
                         placeholder="Enter your password"
                       />
                       <ErrorMessage name="password" component="div" className="text-red-500 text-sm" />
@@ -101,11 +101,11 @@ const LoginForm = () => {
 
                     <button
                       type="submit"
-                      className="w-full bg-primaryColor text-white font-bold py-2 rounded hover:bg-blue-700 transition duration-300"
+                      className="w-full bg-blueColor text-white font-bold py-2 rounded hover:bg-blueColor/90 transition duration-300"
                     >
                       Submit
                     </button>
-                    <Link to={"/forgotPassword"}>Reset Password</Link>
+                    <Link  to={"/forgotPassword"}>Reset Password</Link>
                   </Form>
                 )}
               </Formik>

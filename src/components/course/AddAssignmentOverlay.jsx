@@ -57,8 +57,8 @@ const AddAssignmentOverlay = ({ sectionId, onClose, onSuccess }) => {
   return (
     <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
       <div className="bg-white p-6 rounded-lg shadow-lg w-11/12 sm:w-3/4 lg:w-1/2">
-        <h2 className="text-lg font-bold mb-4">Add Assignment</h2>
-        {error && <p className="text-red-500">{error}</p>}
+        <h2 className="text-lg font-bold mb-4 text-blueColor">Add Assignment</h2>
+        {error && <p className="text-grayColor">{error}</p>}
         <form onSubmit={handleSubmit}>
           <div className="mb-4">
             <label className="block text-sm font-medium">Title</label>
@@ -77,13 +77,13 @@ const AddAssignmentOverlay = ({ sectionId, onClose, onSuccess }) => {
               onChange={(e) => setOrder(e.target.value)}
               className="w-full border rounded px-3 py-2"
             />
-          </div>
+          </div>  
           <div className="mb-4">
             <label className="block text-sm font-medium">File</label>
             <input
               type="file"
               onChange={handleFileChange}
-              className="w-full border rounded px-3 py-2"
+              className="w-full border rounded px-3 py-2 text-blueColor"
             />
           </div>
           <div className="mb-4">
@@ -98,14 +98,14 @@ const AddAssignmentOverlay = ({ sectionId, onClose, onSuccess }) => {
             <button
               type="button"
               onClick={onClose}
-              className="bg-lightColor2 hover:bg-lightColor1 text-dark1 px-4 py-2 rounded focus:outline-none focus:ring-2 focus:ring-primaryColor"
+              className="bg-grayColor hover:bg-grayColor/90 text-white px-4 py-2 rounded "
             >
               Cancel
             </button>
             <button
               type="submit"
               disabled={loading}
-              className="bg-primaryColor hover:bg-secondaryColor text-white px-4 py-2 rounded focus:outline-none focus:ring-2 focus:ring-lightColor1"
+              className="bg-blueColor hover:bg-blueColor/90 text-white px-4 py-2 rounded "
             >
               {loading ? "Adding..." : "Add Assignment"}
             </button>

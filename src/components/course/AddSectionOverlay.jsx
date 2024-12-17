@@ -35,7 +35,7 @@ const { user_id } = useSelector((state) => state.auth); // Get teacherId from Re
   return (
     <div className="fixed inset-0 bg-gray-800 bg-opacity-50 flex justify-center items-center">
       <div className="bg-white p-6 rounded shadow-lg w-1/3">
-        <h2 className="text-2xl font-bold mb-4">Add Course Section</h2>
+        <h2 className="text-2xl font-bold mb-4 text-blueColor">Add Course Section</h2>
         <form onSubmit={handleSubmit}>
           <div className="mb-4">
             <label className="block text-gray-700 font-medium mb-2">Title</label>
@@ -58,14 +58,14 @@ const { user_id } = useSelector((state) => state.auth); // Get teacherId from Re
           </div>
           <button
             type="submit"
-            className="bg-blue-500 text-white py-2 px-4 rounded"
+            className="bg-blueColor hover:bg-blueColor/90 text-white py-2 px-4 rounded"
             disabled={isLoading}
           >
             {isLoading ? 'Adding...' : 'Add Section'}
           </button>
           <button
             type="button"
-            className="bg-gray-300 text-gray-700 py-2 px-4 rounded ml-2"
+            className="bg-grayColor hover:bg-grayColor/90 text-white py-2 px-4 rounded ml-2"
             onClick={onClose}
           >
             Cancel

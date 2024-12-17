@@ -31,14 +31,14 @@ const DashboardLayout = () => {
       <div className="flex flex-1">
         {/* Sidebar on the left */}
         <aside
-          className={`fixed top-0 left-0 z-40 h-full w-64 bg-primaryColor text-white transform ${isSidebarOpen ? 'translate-x-0' : '-translate-x-full'
+          className={`fixed top-0 left-0 z-0 h-full w-64 bg-blueColor text-white transform ${isSidebarOpen ? 'translate-x-0' : '-translate-x-full'
             } transition-transform duration-300 md:relative md:translate-x-0 md:h-auto`}
           style={{ top: '-2px' }} // Adjust to match your navbar height
         >
           <div className="flex items-center justify-between p-4 md:hidden">
             <h2 className="text-lg font-semibold">Menu</h2>
             <button onClick={toggleSidebar} className="text-white">
-              <FaTimes size={20} />
+              <FaTimes size={20} /> 
             </button>
           </div>
 
@@ -49,27 +49,27 @@ const DashboardLayout = () => {
                 ? '/dashboard/teacherdashboard'
                 : role === 'student'
                   ? '/dashboard/studentdashboard'
-                  : '/login'} className="flex items-center py-2 px-4 hover:bg-secondaryColor rounded">
-              <FaTachometerAlt className="mr-2 text-secondaryColor" />
+                  : '/login'} className="hover:text-blueColor flex items-center py-2 px-4 hover:bg-gray-300 rounded">
+              <FaTachometerAlt className="mr-2 " />
               Dashboard
             </Link>
-            <Link to="dashboard/teacherprofile" className="flex items-center py-2 px-4 hover:bg-secondaryColor rounded">
-              <FaUser className="mr-2 text-secondaryColor" />
+            <Link to="dashboard/teacherprofile" className=" hover:text-blueColor flex items-center py-2 px-4 hover:bg-gray-300 rounded">
+              <FaUser className="mr-2 " />
               Profile
             </Link>
-            <Link to="/settings" className="flex items-center py-2 px-4 hover:bg-secondaryColor rounded">
-              <FaCog className="mr-2 text-secondaryColor" />
+            <Link to="/settings" className="hover:text-blueColor flex items-center py-2 px-4 hover:bg-gray-300 rounded">
+              <FaCog className="mr-2 " />
               Settings
             </Link>
-            <Link className="flex items-center py-2 px-4 hover:bg-secondaryColor rounded" onClick={handleLogout}>
-              <FaSignOutAlt className="mr-2 text-secondaryColor" />
+            <Link className=" hover:text-blueColor flex items-center py-2 px-4 hover:bg-gray-300 rounded" onClick={handleLogout}>
+              <FaSignOutAlt className="mr-2 " />
               Logout
             </Link>
           </nav>
         </aside>
 
         {/* Main Content */}
-        <main className="flex-1 overflow-auto bg-gray-100 p-4 md:ml-5">
+        <main className="flex-1 overflow-auto bg-white p-4 md:ml-5">
           {/* Hamburger Icon for Small Screens */}
           <div className="md:hidden flex justify-between items-center mb-4">
             <button onClick={toggleSidebar} className="text-gray-800">

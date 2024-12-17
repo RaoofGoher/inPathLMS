@@ -12,7 +12,7 @@ import {
 import { Outlet, Link } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { logout } from "../features/auth/authSlice";
-// import Logo from "../assets/logos/logo.png";
+import Logo from "../assets/logos/logo.png";
 
 const AdminDashboardLayout = () => {
   const dispatch = useDispatch();
@@ -62,11 +62,8 @@ const AdminDashboardLayout = () => {
   return (
     <div className="h-screen flex flex-col">
       {/* Header */}
-      <header className="w-full md:px-14 bg-primaryColor text-white flex items-center justify-between py-4 px-6 relative">
-        {/* <h1 className="text-2xl font-bold">Admin Dashboard</h1> */}
-        {/* <div className="bg-gradient-to-br from-lightColor2 to-secondaryColor p-2 rounded-lg">
-          <img src={Logo} alt="Logo" className="h-10 w-15" />
-        </div> */}
+      <header className="w-full border-b-2 md:px-14  text-blueColor flex items-center justify-between py-4 px-6 relative">
+        <h1 className="text-2xl font-bold">Admin Dashboard</h1>
 
         {/* Notification Button with Badge */}
         <div className="flex items-center gap-4">
@@ -75,7 +72,7 @@ const AdminDashboardLayout = () => {
             className="relative flex justify-center items-center"
             onClick={handleNotificationClick} // Open or close dropdown when clicked
           >
-            <FaBell size={20} className="text-white cursor-pointer" />
+            <FaBell size={20} className="text-blueColor cursor-pointer" />
             {/* Notification Badge */}
             <span className="absolute -top-2 -right-2 flex justify-center items-center w-4 h-4 bg-red-600 text-white text-xs rounded-full">
               {notifications.length}
@@ -93,17 +90,17 @@ const AdminDashboardLayout = () => {
 
           {/* Notifications Dropdown */}
           {isDropdownOpen && (
-            <div className="z-50 absolute top-16 right-0 bg-white shadow-xl rounded-lg w-80 p-4 border border-gray-200">
-              <h3 className="font-bold text-sm mb-2 text-primaryColor">
+            <div className="z-50 absolute top-16 right-0 bg-white shadow-xl rounded-lg w-80 p-4 border border-grayColor">
+              <h3 className="font-bold text-sm mb-2 text-blueColor">
                 Recent Notifications
               </h3>
               <ul className="space-y-2 ">
                 {notifications.map((notification) => (
                   <li
                     key={notification.id}
-                    className={`flex items-center space-x-2 text-sm p-4 rounded-lg bg-gray-100 hover:bg-gray-200 cursor-pointer transition-all duration-200 ${
+                    className={`flex items-center space-x-2 text-sm p-4 rounded-lg bg-white hover:bg-gray-200 cursor-pointer transition-all duration-200 ${
                       notification.type === "student"
-                        ? "text-blue-600"
+                        ? "text-blueColor"
                         : "text-green-600"
                     }`}
                     onClick={handleNotificationItemClick} // Close dropdown on click
@@ -130,7 +127,7 @@ const AdminDashboardLayout = () => {
       <div className="flex flex-1">
         {/* Sidebar */}
         <aside
-          className={`fixed top-0 left-0 z-40 h-full w-64 bg-secondaryColor text-white transform ${
+          className={`fixed top-0 left-0 z-40 h-full w-64 bg-blueColor text-white transform ${
             isSidebarOpen ? "translate-x-0" : "-translate-x-full"
           } transition-transform duration-300 md:relative md:translate-x-0`}
         >
@@ -147,57 +144,57 @@ const AdminDashboardLayout = () => {
             {/* Dashboard Link */}
             <Link
               to="/admin/dashboard"
-              className="flex items-center py-3 px-4 text-lg rounded-lg transition-colors duration-200 hover:bg-lightColor1"
+              className="flex group items-center py-3 px-4 text-lg rounded-lg font-semibold transition-colors duration-200 hover:bg-gray-300 hover:text-blueColor"
             >
-              <FaTachometerAlt className="mr-2 text-white" />
+              <FaTachometerAlt className="mr-2 group-hover:text-blueColor text-white" />
               Dashboard
             </Link>
 
             {/* Manage Teachers Link */}
             <Link
               to="/admin/manage-teachers"
-              className="flex items-center py-3 px-4 text-lg rounded-lg transition-colors duration-200 hover:bg-primaryColor"
+              className="flex group items-center py-3 px-4 text-lg rounded-lg font-semibold transition-colors duration-200 hover:bg-gray-300 hover:text-blueColor"
             >
-              <FaUserTie className="mr-2 text-white" />
+              <FaUserTie className="mr-2 group-hover:text-blueColor text-white" />
               Manage Teachers
             </Link>
 
             {/* Manage Students Link */}
             <Link
               to="/admin/manage-students"
-              className="flex items-center py-3 px-4 text-lg rounded-lg transition-colors duration-200 hover:bg-lightColor1"
+              className="flex group items-center py-3 px-4 text-lg rounded-lg font-semibold transition-colors duration-200 hover:bg-gray-300 hover:text-blueColor"
             >
-              <FaUsers className="mr-2 text-white" />
+              <FaUsers className="mr-2 group-hover:text-blueColor text-white" />
               Manage Students
             </Link>
 
             {/* Analytics Link */}
             <Link
               to="/admin/analytics"
-              className="flex items-center py-3 px-4 text-lg rounded-lg transition-colors duration-200 hover:bg-primaryColor"
+              className="flex group items-center py-3 px-4 text-lg rounded-lg font-semibold transition-colors duration-200 hover:bg-gray-300 hover:text-blueColor"
             >
-              <FaChartPie className="mr-2 text-white" />
+              <FaChartPie className="mr-2 group-hover:text-blueColor text-white" />
               Analytics
             </Link>
 
             {/* Logout Link */}
             <Link
-            to={'/'}
+              to={"/"}
               onClick={handleLogout}
-              className="flex items-center py-3 px-4 text-lg rounded-lg transition-colors duration-200 hover:bg-dark2"
+              className="flex group items-center py-3 px-4 text-lg rounded-lg font-semibold transition-colors duration-200 hover:bg-gray-300 hover:text-blueColor"
             >
-              <FaSignOutAlt className="mr-2 text-white" />
+              <FaSignOutAlt className="mr-2 group-hover:text-blueColor text-white" />
               Logout
             </Link>
           </nav>
         </aside>
 
         {/* Main Content Area */}
-        <main className="flex-1 overflow-auto bg-gray-100 p-6">
+        <main className="flex-1 overflow-auto bg-white p-6">
           {/* Mobile Hamburger Button */}
           <div className="md:hidden flex justify-between items-center mb-4">
             <button onClick={toggleSidebar} className="text-dark1">
-              {isSidebarOpen ? <FaTimes size={24} /> : <FaBars size={24} />}
+              {isSidebarOpen ? <FaTimes size={24} className="text-white" /> : <FaBars size={24} />}
             </button>
             {/* <h1 className="text-xl font-bold">Admin Dashboard</h1> */}
           </div>

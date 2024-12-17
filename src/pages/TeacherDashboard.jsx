@@ -20,42 +20,42 @@ function TeacherDashboard() {
   return (
     <div className="p-4 h-screen">
       <ScrollToTop />
-      <h1 className="text-2xl md:text-4xl text-secondaryColor font-bold mb-6">
+      <h1 className="text-2xl md:text-4xl text-blueColor font-bold mb-6">
         Teacher Dashboard
       </h1>
 
       <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
         {/* My Classes */}
-        <div className="group hover:animate-pulse duration-300 transition-all hover:translate-y-1 hover:bg-secondaryColor bg-primaryColor p-6 rounded-lg shadow-md shadow-secondaryColor hover:shadow-primaryColor flex items-center space-x-4 ">
-          <FaChalkboardTeacher className="text-secondaryColor group-hover:text-primaryColor text-3xl" />
+        <div className="group  duration-300 transition-all hover:translate-y-1 hover:bg-blueColor/90 bg-blueColor p-6 rounded-lg shadow-md shadow-grayColor  flex items-center space-x-4 ">
+          <FaChalkboardTeacher className="text-white text-3xl" />
           <div>
-            <h2 className="text-xl font-bold text-lightColor1 group-hover:text-white  duration-150 transition-all ">
+            <h2 className="text-xl font-bold text-white  duration-150 transition-all ">
               My Classes
             </h2>
-            <p className="text-white group-hover:text-lightColor1 group-hover:font-semibold">
+            <p className="text-white  group-hover:font-semibold">
               Manage and view your classes.
             </p>
           </div>
         </div>
 
         {/* Assignments */}
-        <div className="group hover:animate-pulse duration-300 transition-all hover:translate-y-1 hover:bg-secondaryColor bg-primaryColor p-6 rounded-lg shadow-md shadow-secondaryColor hover:shadow-primaryColor flex items-center space-x-4 ">
-          <FaClipboardList className="text-secondaryColor group-hover:text-primaryColor text-3xl" />
+        <div className="group duration-300 transition-all hover:translate-y-1 hover:bg-blueColor/90 bg-blueColor p-6 rounded-lg shadow-md shadow-grayColor flex items-center space-x-4 ">
+          <FaClipboardList className=" text-white text-3xl" />
           <div>
-            <h2 className="text-xl font-bold text-lightColor1 group-hover:text-white group-hover:animate-pulse duration-150 transition-all">
+            <h2 className="text-xl font-bold text-white  duration-150 transition-all">
               Assignments
             </h2>
-            <p className="text-white group-hover:text-lightColor1 group-hover:font-semibold">
+            <p className="text-white  group-hover:font-semibold">
               Create and grade assignments.
             </p>
           </div>
         </div>
 
         {/* Student Performance */}
-        <div className="group hover:animate-pulse duration-300 transition-all hover:translate-y-1 hover:bg-secondaryColor bg-primaryColor p-6 rounded-lg shadow-md shadow-secondaryColor hover:shadow-primaryColor flex items-center space-x-4 ">
-          <FaChartLine className="text-secondaryColor group-hover:text-primaryColor text-3xl" />
+        <div className="group  duration-300 transition-all hover:translate-y-1 hover:bg-blueColor/90 bg-blueColor p-6 rounded-lg shadow-md shadow-grayColor flex items-center space-x-4 ">
+          <FaChartLine className="text-white text-3xl" />
           <div>
-            <h2 className="text-xl font-semibold text-lightColor1">
+            <h2 className="text-xl font-semibold text-white">
               Performance Reports
             </h2>
             <p className="text-white">
@@ -65,10 +65,10 @@ function TeacherDashboard() {
         </div>
 
         {/* Student List */}
-        <div className="group hover:animate-pulse duration-300 transition-all hover:translate-y-1 hover:bg-secondaryColor bg-primaryColor p-6 rounded-lg shadow-md shadow-secondaryColor hover:shadow-primaryColor flex items-center space-x-4 ">
-          <FaUserGraduate className="text-secondaryColor group-hover:text-primaryColor text-3xl" />
+        <div className="group  duration-300 transition-all hover:translate-y-1 hover:bg-blueColor/90 bg-blueColor p-6 rounded-lg shadow-md shadow-grayColor flex items-center space-x-4 ">
+          <FaUserGraduate className="text-white text-3xl" />
           <div>
-            <h2 className="text-xl font-semibold text-lightColor1">
+            <h2 className="text-xl font-semibold text-white">
               Student List
             </h2>
             <p className="text-white">
@@ -79,10 +79,10 @@ function TeacherDashboard() {
 
         {/* Add Course */}
 
-        <div className="group hover:animate-pulse duration-300 transition-all hover:translate-y-1 hover:bg-secondaryColor bg-primaryColor p-6 rounded-lg shadow-md shadow-secondaryColor hover:shadow-primaryColor flex items-center space-x-4 ">
-          <FaPlusCircle className="text-secondaryColor group-hover:text-primaryColor text-3xl" />
+        <div className="group  duration-300 transition-all hover:translate-y-1 hover:bg-blueColor/90 bg-blueColor p-6 rounded-lg shadow-md shadow-grayColor flex items-center space-x-4 ">
+          <FaPlusCircle className="text-white text-3xl" />
           <div>
-            <h2 className="text-xl font-semibold text-lightColor1">
+            <h2 className="text-xl font-semibold text-white">
               Add Course
             </h2>
             <Link to={"/dashboard/teacherdashboard/addCourse"}>
@@ -94,10 +94,10 @@ function TeacherDashboard() {
         </div>
 
         {/* View Course */}
-        <div className="group hover:animate-pulse duration-300 transition-all hover:translate-y-1 hover:bg-secondaryColor bg-primaryColor p-6 rounded-lg shadow-md shadow-secondaryColor hover:shadow-primaryColor flex items-center space-x-4 ">
-          <FaBook className="text-secondaryColor group-hover:text-primaryColor text-3xl" />
+        <div className="group  duration-300 transition-all hover:translate-y-1 hover:bg-blueColor/90 bg-blueColor p-6 rounded-lg shadow-md shadow-grayColor flex items-center space-x-4 ">
+          <FaBook className="text-white text-3xl" />
           <div>
-            <h2 className="text-xl font-semibold text-lightColor1">
+            <h2 className="text-xl font-semibold text-white">
               View My Courses
             </h2>
             <Link to={"/dashboard/teacherdashboard/viewCourse"}>

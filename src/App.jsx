@@ -43,7 +43,6 @@ import ViewCourses from "./components/course/ViewCourses";
 import EditCourse from "./components/course/EditCourse";
 import ViewCourseSections from "./components/course/ViewCourseSections";
 import ViewCourse from "./components/course/ViewCourse";
-
 import ShoppingPage from "./pages/ShoppingPage";
 import AdminDashboardLayout from "./layouts/AdminDashboardLayout";
 import AdminDashboard from "./pages/AdminDashboard";
@@ -55,7 +54,8 @@ import ForTeams from "./pages/ForTeams";
 import EnrolledCourses from './components/EnrolledCourses'
 import ForgotPassword from "./components/forgotPassword/ForgotPassword";
 import ResetPassword from "./components/forgotPassword/ResetPassword";
-
+import PageNotFound from "./pages/PageNotFound"
+ 
 function App() {
   const router = createBrowserRouter(
     createRoutesFromElements(
@@ -86,6 +86,7 @@ function App() {
           <Route path="/privacy" element={<PrivacyPolicy />}></Route>
           <Route path="/forgotpassword" element={<ForgotPassword />}></Route>
           <Route path="/resetpassword/:uid/:token" element={<ResetPassword />}></Route>
+          <Route path="/page-not-found" element={<PageNotFound />}></Route>
         </Route>
         <Route path="/dashboard" element={<DashboardLayout />}>
           <Route element={<PrivateRoute allowedRoles={["student"]} />}>

@@ -40,14 +40,14 @@ const ViewCourse = () => {
   if (isError || !courses) return <div>Error loading course.</div>;
 
   return (
-    <div className="flex flex-col lg:flex-row-reverse bg-lightColor2 h-screen rounded-lg shadow-md overflow-hidden">
+    <div className="flex flex-col lg:flex-row-reverse bg-white h-screen rounded-lg shadow-md overflow-hidden">
       {/* Course Sections */}
       <div
-        className="lg:w-2/5 w-full lg:border-r border-lightColor1 p-4 overflow-y-auto bg-white order-2 lg:order-1"
+        className="lg:w-2/5 w-full lg:border-r border-blueColor p-4 overflow-y-auto bg-white order-2 lg:order-1"
         style={{ height: "60vh" }}
       >
         
-        <h2 className="text-xl font-bold text-primaryColor mb-4">
+        <h2 className="text-xl font-bold text-blueColor mb-4">
           {courses.course_title}
         </h2>
         {courses.sections.map((section) => (
@@ -55,7 +55,7 @@ const ViewCourse = () => {
             {/* Section Title */}
             <div
               onClick={() => toggleSection(section.section_id)}
-              className="cursor-pointer font-semibold bg-lightColor1 text-white px-4 py-2 rounded-md hover:bg-secondaryColor transition-colors"
+              className="cursor-pointer font-semibold bg-blueColor text-white px-4 py-2 rounded-md hover:bg-blueColor/90 transition-colors"
             >
               {section.section_title}
             </div>
@@ -68,15 +68,15 @@ const ViewCourse = () => {
                   <div
                     key={lecture.lecture_id}
                     onClick={() => playVideo(lecture.video_file)}
-                    className={`cursor-pointer px-2 py-1 rounded hover:bg-lightColor1 transition-colors ${
+                    className={`cursor-pointer text-grayColor px-2 py-1 rounded hover:bg-blueColor transition-colors ${
                       lecture.video_file === currentVideo
-                        ? "text-primaryColor font-medium"
-                        : "text-dark1"
+                        ? "text-white bg-blueColor font-medium"
+                        : "hover:text-white"
                     }`}
                   >
                     {lecture.lecture_title}
                   </div>
-                ))}
+                ))} 
                 {section.lectures.length === 0 && (
                   <div className="text-dark2 italic">
                     No lectures available.
@@ -100,8 +100,8 @@ const ViewCourse = () => {
         <div className="flex items-center justify-end w-full">
         <Link to={"/dashboard/teacherdashboard/viewCourse"}>
           <button
-            className="  bg-dark2 font-semibold text-white px-2 py-2 rounded-md shadow-md 
-                 hover:bg-light3 hover:text-dark1 transition-all"
+            className="  bg-blueColor font-semibold text-white px-2 py-2 rounded-md shadow-md 
+                 hover:bg-blueColor/90 transition-all"
           >
           Back
           </button>
@@ -112,13 +112,13 @@ const ViewCourse = () => {
           <video
             controls
             autoPlay
-            className="rounded-md border border-lightColor1"
+            className="rounded-md border border-blueColor"
             style={{
               width: "80%", // Maintain a consistent video size
               height: "80%", // Relative to its container
             }}
           >
-            <source src={currentVideo} type="video/mp4" />
+            <source src={currentVideo} type="video/mp4" className="text-blueColor" />
             Your browser does not support the video tag.
           </video>
         ) : (

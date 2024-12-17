@@ -29,21 +29,21 @@ const ViewCourses = () => {
       <div className="w-full flex justify-end items-center mb-8">
         <Link to={"/dashboard/teacherdashboard"}>
           <button
-            className="  bg-dark2 font-semibold text-white px-2 py-2 rounded-md shadow-md 
-                 hover:bg-light3 hover:text-dark1 transition-all"
+            className="  bg-blueColor font-semibold text-white px-2 py-2 rounded-md shadow-md 
+                  hover:bg-blueColor/90 transition-all"
           >
             Back
           </button>
         </Link>
       </div>
 
-      <h2 className="text-3xl font-extrabold text-center text-primaryColor mb-8">
+      <h2 className="text-3xl font-extrabold text-center text-blueColor mb-8">
         Your Courses
       </h2>
 
       {isLoading ? (
         <div className="flex justify-center items-center h-64">
-          <div className="animate-spin rounded-full h-12 w-12 border-t-4 border-primaryColor border-opacity-80"></div>
+          <div className="animate-spin rounded-full h-12 w-12 border-t-4 border-blueColor border-opacity-80"></div>
         </div>
       ) : profile ? (
         courses?.length > 0 ? (
@@ -51,7 +51,7 @@ const ViewCourses = () => {
             {courses.map((course) => (
               <div
                 key={course.id}
-                className="flex flex-col bg-white rounded-lg shadow-md overflow-hidden border border-gray-200 transform hover:scale-105 transition-transform duration-300"
+                className="flex flex-col bg-white rounded-lg shadow-md overflow-hidden border border-grayColor transform hover:scale-105 transition-transform duration-300"
               >
                 <div className="relative">
                   <img
@@ -61,26 +61,26 @@ const ViewCourses = () => {
                     alt={course.title}
                     className="w-full h-56 object-cover rounded-t-lg"
                   />
-                  <div className="absolute top-3 right-3 bg-primaryColor text-white text-xs px-2 py-1 rounded">
+                  <div className="absolute top-3 right-3 bg-blueColor text-white text-xs px-2 py-1 rounded">
                     {course.isNew ? "New" : "Featured"}
                   </div>
                 </div>
                 <div className="flex flex-col flex-grow p-4">
-                  <h3 className="text-xl font-semibold text-dark1 mb-2">
+                  <h3 className="text-xl font-semibold text-blueColor mb-2">
                     {course.title}
                   </h3>
-                  <p className="text-sm text-gray-600 flex-grow mb-4">
+                  <p className="text-sm text-grayColor flex-grow mb-4">
                     {course.description || "No description available."}
                   </p>
                   <div className="flex justify-between items-center space-x-2">
                     <button
-                      className="flex-1 bg-secondaryColor text-white text-sm py-2 rounded hover:bg-primaryColor transition-all"
+                      className="flex-1 bg-blueColor text-white text-sm py-2 rounded hover:bg-blueColor/90 transition-all"
                       onClick={() => handleViewCourseSection(course.id)}
                     >
                       View Sections
                     </button>
                     <button
-                      className="flex-1 bg-lightColor1 text-white text-sm py-2 rounded hover:bg-orange-500 transition-all"
+                      className="flex-1 bg-grayColor text-white text-sm py-2 rounded hover:bg-grayColor/90 transition-all"
                       onClick={() => handleAddCourseSection(course.id)}
                     >
                       Add Section

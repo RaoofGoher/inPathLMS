@@ -9,24 +9,24 @@ const ResponsiveIcons = () => {
       <div className="grid grid-cols-4 sm:grid-cols-4 md:grid-cols-4 gap-8">
         {/* Internet Icon */}
         
-          <FontAwesomeIcon icon={faGlobe} className="text-lightColor1 text-4xl mb-4" />
+          <FontAwesomeIcon icon={faGlobe} className="text-blueColor text-4xl mb-4" />
          
         
 
         {/* Login Icon */}
        
-          <FontAwesomeIcon icon={faSignInAlt} className="text-lightColor1 text-4xl mb-4" />
+          <FontAwesomeIcon icon={faSignInAlt} className="text-blueColor text-4xl mb-4" />
           
 
         {/* Education Icon */}
         
-          <FontAwesomeIcon icon={faGraduationCap} className="text-lightColor1 text-4xl mb-4" />
+          <FontAwesomeIcon icon={faGraduationCap} className="text-blueColor text-4xl mb-4" />
           
         
 
         {/* Student Icon */}
         
-          <FontAwesomeIcon icon={faUserGraduate} className="text-lightColor1 text-4xl mb-4" />
+          <FontAwesomeIcon icon={faUserGraduate} className="text-blueColor text-4xl mb-4" />
          
         
       </div>
