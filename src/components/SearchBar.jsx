@@ -4,7 +4,7 @@ import { FaSearch } from 'react-icons/fa';
 const SearchBar = () => {
   return (
     <div className="relative">
-      <FaSearch className="absolute top-1/2 left-3 w-4 h-4 text-gray-400 transform -translate-y-1/2" />
+      <FaSearch className="hidden md:block absolute top-1/2 left-3 w-4 h-4 text-gray-400 transform -translate-y-1/2" />
       <input
         type="text"
         placeholder="Search for anything"

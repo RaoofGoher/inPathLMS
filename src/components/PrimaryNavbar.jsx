@@ -6,7 +6,7 @@ import Logo from "../assets/logos/Logo.png";
 import { useSelector, useDispatch } from "react-redux";
 import { logout } from "../features/auth/authSlice";
 import Cart from "../components/cart/Cart";
-import { clearCart } from '../features/cart/cartSlice';
+import { clearCart } from "../features/cart/cartSlice";
 import Dropdown from "./explore/ExploreDropDown";
 const Navbar = () => {
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
@@ -21,7 +21,6 @@ const Navbar = () => {
     dispatch(logout());
     navigate("/login");
     dispatch(clearCart());
-
   };
 
   const toggleDrawer = () => {
@@ -29,25 +28,29 @@ const Navbar = () => {
   };
 
   return (
-    <nav className="my-4 shadow-md px-16 py-4 bg-white">
+    <nav className="my-4  px-16 py-4 bg-white">
       <div className="container mx-auto flex items-center justify-between">
         {/* {/ Left Side: Logo /} */}
         <div className="flex items-center">
           <NavLink to={"/"}>
             <img src={Logo} className="mr-16 w-[4rem]" alt="Logo" />
           </NavLink>
-          <NavLink className="mx-8 text-grayColor" onMouseEnter={() => setIsDropdownOpen(true)}
-             >
-            Explore
+          <NavLink
+            className="mx-8 text-grayColor"
+            onMouseEnter={() => setIsDropdownOpen(true)}
+          >
+            <span className="hidden md:block"> Explore</span>
           </NavLink>
-          {isDropdownOpen && <Dropdown closeDropdown={() => setIsDropdownOpen(false)} />}
+          {isDropdownOpen && (
+            <Dropdown closeDropdown={() => setIsDropdownOpen(false)} />
+          )}
           {/* {/ Search Bar on Larger Screens Only /} */}
           <SearchBar />
         </div>
 
         {/* {/ Right Side: Drawer Button and Login & Signup Buttons /} */}
         <div className="flex items-center">
-          <button className="md:hidden text-white" onClick={toggleDrawer}>
+          <button className="md:hidden text-blueColor" onClick={toggleDrawer}>
             {/* {/ Icon for toggling drawer (hamburger icon) /} */}
             <svg
               className="w-6 h-6"
@@ -73,17 +76,17 @@ const Navbar = () => {
                     role === "admin"
                       ? "/admin-dashboard"
                       : role === "instructor"
-                        ? "/dashboard/teacherdashboard"
-                        : role === "student"
-                          ? "/dashboard/studentdashboard"
-                          : "/login"
+                      ? "/dashboard/teacherdashboard"
+                      : role === "student"
+                      ? "/dashboard/studentdashboard"
+                      : "/login"
                   }
                   className={({ isActive }) =>
-                    isActive ? "bg-lightColor1 rounded-md" : ""
+                    isActive ? "bg-blueColor/90 rounded-md" : ""
                   }
                   end
                 >
-                  <button className="px-4 py-2 border  border-secondaryColor rounded-md hover:text-secondaryColor transition text-secondaryColor">
+                  <button className="px-4 py-2 border  border-grayColor rounded-md hover:text-white transition text-secondaryColor">
                     Dashboard
                   </button>
                 </NavLink>

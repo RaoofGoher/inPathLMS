@@ -13,7 +13,7 @@ const PrimaryLayout = () => {
  
 
   return (
-    <div className='bg-lightColor2'>
+    <div >
 
       <PrimaryNavbar />    
         <Outlet/>
