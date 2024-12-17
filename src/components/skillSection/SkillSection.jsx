@@ -2,10 +2,11 @@ import React, { useState, useEffect, useRef } from "react";
 import { useGetCoursesQuery } from "../../features/explore/getall"; // Adjust import path
 import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
 
-const SliderComponent = () => {
+const SliderWithPopup = () => {
   const { data, isLoading, isError } = useGetCoursesQuery();
   const [selectedCategory, setSelectedCategory] = useState(null);
   const [selectedSubcategory, setSelectedSubcategory] = useState(null);
+  const [hoveredCourse, setHoveredCourse] = useState(null); // State for hovered course
 
   const categoryRef = useRef(null);
   const subcategoryRef = useRef(null);
@@ -39,17 +40,14 @@ const SliderComponent = () => {
             className="slider-button left-button"
             onClick={() => handleScroll(categoryRef, "left")}
           >
-            <FaChevronLeft/>
+            <FaChevronLeft />
           </button>
-          
           <div className="slider-content" ref={categoryRef}>
             {data.map((category) => (
               <div
-                key={category.categoryId}
+                key={category.id}
                 className={`slider-item ${
-                  selectedCategory?.categoryId === category.categoryId
-                    ? "active-item"
-                    : ""
+                  selectedCategory?.id === category.id ? "active-item" : ""
                 }`}
                 onClick={() => {
                   setSelectedCategory(category);
@@ -64,28 +62,27 @@ const SliderComponent = () => {
             className="slider-button right-button"
             onClick={() => handleScroll(categoryRef, "right")}
           >
-            <FaChevronRight/>
+            <FaChevronRight />
           </button>
         </div>
       </div>
 
       {/* Subcategories Section */}
       {selectedCategory && (
-        <div className="slider-section" style={{background:"#E5F2FF"}}>
+        <div className="slider-section" style={{ background: "#E5F2FF" }}>
           <div className="slider-wrapper">
             <button
               className="slider-button left-button"
               onClick={() => handleScroll(subcategoryRef, "left")}
             >
-              <FaChevronLeft/>
+              <FaChevronLeft />
             </button>
             <div className="slider-content" ref={subcategoryRef}>
               {selectedCategory.subcategories.map((subcategory) => (
                 <div
-                  key={subcategory.subcategoryId}
+                  key={subcategory.id}
                   className={`slider-item ${
-                    selectedSubcategory?.subcategoryId ===
-                    subcategory.subcategoryId
+                    selectedSubcategory?.id === subcategory.id
                       ? "active-item"
                       : ""
                   }`}
@@ -99,7 +96,7 @@ const SliderComponent = () => {
               className="slider-button right-button"
               onClick={() => handleScroll(subcategoryRef, "right")}
             >
-              <FaChevronRight/>
+              <FaChevronRight />
             </button>
           </div>
         </div>
@@ -114,19 +111,42 @@ const SliderComponent = () => {
               className="slider-button left-button"
               onClick={() => handleScroll(courseRef, "left")}
             >
-              <FaChevronLeft/>
+              <FaChevronLeft />
             </button>
-            <div className="slider-content" ref={courseRef}>
+            <div className="slider-content" ref={courseRef} style={{position:"relative"}}>
               {selectedSubcategory.courses.map((course) => (
-                <div key={course.courseId} className="course-card">
-                  <div className="card-inner">
-                    <div className="card-front">
-                      <h3>{course.title}</h3>
+                <div
+                  key={course.id}
+                  className="course-card"
+                  onMouseEnter={() => setHoveredCourse(course)} // Show popup on hover
+                  onMouseLeave={() => setHoveredCourse(null)} // Hide popup when leaving
+                  
+                >
+                  <img
+                    src={course.thumbnail}
+                    alt={course.title}
+                    className="course-thumbnail"
+                  />
+                  <h3>{course.title}</h3>
+
+                  {/* Hover Popup */}
+                  {hoveredCourse?.id === course.id && (
+                   
+                    <div className="popup-card" style={popupStyles}>
+                      <h3>{hoveredCourse.title}</h3>
+                      <p>{hoveredCourse.description}</p>
+                      <p>
+                        Price: ${hoveredCourse.price}{" "}
+                        {hoveredCourse.discount_percentage && (
+                          <span>
+                            (-{hoveredCourse.discount_percentage}% Discount)
+                          </span>
+                        )}
+                      </p>
+                      <button className="add-to-cart-button">Add to Cart</button>
                     </div>
-                    <div className="card-back">
-                      <p>More Details</p>
-                    </div>
-                  </div>
+                    
+                  )}
                 </div>
               ))}
             </div>
@@ -134,7 +154,7 @@ const SliderComponent = () => {
               className="slider-button right-button"
               onClick={() => handleScroll(courseRef, "right")}
             >
-              <FaChevronRight/>
+              <FaChevronRight />
             </button>
           </div>
         </div>
@@ -143,4 +163,16 @@ const SliderComponent = () => {
   );
 };
 
-export default SliderComponent;
+const popupStyles = {
+position: "absolute",
+  top: "0",
+  left: "90%",
+  width: "300px",
+  background: "#fff",
+  boxShadow: "0 4px 6px rgba(0, 0, 0, 0.1)",
+  padding: "15px",
+  borderRadius: "8px",
+  zIndex:100
+};
+
+export default SliderWithPopup;

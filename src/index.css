@@ -37,9 +37,7 @@
 }
 
 .slider-content {
-  display: flex;
-  overflow-x:auto;
-  scrollbar-width: none; /* Hide scrollbar for Firefox */
+  display: flex;  scrollbar-width: none; /* Hide scrollbar for Firefox */
   -ms-overflow-style: none; /* Hide scrollbar for IE 10+ */
   scroll-behavior: smooth;
 }
@@ -74,7 +72,7 @@
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
-  z-index: 5;
+  /* z-index: 5; */
   background-color: #fff;
   color: black;
   border: none;
@@ -104,7 +102,6 @@
   background-color: white;
   border-radius: 10px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  perspective: 1000px;
   cursor: pointer;
 }
 
@@ -147,3 +144,34 @@
   color: white;
 }
 
+.course-card {
+  position: relative;
+  display: inline-block;
+  padding: 10px;
+  text-align: center;
+}
+
+.course-thumbnail {
+  width: 150px;
+  height: 100px;
+  object-fit: cover;
+  border-radius: 5px;
+}
+
+.popup-card {
+  border: 1px solid #ddd;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.add-to-cart-button {
+  background-color: #007bff;
+  color: white;
+  border: none;
+  padding: 5px 10px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.add-to-cart-button:hover {
+  background-color: #0056b3;
+}
