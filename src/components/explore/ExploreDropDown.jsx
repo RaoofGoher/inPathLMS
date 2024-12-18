@@ -15,7 +15,7 @@ const Dropdown = ({ closeDropdown }) => {
   return (
     <div
       onMouseLeave={closeDropdown}
-      className="absolute z-10 bg-white rounded-md top-20 w-[70vw] max-w-[250px] shadow-md  shadow-grayColor h-[125vh] lg:h-[153vh]"
+      className="absolute z-10 bg-white rounded-md top-20 w-[70vw] max-w-[250px] shadow-md  shadow-grayColor h-[125vh]"
     >
       <div className="w-full">
         <ul className="flex flex-col justify-center items-start py-2   ">
