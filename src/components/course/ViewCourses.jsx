@@ -107,7 +107,7 @@ const ViewCourses = () => {
               You don't have any courses yet. Start creating one!
             </p>
             <button
-              className="bg-primaryColor text-white py-2 px-6 rounded hover:bg-secondaryColor transition-all"
+              className="bg-blueColor text-white py-2 px-6 rounded hover:bg-blueColor/90 transition-all"
               onClick={() =>
                 navigate("/dashboard/teacherdashboard/createcourse")
               }
@@ -127,7 +127,7 @@ const ViewCourses = () => {
             You don't have a profile yet.
           </p>
           <button
-            className="bg-primaryColor text-white py-2 px-6 rounded hover:bg-secondaryColor transition-all"
+            className="bg-blueColor text-white py-2 px-6 rounded hover:bg-blueColor/90 transition-all"
             onClick={() =>
               navigate("/dashboard/teacherdashboard/createprofile")
             }
