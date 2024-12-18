@@ -1,17 +1,23 @@
 import React, { useState, useEffect, useRef } from "react";
 import { useGetCoursesQuery } from "../../features/explore/getall"; // Adjust import path
 import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
-
+import { useDispatch, useSelector } from "react-redux";
+import { addToCart } from "../../features/cart/cartSlice"; // Adjust path if needed
+import { useNavigate } from "react-router-dom";
 const SliderWithPopup = () => {
+  const { token, role, isAuthenticated, user_id } = useSelector(
+    (state) => state.auth
+  );
   const { data, isLoading, isError } = useGetCoursesQuery();
   const [selectedCategory, setSelectedCategory] = useState(null);
   const [selectedSubcategory, setSelectedSubcategory] = useState(null);
   const [hoveredCourse, setHoveredCourse] = useState(null);
-
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
   const categoryRef = useRef(null);
   const subcategoryRef = useRef(null);
   const courseRef = useRef(null);
-
+  const cartItems = useSelector((state) => state.cart.items);
   const [showCategoryScroll, setShowCategoryScroll] = useState({
     left: false,
     right: false,
@@ -68,6 +74,36 @@ const SliderWithPopup = () => {
 
   if (isLoading) return <div>Loading...</div>;
   if (isError) return <div>Error fetching data</div>;
+  const handleAddToCart = (course) => {
+    if (isAuthenticated ) {
+
+    const existingItem = cartItems.find((item) => item.id === course.id);
+
+    if (existingItem) {
+      alert("This course is already in your cart!");
+    } else {
+      dispatch(
+        addToCart({
+          id: course.id,
+          name: course.title,
+          price: course.final_price,
+          quantity: 1,
+        })
+      );
+    }
+  }else {
+    alert("please login to continue")
+  }
+  };
+
+  const handleCheckout = () => {
+    if (isAuthenticated ) {
+
+    navigate("/shopping")
+    }else {
+      alert("please login to continue")
+    }
+  }
 
   return (
     <div className="slider-container">
@@ -94,9 +130,8 @@ const SliderWithPopup = () => {
             {data.map((category) => (
               <div
                 key={category.id}
-                className={`slider-item ${
-                  selectedCategory?.id === category.id ? "active-item" : ""
-                }`}
+                className={`slider-item ${selectedCategory?.id === category.id ? "active-item" : ""
+                  }`}
                 onClick={() => {
                   setSelectedCategory(category);
                   setSelectedSubcategory(category.subcategories[0]);
@@ -139,11 +174,10 @@ const SliderWithPopup = () => {
               {selectedCategory.subcategories.map((subcategory) => (
                 <div
                   key={subcategory.id}
-                  className={`slider-item ${
-                    selectedSubcategory?.id === subcategory.id
-                      ? "active-item2"
-                      : ""
-                  }`}
+                  className={`slider-item ${selectedSubcategory?.id === subcategory.id
+                    ? "active-item2"
+                    : ""
+                    }`}
                   onClick={() => setSelectedSubcategory(subcategory)}
                 >
                   {subcategory.name}
@@ -166,7 +200,7 @@ const SliderWithPopup = () => {
 
       {/* Courses Section */}
       {selectedSubcategory && (
-        <div className="slider-section p-8" style={{backgroundColor:"#f9f9f9f9"}}>
+        <div className="slider-section p-8" style={{ backgroundColor: "#f9f9f9f9" }}>
           <div className="slider-wrapper">
             {showCourseScroll.left && (
               <button
@@ -182,6 +216,7 @@ const SliderWithPopup = () => {
               onScroll={() => checkScrollButtons(courseRef, setShowCourseScroll)}
             >
               {selectedSubcategory.courses.map((course) => (
+                
                 <div
                   key={course.id}
                   className="course-card"
@@ -193,23 +228,46 @@ const SliderWithPopup = () => {
                     alt={course.title}
                     className="course-thumbnail"
                   />
-                  <h3>{course.title}</h3>
+                  <h3 className="text-2xl">{course.title}</h3>
                   <p>{course.description}</p>
+                  <p>{course.price} $</p>
 
                   {/* Hover Popup */}
                   {hoveredCourse?.id === course.id && (
                     <div className="popup-card" style={popupStyles}>
-                      <h3>{hoveredCourse.title}</h3>
+                      <h3 className="text-xl">{hoveredCourse.title}</h3>
                       <p>{hoveredCourse.description}</p>
                       <p>
                         Price: ${hoveredCourse.price}{" "}
                         {hoveredCourse.discount_percentage && (
                           <span>
-                            (-{hoveredCourse.discount_percentage}% Discount)
+                            ({hoveredCourse.discount_percentage}% Discount)
                           </span>
                         )}
                       </p>
-                      <button className="add-to-cart-button">Add to Cart</button>
+                      {hoveredCourse.discount_percentage && (
+                        <>
+                        <p>
+                          Total Price: $
+                          {(
+                            hoveredCourse.price -
+                            (hoveredCourse.price * hoveredCourse.discount_percentage) / 100
+                          ).toFixed(2)}
+                        </p>
+                      
+                      <button
+                      onClick={()=>{handleAddToCart(hoveredCourse)}}
+                      className="px-4 py-2 m-2 bg-green-600 text-white rounded-md hover:bg-green-700 flex items-center justify-center gap-2 transition-all duration-300 md:px-6 md:py-3"
+                    >
+                   Add to cart
+                    </button>
+
+                    <button onClick={()=>{handleCheckout(hoveredCourse)}} className="px-4 py-2 bg-orange-500 text-white rounded-md hover:bg-orange-600 flex items-center justify-center gap-2 transition-all duration-300 md:px-6 md:py-3">
+                      checkout
+                    </button>
+                    </>
+                      )}
+                     
                     </div>
                   )}
                 </div>
@@ -235,11 +293,9 @@ const popupStyles = {
   top: "0",
   left: "90%",
   width: "300px",
-  background: "#fff",
   boxShadow: "0 4px 6px rgba(0, 0, 0, 0.1)",
   padding: "15px",
-  borderRadius: "8px",
   zIndex: 100,
+  animation: "slideIn 0.5s ease-in-out", // Apply animation
 };
-
 export default SliderWithPopup;
