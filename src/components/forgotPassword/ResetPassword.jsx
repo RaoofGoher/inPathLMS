@@ -38,33 +38,51 @@ const ResetPassword = () => {
   };
 
   return (
-    <form onSubmit={handleSubmit} className="m-8">
-      <div>
-        <input
-          type="password"
-          placeholder="Enter new password"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-          required
-          minLength="8"
-        />
+    <div className="flex justify-center items-center min-h-screen bg-white">
+      <div className="bg-white p-8 rounded-lg shadow-grayColor shadow-xl w-full max-w-md">
+        <h2 className="text-3xl font-bold text-center text-blueColor mb-6">Reset Your Password</h2>
+
+        <form onSubmit={handleSubmit}>
+          {/* Password Field */}
+          <div className="mb-4">
+            <input
+              type="password"
+              placeholder="Enter new password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              required
+              minLength="8"
+              className="w-full p-4 border border-grayColor rounded-md focus:outline-none focus:ring-2 focus:ring-blueColor/90"
+            />
+          </div>
+
+          {/* Confirm Password Field */}
+          <div className="mb-6">
+            <input
+              type="password"
+              placeholder="Confirm new password"
+              value={confirmPassword}
+              onChange={(e) => setConfirmPassword(e.target.value)}
+              required
+              minLength="8"
+              className="w-full p-4 border border-grayColor rounded-md focus:outline-none focus:ring-2 focus:ring-blueColor/90"
+            />
+          </div>
+
+          {/* Submit Button */}
+          <button
+            type="submit"
+            className="w-full p-4 bg-blueColor  text-white font-semibold rounded-md hover:bg-blueColor/90 focus:outline-none focus:ring-2 focus:ring-blueColor/90"
+          >
+            Reset Password
+          </button>
+        </form>
+
+        {/* Success or Error Messages */}
+        {message && <p className="mt-4 text-green-500 text-center">{message}</p>}
+        {error && <p className="mt-4 text-red-500 text-center">{error}</p>}
       </div>
-      <div>
-        <input
-          type="password"
-          placeholder="Confirm new password"
-          value={confirmPassword}
-          onChange={(e) => setConfirmPassword(e.target.value)}
-          required
-          minLength="8"
-        />
-      </div>
-      <div>
-        <button type="submit">Reset Password</button>
-      </div>
-      {message && <p style={{ color: 'green' }}>{message}</p>}
-      {error && <p style={{ color: 'red' }}>{error}</p>}
-    </form>
+    </div>
   );
 };
 
