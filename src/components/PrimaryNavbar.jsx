@@ -8,6 +8,7 @@ import { logout } from "../features/auth/authSlice";
 import Cart from "../components/cart/Cart";
 import { clearCart } from "../features/cart/cartSlice";
 import Dropdown from "./explore/ExploreDropDown";
+import { resetSubCategoryID } from "../features/searchCourse/ExploreSubCategoryID";
 const Navbar = () => {
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
@@ -42,7 +43,10 @@ const Navbar = () => {
             <span className="hidden md:block"> Explore</span>
           </NavLink>
           {isDropdownOpen && (
-            <Dropdown closeDropdown={() => setIsDropdownOpen(false)} />
+            <Dropdown closeDropdown={() => {
+              setIsDropdownOpen(false);
+               // Reset the subCategoryID dispatch(resetSubCategoryID());
+            }} />
           )}
           {/* {/ Search Bar on Larger Screens Only /} */}
           <SearchBar />

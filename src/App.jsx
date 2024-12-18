@@ -55,6 +55,7 @@ import EnrolledCourses from './components/EnrolledCourses'
 import ForgotPassword from "./components/forgotPassword/ForgotPassword";
 import ResetPassword from "./components/forgotPassword/ResetPassword";
 import PageNotFound from "./pages/PageNotFound"
+import ExploredCourses from "./components/explore/ExploredCourses";
  
 function App() {
   const router = createBrowserRouter(
@@ -87,6 +88,7 @@ function App() {
           <Route path="/forgotpassword" element={<ForgotPassword />}></Route>
           <Route path="/resetpassword/:uid/:token" element={<ResetPassword />}></Route>
           <Route path="/page-not-found" element={<PageNotFound />}></Route>
+          <Route path="/exploredcourses/:id" element={<ExploredCourses />}></Route>
         </Route>
         <Route path="/dashboard" element={<DashboardLayout />}>
           <Route element={<PrivateRoute allowedRoles={["student"]} />}>

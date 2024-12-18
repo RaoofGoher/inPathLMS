@@ -16,6 +16,7 @@ import cartReducer from './features/cart/cartSlice';
 import { enrolledCourseApi } from './features/enrollments/enrolledCourseAPi';
 import { enrollApi } from './features/enrollments/enrollApi';
 import {getAllCourses} from "./features/explore/getall";
+import exploreSubCategoryIDReducer from './features/searchCourse/ExploreSubCategoryID'; 
 // Define the persist configuration for auth state
 const persistAuthConfig = {
   key: 'auth',
@@ -49,6 +50,7 @@ export const store = configureStore({
     [enrollApi.reducerPath]: enrollApi.reducer,
     [enrolledCourseApi.reducerPath]: enrolledCourseApi.reducer,
     [getAllCourses.reducerPath]: getAllCourses.reducer,
+    exploreSubCategoryID: exploreSubCategoryIDReducer,
   },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware()

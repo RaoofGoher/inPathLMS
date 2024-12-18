@@ -1,11 +1,14 @@
 import React, { useState } from "react";
 import { FaChevronRight, FaTimes } from "react-icons/fa";
 import { useGetCoursesQuery } from "../../features/explore/getall";
-
+import { useDispatch } from 'react-redux';
+import { setSubCategoryID } from "../../features/searchCourse/ExploreSubCategoryID"
+import { useNavigate } from "react-router-dom";
 const Dropdown = ({ closeDropdown }) => {
+  const navigate = useNavigate();
   const [activeCategory, setActiveCategory] = useState(null);
   const [activeSubcategory, setActiveSubcategory] = useState(null);
-
+  const dispatch = useDispatch();
   // Fetch data using RTK Query
   const { data: categories, isLoading, isError } = useGetCoursesQuery();
 
@@ -69,6 +72,11 @@ const Dropdown = ({ closeDropdown }) => {
                                 <li
                                   key={course.courseId}
                                   className="px-4 py-2 hover:bg-gray-100 rounded-md cursor-pointer"
+                                  onClick={() => {
+                                    dispatch(setSubCategoryID(subcategory.id)); // Dispatch the action with subCategoryID
+                                    navigate(`/exploredcourses/${subcategory.id}`);
+                                    console.log("subCategoryId",subcategory.id) // Navigate to the correct route
+                                  }}
                                 >
                                   {course.title}
                                 </li>
