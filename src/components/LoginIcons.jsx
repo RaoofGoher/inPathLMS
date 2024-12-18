@@ -4,7 +4,7 @@ import { faGlobe, faSignInAlt, faGraduationCap, faUserGraduate } from '@fortawes
 
 const ResponsiveIcons = () => {
   return (
-    <div className=" flex flex-row items-center justify-center bg-lightColor2 p-4">
+    <div className=" flex flex-row items-center justify-center bg-white p-4">
      
       <div className="grid grid-cols-4 sm:grid-cols-4 md:grid-cols-4 gap-8">
         {/* Internet Icon */}
