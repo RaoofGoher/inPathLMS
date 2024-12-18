@@ -109,8 +109,8 @@ const SliderWithPopup = () => {
     <div className="slider-container">
       {/* Categories Section */}
       <div className="slider-section">
-        <h1 className="section-title">All the skills you need in one place</h1>
-        <p className="text-3xl mb-4">
+        <h1 className="section-title font-montserrat">All the skills you need in one place</h1>
+        <p className="text-3xl mb-4 font-nunito">
           From critical skills to technical topics, InPATH supports your professional development.
         </p>
         <div className="slider-wrapper">
@@ -228,18 +228,37 @@ const SliderWithPopup = () => {
                     alt={course.title}
                     className="course-thumbnail"
                   />
-                  <h3 className="text-2xl">{course.title}</h3>
-                  <p>{course.description}</p>
-                  <p>{course.price} $</p>
+                  <h3 className="text-2xl font-montserrat">{course.title}</h3>
+                  <p className="font-nunito">{course.description}</p>
+                  <div className="flex items-center mb-4">
+                    {Array(5)
+                      .fill(0)
+                      .map((_, index) => (
+                        <svg
+                          key={index}
+                          xmlns="http://www.w3.org/2000/svg"
+                          className={`w-5 h-5 ${index < 4 // Example: 4 out of 5 stars
+                              ? "text-yellow-400"
+                              : "text-gray-300"
+                            }`}
+                          fill="currentColor"
+                          viewBox="0 0 24 24"
+                        >
+                          <path d="M12 .587l3.668 7.521 8.332 1.211-6.064 5.908 1.432 8.313-7.368-3.869-7.368 3.869 1.432-8.313-6.064-5.908 8.332-1.211z" />
+                        </svg>
+                      ))}
+                    <span className="ml-2 text-gray-600 text-sm">(4.0)</span> {/* Example rating */}
+                  </div>
+                  <p className="font-nunito">{course.price} $</p>
 
                   {/* Hover Popup */}
                   {hoveredCourse?.id === course.id && (
                     <div
                       className="h-[350px] absolute top-0 left-full w-80 bg-[#E5F2FF] shadow-lg rounded-lg p-4 z-50 animate-slide-in transform transition-transform duration-300"
                     >
-                      <h3 className="text-xl font-semibold mb-2">{hoveredCourse.title}</h3>
-                      <p className="text-gray-600 mb-2">{hoveredCourse.description}</p>
-                      <p className="text-gray-800 mb-2">
+                      <h3 className="text-xl font-semibold mb-2 font-montserrat">{hoveredCourse.title}</h3>
+                      <p className="text-gray-600 mb-2 font-montserrat">{hoveredCourse.description}</p>
+                      <p className="text-gray-800 mb-2 font-montserrat">
                         Price: ${hoveredCourse.price}{" "}
                         {hoveredCourse.discount_percentage && (
                           <span className="text-green-500 font-medium">
@@ -249,14 +268,14 @@ const SliderWithPopup = () => {
                       </p>
                       {hoveredCourse.discount_percentage && (
                         <p className="text-gray-900 font-semibold mb-4">
-                          <span className="text-gray-500">Total Price: </span>
+                          <span className="text-gray-500 font-montserrat">Total Price: </span>
                           ${(
                             hoveredCourse.price -
                             (hoveredCourse.price * hoveredCourse.discount_percentage) / 100
                           ).toFixed(2)}
                         </p>
                       )}
-                      <div className="flex justify-between">
+                      <div className="flex justify-between font-montserrat">
                         <button
                           onClick={() => handleAddToCart(hoveredCourse)}
                           className="flex items-center justify-center gap-2 px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-500 transition duration-300 shadow-sm"

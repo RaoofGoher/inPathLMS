@@ -10,6 +10,7 @@ export default {
       fontFamily: {
         lato: ['Lato', 'sans-serif'],
         montserrat: ['Montserrat', 'sans-serif'],
+        nunito: ['"Nunito Sans"', 'sans-serif'],
       },
       colors: {
         'primaryColor': "#4A90E2 ", //skyblue
