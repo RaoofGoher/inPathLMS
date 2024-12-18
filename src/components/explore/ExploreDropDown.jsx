@@ -12,20 +12,22 @@ const Dropdown = ({ closeDropdown }) => {
   if (isLoading) return <div>Loading...</div>;
   if (isError) return <div>Failed to load categories.</div>;
 
+  const topCategories = categories.slice(0, 10);
+
   return (
     <div
       onMouseLeave={closeDropdown}
-      className="absolute z-10 bg-white rounded-md top-20 w-[70vw] max-w-[250px] shadow-md  shadow-grayColor h-[125vh]"
+      className="absolute z-10 bg-white rounded-md top-20 w-[70vw] max-w-[250px] shadow-md  shadow-grayColor"
     >
       <div className="w-full">
         <ul className="flex flex-col justify-center items-start py-2   ">
           {/* Render categories */}
-          {categories.map((category, index) => (
+          {topCategories.map((category, index) => (
             <li
               onMouseEnter={() => setActiveCategory(index)} // Hover effect for categories
               onMouseLeave={() => setActiveCategory(null)} // Reset on leave
               key={category.categoryId}
-              className="relative group w-full  hover:border-b-2 border-grayColor rounded-md"
+              className="relative group w-full rounded-md"
             >
               <span className=" px-4 gap-24  py-2 hover:bg-gray-100 rounded-md cursor-pointer flex items-center">
                 {category.name}
@@ -38,7 +40,7 @@ const Dropdown = ({ closeDropdown }) => {
               {activeCategory === index &&
                 category.subcategories.length > 0 && (
                   <ul
-                    className="absolute w-[200px] h-screen -top-4 left-56 ml-6 bg-white  rounded-md p-2 z-10"
+                    className="absolute w-[200px] -top-4 left-56 ml-6 bg-white  rounded-md p-2 z-10"
                     style={{ transform: "translateY(10px)" }} // Positioned below the category
                   >
                     {category.subcategories.map((subcategory, subIndex) => (
@@ -46,7 +48,7 @@ const Dropdown = ({ closeDropdown }) => {
                         onMouseEnter={() => setActiveSubcategory(subIndex)} // Hover effect for subcategories
                         onMouseLeave={() => setActiveSubcategory(null)} // Reset subcategory on leave
                         key={subcategory.subcategoryId}
-                        className="relative group hover:border-b-2 border-grayColor"
+                        className="relative group"
                       >
                         {/* Move hover effect to span */}
                         <span className=" px-4 py-2 hover:bg-gray-100 rounded-md cursor-pointer flex items-center">
@@ -60,13 +62,13 @@ const Dropdown = ({ closeDropdown }) => {
                         {activeSubcategory === subIndex &&
                           subcategory.courses?.length > 0 && (
                             <ul
-                              className="absolute h-screen -top-4 left-44 ml-2 bg-white  rounded-md p-2 w-48"
+                              className="absolute -top-4 left-44 ml-2 bg-white  rounded-md p-2 w-48"
                               style={{ transform: "translateY(10px)" }} // Positioned below the subcategory
                             >
                               {subcategory.courses.map((course) => (
                                 <li
                                   key={course.courseId}
-                                  className="px-4 py-2 hover:bg-gray-100 rounded-md cursor-pointer hover:border-b-2 border-grayColor"
+                                  className="px-4 py-2 hover:bg-gray-100 rounded-md cursor-pointer"
                                 >
                                   {course.title}
                                 </li>
