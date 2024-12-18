@@ -1,10 +1,13 @@
 import React from "react";
 import { useSelector } from "react-redux"; // For accessing Redux state
-
+import { useNavigate } from "react-router-dom";
 const CartDetails = ({ closeOverlay }) => {
   // Example cart state from Redux
+  const navigate = useNavigate()
   const cartItems = useSelector((state) => state.cart?.items || []);
-
+const shopping = ()=>{
+  navigate("/shopping")
+}
   return (
     <div className="absolute z-10 top-12 right-0 w-80 bg-white shadow-lg rounded-lg p-4">
       {/* Close Button */}
@@ -36,7 +39,7 @@ const CartDetails = ({ closeOverlay }) => {
       )}
 
       <button
-        onClick={closeOverlay}
+        onClick={shopping}
         className="mt-4 w-full bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-600"
       >
         Checkout

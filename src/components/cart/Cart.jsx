@@ -1,10 +1,10 @@
 import React, { useState } from "react";
 import { useSelector } from "react-redux"; // For accessing Redux state if needed
 import CartDetails from "./CartDetails";
-
+import { useNavigate } from "react-router-dom";
 const Cart = () => {
   const [isOpen, setIsOpen] = useState(false);
-
+  const navigate = useNavigate();
   // Example cart state from Redux (replace with your actual state)
   const cartItems = useSelector((state) => state.cart?.items || []);
 

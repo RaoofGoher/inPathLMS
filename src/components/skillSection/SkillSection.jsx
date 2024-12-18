@@ -75,32 +75,32 @@ const SliderWithPopup = () => {
   if (isLoading) return <div>Loading...</div>;
   if (isError) return <div>Error fetching data</div>;
   const handleAddToCart = (course) => {
-    if (isAuthenticated ) {
+    if (isAuthenticated) {
 
-    const existingItem = cartItems.find((item) => item.id === course.id);
+      const existingItem = cartItems.find((item) => item.id === course.id);
 
-    if (existingItem) {
-      alert("This course is already in your cart!");
+      if (existingItem) {
+        alert("This course is already in your cart!");
+      } else {
+        dispatch(
+          addToCart({
+            id: course.id,
+            name: course.title,
+            price: course.final_price,
+            quantity: 1,
+          })
+        );
+      }
     } else {
-      dispatch(
-        addToCart({
-          id: course.id,
-          name: course.title,
-          price: course.final_price,
-          quantity: 1,
-        })
-      );
+      alert("please login to continue")
     }
-  }else {
-    alert("please login to continue")
-  }
   };
 
   const handleCheckout = () => {
-    if (isAuthenticated ) {
+    if (isAuthenticated) {
 
-    navigate("/shopping")
-    }else {
+      navigate("/shopping")
+    } else {
       alert("please login to continue")
     }
   }
@@ -216,7 +216,7 @@ const SliderWithPopup = () => {
               onScroll={() => checkScrollButtons(courseRef, setShowCourseScroll)}
             >
               {selectedSubcategory.courses.map((course) => (
-                
+
                 <div
                   key={course.id}
                   className="course-card"
@@ -234,40 +234,42 @@ const SliderWithPopup = () => {
 
                   {/* Hover Popup */}
                   {hoveredCourse?.id === course.id && (
-                    <div className="popup-card" style={popupStyles}>
-                      <h3 className="text-xl">{hoveredCourse.title}</h3>
-                      <p>{hoveredCourse.description}</p>
-                      <p>
+                    <div
+                      className="h-[350px] absolute top-0 left-full w-80 bg-[#E5F2FF] shadow-lg rounded-lg p-4 z-50 animate-slide-in transform transition-transform duration-300"
+                    >
+                      <h3 className="text-xl font-semibold mb-2">{hoveredCourse.title}</h3>
+                      <p className="text-gray-600 mb-2">{hoveredCourse.description}</p>
+                      <p className="text-gray-800 mb-2">
                         Price: ${hoveredCourse.price}{" "}
                         {hoveredCourse.discount_percentage && (
-                          <span>
-                            ({hoveredCourse.discount_percentage}% Discount)
+                          <span className="text-green-500 font-medium">
+                            ({hoveredCourse.discount_percentage}% Off)
                           </span>
                         )}
                       </p>
                       {hoveredCourse.discount_percentage && (
-                        <>
-                        <p>
-                          Total Price: $
-                          {(
+                        <p className="text-gray-900 font-semibold mb-4">
+                          <span className="text-gray-500">Total Price: </span>
+                          ${(
                             hoveredCourse.price -
                             (hoveredCourse.price * hoveredCourse.discount_percentage) / 100
                           ).toFixed(2)}
                         </p>
-                      
-                      <button
-                      onClick={()=>{handleAddToCart(hoveredCourse)}}
-                      className="px-4 py-2 m-2 bg-green-600 text-white rounded-md hover:bg-green-700 flex items-center justify-center gap-2 transition-all duration-300 md:px-6 md:py-3"
-                    >
-                   Add to cart
-                    </button>
-
-                    <button onClick={()=>{handleCheckout(hoveredCourse)}} className="px-4 py-2 bg-orange-500 text-white rounded-md hover:bg-orange-600 flex items-center justify-center gap-2 transition-all duration-300 md:px-6 md:py-3">
-                      checkout
-                    </button>
-                    </>
                       )}
-                     
+                      <div className="flex justify-between">
+                        <button
+                          onClick={() => handleAddToCart(hoveredCourse)}
+                          className="flex items-center justify-center gap-2 px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-500 transition duration-300 shadow-sm"
+                        >
+                          Add to Cart
+                        </button>
+                        <button
+                          onClick={() => handleCheckout(hoveredCourse)}
+                          className="flex items-center justify-center gap-2 px-4 py-2 bg-orange-500 text-white rounded-md hover:bg-orange-400 transition duration-300 shadow-sm"
+                        >
+                          Checkout
+                        </button>
+                      </div>
                     </div>
                   )}
                 </div>
