@@ -2,14 +2,19 @@ import React from "react";
 import { useSelector } from "react-redux";
 import { useGetCoursesBySubcategoryQuery } from "../../features/searchCourse/courseSlice";
 import CourseCard from "./CourseCard";
+import { useParams } from "react-router-dom";
 
 const ExploredCourses = () => {
   const subCategoryID = useSelector((state) => state.exploreSubCategoryID.subCategoryID);
+  const { id } = useParams(); // Corrected destructuring
+  
+  // Conditional subCategoryID assignment: if there's no subCategoryID from Redux, use the one from params
+  const finalSubCategoryID = subCategoryID || id;
 
   // Fetch courses based on the selected subcategory
-  const { data: courses, isLoading, isError } = useGetCoursesBySubcategoryQuery(subCategoryID);
+  const { data: courses, isLoading, isError } = useGetCoursesBySubcategoryQuery(finalSubCategoryID);
 
-  if (!subCategoryID) return <div>Please select a subcategory to view courses.</div>;
+  if (!finalSubCategoryID) return <div>Please select a subcategory to view courses.</div>;
   if (isLoading) return <div>Loading courses...</div>;
   if (isError) return <div>Failed to load courses.</div>;
 
