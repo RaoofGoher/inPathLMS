@@ -21,12 +21,12 @@ const CurrentTrends = () => {
               ChatGPT is a top skill
             </h1>
             <h2 className="flex flex-col gap-2 text-blueColor font-bold">
-              <Link to="/chatgpt-courses" className="hover:text-dark1">
+              <Link to="/page-not-found" className="hover:text-dark1">
                 View ChatGPT courses &gt;
               </Link>
               <span className="text-grayColor">3,858,936 learners</span>
             </h2>
-            <Link to="/trending-skills">
+            <Link to="/page-not-found">
               <button className="p-2 flex  lg:text-xl gap-4 items-center text-start w-full border-2 border-grayColor text-grayColor hover:bg-blueColor hover:border-blueColor  hover:text-grayColor duration-300">
                 {" "}
                 Show all trending skills
@@ -41,7 +41,7 @@ const CurrentTrends = () => {
         <ul className="flex flex-col gap-6 sm:pl-12">
           <h1 className="font-bold text-2xl text-dark1">Development</h1>
           <li className="flex flex-col text-blueColor">
-            <Link to="/python-courses" className="font-bold hover:text-dark1">
+            <Link to="/page-not-found" className="font-bold hover:text-dark1">
               Python &gt;
             </Link>
             <span className="text-grayColor font-thin text-sm">
@@ -50,7 +50,7 @@ const CurrentTrends = () => {
           </li>
           <li className="flex flex-col text-blueColor">
             <Link
-              to="/web-development-courses"
+              to="/page-not-found"
               className="font-bold hover:text-dark1"
             >
               Web Development &gt;
@@ -61,7 +61,7 @@ const CurrentTrends = () => {
           </li>
           <li className="flex flex-col text-blueColor">
             <Link
-              to="/data-science-courses"
+              to="/page-not-found"
               className="font-bold hover:text-dark1"
             >
               Data Science &gt;
@@ -76,7 +76,7 @@ const CurrentTrends = () => {
         <ul className="flex flex-col gap-6">
           <h1 className="font-bold text-2xl text-dark1">Design</h1>
           <li className="flex flex-col text-blueColor">
-            <Link to="/blender-courses" className="font-bold hover:text-dark1">
+            <Link to="/page-not-found" className="font-bold hover:text-dark1">
               Blender &gt;
             </Link>
             <span className="text-grayColor font-thin text-sm">
@@ -85,7 +85,7 @@ const CurrentTrends = () => {
           </li>
           <li className="flex flex-col text-blueColor">
             <Link
-              to="/graphic-design-courses"
+              to="/page-not-found"
               className="font-bold hover:text-dark1"
             >
               Graphic Design &gt;
@@ -96,7 +96,7 @@ const CurrentTrends = () => {
           </li>
           <li className="flex flex-col text-blueColor">
             <Link
-              to="/ux-design-courses"
+              to="/page-not-found"
               className="font-bold hover:text-dark1"
             >
               User Experience (UX) Design &gt;
@@ -111,7 +111,7 @@ const CurrentTrends = () => {
         <ul className="flex flex-col gap-6">
           <h1 className="font-bold text-2xl text-dark1">Business Skills</h1>
           <li className="flex flex-col text-blueColor">
-            <Link to="/pmp-courses" className="font-bold hover:text-dark1">
+            <Link to="/page-not-found" className="font-bold hover:text-dark1">
               PMI Project Management Professional (PMP) &gt;
             </Link>
             <span className="text-grayColor font-thin text-sm">
@@ -119,7 +119,7 @@ const CurrentTrends = () => {
             </span>
           </li>
           <li className="flex flex-col text-blueColor">
-            <Link to="/power-bi-courses" className="font-bold hover:text-dark1">
+            <Link to="/page-not-found" className="font-bold hover:text-dark1">
               Microsoft Power BI &gt;
             </Link>
             <span className="text-grayColor font-thin text-sm">
@@ -128,7 +128,7 @@ const CurrentTrends = () => {
           </li>
           <li className="flex flex-col text-blueColor">
             <Link
-              to="/project-management-courses"
+              to="/page-not-found"
               className="font-bold hover:text-dark1"
             >
               Project Management &gt;

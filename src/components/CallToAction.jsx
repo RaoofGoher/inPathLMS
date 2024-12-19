@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 const CallToAction = ({ title, description,textColorDescription , buttonText, buttonColor, buttonHoverColor, textColor, imageSrc,imageShadowColor, bgColor }) => {
   return (
@@ -10,11 +11,13 @@ const CallToAction = ({ title, description,textColorDescription , buttonText, bu
           <p className={`mb-8 text-xl opacity-80 ${textColorDescription} animate__animated animate__fadeIn animate__delay-1s`}>
             {description}
           </p>
+          <Link to="/studentsignup">
           <button
             className={` py-3 px-8 rounded-full text-lg font-semibold shadow-lg  ${buttonColor} hover:${buttonHoverColor}  hover:shadow-2xl  `}
           >
             {buttonText}
           </button>
+          </Link>
         </div>
 
         {/* Image Content */}

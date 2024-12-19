@@ -2,6 +2,7 @@ import React from "react";
 import { FaUsers, FaLightbulb, FaRocketchat } from "react-icons/fa";
 import ScrollToTop from "../../components/ScrollToTop";
 import HomeHero from "../../components/HomeHero";
+import { Link } from "react-router-dom";
 
 const Careers = () => {
   return (
@@ -24,9 +25,11 @@ const Careers = () => {
               <p className="text-grayColor mb-4">
                 Build intuitive and responsive UI for our LMS platform.
               </p>
+              <Link to="/page-not-found">
               <button className="mt-4 py-2 px-6 bg-blueColor text-white  rounded-md hover:bg-blueColor/90">
                 Apply Now
               </button>
+              </Link>
             </div>
             <div className="p-6 shadow-lg border-t-2 border-grayColor rounded-lg transition-transform transform hover:scale-105 hover:shadow-xl shadow-grayColor">
               <h3 className="text-2xl font-semibold text-blueColor mb-2">
@@ -35,9 +38,11 @@ const Careers = () => {
               <p className="text-grayColor mb-4">
                 Work with APIs and databases to scale our platform.
               </p>
+              <Link to="/page-not-found">
               <button className="mt-4 py-2 px-6 bg-blueColor text-white  rounded-md hover:bg-blueColor/90">
                 Apply Now
               </button>
+              </Link>
             </div>
             <div className="p-6 shadow-lg border-t-2 border-grayColor rounded-lg transition-transform transform hover:scale-105 hover:shadow-xl shadow-grayColor">
               <h3 className="text-2xl font-semibold text-blueColor mb-2">
@@ -46,9 +51,11 @@ const Careers = () => {
               <p className="text-grayColor mb-4">
                 Oversee the development of new features for the platform.
               </p>
+              <Link to="/page-not-found">
               <button className="mt-4 py-2 px-6 bg-blueColor text-white  rounded-md hover:bg-blueColor/90">
                 Apply Now
               </button>
+              </Link>
             </div>
           </div>
         </div>

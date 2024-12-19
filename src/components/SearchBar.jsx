@@ -33,7 +33,7 @@ const SearchBar = () => {
         placeholder="Search for anything"
         value={searchQuery}
         onChange={(e) => setSearchQuery(e.target.value)} // Update state as user types
-        className="hidden md:block pl-10 pr-4 py-2 bg-white text-black rounded-[20px] focus:outline-none focus:ring md:w-auto lg:w-[30vw]"
+        className="hidden md:block pl-10 pr-4 py-2 bg-gray-200 text-black rounded-[20px] focus:outline-none focus:ring md:w-auto lg:w-[30vw]"
       />
 
       {/* Display search results if available */}

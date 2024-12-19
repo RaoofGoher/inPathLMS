@@ -2,12 +2,13 @@
 import React, { useState } from "react";
 import { NavLink, Link, useNavigate } from "react-router-dom";
 import SearchBar from "./SearchBar";
-import Logo from "../assets/logos/Logo.png";
+import Logo from "../assets/nav-logo.png";
 import { useSelector, useDispatch } from "react-redux";
 import { logout } from "../features/auth/authSlice";
 import Cart from "../components/cart/Cart";
 import { clearCart } from "../features/cart/cartSlice";
 import Dropdown from "./explore/ExploreDropDown";
+import icon from "../assets/language-icon.svg";
 import { resetSubCategoryID } from "../features/searchCourse/ExploreSubCategoryID";
 const Navbar = () => {
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
@@ -34,7 +35,7 @@ const Navbar = () => {
         {/* {/ Left Side: Logo /} */}
         <div className="flex items-center">
           <NavLink to={"/"}>
-            <img src={Logo} className="mr-16 w-[4rem]" alt="Logo" />
+            <img src={Logo} className="mr-16 w-[7rem] " alt="Logo" />
           </NavLink>
           <NavLink
             className="mx-8 text-grayColor"
@@ -43,10 +44,12 @@ const Navbar = () => {
             <span className="hidden md:block"> Explore</span>
           </NavLink>
           {isDropdownOpen && (
-            <Dropdown closeDropdown={() => {
-              setIsDropdownOpen(false);
-               // Reset the subCategoryID dispatch(resetSubCategoryID());
-            }} />
+            <Dropdown
+              closeDropdown={() => {
+                setIsDropdownOpen(false);
+                // Reset the subCategoryID dispatch(resetSubCategoryID());
+              }}
+            />
           )}
           {/* {/ Search Bar on Larger Screens Only /} */}
           <SearchBar />
@@ -86,7 +89,9 @@ const Navbar = () => {
                       : "/login"
                   }
                   className={({ isActive }) =>
-                    isActive ? "bg-blueColor/90 text-white rounded-md" : " text-blueColor"
+                    isActive
+                      ? "bg-blueColor/90 text-white rounded-md"
+                      : " text-blueColor"
                   }
                   end
                 >
@@ -113,11 +118,13 @@ const Navbar = () => {
                   end
                   to={"/teachersignup"}
                   className={({ isActive }) =>
-                    isActive ? "bg-blueColor text-white rounded-md" : " text-grayColor"
+                    isActive
+                      ? "bg-blueColor text-white rounded-md"
+                      : " text-grayColor"
                   }
                 >
                   <button className="px-4 py-2 hover:bg-blueColor hover:text-white   rounded-md ">
-                    inPATHBusiness
+                    InPATH Business
                   </button>
                 </NavLink>
 
@@ -125,24 +132,28 @@ const Navbar = () => {
                   end
                   to={"/studentsignup"}
                   className={({ isActive }) =>
-                    isActive ? "bg-blueColor text-white rounded-md" : " text-grayColor"
+                    isActive
+                      ? "bg-blueColor text-white rounded-md"
+                      : " text-grayColor"
                   }
                 >
                   <button className="px-4 py-2   hover:bg-blueColor hover:text-white rounded-md ">
-                    Sign Up
+                    Sign up
                   </button>
                 </NavLink>
                 <NavLink
                   end
                   to={"/login"}
-                  className={({ isActive }) =>
-                    isActive ? "bg-lightColor1 rounded-md" : ""
-                  }
+                  className={({ isActive }) => (isActive ? " rounded-md" : "")}
                 >
-                  <button className="px-4 py-2 border bg-blueColor border-blueColor rounded-md hover:text-blueColor hover:bg-white transition text-white">
-                    Login
+                  <button className="md:px-2 lg:px-4 py-2 border bg-blueColor border-blueColor rounded-md hover:text-blueColor hover:bg-white transition text-white">
+                    Log in
                   </button>
                 </NavLink>
+
+                <div className="flex justify-center items-center">
+                  <img width={40} src={icon} alt="language-icon" />
+                </div>
               </div>
             </>
           )}

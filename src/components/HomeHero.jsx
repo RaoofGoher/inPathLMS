@@ -1,5 +1,6 @@
 import React from "react";
 import hero from "../assets/homeHero.png";
+import {Link} from "react-router-dom";
 
 const HomeHero = () => {
   return (
@@ -22,9 +23,11 @@ const HomeHero = () => {
               tools designed to enhance your productivity and efficiency.
             </p>
           </div>
+          <Link to="/page-not-found">
           <button className="bg-blueColor hover:bg-blueColor/90 text-white text-xl font-bold py-2 px-4 rounded-md w-full sm:w-[30rem]">
             Join Our Team
           </button>
+          </Link>
         </div>
       </div>
     </section>

@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import image from "../assets/logos/Logo.png";
+import image from "../assets/footer-logo.png";
 import {
   FaApple,
   FaGoogle,
@@ -150,10 +150,10 @@ const Footer = () => {
       {/* Top companies choose section */}
       <section className="bg-blueColor/90 text-white px-16 p-8 flex flex-col md:flex-row gap-8 justify-between items-center  border-b-2 border-grayColor">
         <div>
-          <h1 className="text-xl text-center md:text-left">
+          <h1 className="text-lg text-center md:text-left">
             Top companies choose{" "}
             <span className=" font-semibold hover:underline">
-              <a href="#">inPathLMS </a>
+              <a href="#"> inPath learn management system. </a>
             </span>{" "}
             Business to build in-demand career skills.
           </h1>
@@ -258,7 +258,7 @@ const Footer = () => {
       </footer>
       <div className="flex-col sm:flex-row bg-blueColor p-4 px-16 justify-between flex gap-4 border-t-2 border-grayColor items-center text-lightColor1">
         <div className="flex gap-4 items-center">
-          <img src={image} alt="Logo" width={50} />
+          <img src={image} alt="Logo" width={90} />
           <p className="text-white">© 2024 In Path LMS</p>
         </div>
         <div>

@@ -1,9 +1,10 @@
 import React, { useRef } from "react";
 import { FaArrowLeft, FaArrowRight } from "react-icons/fa"; // Import Arrow Icons for navigation
+import { Link } from "react-router-dom"; // Import Link from react-router-dom
 
-import instructor1 from "../assets/student6.jpg";
-import instructor2 from "../assets/student5.jpg";
-import instructor3 from "../assets/student9.jpg";
+// import instructor1 from "../assets/student6.jpg";
+// import instructor2 from "../assets/student5.jpg";
+import instructor3 from "../assets/student9.jpg"; // Assuming you have the image
 
 const instructors = [
   {
@@ -52,7 +53,7 @@ const InstructorSpotlight = () => {
   };
 
   return (
-    <section className="hidden sm:block sm:py-20 py-6 px-6  sm:px-16 bg-blueColor">
+    <section className="hidden sm:block sm:py-20 py-6 px-6 sm:px-16 bg-blueColor">
       <div className="text-center">
         <h2 className="text-5xl font-extrabold mb-2 text-white underline">
           Meet Our Instructors
@@ -78,6 +79,7 @@ const InstructorSpotlight = () => {
         />
 
         {/* Scrollable container */}
+        <Link  to="/page-not-found">
         <div
           ref={sliderRef}
           className="flex overflow-x-auto gap-4 sm:gap-12 sm:py-4 sm:px-16 scrollbar-hidden" // Increased gap for more space between cards
@@ -100,25 +102,31 @@ const InstructorSpotlight = () => {
                 />
 
                 {/* Name */}
-                <h3 className="text-xl md:text-3xl  text-center font-bold text-blueColor">
+                <h3 className="text-xl md:text-3xl text-center font-bold text-blueColor">
                   {instructor.name}
                 </h3>
 
                 {/* Short Heading */}
-                <p className=" md:text-lg text-center text-black mb-6">
+                <p className="md:text-lg text-center text-black mb-6">
                   {instructor.expertise}
                 </p>
 
                 {/* View Profile Button */}
+                
                 <div className="w-full p-2">
-                  <button className="bg-blueColor w-full text-2xl text-white px-6 py-6 rounded-b-lg font-semibold hover:bg-blue-600 transition duration-300">
+                  <button
+                   
+                    className="bg-blueColor w-full text-2xl text-white px-6 py-6 rounded-b-lg font-semibold hover:bg-blue-600 transition duration-300"
+                  >
                     View Profile
                   </button>
                 </div>
+             
               </div>
             </div>
           ))}
         </div>
+           </Link>
       </div>
     </section>
   );

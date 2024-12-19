@@ -1,12 +1,13 @@
-import React, { useState } from 'react';
-import { FaLanguage } from 'react-icons/fa'; // Import the translate icon
-import axios from 'axios'; // Import axios for API calls
-import Flag from 'react-world-flags'; // Import react-world-flags to display flags
+import React, { useState } from "react";
+import { FaLanguage } from "react-icons/fa"; // Import the translate icon
+import axios from "axios"; // Import axios for API calls
+import Flag from "react-world-flags"; // Import react-world-flags to display flags
+import icon from "../assets/language-icon2.svg";
 
 const GoogleTranslator = () => {
   const [isPopupVisible, setPopupVisible] = useState(false); // Controls popup visibility
-  const [selectedLanguage, setSelectedLanguage] = useState(''); // Stores the selected language
-  const [translatedContent, setTranslatedContent] = useState(''); // Stores the translated content
+  const [selectedLanguage, setSelectedLanguage] = useState(""); // Stores the selected language
+  const [translatedContent, setTranslatedContent] = useState(""); // Stores the translated content
 
   // Function to toggle popup visibility
   const togglePopup = () => {
@@ -22,20 +23,23 @@ const GoogleTranslator = () => {
 
   // Function to call Google Cloud Translation API
   const translatePage = async (language) => {
-    const apiKey = 'YOUR_API_KEY'; // Replace with your Google Cloud API key
+    const apiKey = "YOUR_API_KEY"; // Replace with your Google Cloud API key
     const textToTranslate = document.body.innerText; // Get the text content of the page
 
     try {
-      const response = await axios.post(`https://translation.googleapis.com/language/translate/v2?key=${apiKey}`, {
-        q: textToTranslate,
-        target: language,
-      });
+      const response = await axios.post(
+        `https://cilenisapi.p.rapidapi.com/language_identifier?text=Insert%20here%20the%20text%20to%20be%20analyzed.${apiKey}`,
+        {
+          q: textToTranslate,
+          target: language,
+        }
+      );
 
       const translatedText = response.data.data.translations[0].translatedText;
       setTranslatedContent(translatedText); // Update the state with the translated content
       document.body.innerText = translatedText; // Update the page content with the translated text
     } catch (error) {
-      console.error('Error translating text:', error);
+      console.error("Error translating text:", error);
     }
   };
 
@@ -44,10 +48,10 @@ const GoogleTranslator = () => {
       {/* Button to show the popup */}
       <button
         onClick={togglePopup}
-        className="flex items-center bg-grayColor text-white p-2 rounded-lg shadow-md hover:bg-grayColor/90 focus:outline-none focus:ring-2 focus:ring-blue-400"
+        className="flex justify-center gap-2 items-center  text-white p-2"
       >
-        <FaLanguage className="mr-2" /> {/* Translate Icon */}
-        Translate
+        <img src={icon} width={20} alt="language-icon" />
+        <span>English</span>
       </button>
 
       {/* Popup to select language */}
@@ -62,94 +66,107 @@ const GoogleTranslator = () => {
               <ul className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4">
                 {/* Language options with Flags */}
                 <li
-                  onClick={() => handleLanguageSelect('en')}
+                  onClick={() => handleLanguageSelect("en")}
                   className="cursor-pointer text-primaryColor hover:bg-gray-200 p-2 rounded flex items-center space-x-2"
                 >
-                  <Flag code="US" style={{ width: 20, height: 15 }} /> {/* US Flag for English */}
+                  <Flag code="US" style={{ width: 20, height: 15 }} />{" "}
+                  {/* US Flag for English */}
                   <span>English</span>
                 </li>
                 <li
-                  onClick={() => handleLanguageSelect('es')}
+                  onClick={() => handleLanguageSelect("es")}
                   className="cursor-pointer text-primaryColor hover:bg-gray-200 p-2 rounded flex items-center space-x-2"
                 >
-                  <Flag code="ES" style={{ width: 20, height: 15 }} /> {/* Spain Flag for Spanish */}
+                  <Flag code="ES" style={{ width: 20, height: 15 }} />{" "}
+                  {/* Spain Flag for Spanish */}
                   <span>Spanish</span>
                 </li>
                 <li
-                  onClick={() => handleLanguageSelect('fr')}
+                  onClick={() => handleLanguageSelect("fr")}
                   className="cursor-pointer text-primaryColor hover:bg-gray-200 p-2 rounded flex items-center space-x-2"
                 >
-                  <Flag code="FR" style={{ width: 20, height: 15 }} /> {/* France Flag for French */}
+                  <Flag code="FR" style={{ width: 20, height: 15 }} />{" "}
+                  {/* France Flag for French */}
                   <span>French</span>
                 </li>
                 <li
-                  onClick={() => handleLanguageSelect('de')}
+                  onClick={() => handleLanguageSelect("de")}
                   className="cursor-pointer text-primaryColor hover:bg-gray-200 p-2 rounded flex items-center space-x-2"
                 >
-                  <Flag code="DE" style={{ width: 20, height: 15 }} /> {/* Germany Flag for German */}
+                  <Flag code="DE" style={{ width: 20, height: 15 }} />{" "}
+                  {/* Germany Flag for German */}
                   <span>German</span>
                 </li>
                 <li
-                  onClick={() => handleLanguageSelect('it')}
+                  onClick={() => handleLanguageSelect("it")}
                   className="cursor-pointer text-primaryColor hover:bg-gray-200 p-2 rounded flex items-center space-x-2"
                 >
-                  <Flag code="IT" style={{ width: 20, height: 15 }} /> {/* Italy Flag for Italian */}
+                  <Flag code="IT" style={{ width: 20, height: 15 }} />{" "}
+                  {/* Italy Flag for Italian */}
                   <span>Italian</span>
                 </li>
                 <li
-                  onClick={() => handleLanguageSelect('zh')}
+                  onClick={() => handleLanguageSelect("zh")}
                   className="cursor-pointer text-primaryColor hover:bg-gray-200 p-2 rounded flex items-center space-x-2"
                 >
-                  <Flag code="CN" style={{ width: 20, height: 15 }} /> {/* China Flag for Chinese */}
+                  <Flag code="CN" style={{ width: 20, height: 15 }} />{" "}
+                  {/* China Flag for Chinese */}
                   <span>Chinese</span>
                 </li>
                 <li
-                  onClick={() => handleLanguageSelect('ja')}
+                  onClick={() => handleLanguageSelect("ja")}
                   className="cursor-pointer text-primaryColor hover:bg-gray-200 p-2 rounded flex items-center space-x-2"
                 >
-                  <Flag code="JP" style={{ width: 20, height: 15 }} /> {/* Japan Flag for Japanese */}
+                  <Flag code="JP" style={{ width: 20, height: 15 }} />{" "}
+                  {/* Japan Flag for Japanese */}
                   <span>Japanese</span>
                 </li>
                 <li
-                  onClick={() => handleLanguageSelect('pt')}
+                  onClick={() => handleLanguageSelect("pt")}
                   className="cursor-pointer text-primaryColor hover:bg-gray-200 p-2 rounded flex items-center space-x-2"
                 >
-                  <Flag code="PT" style={{ width: 20, height: 15 }} /> {/* Portugal Flag for Portuguese */}
+                  <Flag code="PT" style={{ width: 20, height: 15 }} />{" "}
+                  {/* Portugal Flag for Portuguese */}
                   <span>Portuguese</span>
                 </li>
                 <li
-                  onClick={() => handleLanguageSelect('ar')}
+                  onClick={() => handleLanguageSelect("ar")}
                   className="cursor-pointer text-primaryColor hover:bg-gray-200 p-2 rounded flex items-center space-x-2"
                 >
-                  <Flag code="SA" style={{ width: 20, height: 15 }} /> {/* Saudi Arabia Flag for Arabic */}
+                  <Flag code="SA" style={{ width: 20, height: 15 }} />{" "}
+                  {/* Saudi Arabia Flag for Arabic */}
                   <span>Arabic</span>
                 </li>
                 <li
-                  onClick={() => handleLanguageSelect('ru')}
+                  onClick={() => handleLanguageSelect("ru")}
                   className="cursor-pointer text-primaryColor hover:bg-gray-200 p-2 rounded flex items-center space-x-2"
                 >
-                  <Flag code="RU" style={{ width: 20, height: 15 }} /> {/* Russia Flag for Russian */}
+                  <Flag code="RU" style={{ width: 20, height: 15 }} />{" "}
+                  {/* Russia Flag for Russian */}
                   <span>Russian</span>
                 </li>
                 <li
-                  onClick={() => handleLanguageSelect('ko')}
+                  onClick={() => handleLanguageSelect("ko")}
                   className="cursor-pointer text-primaryColor hover:bg-gray-200 p-2 rounded flex items-center space-x-2"
                 >
-                  <Flag code="KR" style={{ width: 20, height: 15 }} /> {/* Korea Flag for Korean */}
+                  <Flag code="KR" style={{ width: 20, height: 15 }} />{" "}
+                  {/* Korea Flag for Korean */}
                   <span>Korean</span>
                 </li>
                 <li
-                  onClick={() => handleLanguageSelect('hi')}
+                  onClick={() => handleLanguageSelect("hi")}
                   className="cursor-pointer text-primaryColor hover:bg-gray-200 p-2 rounded flex items-center space-x-2"
                 >
-                  <Flag code="IN" style={{ width: 20, height: 15 }} /> {/* India Flag for Hindi */}
+                  <Flag code="IN" style={{ width: 20, height: 15 }} />{" "}
+                  {/* India Flag for Hindi */}
                   <span>Hindi</span>
                 </li>
                 <li
-                  onClick={() => handleLanguageSelect('bn')}
+                  onClick={() => handleLanguageSelect("bn")}
                   className="cursor-pointer text-primaryColor hover:bg-gray-200 p-2 rounded flex items-center space-x-2"
                 >
-                  <Flag code="BD" style={{ width: 20, height: 15 }} /> {/* Bangladesh Flag for Bengali */}
+                  <Flag code="BD" style={{ width: 20, height: 15 }} />{" "}
+                  {/* Bangladesh Flag for Bengali */}
                   <span>Bengali</span>
                 </li>
                 {/* Add more languages and flags as needed */}
