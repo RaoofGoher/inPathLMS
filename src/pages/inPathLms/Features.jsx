@@ -1,7 +1,7 @@
 import React from "react";
 import VideoIntroduction from "../../components/VideoIntroduction";
 import FeatureHighlights from "../../components/FeatureHighlights";
-import CardComponent from "../../components/CardCompoenent";
+// import CardComponent from "../../components/CardCompoenent";
 import CallToAction from "../../components/CallToAction";
 import ScrollToTop from "../../components/ScrollToTop";
 import image from "../../assets/getReady.jpg";
@@ -11,7 +11,7 @@ const Features = () => {
       <ScrollToTop />
       <VideoIntroduction />
       <FeatureHighlights />
-      <CardComponent />
+      {/* <CardComponent /> */}
       <CallToAction
         title="Join Us Today!"
         description="Be part of a thriving community transforming education."

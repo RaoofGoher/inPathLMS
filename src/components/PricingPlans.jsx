@@ -1,6 +1,7 @@
 import React from "react";
 import { FaCheckCircle } from "react-icons/fa"; // Checkmark icon for features
 import { FaFire } from "react-icons/fa"; // Popular plan icon
+import { Link } from "react-router-dom";
 
 const PricingPlans = () => {
   const plans = [
@@ -96,9 +97,12 @@ const PricingPlans = () => {
               </ul>
 
               {/* CTA Button */}
+              <Link to="/page-not-found">
+              
               <button className="bg-blueColor text-white py-2 px-6 rounded-full w-full hover:bg-blueColor/90 transition-colors duration-300 transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-primaryColor focus:ring-opacity-50">
                 Get Started
               </button>
+              </Link>
             </div>
           ))}
         </div>

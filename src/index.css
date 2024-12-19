@@ -18,16 +18,11 @@
 
 /* Section Styling */
 .slider-section {
+  
   margin-bottom: 2rem;
 }
 
-.section-title {
-  font-size: 3vw;
-  font-weight: bold;
-  margin-bottom: 1rem;
-  color: #00438D;
-  background-color: #ffffff;
-}
+
 
 /* Slider Wrapper */
 .slider-wrapper {
@@ -49,10 +44,8 @@
 }
 
 .slider-item {
-  height:80px;
-  min-width: 250px;
-  margin-right: 1rem;
-  padding: 1rem;
+  height:50px;
+  min-width: 190px; 
   background-color: white;
   text-align: center;
   cursor: pointer;
@@ -60,8 +53,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  font-size: 20px;
-  font-weight: bold;
+  
 }
 
 .active-item {
@@ -158,3 +150,35 @@
     opacity: 1;
   }
 }
+
+@keyframes scroll {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+/* Partners logo container setup */
+.partners-log-container {
+  display: flex;
+  gap: 20px; /* Adjust the gap between logos */
+  animation: scroll 30s linear infinite; /* Increased animation duration for smoother scrolling */
+}
+
+.overflow-hidden {
+  overflow: hidden; /* Hides the logos that are outside the container */
+}
+
+/* Define the scroll animation */
+@keyframes scroll {
+  0% {
+    transform: translateX(0); /* Start from the initial position */
+  }
+  100% {
+    transform: translateX(-100%); /* Move the entire content to the left */
+  }
+}
+
+/* Optional: If you want to add more control over the scrolling speed, you can tweak the animation duration */

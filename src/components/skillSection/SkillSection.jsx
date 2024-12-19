@@ -76,7 +76,6 @@ const SliderWithPopup = () => {
   if (isError) return <div>Error fetching data</div>;
   const handleAddToCart = (course) => {
     if (isAuthenticated) {
-
       const existingItem = cartItems.find((item) => item.id === course.id);
 
       if (existingItem) {
@@ -92,32 +91,38 @@ const SliderWithPopup = () => {
         );
       }
     } else {
-      alert("please login to continue")
+      alert("please login to continue");
     }
   };
 
   const handleCheckout = () => {
     if (isAuthenticated) {
-
-      navigate("/shopping")
+      navigate("/shopping");
     } else {
-      alert("please login to continue")
+      alert("please login to continue");
     }
-  }
+  };
 
   return (
-    <div className="slider-container">
+    <div className="slider-container ">
       {/* Categories Section */}
-      <div className="slider-section">
-        <h1 className="section-title font-montserrat">All the skills you need in one place</h1>
-        <p className="text-3xl mb-4 font-nunito">
-          From critical skills to technical topics, InPATH supports your professional development.
-        </p>
+      <div className="slider-section ">
+        <div className="px-4 sm:px-12">
+          <h1 className=" text-blueColor font-semibold mb-2 text-base sm:text-xl font-montserrat">
+            All the skills you need in one place
+          </h1>
+          <p className=" text-base sm:text-xl mb-2 font-nunito">
+            From critical skills to technical topics, InPATH supports your
+            professional development.
+          </p>
+        </div>
         <div className="slider-wrapper">
           {showCategoryScroll.left && (
             <button
               className="slider-button left-button"
-              onClick={() => handleScroll(categoryRef, "left", setShowCategoryScroll)}
+              onClick={() =>
+                handleScroll(categoryRef, "left", setShowCategoryScroll)
+              }
             >
               <FaChevronLeft />
             </button>
@@ -125,13 +130,16 @@ const SliderWithPopup = () => {
           <div
             className="slider-content"
             ref={categoryRef}
-            onScroll={() => checkScrollButtons(categoryRef, setShowCategoryScroll)}
+            onScroll={() =>
+              checkScrollButtons(categoryRef, setShowCategoryScroll)
+            }
           >
             {data.map((category) => (
               <div
                 key={category.id}
-                className={`slider-item ${selectedCategory?.id === category.id ? "active-item" : ""
-                  }`}
+                className={`font-semibold text-base  slider-item ${
+                  selectedCategory?.id === category.id ? "active-item" : ""
+                }`}
                 onClick={() => {
                   setSelectedCategory(category);
                   setSelectedSubcategory(category.subcategories[0]);
@@ -144,7 +152,9 @@ const SliderWithPopup = () => {
           {showCategoryScroll.right && (
             <button
               className="slider-button right-button"
-              onClick={() => handleScroll(categoryRef, "right", setShowCategoryScroll)}
+              onClick={() =>
+                handleScroll(categoryRef, "right", setShowCategoryScroll)
+              }
             >
               <FaChevronRight />
             </button>
@@ -169,15 +179,18 @@ const SliderWithPopup = () => {
             <div
               className="slider-content"
               ref={subcategoryRef}
-              onScroll={() => checkScrollButtons(subcategoryRef, setShowSubcategoryScroll)}
+              onScroll={() =>
+                checkScrollButtons(subcategoryRef, setShowSubcategoryScroll)
+              }
             >
               {selectedCategory.subcategories.map((subcategory) => (
                 <div
                   key={subcategory.id}
-                  className={`slider-item ${selectedSubcategory?.id === subcategory.id
-                    ? "active-item2"
-                    : ""
-                    }`}
+                  className={` text-sm px-2 slider-item ${
+                    selectedSubcategory?.id === subcategory.id
+                      ? "active-item2"
+                      : ""
+                  }`}
                   onClick={() => setSelectedSubcategory(subcategory)}
                 >
                   {subcategory.name}
@@ -188,7 +201,11 @@ const SliderWithPopup = () => {
               <button
                 className="slider-button right-button"
                 onClick={() =>
-                  handleScroll(subcategoryRef, "right", setShowSubcategoryScroll)
+                  handleScroll(
+                    subcategoryRef,
+                    "right",
+                    setShowSubcategoryScroll
+                  )
                 }
               >
                 <FaChevronRight />
@@ -200,12 +217,17 @@ const SliderWithPopup = () => {
 
       {/* Courses Section */}
       {selectedSubcategory && (
-        <div className="slider-section p-8" style={{ backgroundColor: "#f9f9f9f9" }}>
+        <div
+          className="slider-section p-8"
+          style={{ backgroundColor: "#f9f9f9f9" }}
+        >
           <div className="slider-wrapper">
             {showCourseScroll.left && (
               <button
                 className="slider-button left-button"
-                onClick={() => handleScroll(courseRef, "left", setShowCourseScroll)}
+                onClick={() =>
+                  handleScroll(courseRef, "left", setShowCourseScroll)
+                }
               >
                 <FaChevronLeft />
               </button>
@@ -213,10 +235,11 @@ const SliderWithPopup = () => {
             <div
               className="slider-content"
               ref={courseRef}
-              onScroll={() => checkScrollButtons(courseRef, setShowCourseScroll)}
+              onScroll={() =>
+                checkScrollButtons(courseRef, setShowCourseScroll)
+              }
             >
               {selectedSubcategory.courses.map((course) => (
-
                 <div
                   key={course.id}
                   className="course-card"
@@ -237,27 +260,31 @@ const SliderWithPopup = () => {
                         <svg
                           key={index}
                           xmlns="http://www.w3.org/2000/svg"
-                          className={`w-5 h-5 ${index < 4 // Example: 4 out of 5 stars
+                          className={`w-5 h-5 ${
+                            index < 4 // Example: 4 out of 5 stars
                               ? "text-yellow-400"
                               : "text-gray-300"
-                            }`}
+                          }`}
                           fill="currentColor"
                           viewBox="0 0 24 24"
                         >
                           <path d="M12 .587l3.668 7.521 8.332 1.211-6.064 5.908 1.432 8.313-7.368-3.869-7.368 3.869 1.432-8.313-6.064-5.908 8.332-1.211z" />
                         </svg>
                       ))}
-                    <span className="ml-2 text-gray-600 text-sm">(4.0)</span> {/* Example rating */}
+                    <span className="ml-2 text-gray-600 text-sm">(4.0)</span>{" "}
+                    {/* Example rating */}
                   </div>
                   <p className="font-nunito">{course.price} $</p>
 
                   {/* Hover Popup */}
                   {hoveredCourse?.id === course.id && (
-                    <div
-                      className="h-[350px] absolute top-0 left-full w-80 bg-[#E5F2FF] shadow-lg rounded-lg p-4 z-50 animate-slide-in transform transition-transform duration-300"
-                    >
-                      <h3 className="text-xl font-semibold mb-2 font-montserrat">{hoveredCourse.title}</h3>
-                      <p className="text-gray-600 mb-2 font-montserrat">{hoveredCourse.description}</p>
+                    <div className="h-[350px] absolute top-0 left-full w-80 bg-[#E5F2FF] shadow-lg rounded-lg p-4 z-50 animate-slide-in transform transition-transform duration-300">
+                      <h3 className="text-xl font-semibold mb-2 font-montserrat">
+                        {hoveredCourse.title}
+                      </h3>
+                      <p className="text-gray-600 mb-2 font-montserrat">
+                        {hoveredCourse.description}
+                      </p>
                       <p className="text-gray-800 mb-2 font-montserrat">
                         Price: ${hoveredCourse.price}{" "}
                         {hoveredCourse.discount_percentage && (
@@ -268,10 +295,15 @@ const SliderWithPopup = () => {
                       </p>
                       {hoveredCourse.discount_percentage && (
                         <p className="text-gray-900 font-semibold mb-4">
-                          <span className="text-gray-500 font-montserrat">Total Price: </span>
-                          ${(
+                          <span className="text-gray-500 font-montserrat">
+                            Total Price:{" "}
+                          </span>
+                          $
+                          {(
                             hoveredCourse.price -
-                            (hoveredCourse.price * hoveredCourse.discount_percentage) / 100
+                            (hoveredCourse.price *
+                              hoveredCourse.discount_percentage) /
+                              100
                           ).toFixed(2)}
                         </p>
                       )}
@@ -297,7 +329,9 @@ const SliderWithPopup = () => {
             {showCourseScroll.right && (
               <button
                 className="slider-button right-button"
-                onClick={() => handleScroll(courseRef, "right", setShowCourseScroll)}
+                onClick={() =>
+                  handleScroll(courseRef, "right", setShowCourseScroll)
+                }
               >
                 <FaChevronRight />
               </button>

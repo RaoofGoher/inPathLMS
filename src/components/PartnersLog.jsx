@@ -22,11 +22,11 @@ const PartnersLog = () => {
   ];
 
   return (
-    <section className="hidden  sm:block bg-white py-10 px-16">
+    <section className=" hidden sm:block bg-white py-6 px-16">
       <h1 className="text-center text-grayColor mb-6">
         Trusted by over 16,000 companies and millions of learners around the world
       </h1>
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-8 gap-6 justify-center items-center">
+      <div className=" sm:flex md:grid  md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-8 gap-6 justify-center items-center">
         {/* Mapping logos dynamically */}
         {logos.map((logo, index) => (
           <div key={index} className="flex justify-center items-center">

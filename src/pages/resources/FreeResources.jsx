@@ -1,6 +1,6 @@
 import React from "react";
 import ScrollToTop from "../../components/ScrollToTop";
-
+import { Link } from "react-router-dom";
 const FreeResources = () => {
   return (
     <>
@@ -34,19 +34,19 @@ const FreeResources = () => {
                     title: "Time Management",
                     description:
                       "Learn effective time management techniques to boost your productivity and achieve your goals.",
-                    link: "https://www.time-management-guide.com/",
+                    link: "/page-not-found",
                   },
                   {
                     title: "Programming Basics",
                     description:
                       "Get started with programming by learning the basics of coding languages and algorithms.",
-                    link: "https://www.codecademy.com/learn/learn-programming",
+                    link: "/page-not-found",
                   },
                   {
                     title: "Motivational eBook",
                     description:
                       "Read a motivational eBook to inspire and motivate yourself to achieve your goals.",
-                    link: "https://www.amazon.com/Motivational-Books-Motivation-Quotes-Inspirational-ebooks/dp/B075J4Z5XJ",
+                    link: "/page-not-found",
                   },
                 ].map((item, index) => (
                   <div
@@ -92,12 +92,12 @@ const FreeResources = () => {
                         <h3 className="text-2xl font-semibold text-dark1">
                           {category}
                         </h3>
-                        <a
-                          href="#"
+                        <Link
+                          to="/page-not-found"
                           className="text-blueColor/90 text-sm hover:underline hover:text-blueColor/80"
                         >
                           Browse
-                        </a>
+                        </Link>
                       </div>
                     </div>
                   )
@@ -123,12 +123,12 @@ const FreeResources = () => {
                       <h3 className="text-2xl font-semibold text-dark1 mb-4">
                         {ebook}
                       </h3>
-                      <a
-                        href="#"
+                      <Link
+                        to="/page-not-found"
                         className="text-blueColor font-semibold hover:underline hover:text-blueColor/90 transition duration-300"
                       >
                         Download
-                      </a>
+                      </Link>
                     </div>
                   )
                 )}

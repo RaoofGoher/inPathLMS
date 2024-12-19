@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 const MoneyBackGuarantee = () => {
   return (
@@ -13,12 +14,12 @@ const MoneyBackGuarantee = () => {
         </p>
 
         <div className="mt-8">
-          <a
-            href="#signup"
+          <Link
+            to="/page-not-found"
             className="text-white inline-block px-10 py-4 bg-blueColor  text-xl font-semibold rounded-full shadow-md hover:bg-blueColor/90 "
           >
             Start Your Free Trial
-          </a>
+          </Link>
         </div>
 
         <div className="mt-6 text-sm text-grayColor  opacity-70">
