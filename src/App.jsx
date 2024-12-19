@@ -138,7 +138,7 @@ function App() {
          </Route> */}
 
           <Route element={<PrivateRoute allowedRoles={["instructor"]} />}>
-            <Route path="dashboard/teacherprofile" element={<ProfileHome />} />
+            <Route path="/dashboard/teacherprofile" element={<ProfileHome />} />
           </Route>
         </Route>
 
