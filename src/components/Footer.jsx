@@ -259,7 +259,7 @@ const Footer = () => {
       <div className="flex-col sm:flex-row bg-blueColor p-4 px-16 justify-between flex gap-4 border-t-2 border-grayColor items-center text-lightColor1">
         <div className="flex gap-4 items-center">
           <img src={image} alt="Logo" width={90} />
-          <p className="text-white">© 2024 In Path LMS</p>
+          <p className="text-white">© 2024 InPath LMS</p>
         </div>
         <div>
           <GoogleTranslator />
