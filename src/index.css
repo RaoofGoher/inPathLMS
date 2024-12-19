@@ -182,3 +182,13 @@
 }
 
 /* Optional: If you want to add more control over the scrolling speed, you can tweak the animation duration */
+.slick-prev, .slick-next {
+  border-radius: 50%;
+  padding: 10px;
+  color: rgba(255, 255, 255, 1);
+}
+
+.slick-prev:hover, .slick-next:hover {
+  color: rgba(255, 255, 255, 1);
+  background-color: rgba(255, 255, 255, 1);
+}
