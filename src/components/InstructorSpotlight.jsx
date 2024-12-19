@@ -4,37 +4,42 @@ import { Link } from "react-router-dom"; // Import Link from react-router-dom
 
 // import instructor1 from "../assets/student6.jpg";
 // import instructor2 from "../assets/student5.jpg";
+import profile1 from "../assets/profile1.jpg"
+import profile2 from "../assets/profile2.jpg"
+import profile3 from "../assets/profile3.webp"
+import profile4 from "../assets/profile4.webp"
+import profile5 from "../assets/profile5.jpg"
 import instructor3 from "../assets/student9.jpg"; // Assuming you have the image
 
 const instructors = [
   {
-    name: "Dr. Nancy Jhon",
+    name: "Dr. Mickel Jhon",
     expertise: "Artificial Intelligence",
-    image: instructor3,
+    image: profile1,
   },
   {
     name: "Dr. Sarah Johnson",
     expertise: "Full Stack Development",
-    image: instructor3,
+    image: profile2,
   },
   {
     name: "Dr. Emily Davis",
     expertise: "Data Science",
-    image: instructor3,
+    image: profile3,
   },
   {
-    name: "Dr. Emily Davis",
-    expertise: "Data Science",
-    image: instructor3,
+    name: "Dr. Jennifer Lee",
+    expertise: "Java Script",
+    image: profile4,
   },
   {
-    name: "Dr. Emily Davis",
-    expertise: "Data Science",
-    image: instructor3,
+    name: "Dr. Sonia James",
+    expertise: "Python",
+    image: profile5,
   },
   {
-    name: "Dr. Emily Davis",
-    expertise: "Data Science",
+    name: "Dr. Raven Smith",
+    expertise: "Laravel",
     image: instructor3,
   },
 ];
