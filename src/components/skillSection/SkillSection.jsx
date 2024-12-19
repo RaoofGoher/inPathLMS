@@ -72,6 +72,23 @@ const SliderWithPopup = () => {
     checkScrollButtons(courseRef, setShowCourseScroll);
   }, [selectedSubcategory]);
 
+  useEffect(() => {
+    const interval = setInterval(() => {
+      if (categoryRef.current) {
+        const { scrollLeft, scrollWidth, clientWidth } = categoryRef.current;
+        if (scrollLeft + clientWidth >= scrollWidth) {
+          categoryRef.current.scrollLeft = 0; // Reset to the beginning
+        } else {
+          categoryRef.current.scrollLeft += 1; // Scroll slowly to the right
+        }
+      }
+    }, 30); // Adjust this number for speed (lower = faster)
+  
+    // Cleanup the interval when the component unmounts
+    return () => clearInterval(interval);
+  }, []);
+
+
   if (isLoading) return <div>Loading...</div>;
   if (isError) return <div>Error fetching data</div>;
   const handleAddToCart = (course) => {
