@@ -8,6 +8,7 @@ const SliderWithPopup = () => {
   const { token, role, isAuthenticated, user_id } = useSelector(
     (state) => state.auth
   );
+  const [isAutoScrolling, setIsAutoScrolling] = useState(true);
   const { data, isLoading, isError } = useGetCoursesQuery();
   const [selectedCategory, setSelectedCategory] = useState(null);
   const [selectedSubcategory, setSelectedSubcategory] = useState(null);
@@ -48,11 +49,14 @@ const SliderWithPopup = () => {
     if (ref.current) {
       const scrollAmount = direction === "left" ? -300 : 300;
       ref.current.scrollBy({ left: scrollAmount, behavior: "smooth" });
-
+  
+      // Temporarily pause auto scrolling
+      setIsAutoScrolling(false);
+      setTimeout(() => setIsAutoScrolling(true), 3000); // Resume after 3 seconds
+  
       setTimeout(() => checkScrollButtons(ref, setShowScroll), 300);
     }
   };
-
   useEffect(() => {
     if (data && !selectedCategory) {
       setSelectedCategory(data[0]);
@@ -73,6 +77,8 @@ const SliderWithPopup = () => {
   }, [selectedSubcategory]);
 
   useEffect(() => {
+    if (!isAutoScrolling) return;
+  
     const interval = setInterval(() => {
       if (categoryRef.current) {
         const { scrollLeft, scrollWidth, clientWidth } = categoryRef.current;
@@ -84,10 +90,8 @@ const SliderWithPopup = () => {
       }
     }, 30); // Adjust this number for speed (lower = faster)
   
-    // Cleanup the interval when the component unmounts
     return () => clearInterval(interval);
-  }, []);
-
+  }, [isAutoScrolling]);
 
   if (isLoading) return <div>Loading...</div>;
   if (isError) return <div>Error fetching data</div>;
