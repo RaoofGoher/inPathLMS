@@ -129,7 +129,7 @@ const ViewCourses = () => {
           <button
             className="bg-blueColor text-white py-2 px-6 rounded hover:bg-blueColor/90 transition-all"
             onClick={() =>
-              navigate("/dashboard/teacherdashboard/createprofile")
+              navigate("/dashboard/teacherprofile")
             }
           >
             Create Profile
