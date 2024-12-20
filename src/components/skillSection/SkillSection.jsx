@@ -4,10 +4,20 @@ import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
 import { useDispatch, useSelector } from "react-redux";
 import { addToCart } from "../../features/cart/cartSlice"; // Adjust path if needed
 import { useNavigate } from "react-router-dom";
+import { usePopper } from 'react-popper';
+
 const SliderWithPopup = () => {
+<<<<<<< HEAD
   const [isExpanded, setIsExpanded] = useState(false);
   const [isHoveredExpanded, setIsHoveredExpanded] = useState(false);
   const [expandedCourseId, setExpandedCourseId] = useState(null);
+=======
+  const [referenceElement, setReferenceElement] = useState(null);
+  const [popperElement, setPopperElement] = useState(null);
+  const { styles, attributes } = usePopper(referenceElement, popperElement, {
+    placement: 'auto', // Position the popper to the right of the reference element
+  });
+>>>>>>> c897ac9 (intial setup for pooper)
   const { token, role, isAuthenticated, user_id } = useSelector(
     (state) => state.auth
   );
