@@ -53,7 +53,7 @@ const DashboardLayout = () => {
               <FaTachometerAlt className="mr-2 " />
               Dashboard
             </Link>
-            <Link to="dashboard/teacherprofile" className=" hover:text-blueColor flex items-center py-2 px-4 hover:bg-gray-300 rounded">
+            <Link to="/dashboard/teacherprofile" className=" hover:text-blueColor flex items-center py-2 px-4 hover:bg-gray-300 rounded">
               <FaUser className="mr-2 " />
               Profile
             </Link>
