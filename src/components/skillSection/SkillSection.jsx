@@ -5,6 +5,9 @@ import { useDispatch, useSelector } from "react-redux";
 import { addToCart } from "../../features/cart/cartSlice"; // Adjust path if needed
 import { useNavigate } from "react-router-dom";
 const SliderWithPopup = () => {
+  const [isExpanded, setIsExpanded] = useState(false);
+  const [isHoveredExpanded, setIsHoveredExpanded] = useState(false);
+  const [expandedCourseId, setExpandedCourseId] = useState(null);
   const { token, role, isAuthenticated, user_id } = useSelector(
     (state) => state.auth
   );
@@ -49,11 +52,11 @@ const SliderWithPopup = () => {
     if (ref.current) {
       const scrollAmount = direction === "left" ? -300 : 300;
       ref.current.scrollBy({ left: scrollAmount, behavior: "smooth" });
-  
+
       // Temporarily pause auto scrolling
       setIsAutoScrolling(false);
       setTimeout(() => setIsAutoScrolling(true), 3000); // Resume after 3 seconds
-  
+
       setTimeout(() => checkScrollButtons(ref, setShowScroll), 300);
     }
   };
@@ -78,7 +81,7 @@ const SliderWithPopup = () => {
 
   useEffect(() => {
     if (!isAutoScrolling) return;
-  
+
     const interval = setInterval(() => {
       if (categoryRef.current) {
         const { scrollLeft, scrollWidth, clientWidth } = categoryRef.current;
@@ -89,7 +92,7 @@ const SliderWithPopup = () => {
         }
       }
     }, 30); // Adjust this number for speed (lower = faster)
-  
+
     return () => clearInterval(interval);
   }, [isAutoScrolling]);
 
@@ -123,7 +126,15 @@ const SliderWithPopup = () => {
       alert("please login to continue");
     }
   };
+  //coruse expended
 
+  const handleToggle = (courseId) => {
+    setExpandedCourseId((prevId) => (prevId === courseId ? null : courseId));
+  };
+
+  const handleHoverToggle = () => {
+    setIsHoveredExpanded((prev) => !prev); // Toggle on hover
+  };
   return (
     <div className="slider-container ">
       {/* Categories Section */}
@@ -263,17 +274,41 @@ const SliderWithPopup = () => {
               {selectedSubcategory.courses.map((course) => (
                 <div
                   key={course.id}
-                  className="course-card"
+                  className="course-card   "
                   onMouseEnter={() => setHoveredCourse(course)}
                   onMouseLeave={() => setHoveredCourse(null)}
                 >
                   <img
                     src={course.thumbnail}
                     alt={course.title}
-                    className="course-thumbnail"
+                    className="course-thumbnail w-full"
                   />
-                  <h3 className="text-2xl font-montserrat">{course.title}</h3>
-                  <p className="font-nunito">{course.description}</p>
+                  <div className="w-full mt-2 text-justify">
+                    <h3 className="text-sm text-semibold text-nowrap">
+                      {course.title}
+                    </h3>
+                    <p
+                      className={`font-nunito text-wrap  text-xs ${
+                        expandedCourseId === course.id ? "" : "truncate"
+                      }`}
+                      style={{
+                        display: "-webkit-box",
+                        WebkitLineClamp:
+                          expandedCourseId === course.id ? "none" : 3,
+                        WebkitBoxOrient: "vertical",
+                      }}
+                    >
+                      {course.description}
+                    </p>
+                    <button
+                      className="text-blue-500 text-xs mt-2"
+                      onClick={() => handleToggle(course.id)}
+                    >
+                      {expandedCourseId === course.id
+                        ? "Show Less"
+                        : "Read More"}
+                    </button>
+                  </div>
                   <div className="flex items-center mb-4">
                     {Array(5)
                       .fill(0)
@@ -299,13 +334,34 @@ const SliderWithPopup = () => {
 
                   {/* Hover Popup */}
                   {hoveredCourse?.id === course.id && (
-                    <div className="h-[350px] absolute top-0 left-full w-80 bg-[#E5F2FF] shadow-lg rounded-lg p-4 z-50 animate-slide-in transform transition-transform duration-300">
+                    <div className="h-full absolute top-0 left-full w-80 bg-[#E5F2FF] shadow-lg rounded-lg p-4 z-50 animate-slide-in transform transition-transform duration-300">
                       <h3 className="text-xl font-semibold mb-2 font-montserrat">
                         {hoveredCourse.title}
                       </h3>
-                      <p className="text-gray-600 mb-2 font-montserrat">
+                      {/* <p className="text-gray-600 mb-2 font-montserrat"> */}
+                      <p
+                        className={`text-gray-600 mb-2 text-wrap font-montserrat text-sm ${
+                          expandedCourseId === course.id ? "" : "truncate"
+                        }`}
+                        style={{
+                          display: "-webkit-box",
+                          WebkitLineClamp:
+                            expandedCourseId === course.id ? "none" : 3,
+                          WebkitBoxOrient: "vertical",
+                        }}
+                        onMouseEnter={handleHoverToggle} // Hover to expand
+                        onMouseLeave={handleHoverToggle} // Hover out to collapse
+                      >
                         {hoveredCourse.description}
                       </p>
+                      <button
+                        className="text-blue-500 text-xs mt-2"
+                        onClick={() => handleToggle(course.id)}
+                      >
+                        {expandedCourseId === course.id
+                          ? "Show Less"
+                          : "Read More"}
+                      </button>
                       <p className="text-gray-800 mb-2 font-montserrat">
                         Price: ${hoveredCourse.price}{" "}
                         {hoveredCourse.discount_percentage && (
