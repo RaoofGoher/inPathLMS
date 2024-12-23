@@ -265,7 +265,7 @@ const SliderWithPopup = () => {
               </button>
             )}
             <div
-              className="slider-content"
+              className="slider-content w-screen"
               ref={courseRef}
               onScroll={() =>
                 checkScrollButtons(courseRef, setShowCourseScroll)
@@ -274,7 +274,7 @@ const SliderWithPopup = () => {
               {selectedSubcategory.courses.map((course) => (
                 <div
                   key={course.id}
-                  className="course-card   "
+                  className="course-card"
                   onMouseEnter={() => setHoveredCourse(course)}
                   onMouseLeave={() => setHoveredCourse(null)}
                 >
@@ -420,14 +420,5 @@ const SliderWithPopup = () => {
   );
 };
 
-const popupStyles = {
-  position: "absolute",
-  top: "0",
-  left: "90%",
-  width: "300px",
-  boxShadow: "0 4px 6px rgba(0, 0, 0, 0.1)",
-  padding: "15px",
-  zIndex: 100,
-  animation: "slideIn 0.5s ease-in-out", // Apply animation
-};
+
 export default SliderWithPopup;

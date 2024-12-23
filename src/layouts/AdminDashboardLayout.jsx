@@ -8,11 +8,11 @@ import {
   FaChartPie,
   FaSignOutAlt,
   FaBell,
+  FaCheckCircle,
 } from "react-icons/fa";
 import { Outlet, Link } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { logout } from "../features/auth/authSlice";
-
 
 const AdminDashboardLayout = () => {
   const dispatch = useDispatch();
@@ -176,6 +176,15 @@ const AdminDashboardLayout = () => {
               <FaChartPie className="mr-2 group-hover:text-blueColor text-white" />
               Analytics
             </Link>
+            <Link
+              to={"/admin/approval"}
+              onClick={handleLogout}
+              className="flex group items-center py-3 px-4 text-lg rounded-lg font-semibold transition-colors duration-200 hover:bg-gray-300 hover:text-blueColor"
+            >
+              {/* Update icon to FaCheckCircle for approval */}
+              <FaCheckCircle className="mr-2 group-hover:text-blueColor text-white" />
+              Approval
+            </Link>
 
             {/* Logout Link */}
             <Link
@@ -194,7 +203,11 @@ const AdminDashboardLayout = () => {
           {/* Mobile Hamburger Button */}
           <div className="md:hidden flex justify-between items-center mb-4">
             <button onClick={toggleSidebar} className="text-dark1">
-              {isSidebarOpen ? <FaTimes size={24} className="text-white" /> : <FaBars size={24} />}
+              {isSidebarOpen ? (
+                <FaTimes size={24} className="text-white" />
+              ) : (
+                <FaBars size={24} />
+              )}
             </button>
             {/* <h1 className="text-xl font-bold">Admin Dashboard</h1> */}
           </div>

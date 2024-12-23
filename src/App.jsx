@@ -56,6 +56,7 @@ import ForgotPassword from "./components/forgotPassword/ForgotPassword";
 import ResetPassword from "./components/forgotPassword/ResetPassword";
 import PageNotFound from "./pages/PageNotFound"
 import ExploredCourses from "./components/explore/ExploredCourses";
+import AdminApproval from "./pages/AdminApproval";
  
 function App() {
   const router = createBrowserRouter(
@@ -149,6 +150,7 @@ function App() {
           <Route path='/admin/manage-teachers' element={<ManageTeachers />} />
           <Route path="/admin/manage-students" element={<ManageStudents />} />
           <Route path="/admin/analytics" element={<Analytics />} />
+          <Route path="/admin/approval" element={<AdminApproval/>} />
         </Route>
 
         {/* Blog Routes */}
