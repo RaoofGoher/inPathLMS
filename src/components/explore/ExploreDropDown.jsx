@@ -69,7 +69,7 @@ const Dropdown = ({ closeDropdown }) => {
                         {activeSubcategory === subIndex &&
                           subcategory.courses?.length > 0 && (
                             <ul
-                              className="absolute -top-4 left-44 ml-2  rounded-md p-2 w-48 bg-[#E5F2FF]"
+                              className="absolute -top-4 left-[22.5rem] z-50 ml-6  rounded-md p-2 w-[400px] bg-[#E5F2FF]"
                               style={{ transform: "translateY(10px)" }} // Positioned below the subcategory
                             >
                               {subcategory.courses.map((course) => (
