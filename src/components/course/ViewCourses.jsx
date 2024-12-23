@@ -1,8 +1,9 @@
 import React from "react";
 import { useSelector } from "react-redux";
 import { useGetCoursesByTeacherIdQuery } from "../../features/courseCategory/getCourse";
-import { useNavigate , Link } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import { useGetTeacherProfileQuery } from "../../features/profile/teacher/teacherProfile";
+import CompleteCourseButton from "./CompleteCoursesButton";
 
 const ViewCourses = () => {
   const { user_id } = useSelector((state) => state.auth);
@@ -26,7 +27,7 @@ const ViewCourses = () => {
 
   return (
     <div className="container mx-auto p-6">
-      <div className="w-full flex justify-end items-center mb-8">
+      <div className="w-full flex   justify-end  items-baseline ">
         <Link to={"/dashboard/teacherdashboard"}>
           <button
             className="  bg-blueColor font-semibold text-white px-2 py-2 rounded-md shadow-md 
@@ -72,7 +73,7 @@ const ViewCourses = () => {
                   <p className="text-sm text-grayColor flex-grow mb-4">
                     {course.description || "No description available."}
                   </p>
-                  <div className="flex justify-between items-center space-x-2">
+                  <div className="grid grid-cols-2 justify-center items-baseline gap-4">
                     <button
                       className="flex-1 bg-blueColor text-white text-sm py-2 rounded hover:bg-blueColor/90 transition-all"
                       onClick={() => handleViewCourseSection(course.id)}
@@ -91,6 +92,9 @@ const ViewCourses = () => {
                     >
                       View Course
                     </button>
+                    <div className="">
+                      <CompleteCourseButton courseId={course.id} />
+                    </div>
                   </div>
                 </div>
               </div>
@@ -108,9 +112,7 @@ const ViewCourses = () => {
             </p>
             <button
               className="bg-blueColor text-white py-2 px-6 rounded hover:bg-blueColor/90 transition-all"
-              onClick={() =>
-                navigate("/dashboard/teacherdashboard/addcourse")
-              }
+              onClick={() => navigate("/dashboard/teacherdashboard/addcourse")}
             >
               Create Course
             </button>
@@ -128,9 +130,7 @@ const ViewCourses = () => {
           </p>
           <button
             className="bg-blueColor text-white py-2 px-6 rounded hover:bg-blueColor/90 transition-all"
-            onClick={() =>
-              navigate("/dashboard/teacherprofile")
-            }
+            onClick={() => navigate("/dashboard/teacherprofile")}
           >
             Create Profile
           </button>
