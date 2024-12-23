@@ -54,7 +54,7 @@ const LoginForm = () => {
       />
       {/* Main Container */}
       {!loading && (
-        <div className="min-h-screen flex flex-row sm:px-16 justify-center items-center">
+        <div className="min-h-screen flex flex-row sm:px-16 lg:px-24 justify-center items-center">
           {/* Left Column for Image */}
           <div className="bg-cover bg-center w-full hidden md:block">
             <img src={Image} alt="loginImage" />
