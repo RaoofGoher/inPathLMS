@@ -81,7 +81,7 @@ const Navbar = () => {
                 <NavLink
                   to={
                     role === "admin"
-                      ? "/admin-dashboard"
+                      ? "/dashboard/admin"
                       : role === "instructor"
                       ? "/dashboard/teacherdashboard"
                       : role === "student"

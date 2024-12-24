@@ -134,24 +134,30 @@ function App() {
             />
           </Route>
 
-          {/* <Route element={<PrivateRoute allowedRoles={['admin']} />}>
-          <Route path="/admin-dashboard" element={<AdminDashboard />} />
-         </Route> */}
-
           <Route element={<PrivateRoute allowedRoles={["instructor"]} />}>
             <Route path="/dashboard/teacherprofile" element={<ProfileHome />} />
           </Route>
         </Route>
 
+        <Route path="/dashboard/admin" element={<AdminDashboardLayout />}>
+                
+          <Route element={<PrivateRoute allowedRoles={['admin']} />}>
+          <Route index element={<AdminDashboard />} />
+          <Route path='/dashboard/admin/manage-teachers' element={<ManageTeachers />} />
+          <Route path="/dashboard/admin/manage-students" element={<ManageStudents />} />
+          <Route path="/dashboard/admin/analytics" element={<Analytics />} />
+          <Route path="/dashboard/admin/approval" element={<AdminApproval/>} />
+         </Route>
+
+
+        </Route>
+
         {/* Admin Routes */}
-        <Route path="/admin" element={<AdminDashboardLayout />}>
+        {/* <Route path="/admin" element={<AdminDashboardLayout />}>
           <Route index element={<AdminDashboard />} />
           <Route path="/admin/dashboard" element={<AdminDashboard />} />
-          <Route path='/admin/manage-teachers' element={<ManageTeachers />} />
-          <Route path="/admin/manage-students" element={<ManageStudents />} />
-          <Route path="/admin/analytics" element={<Analytics />} />
-          <Route path="/admin/approval" element={<AdminApproval/>} />
-        </Route>
+          
+        </Route> */}
 
         {/* Blog Routes */}
         <Route path="/" element={<Blogs />} />

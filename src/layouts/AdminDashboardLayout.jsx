@@ -13,7 +13,7 @@ import {
 import { Outlet, Link } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { logout } from "../features/auth/authSlice";
-
+import PrimaryNavbar from "../components/PrimaryNavbar";
 const AdminDashboardLayout = () => {
   const dispatch = useDispatch();
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
@@ -61,73 +61,13 @@ const AdminDashboardLayout = () => {
 
   return (
     <div className="h-screen flex flex-col">
-      {/* Header */}
-      <header className="w-full border-b-2 md:px-14  text-blueColor flex items-center justify-between py-4 px-6 relative">
-        <h1 className="text-2xl font-bold">Admin Dashboard</h1>
-
-        {/* Notification Button with Badge */}
-        <div className="flex items-center gap-4">
-          {/* Notification Icon */}
-          <div
-            className="relative flex justify-center items-center"
-            onClick={handleNotificationClick} // Open or close dropdown when clicked
-          >
-            <FaBell size={20} className="text-blueColor cursor-pointer" />
-            {/* Notification Badge */}
-            <span className="absolute -top-2 -right-2 flex justify-center items-center w-4 h-4 bg-red-600 text-white text-xs rounded-full">
-              {notifications.length}
-            </span>
-          </div>
-
-          {/* Admin Profile Image */}
-          <div className="flex items-center space-x-2">
-            <img
-              src="https://via.placeholder.com/40" // Admin's profile image (replace with dynamic URL)
-              alt="Admin Avatar"
-              className="w-10 h-10 rounded-full"
-            />
-          </div>
-
-          {/* Notifications Dropdown */}
-          {isDropdownOpen && (
-            <div className="z-50 absolute top-16 right-0 bg-white shadow-xl rounded-lg w-80 p-4 border border-grayColor">
-              <h3 className="font-bold text-sm mb-2 text-blueColor">
-                Recent Notifications
-              </h3>
-              <ul className="space-y-2 ">
-                {notifications.map((notification) => (
-                  <li
-                    key={notification.id}
-                    className={`flex items-center space-x-2 text-sm p-4 rounded-lg bg-white hover:bg-gray-200 cursor-pointer transition-all duration-200 ${
-                      notification.type === "student"
-                        ? "text-blueColor"
-                        : "text-green-600"
-                    }`}
-                    onClick={handleNotificationItemClick} // Close dropdown on click
-                  >
-                    <img
-                      src={notification.avatar} // User's avatar image
-                      alt={notification.name}
-                      className="w-8 h-8 rounded-full"
-                    />
-                    <div>
-                      <p className="font-semibold">{notification.name}</p>{" "}
-                      {/* User Name */}
-                      <p>{notification.message}</p> {/* Notification Message */}
-                    </div>
-                  </li>
-                ))}
-              </ul>
-            </div>
-          )}
-        </div>
-      </header>
-
+     
+     <PrimaryNavbar/>
       {/* Main Content */}
       <div className="flex flex-1">
         {/* Sidebar */}
         <aside
-          className={`fixed top-0 left-0 z-40 h-full w-64 bg-blueColor text-white transform ${
+          className={`fixed top-0 left-0 z-20 h-full w-64 bg-blueColor text-white transform ${
             isSidebarOpen ? "translate-x-0" : "-translate-x-full"
           } transition-transform duration-300 md:relative md:translate-x-0`}
         >
@@ -143,7 +83,7 @@ const AdminDashboardLayout = () => {
           <nav className="flex flex-col p-4 space-y-2">
             {/* Dashboard Link */}
             <Link
-              to="/admin/dashboard"
+              to="/dashboard/admin"
               className="flex group items-center py-3 px-4 text-lg rounded-lg font-semibold transition-colors duration-200 hover:bg-gray-300 hover:text-blueColor"
             >
               <FaTachometerAlt className="mr-2 group-hover:text-blueColor text-white" />
@@ -152,7 +92,7 @@ const AdminDashboardLayout = () => {
 
             {/* Manage Teachers Link */}
             <Link
-              to="/admin/manage-teachers"
+              to="/dashboard/admin/manage-teachers"
               className="flex group items-center py-3 px-4 text-lg rounded-lg font-semibold transition-colors duration-200 hover:bg-gray-300 hover:text-blueColor"
             >
               <FaUserTie className="mr-2 group-hover:text-blueColor text-white" />
@@ -161,7 +101,7 @@ const AdminDashboardLayout = () => {
 
             {/* Manage Students Link */}
             <Link
-              to="/admin/manage-students"
+              to="/dashboard/admin/manage-students"
               className="flex group items-center py-3 px-4 text-lg rounded-lg font-semibold transition-colors duration-200 hover:bg-gray-300 hover:text-blueColor"
             >
               <FaUsers className="mr-2 group-hover:text-blueColor text-white" />
@@ -170,15 +110,14 @@ const AdminDashboardLayout = () => {
 
             {/* Analytics Link */}
             <Link
-              to="/admin/analytics"
+              to="/dashboard/admin/analytics"
               className="flex group items-center py-3 px-4 text-lg rounded-lg font-semibold transition-colors duration-200 hover:bg-gray-300 hover:text-blueColor"
             >
               <FaChartPie className="mr-2 group-hover:text-blueColor text-white" />
               Analytics
             </Link>
             <Link
-              to={"/admin/approval"}
-              onClick={handleLogout}
+              to={"/dashboard/admin/approval"}
               className="flex group items-center py-3 px-4 text-lg rounded-lg font-semibold transition-colors duration-200 hover:bg-gray-300 hover:text-blueColor"
             >
               {/* Update icon to FaCheckCircle for approval */}
