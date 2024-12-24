@@ -38,7 +38,7 @@ const LoginForm = () => {
       resetForm();
       if (role === "student") navigate("/dashboard/studentdashboard");
       else if (role === "instructor") navigate("/dashboard/teacherdashboard");
-      else if (role === "admin") navigate("/admin-dashboard");
+      else if (role === "admin") navigate("/dashboard/admin");
     } catch (err) {
       console.error("Login failed:", err);
     }
