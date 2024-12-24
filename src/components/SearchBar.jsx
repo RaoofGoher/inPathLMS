@@ -7,7 +7,6 @@ const SearchBar = () => {
   const navigate = useNavigate();
   // Use the API query to get all courses
   const { data: courses, isLoading, isError } = useGetCoursesQuery();
-  console.log("courses search", courses);
 
   // Filter courses based on search query
   const filteredCourses = courses?.flatMap(category => 
@@ -23,6 +22,7 @@ const SearchBar = () => {
 
   const handleCourseClick = (subcategoryId) => {
     navigate(`/exploredcourses/${subcategoryId}`)
+    setSearchQuery('');
   };
 
   return (
