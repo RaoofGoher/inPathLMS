@@ -57,6 +57,7 @@ import ResetPassword from "./components/forgotPassword/ResetPassword";
 import PageNotFound from "./pages/PageNotFound"
 import ExploredCourses from "./components/explore/ExploredCourses";
 import AdminApproval from "./pages/AdminApproval";
+import TeachOnInPath from "./pages/teachOnInPath/TeachOnInPath";
  
 function App() {
   const router = createBrowserRouter(
@@ -90,6 +91,7 @@ function App() {
           <Route path="/resetpassword/:uid/:token" element={<ResetPassword />}></Route>
           <Route path="/page-not-found" element={<PageNotFound />}></Route>
           <Route path="/exploredcourses/:id" element={<ExploredCourses />}></Route>
+          <Route path="/teachoninpath" element={<TeachOnInPath />}></Route>
         </Route>
         <Route path="/dashboard" element={<DashboardLayout />}>
           <Route element={<PrivateRoute allowedRoles={["student"]} />}>

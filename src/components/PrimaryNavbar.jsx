@@ -200,7 +200,7 @@ const Navbar = () => {
               <div className="hidden md:flex space-x-4">
                 <NavLink
                   end
-                  to={"/teachersignup"}
+                  to={"/teachoninpath"}
                   className={({ isActive }) =>
                     isActive
                       ? "bg-blueColor text-white rounded-md"
@@ -208,7 +208,7 @@ const Navbar = () => {
                   }
                 >
                   <button className="px-4 py-2 hover:bg-blueColor hover:text-white   rounded-md ">
-                    InPATH Business
+                    Teach On InPath
                   </button>
                 </NavLink>
 
@@ -264,7 +264,7 @@ const Navbar = () => {
             </div>
             <div className="flex flex-col p-4 space-y-2">
               <NavLink
-                to="/teachersignup"
+                to="/teachoninpath"
                 onClick={toggleDrawer}
                 className={({ isActive }) =>
                   isActive
