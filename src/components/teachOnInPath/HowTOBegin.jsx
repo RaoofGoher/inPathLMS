@@ -103,7 +103,7 @@ const HowTOBegin = () => {
                 <p>
                   Our custom coupon tool lets you offer enrollment incentives
                   while our global promotions drive traffic to courses. There’s
-                  even more opportunity for courses chosen for Udemy Business.
+                  even more opportunity for courses chosen for INPATH Business.
                 </p>
               </div>
             </div>

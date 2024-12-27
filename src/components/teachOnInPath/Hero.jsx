@@ -11,7 +11,7 @@ const Hero = () => {
                 <p className="mt-2">Become an instructor and change lives <br/>
                      — including your own</p>
 
-                <Link to={"/teachersignup"}><button className="bg-blueColor text-white px-4 py-2 mt-4 rounded-md">Start Teaching</button></Link>     
+                <Link to={"/teachersignup"}><button className="hover:bg-blueColor border text-blueColor border-blueColor bg-white hover:text-white px-4 py-2 mt-4 rounded-md">Start Teaching</button></Link>     
             </div>
         </div>
     );

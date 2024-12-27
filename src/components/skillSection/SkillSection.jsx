@@ -144,7 +144,7 @@ const SliderWithPopup = () => {
             All the skills you need in one place
           </h1>
           <p className=" text-base sm:text-xl mb-2 font-nunito">
-            From critical skills to technical topics, InPATH supports your
+            From critical skills to technical topics, INPATH supports your
             professional development.
           </p>
         </div>

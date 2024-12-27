@@ -46,7 +46,7 @@ const GeneralQuestions = () => {
   ];
 
   return (
-    <div id='general-questions'  className="py-8 bg-white mt-8">
+    <div id='general-questions'  className="py-8 bg-white mt-8  px-8">
       <h2 className="text-3xl font-bold text-blueColor text-center mb-8">
         General Questions
       </h2>

@@ -161,19 +161,19 @@ const Footer = () => {
         <div>
           <ul className="flex gap-8 text-xl justify-center md:justify-start">
             <li className="flex justify-center items-center">
-              <FaApple className="text-3xl sm:text-4xl" />
+              <FaApple className="text-3xl sm:text-4xl transition-transform transform hover:scale-105 hover:shadow-xl hover:cursor-pointer" />
             </li>
             <li className="flex justify-center items-center">
-              <FaGoogle className="text-3xl sm:text-4xl" />
+              <FaGoogle className="text-3xl sm:text-4xl transition-transform transform hover:scale-105 hover:shadow-xl hover:cursor-pointer" />
             </li>
             <li className="flex justify-center items-center">
-              <FaAmazon className="text-3xl sm:text-4xl" />
+              <FaAmazon className="text-3xl sm:text-4xl transition-transform transform hover:scale-105 hover:shadow-xl hover:cursor-pointer" />
             </li>
             <li className="flex justify-center items-center">
-              <FaMicrosoft className="text-3xl sm:text-4xl" />
+              <FaMicrosoft className="text-3xl sm:text-4xl transition-transform transform hover:scale-105 hover:shadow-xl hover:cursor-pointer" />
             </li>
             <li className="flex justify-center items-center">
-              <FaFacebook className="text-3xl sm:text-4xl" />
+              <FaFacebook className="text-3xl sm:text-4xl transition-transform transform hover:scale-105 hover:shadow-xl hover:cursor-pointer" />
             </li>
           </ul>
         </div>
@@ -214,7 +214,7 @@ const Footer = () => {
             <div key={index}>
               <button
                 onClick={() => toggleCertification(index)}
-                className="w-full flex justify-between items-center border-b-2 border-grayColor  p-3 "
+                className="w-full flex justify-between items-center border-b-2 border-white  p-3 "
               >
                 <span className="font-semibold">{section.title}</span>
                 <span>{expandedCertifications === index ? "▲" : "▼"}</span>
