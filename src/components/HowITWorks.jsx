@@ -9,7 +9,7 @@ const HowItWorks = () => {
     <section className="bg-white py-16 px-6 sm:px-16">
       <div className="text-center flex flex-col items-center justify-center gap-4 mb-8">
         <h1 className="underline text-xl sm:text-3xl md:text-4xl lg:text-4xl font-bold text-blueColor">
-          How InPATH Works
+          How INPATH Works
         </h1>
         <p className="text-dark1 flex flex-col items-center justify-center text-sm sm:text-sm md:text-sm lg:text-sm">
           <span>

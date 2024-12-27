@@ -26,7 +26,7 @@ const Footer = () => {
 
   const menuData = [
     {
-      title: "In Path LMS",
+      title: "INPATH LMS",
       links: [
         { name: "Home", to: "/" },
         { name: "Overview", to: "/overView" },
@@ -153,7 +153,7 @@ const Footer = () => {
           <h1 className="text-lg text-center md:text-left">
             Top companies choose{" "}
             <span className=" font-semibold hover:underline">
-              <a href="#"> inPath learn management system. </a>
+              <a href="#"> INPATH learn management system. </a>
             </span>{" "}
             Business to build in-demand career skills.
           </h1>
@@ -259,7 +259,7 @@ const Footer = () => {
       <div className="flex-col sm:flex-row bg-blueColor p-4 px-16 justify-between flex gap-4 border-t-2 border-grayColor items-center text-lightColor1">
         <div className="flex gap-4 items-center">
           <img src={image} alt="Logo" width={90} />
-          <p className="text-white">© 2024 InPath LMS</p>
+          <p className="text-white">© 2024 INPATH LMS</p>
         </div>
         <div>
           <GoogleTranslator />
