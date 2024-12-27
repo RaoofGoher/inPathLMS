@@ -18,7 +18,7 @@ const instructors = [
     image: profile1,
   },
   {
-    name: "Dr. Sarah Johnson",
+    name: "Dr. Sarah John",
     expertise: "Full Stack Development",
     image: profile2,
   },
@@ -77,7 +77,7 @@ const InstructorSpotlight = () => {
   };
 
   return (
-    <section className="hidden sm:block sm:py-20 py-6 px-6 sm:px-16 bg-blueColor">
+    <section className=" mt-2 sm:py-20 py-6 px-6 sm:px-16 bg-blueColor">
       <div className="text-center">
         <h2 className="text-5xl font-extrabold mb-2 text-white underline">
           Meet Our Instructors
@@ -101,12 +101,12 @@ const InstructorSpotlight = () => {
               />
 
               {/* Name */}
-              <h3 className="text-xl md:text-3xl text-center font-bold text-blueColor">
+              <h3 className="text-xl md:text-2xl lg:text-3xl text-center font-bold text-blueColor">
                 {instructor.name}
               </h3>
 
               {/* Short Heading */}
-              <p className="md:text-lg text-center text-black mb-6">
+              <p className="md:text-md text-center text-dark1 mb-6">
                 {instructor.expertise}
               </p>
 

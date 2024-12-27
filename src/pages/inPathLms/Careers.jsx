@@ -18,7 +18,7 @@ const Careers = () => {
             Current Openings
           </h2>
           <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
-            <div className=" p-6 shadow-lg border-t-2 border-grayColor rounded-lg transition-transform transform hover:scale-105 hover:shadow-xl shadow-grayColor">
+            <div className=" p-6 border-2 border-s-8 border-blueColor rounded-xl shadow-md  transition-transform transform hover:scale-105 hover:shadow-xl shadow-grayColor">
               <h3 className="text-2xl font-semibold text-blueColor mb-2">
                 Frontend Developer
               </h3>
@@ -31,7 +31,7 @@ const Careers = () => {
               </button>
               </Link>
             </div>
-            <div className="p-6 shadow-lg border-t-2 border-grayColor rounded-lg transition-transform transform hover:scale-105 hover:shadow-xl shadow-grayColor">
+            <div className="p-6 border-2 border-x-8 border-blueColor rounded-xl shadow-md  transition-transform transform hover:scale-105 hover:shadow-xl shadow-grayColor">
               <h3 className="text-2xl font-semibold text-blueColor mb-2">
                 Backend Developer
               </h3>
@@ -44,7 +44,7 @@ const Careers = () => {
               </button>
               </Link>
             </div>
-            <div className="p-6 shadow-lg border-t-2 border-grayColor rounded-lg transition-transform transform hover:scale-105 hover:shadow-xl shadow-grayColor">
+            <div className="p-6 border-2 border-e-8 border-blueColor rounded-xl shadow-md shadow-grayColor transition-transform transform hover:scale-105 hover:shadow-xl ">
               <h3 className="text-2xl font-semibold text-blueColor mb-2">
                 Product Manager
               </h3>
@@ -73,15 +73,15 @@ const Careers = () => {
             innovative solutions in education technology.
           </p>
           <div className="flex justify-around mt-8">
-            <div className="text-center  p-6 rounded-lg transition-all transform hover:scale-105 border-t-2 border-grayColor shadow-grayColor shadow-md">
+            <div className="text-center  p-6 rounded-lg transition-all transform hover:scale-105 border-2 border-s-8 border-blueColor  shadow-md shadow-grayColor">
               <FaUsers className="text-4xl text-blueColor/90  mx-auto" />
               <p className="mt-4 text-grayColor ">Collaboration</p>
             </div>
-            <div className="text-center  p-6 rounded-lg transition-all transform hover:scale-105 border-t-2 border-grayColor shadow-grayColor shadow-md ">
+            <div className="text-center  p-6 rounded-lg transition-all transform hover:scale-105 border-2 border-x-8 border-blueColor  shadow-md shadow-grayColor">
               <FaLightbulb className="text-4xl text-blueColor/90 mx-auto" />
               <p className="mt-4 text-grayColor ">Innovation</p>
             </div>
-            <div className="text-center  p-6 rounded-lg transition-all transform hover:scale-105  border-t-2 border-grayColor shadow-grayColor shadow-md">
+            <div className="text-center  p-6 rounded-lg transition-all transform hover:scale-105 border-2 border-e-8 border-blueColor  shadow-md shadow-grayColor">
               <FaRocketchat className="text-4xl  text-blueColor/90 mx-auto" />
               <p className="mt-4 text-grayColor">Growth</p>
             </div>
@@ -100,20 +100,20 @@ const Careers = () => {
             below to apply for your next role with us.
           </p>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-            <div className="flex items-center rounded-md space-x-4 justify-center p-4 border-t-2 border-grayColor shadow-grayColor shadow-md">
+            <div className="flex items-baseline transition-transform transform hover:scale-105 hover:shadow-xl rounded-md space-x-4 justify-start p-4 border-2 border-s-8 border-blueColor  shadow-md shadow-grayColor">
               <span className="p-2 text-blueColor text-xl">1</span>
               <p className="text-lg text-grayColor">
                 Submit your resume and cover letter online.
               </p>
             </div>
-            <div className="flex items-center space-x-4 rounded-md justify-center p-4 border-t-2 border-grayColor shadow-grayColor shadow-md">
+            <div className="flex items-baseline transition-transform transform hover:scale-105 hover:shadow-xl space-x-4 rounded-md justify-start p-4 border-2 border-x-8 border-blueColor  shadow-md shadow-grayColor">
               <span className="p-2 text-blueColor text-xl">2</span>
               <p className="text-lg text-grayColor">
                 Our team will review your application and contact you for an
                 interview.
               </p>
             </div>
-            <div className="flex items-center space-x-4 rounded-md justify-center p-4 border-t-2 border-grayColor shadow-grayColor shadow-md">
+            <div className="flex items-baseline transition-transform transform hover:scale-105 hover:shadow-xl space-x-4 rounded-md justify-start p-4 border-2 border-e-8 border-blueColor  shadow-md shadow-grayColor">
               <span className="p-2 rounded-full text-blueColor text-xl">3</span>
               <p className="text-lg text-grayColor">
                 If you're selected, we’ll make you an offer to join our team.

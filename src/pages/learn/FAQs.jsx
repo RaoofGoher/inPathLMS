@@ -36,13 +36,13 @@ const FAQs = () => {
       </section>
 
       {/* Need More Help Section */}
-      <section>
-        <div className="py-12 bg-blueColor/90">
+      <section className="bg-blueColor px-8 ">
+        <div className="py-12  ">
           <h2 className="text-2xl font-bold text-white text-center mb-8">
             Need More Help?
           </h2>
           <div className="max-w-3xl mx-auto text-center">
-            <p className="mb-4 text-white" >
+            <p className="mb-4 text-white">
               If you didn’t find your question here, our support team is here to
               help!
             </p>
@@ -59,8 +59,8 @@ const FAQs = () => {
       <GeneralQuestions />
 
       {/* Still Have Questions Section */}
-      <section className="mt-8 mb-8">
-        <div className="bg-blueColor py-12 text-center text-white">
+      <section className="mt-8 mb-8 bg-blueColor px-8  ">
+        <div className=" py-12 text-center text-white">
           <h2 className="text-3xl font-bold mb-4">Still Have Questions?</h2>
           <p className="mb-6">We’re here to help. Reach out to us anytime.</p>
           <Link to="/help-center">

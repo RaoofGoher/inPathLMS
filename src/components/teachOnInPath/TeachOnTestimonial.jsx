@@ -9,21 +9,21 @@ const TeachOnTestimonial = () => {
       name: "John Doe",
       destination: "New York, USA",
       review:
-        "Teaching on Udemy has provided me with two important elements: the opportunity to reach more learners than I ever would be able to on my own and a steady stream of extra income. The platform is user-friendly, and the community of learners is amazing!",
+        "Teaching on INPATH has provided me with two important elements: the opportunity to reach more learners than I ever would be able to on my own and a steady stream of extra income. The platform is user-friendly, and the community of learners is amazing!",
     },
     {
       id: 2,
       name: "Jane Smith",
       destination: "Paris, France",
       review:
-        "The experience has been incredible! Not only did I gain more exposure as an instructor, but I also got to interact with a global audience. The tools Udemy provides make creating and managing courses so much easier.",
+        "The experience has been incredible! Not only did I gain more exposure as an instructor, but I also got to interact with a global audience. The tools INPATH provides make creating and managing courses so much easier.",
     },
     {
       id: 3,
       name: "Mary Johnson",
       destination: "London, UK",
       review:
-        "I've been teaching on Udemy for over a year now, and it has been an amazing journey. I can reach a wide audience, and the income has been a great side benefit. It's a great platform for anyone passionate about teaching.",
+        "I've been teaching on INPATH for over a year now, and it has been an amazing journey. I can reach a wide audience, and the income has been a great side benefit. It's a great platform for anyone passionate about teaching.",
     },
     // Add more testimonials if needed
   ];
