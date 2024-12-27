@@ -35,7 +35,7 @@ const Dropdown = ({ closeDropdown }) => {
     >
       <div className="flex">
         {/* Categories */}
-        <ul className="w-[20vw] border-r border-gray-200">
+        <ul className="w-[25vw] border-r border-gray-200">
           {topCategories.map((category, index) => (
             <li
               key={category.categoryId}
@@ -45,8 +45,9 @@ const Dropdown = ({ closeDropdown }) => {
               onMouseEnter={() => handleCategoryMouseEnter(index)}
               onMouseLeave={() => setActiveSubcategory(null)}
               style={{
-                wordWrap: "break-word", // Ensures long words break into next line
-                whiteSpace: "normal",   // Ensures the text wraps
+                wordBreak: "break-word",  // Ensures long words break onto the next line
+                overflowWrap: "break-word", // Ensures long words wrap properly
+                whiteSpace: "normal", // Allows text to wrap normally
               }}
             >
               <div className="flex justify-between items-center">
@@ -62,7 +63,7 @@ const Dropdown = ({ closeDropdown }) => {
         {/* Subcategories */}
         {activeCategory !== null &&
           topCategories[activeCategory]?.subcategories.length > 0 && (
-            <ul className="w-[22vw] border-r border-gray-200 break-words">
+            <ul className="w-[25vw] border-r border-gray-200 break-words">
               {topCategories[activeCategory].subcategories.map(
                 (subcategory, subIndex) => (
                   <li
@@ -72,8 +73,9 @@ const Dropdown = ({ closeDropdown }) => {
                     }`}
                     onMouseEnter={() => handleSubcategoryMouseEnter(subIndex)}
                     style={{
-                      wordWrap: "break-word", // Ensures long words break into next line
-                      whiteSpace: "normal",   // Ensures the text wraps
+                      wordBreak: "break-word",  // Ensures long words break onto the next line
+                      overflowWrap: "break-word", // Ensures long words wrap properly
+                      whiteSpace: "normal", // Allows text to wrap normally
                     }}
                   >
                     <div className="flex justify-between items-center">
@@ -92,7 +94,7 @@ const Dropdown = ({ closeDropdown }) => {
         {activeSubcategory !== null &&
           topCategories[activeCategory]?.subcategories[activeSubcategory]
             ?.courses.length > 0 && (
-            <ul className="w-[22vw]">
+            <ul className="w-[25vw]">
               {topCategories[activeCategory].subcategories[activeSubcategory].courses.map((course) => (
                 <li
                   key={course.courseId}
@@ -110,8 +112,9 @@ const Dropdown = ({ closeDropdown }) => {
                     );
                   }}
                   style={{
-                    wordWrap: "break-word", // Ensures long words break into next line
-                    whiteSpace: "normal",   // Ensures the text wraps
+                    wordBreak: "break-word",  // Ensures long words break onto the next line
+                    overflowWrap: "break-word", // Ensures long words wrap properly
+                    whiteSpace: "normal", // Allows text to wrap normally
                   }}
                 >
                   {course.title}
