@@ -36,7 +36,7 @@ const WhyTrustUs = () => {
               </h1>
               <span className="text-xs sm:text-sm md:text-base ">
                 Our LMS has helped thousands of students reach their learning
-                goals. With posive feedback and success stories from users,
+                goals. With positive feedback and success stories from users,
                 we’re dedicated to delivering high-quality educaon and
                 consistent results.
               </span>

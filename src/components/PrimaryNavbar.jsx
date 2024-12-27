@@ -209,7 +209,7 @@ const Navbar = () => {
                   }
                 >
                   <button className="px-4 py-2 hover:bg-blueColor hover:text-white   rounded-md ">
-                    Teach On InPath
+                    Teach On INPATH
                   </button>
                 </NavLink>
 
