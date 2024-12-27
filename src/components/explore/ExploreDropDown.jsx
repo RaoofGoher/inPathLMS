@@ -19,6 +19,15 @@ const Dropdown = ({ closeDropdown }) => {
 
   const topCategories = categories.slice(0, 10);
 
+  const handleCategoryMouseEnter = (index) => {
+    setActiveCategory(index);
+    setActiveSubcategory(null); // Reset subcategory when switching categories
+  };
+
+  const handleSubcategoryMouseEnter = (subIndex) => {
+    setActiveSubcategory(subIndex);
+  };
+
   return (
     <div
       onMouseLeave={closeDropdown}
@@ -26,15 +35,20 @@ const Dropdown = ({ closeDropdown }) => {
     >
       <div className="flex">
         {/* Categories */}
-        <ul className="w-[350px] border-r border-gray-200">
+        <ul className="w-[25vw] border-r border-gray-200">
           {topCategories.map((category, index) => (
             <li
               key={category.categoryId}
               className={`px-4 py-2 cursor-pointer hover:bg-gray-100 ${
                 activeCategory === index ? "bg-gray-100" : ""
               }`}
-              onMouseEnter={() => setActiveCategory(index)}
+              onMouseEnter={() => handleCategoryMouseEnter(index)}
               onMouseLeave={() => setActiveSubcategory(null)}
+              style={{
+                wordBreak: "break-word",  // Ensures long words break onto the next line
+                overflowWrap: "break-word", // Ensures long words wrap properly
+                whiteSpace: "normal", // Allows text to wrap normally
+              }}
             >
               <div className="flex justify-between items-center">
                 {category.name}
@@ -49,7 +63,7 @@ const Dropdown = ({ closeDropdown }) => {
         {/* Subcategories */}
         {activeCategory !== null &&
           topCategories[activeCategory]?.subcategories.length > 0 && (
-            <ul className="w-[370px] border-r border-gray-200 break-words">
+            <ul className="w-[25vw] border-r border-gray-200 break-words">
               {topCategories[activeCategory].subcategories.map(
                 (subcategory, subIndex) => (
                   <li
@@ -57,7 +71,12 @@ const Dropdown = ({ closeDropdown }) => {
                     className={`px-4 py-2 cursor-pointer hover:bg-gray-100 ${
                       activeSubcategory === subIndex ? "bg-gray-100" : ""
                     }`}
-                    onMouseEnter={() => setActiveSubcategory(subIndex)}
+                    onMouseEnter={() => handleSubcategoryMouseEnter(subIndex)}
+                    style={{
+                      wordBreak: "break-word",  // Ensures long words break onto the next line
+                      overflowWrap: "break-word", // Ensures long words wrap properly
+                      whiteSpace: "normal", // Allows text to wrap normally
+                    }}
                   >
                     <div className="flex justify-between items-center">
                       {subcategory.name}
@@ -75,28 +94,27 @@ const Dropdown = ({ closeDropdown }) => {
         {activeSubcategory !== null &&
           topCategories[activeCategory]?.subcategories[activeSubcategory]
             ?.courses.length > 0 && (
-            <ul className="w-[350px]">
-              {topCategories[activeCategory].subcategories[
-                activeSubcategory
-              ].courses.map((course) => (
+            <ul className="w-[25vw]">
+              {topCategories[activeCategory].subcategories[activeSubcategory].courses.map((course) => (
                 <li
                   key={course.courseId}
                   className="px-4 py-2 cursor-pointer hover:bg-gray-100"
                   onClick={() => {
                     dispatch(
                       setSubCategoryID(
-                        topCategories[activeCategory].subcategories[
-                          activeSubcategory
-                        ].id
+                        topCategories[activeCategory].subcategories[activeSubcategory].id
                       )
                     );
                     navigate(
                       `/exploredcourses/${
-                        topCategories[activeCategory].subcategories[
-                          activeSubcategory
-                        ].id
+                        topCategories[activeCategory].subcategories[activeSubcategory].id
                       }`
                     );
+                  }}
+                  style={{
+                    wordBreak: "break-word",  // Ensures long words break onto the next line
+                    overflowWrap: "break-word", // Ensures long words wrap properly
+                    whiteSpace: "normal", // Allows text to wrap normally
                   }}
                 >
                   {course.title}
