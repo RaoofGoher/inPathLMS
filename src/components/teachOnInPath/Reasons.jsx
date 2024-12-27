@@ -1,18 +1,18 @@
 import React from 'react';
 import Benifits from '../../assets/teachOnInPath/benifits.png';
-import Inspire from '../../assets/teachOnInPath/Inspire.png';
-import Educate from '../../assets/teachOnInPath/educate.png';
+import Inspiring from '../../assets/teachOnInPath/inspire.png'
+import Educating from '../../assets/teachOnInPath/educate.png'
 const Reasons = () => {
     const reasons = [
         {
             title: 'Educate your Style',
             description: 'Publish the course you want, in the way you want, and always have control of your own content.',
-            image: Educate,
+            image: Educating,
         },
         {
             title: 'Inspire Students',
             description: 'Teach what you know and help learners explore their interests, gain new skills, and advance their careers.',
-            image: Inspire,
+            image: Inspiring,
         },
         {
             title: 'Get benefits',
