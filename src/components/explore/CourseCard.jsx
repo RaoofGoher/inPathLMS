@@ -1,17 +1,37 @@
 import React, { useState } from "react";
 import Modal from "./Modal"; // Assuming you have a separate Modal component for the video
-
+import { useDispatch, useSelector } from "react-redux";
+import { addToCart } from "../../features/cart/cartSlice";
 const CourseCard = ({ course }) => {
   const [isHovered, setIsHovered] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false); // For controlling the modal
   const [isAddedToCart, setIsAddedToCart] = useState(false); // To track if course is added to cart
-
+    const { token, role, isAuthenticated, user_id } = useSelector(
+      (state) => state.auth
+    );
+      const cartItems = useSelector((state) => state.cart.items);
+    const dispatch = useDispatch();
   // Function to handle Add to Cart
-  const handleAddToCart = () => {
-    setIsAddedToCart(true);
-    // Add logic to dispatch action to add course to cart
-  };
+  const handleAddToCart = (course) => {
+    if (isAuthenticated) {
+      const existingItem = cartItems.find((item) => item.id === course.id);
 
+      if (existingItem) {
+        alert("This course is already in your cart!");
+      } else {
+        dispatch(
+          addToCart({
+            id: course.id,
+            name: course.title,
+            price: course.final_price,
+            quantity: 1,
+          })
+        );
+      }
+    } else {
+      alert("please login to continue");
+    }
+  };
   // Function to handle View Course (open modal)
   const handleViewCourse = () => {
     setIsModalOpen(true);
@@ -48,24 +68,25 @@ const CourseCard = ({ course }) => {
 
       {/* Hover effect */}
       {isHovered && (
-        <div className="absolute top-0 left-0 w-full h-full bg-black bg-opacity-50 flex items-center justify-center space-x-4">
+        <div className="absolute top-0 left-0 w-full h-full bg-black bg-opacity-50 flex flex-col items-start justify-end">
           <button
-            onClick={handleAddToCart}
-            className="px-4 py-2 bg-green-500 text-white rounded-md hover:bg-green-600 transition-colors"
+             onClick={() => handleAddToCart(course)}
+            className="m-1 px-4 py-2 bg-green-500 text-white  hover:bg-green-600 transition-colors w-[150px]"
           >
-            {isAddedToCart ? "Added" : "Add to Cart"}
+            {isAddedToCart ? "In Cart" : "Add to Cart"}
+          </button>
+          
+          <button
+            onClick={handleCheckout}
+            className="m-1 px-4 py-2 bg-yellow-500 text-white  hover:bg-yellow-600 transition-colors w-[150px]"
+          >
+            Checkout
           </button>
           <button
             onClick={handleViewCourse}
-            className="px-4 py-2 bg-blue-500 text-white rounded-md hover:bg-blue-600 transition-colors"
+            className="m-1 px-4 py-2 bg-blue-500 text-white hover:bg-blue-600 transition-colors w-[150px]"
           >
             View Course
-          </button>
-          <button
-            onClick={handleCheckout}
-            className="px-4 py-2 bg-yellow-500 text-white rounded-md hover:bg-yellow-600 transition-colors"
-          >
-            Checkout
           </button>
         </div>
       )}
