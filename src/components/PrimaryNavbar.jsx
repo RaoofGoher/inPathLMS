@@ -10,9 +10,9 @@ import { clearCart } from "../features/cart/cartSlice";
 import Dropdown from "./explore/ExploreDropDown";
 import icon from "../assets/language-icon.svg";
 import { resetSubCategoryID } from "../features/searchCourse/ExploreSubCategoryID";
-import {FaBell} from "react-icons/fa";
+import { FaBell } from "react-icons/fa";
 const Navbar = () => {
-  
+
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const { token, role, isAuthenticated, user_id } = useSelector(
@@ -138,8 +138,8 @@ const Navbar = () => {
                       <li
                         key={notification.id}
                         className={`flex items-center space-x-2 text-sm p-4 rounded-lg bg-white hover:bg-gray-200 cursor-pointer transition-all duration-200 ${notification.type === "student"
-                            ? "text-blueColor"
-                            : "text-green-600"
+                          ? "text-blueColor"
+                          : "text-green-600"
                           }`}
                         onClick={handleNotificationItemClick} // Close dropdown on click
                       >
@@ -183,7 +183,8 @@ const Navbar = () => {
                     Dashboard
                   </button>
                 </NavLink>
-                <Cart />
+                {role === "admin" ? "" : <Cart /> }
+                
                 <NavLink>
                   <button
                     onClick={handleLogout}
