@@ -10,7 +10,7 @@ const Careers = () => {
       <ScrollToTop />
 
       {/* Hero Section with Gradient */}
-      <HomeHero />
+      {/* <HomeHero /> */}
       {/* Job Listings Section with Gradient */}
       <section className="py-12">
         <div className="container mx-auto px-6">

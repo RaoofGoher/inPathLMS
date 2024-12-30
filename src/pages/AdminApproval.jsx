@@ -34,11 +34,12 @@ const AdminApproval = () => {
     setError(null);
 
     try {
+      // PATCH request to approve the course
       const response = await axios.patch(
-        `https://api.inpath.us/teacher/admin/course/approve/${courseId}`,
+        `http://api.inpath.us/teacher/admin/course/approve/${courseId}/`, // Added trailing slash
         {
-          // You can add other data here if required by the API
-          status: "approved", // Change status to 'approved'
+          // The status should be changed to 'approved'
+          status: "approved", // This can be customized based on the API spec
         },
         {
           headers: {
@@ -84,9 +85,7 @@ const AdminApproval = () => {
             >
               <div className="relative">
                 <img
-                  src={
-                    course.thumbnail || "https://via.placeholder.com/300x200"
-                  }
+                  src={course.thumbnail || "https://via.placeholder.com/300x200"}
                   alt={course.title}
                   className="w-full h-56 object-cover rounded-t-lg"
                 />
