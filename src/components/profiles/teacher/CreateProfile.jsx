@@ -2,7 +2,7 @@ import React from "react";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
 import { useCreateTeacherProfileMutation } from "../../../features/profile/teacher/teacherProfile";
-import { useSelector, useDispatch } from "react-redux";
+import { useSelector } from "react-redux";
 
 const CreateProfile = () => {
   const [createTeacherProfile, { isLoading, isSuccess, error }] =
@@ -14,6 +14,8 @@ const CreateProfile = () => {
   // Define initial values
   const initialValues = {
     user: user_id ? user_id : "",
+    first_name: "",
+    last_name: "",
     bio: "",
     degrees: "",
     teaching_experience: "",
@@ -24,6 +26,8 @@ const CreateProfile = () => {
   // Define validation schema using Yup
   const validationSchema = Yup.object({
     user: Yup.string().required("User ID is required"),
+    first_name: Yup.string().required("First name is required"),
+    last_name: Yup.string().required("Last name is required"),  // Fix capitalization here
     bio: Yup.string()
       .required("Bio is required")
       .max(500, "Bio cannot exceed 500 characters"),
@@ -39,12 +43,12 @@ const CreateProfile = () => {
   const handleSubmit = async (values) => {
     try {
       const result = await createTeacherProfile(values).unwrap(); // `user_id` is handled in the headers
-
       console.log("Profile Created:", result);
     } catch (err) {
       console.error("Error Creating Profile:", err);
     }
   };
+
   return (
     <div className="max-w-lg mx-auto bg- shadow-md shadow-grayColor rounded-md p-6 mt-10">
       <h2 className="text-2xl text-center font-semibold text-blueColor text-bold mb-4">
@@ -57,12 +61,49 @@ const CreateProfile = () => {
       >
         {({ isSubmitting }) => (
           <Form className="grid sm:grid-cols-2 gap-4 ">
+            <div className="mb-4">
+              <label htmlFor="firstName" className="block text-dark1 mb-1">
+                First Name
+              </label>
+              <Field
+                type="text"
+                id="first_name"
+                name="first_name"
+                placeholder="Enter first name"
+                className="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blueColor"
+              />
+              <ErrorMessage
+                name="first_name"
+                component="div"
+                className="text-red-500 text-sm mt-1"
+              />
+            </div>
+
+            <div className="mb-4">
+              <label htmlFor="lastName" className="block text-dark1 mb-1">
+                Last Name
+              </label>
+              <Field
+                type="text"
+                id="last_name"
+                name="last_name"
+                placeholder="Enter last name"
+                className="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blueColor"
+              />
+              <ErrorMessage
+                name="last_name"
+                component="div"
+                className="text-red-500 text-sm mt-1"
+              />
+            </div>
+
             {/* User ID */}
             <div className="mb-4">
               <label htmlFor="user" className="block text-dark1 mb-1">
                 User ID
               </label>
               <Field
+              readOnly
                 type="text"
                 id="user"
                 name="user"
@@ -119,10 +160,7 @@ const CreateProfile = () => {
 
             {/* Specialization */}
             <div className="mb-4">
-              <label
-                htmlFor="specialization"
-                className="block text-dark1 mb-1"
-              >
+              <label htmlFor="specialization" className="block text-dark1 mb-1">
                 Specialization
               </label>
               <Field
@@ -160,6 +198,7 @@ const CreateProfile = () => {
                 className="text-red-500 text-sm mt-1"
               />
             </div>
+
             {/* Bio */}
             <div className="mb-4">
               <label htmlFor="bio" className="block text-dark1 mb-1">
@@ -181,7 +220,7 @@ const CreateProfile = () => {
             </div>
 
             {/* Submit Button */}
-            <div  >
+            <div>
               <button
                 type="submit"
                 disabled={isSubmitting}

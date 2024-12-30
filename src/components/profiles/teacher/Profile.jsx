@@ -17,6 +17,7 @@ const ProfileComponent = () => {
   } = useGetTeacherProfileQuery(user_id, {
     skip: !user_id, // Avoid fetching if user_id is not available
   });
+  console.log(profile);
 
   // Mutation for updating profile
   const [updateTeacherProfile, { isLoading: isUpdating }] =
@@ -24,6 +25,8 @@ const ProfileComponent = () => {
 
   // State for managing form data
   const [formData, setFormData] = useState({
+    first_name: "",
+    last_name: "",
     bio: "",
     degrees: "",
     teaching_experience: "",
@@ -68,6 +71,8 @@ const ProfileComponent = () => {
   useEffect(() => {
     if (profile) {
       setFormData({
+        first_name: profile.first_name || "",
+        last_name: profile.last_name || "",
         bio: profile.bio || "",
         degrees: profile.degrees || "",
         teaching_experience: profile.teaching_experience || "",
@@ -77,18 +82,52 @@ const ProfileComponent = () => {
     }
   }, [profile]);
 
+  // Calculate full name
+  const fullName = `${profile?.first_name || ''} ${profile?.last_name || ''}`.trim();
+
   if (isLoading) return <p>Loading profile...</p>;
   if (isError) return <p>Error fetching profile. Please try again.</p>;
 
   return (
-    <div className=" max-w-2xl mx-auto mt-10  p-6   bg-white">
+    <div className="max-w-2xl mx-auto mt-10 p-6 bg-white">
       <h2 className="text-2xl font-semibold mb-4 text-center text-blueColor">
         Teacher Profile
       </h2>
 
       {isEditing ? (
         // Display Update Form
-        <form onSubmit={handleSubmit} className=" gap-4 sm:gap-6  shadow-md shadow-grayColor p-4  grid sm:grid-cols-2 ">
+        <form
+          onSubmit={handleSubmit}
+          className="gap-4 sm:gap-6 shadow-md shadow-grayColor p-4 grid sm:grid-cols-2"
+        >
+          <div>
+            <label htmlFor="first_name" className="block text-blueColor">
+              First Name
+            </label>
+            <input
+              type="text"
+              id="first_name"
+              name="first_name"
+              value={formData.first_name}
+              onChange={handleChange}
+              placeholder="Enter your first name"
+              className="w-full px-4 py-2 border rounded"
+            />
+          </div>
+          <div>
+            <label htmlFor="last_name" className="block text-blueColor">
+              Last Name
+            </label>
+            <input
+              type="text"
+              id="last_name"
+              name="last_name"
+              value={formData.last_name}
+              onChange={handleChange}
+              placeholder="Enter your last name"
+              className="w-full px-4 py-2 border rounded"
+            />
+          </div>
           {/* Degrees */}
           <div>
             <label htmlFor="degrees" className="block text-blueColor">
@@ -101,16 +140,13 @@ const ProfileComponent = () => {
               value={formData.degrees}
               onChange={handleChange}
               placeholder="Enter your degrees"
-              className="w-full px-4 py-2 border rounded "
+              className="w-full px-4 py-2 border rounded"
             />
           </div>
 
           {/* Teaching Experience */}
           <div>
-            <label
-              htmlFor="teaching_experience"
-              className="block text-blueColor"
-            >
+            <label htmlFor="teaching_experience" className="block text-blueColor">
               Teaching Experience
             </label>
             <input
@@ -120,7 +156,7 @@ const ProfileComponent = () => {
               value={formData.teaching_experience}
               onChange={handleChange}
               placeholder="Enter teaching experience in years"
-              className="w-full px-4 py-2 border rounded "
+              className="w-full px-4 py-2 border rounded"
             />
           </div>
 
@@ -135,7 +171,7 @@ const ProfileComponent = () => {
               value={formData.teaching_history}
               onChange={handleChange}
               placeholder="Enter teaching history"
-              className="w-full px-4 py-2 border rounded "
+              className="w-full px-4 py-2 border rounded"
             />
           </div>
           {/* Bio */}
@@ -149,7 +185,7 @@ const ProfileComponent = () => {
               value={formData.bio}
               onChange={handleChange}
               placeholder="Enter your bio"
-              className="w-full px-4 py-2 border rounded "
+              className="w-full px-4 py-2 border rounded"
             />
           </div>
           {/* Specialization */}
@@ -181,7 +217,7 @@ const ProfileComponent = () => {
               onClick={() => {
                 setIsEditing(false);
               }}
-              className="bg-grayColor hover:bg-grayColor/90 text-sm text-white  sm:h-[80%] px-4 py-2 rounded-lg shadow-md  "
+              className="bg-grayColor hover:bg-grayColor/90 text-sm text-white sm:h-[80%] px-4 py-2 rounded-lg shadow-md"
             >
               Back
             </button>
@@ -189,19 +225,26 @@ const ProfileComponent = () => {
         </form>
       ) : (
         // Display Profile Data
-        <div className="max-w-2xl mx-auto bg-white text-blueColor p-6 rounded-lg shadow-lg  shadow-grayColor space-y-6">
+        <div className="max-w-2xl mx-auto bg-white text-blueColor p-6 rounded-lg shadow-lg shadow-grayColor space-y-6">
           <div className="space-y-4">
             <div className="flex justify-between">
-              <p className="text-lg font-medium ">
+              <p className="text-lg font-medium">
+                <strong>Full Name:</strong>
+              </p>
+              <p className="text-grayColor">
+                {fullName || "No full name available"}
+              </p>
+            </div>
+            <div className="flex justify-between">
+              <p className="text-lg font-medium">
                 <strong>Bio:</strong>
               </p>
               <p className="text-grayColor">
                 {profile.bio || "No bio available"}
               </p>
             </div>
-
             <div className="flex justify-between">
-              <p className="text-lg font-medium ">
+              <p className="text-lg font-medium">
                 <strong>Degrees:</strong>
               </p>
               <p className="text-grayColor">
@@ -210,7 +253,7 @@ const ProfileComponent = () => {
             </div>
 
             <div className="flex justify-between">
-              <p className="text-lg font-medium ">
+              <p className="text-lg font-medium">
                 <strong>Teaching Experience:</strong>
               </p>
               <p className="text-grayColor">
@@ -219,7 +262,7 @@ const ProfileComponent = () => {
             </div>
 
             <div className="flex justify-between">
-              <p className="text-lg font-medium ">
+              <p className="text-lg font-medium">
                 <strong>Specialization:</strong>
               </p>
               <p className="text-grayColor">
@@ -228,7 +271,7 @@ const ProfileComponent = () => {
             </div>
 
             <div className="flex justify-between">
-              <p className="text-lg font-medium ">
+              <p className="text-lg font-medium">
                 <strong>Teaching History:</strong>
               </p>
               <p className="text-grayColor">
@@ -240,7 +283,7 @@ const ProfileComponent = () => {
           <div className="mt-6 text-center">
             <button
               onClick={() => setIsEditing(true)}
-              className="bg-blueColor text-white px-6 py-3 rounded-lg shadow-md hover:bg-blueColor/90 "
+              className="bg-blueColor text-white px-6 py-3 rounded-lg shadow-md hover:bg-blueColor/90"
             >
               Edit Profile
             </button>
