@@ -198,6 +198,10 @@
 }
 
 /* Swippper */
-.swiper-button-next{
-  color: #123455;
+:root{
+
+  --swiper-navigation-size: 20px;
+  --swiper-navigation-color: #00438D;
+  --swiper-navigation-sides-offset: 40px;
+  
 }
