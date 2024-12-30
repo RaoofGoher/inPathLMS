@@ -21,7 +21,7 @@ const LearningPlatform = () => {
   };
 
   return (
-    <div>
+    <div className="border-4 border-red-800" >
       <CategorySlider
         categories={data}
         onCategorySelect={handleCategorySelect}
@@ -33,7 +33,7 @@ const LearningPlatform = () => {
         />
       )}
       {selectedSubCategory && (
-        <CourseSlider courses={selectedSubCategory.courses} />
+        <CourseSlider courses={selectedSubCategory.courses} className="ml-8" />
       )}
     </div>
   );

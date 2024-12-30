@@ -15,6 +15,7 @@ const CategorySlider = ({ categories, onCategorySelect }) => {
   return (
     <div className="relative">
       <Swiper
+        className='z--10'
         slidesPerView={1}
         modules={[Autoplay, Navigation]}
         rewind={true}
@@ -46,7 +47,7 @@ const CategorySlider = ({ categories, onCategorySelect }) => {
               className="font-bold p-2 text-blueColor rounded-md w-[320px] hover:underline"
             >
               <span
-                className={`p-2 ${
+                className={` p-2 ${
                   selectedCategory === category.id
                     ? 'p-8 bg-gray-600 text-white rounded' // Add background and text color when selected
                     : ''

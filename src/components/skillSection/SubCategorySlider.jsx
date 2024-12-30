@@ -46,7 +46,7 @@ const SubCategorySlider = ({ subcategories, onSubCategorySelect }) => {
             onClick={() => handleSubCategoryClick(subcategory)}
           >
             <span
-              className={`p-2 ${
+              className={` p-2 ${
                 selectedSubCategory === subcategory.id
                   ? "bg-gray-600 text-white rounded" // Add background and text color when selected
                   : ""
