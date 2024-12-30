@@ -34,7 +34,7 @@ const SliderWithPopup = () => {
     left: false,
     right: false,
   });
-
+console.log("course data",data)
   // Function to check scroll visibility
   const checkScrollButtons = (ref, setShowScroll) => {
     if (ref.current) {
@@ -250,7 +250,7 @@ const SliderWithPopup = () => {
       {/* Courses Section */}
       {selectedSubcategory && (
         <div
-          className="slider-section p-8"
+          className="slider-section"
           style={{ backgroundColor: "#f9f9f9f9" }}
         >
           <div className="slider-wrapper">
@@ -265,7 +265,7 @@ const SliderWithPopup = () => {
               </button>
             )}
             <div
-              className="slider-content w-screen"
+              className="slider-content grid grid-cols-1 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-4"
               ref={courseRef}
               onScroll={() =>
                 checkScrollButtons(courseRef, setShowCourseScroll)

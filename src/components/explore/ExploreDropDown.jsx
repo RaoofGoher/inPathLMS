@@ -17,7 +17,7 @@ const Dropdown = ({ closeDropdown }) => {
   if (isLoading) return <div>Loading...</div>;
   if (isError) return <div>Failed to load categories.</div>;
 
-  const topCategories = categories.slice(0, 10);
+  const topCategories = categories?.slice(0, 10);
 
   const handleCategoryMouseEnter = (index) => {
     setActiveCategory(index);
