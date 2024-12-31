@@ -14,7 +14,7 @@ const SubCategorySlider = ({ subcategories, onSubCategorySelect }) => {
 
   return (
     <Swiper
-      className="mt-8"
+      className="mt-8 bg-lightBlue"
       slidesPerView={1}
       modules={[Autoplay, Navigation]}
       rewind={true}
