@@ -21,7 +21,7 @@ const LearningPlatform = () => {
   };
 
   return (
-    <div className="border-4 border-red-800" >
+    <div className="" >
       <CategorySlider
         categories={data}
         onCategorySelect={handleCategorySelect}
