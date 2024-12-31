@@ -200,7 +200,7 @@
 /* Swippper */
 :root{
 
-  --swiper-navigation-size: 20px;
+  --swiper-navigation-size: 20px !important;
   --swiper-navigation-color: #00438D;
   --swiper-navigation-sides-offset: 40px;
   

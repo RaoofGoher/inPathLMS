@@ -72,7 +72,7 @@ const CourseSlider = ({ courses }) => {
                         ? `${course.description.substring(0, 300)}...`
                         : course.description}
                     </p>
-                    <button className="mt-4 bg-green-500 text-white px-4 py-2 rounded">
+                    <button className="mt-4 bg-blueColor text-white px-4 py-2 rounded">
                       Add to Cart
                     </button>
                   </div>
