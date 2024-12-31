@@ -43,7 +43,7 @@ const CourseSlider = ({ courses }) => {
               ref={hoveredRef}
             >
               <div className="flip-card w-full h-full transition-transform duration-300">
-                <div className="flip-card-inner w-full h-full transform-style-preserve-3d shadow-lg"> 
+                <div className="flip-card-inner w-full h-full transform-style-preserve-3d shadow-lg">
                   {/* Front of the card */}
                   <div className="flip-card-front absolute w-full h-full bg-white">
                     <img
@@ -66,11 +66,14 @@ const CourseSlider = ({ courses }) => {
 
                   {/* Back of the card */}
                   <div className="flip-card-back absolute w-full h-full bg-white border-4 border-blueColor flex flex-col items-center justify-center text-center transform-rotateY-180">
+                    <h4 className="font-bold text-lg">{course.title}</h4>
+                    <p className="text-sm text-gray-600">
+                      {course.description.length > 100
+                        ? `${course.description.substring(0, 300)}...`
+                        : course.description}
+                    </p>
                     <button className="mt-4 bg-green-500 text-white px-4 py-2 rounded">
                       Add to Cart
-                    </button>
-                    <button className="mt-4 bg-blue-500 text-white px-4 py-2 rounded">
-                      Preview
                     </button>
                   </div>
                 </div>
