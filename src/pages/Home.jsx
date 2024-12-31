@@ -16,6 +16,7 @@ import CourseOfferings from "../components/CourseOfferings";
 import PartnersLog from "../components/PartnersLog";
 import HomeHero from "../components/HomeHero";
 import SkillSection from "../components/skillSection/SkillSection"
+import CourseSection from "../components/skillSection/CourseSection"
 const Home = () => {
   // const dispatch = useDispatch();
   // const handleAddToCart = () => {
@@ -33,7 +34,8 @@ const Home = () => {
       <HomeHero />
       <HowItWorks />
       <CourseOfferings />
-      <SkillSection/>
+      {/* <SkillSection/> */}
+      <CourseSection />
       <PartnersLog />
       <CurrentTrends />
       <WhyTrustUs />
