@@ -3,11 +3,39 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/navigation";
 import { Navigation } from "swiper/modules";
+import { useDispatch, useSelector } from "react-redux";
+import { addToCart } from "../../features/cart/cartSlice";
 
 const CourseSlider = ({ courses }) => {
+   const dispatch = useDispatch();
   const [hoveredCourse, setHoveredCourse] = useState(null); // Track which course is hovered
   const hoveredRef = useRef(null); // Reference to the currently hovered element
-  console.log(courses, "courses");
+const { token, role, isAuthenticated, user_id } = useSelector(
+    (state) => state.auth
+  );
+  const cartItems = useSelector((state) => state.cart.items);
+
+  const handleAddToCart = (course) => {
+    if (isAuthenticated) {
+      const existingItem = cartItems.find((item) => item.id === course.id);
+
+      if (existingItem) {
+        alert("This course is already in your cart!");
+      } else {
+        dispatch(
+          addToCart({
+            id: course.id,
+            name: course.title,
+            price: course.final_price,
+            quantity: 1,
+          })
+        );
+      }
+    } else {
+      alert("please login to continue");
+    }
+  };
+
 
   return (
     <div className="relative">
@@ -72,7 +100,7 @@ const CourseSlider = ({ courses }) => {
                         ? `${course.description.substring(0, 300)}...`
                         : course.description}
                     </p>
-                    <button className="mt-4 bg-blueColor text-white px-4 py-2 rounded">
+                    <button onClick={() => handleAddToCart(course)} className="mt-4 bg-blueColor text-white px-4 py-2 rounded">
                       Add to Cart
                     </button>
                   </div>
