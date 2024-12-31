@@ -21,7 +21,16 @@ const LearningPlatform = () => {
   };
 
   return (
-    <div className="" >
+    <div className="my-12" >
+     <div className="px-4 sm:px-12">
+          <h1 className=" text-blueColor font-semibold mb-2 text-base sm:text-xl lg:text-5xl font-montserrat">
+            All the skills you need in one place
+          </h1>
+          <p className=" text-base sm:text-xl mb-2 font-nunito">
+            From critical skills to technical topics, INPATH supports your
+            professional development. (select a category to get started)
+          </p>
+        </div>
       <CategorySlider
         categories={data}
         onCategorySelect={handleCategorySelect}
@@ -33,7 +42,7 @@ const LearningPlatform = () => {
         />
       )}
       {selectedSubCategory && (
-        <CourseSlider courses={selectedSubCategory.courses} className="ml-8" />
+        <CourseSlider courses={selectedSubCategory.courses}  />
       )}
     </div>
   );

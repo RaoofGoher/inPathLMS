@@ -35,9 +35,10 @@ const Home = () => {
       <HowItWorks />
       <CourseOfferings />
       {/* <SkillSection/> */}
-      <CourseSection />
+      
       <PartnersLog />
       <CurrentTrends />
+      <CourseSection />
       <WhyTrustUs />
       <InstructorSpotlight />
       <StatisticsSection />

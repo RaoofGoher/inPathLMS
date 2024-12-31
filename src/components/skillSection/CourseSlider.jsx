@@ -38,7 +38,7 @@ const { token, role, isAuthenticated, user_id } = useSelector(
 
 
   return (
-    <div className="relative">
+    <div className="relative bg-lightBlue">
       <Swiper
         className="z-10"
         slidesPerView={1}
