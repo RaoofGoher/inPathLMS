@@ -58,6 +58,7 @@ import PageNotFound from "./pages/PageNotFound"
 import ExploredCourses from "./components/explore/ExploredCourses";
 import AdminApproval from "./pages/AdminApproval";
 import TeachOnInPath from "./pages/teachOnInPath/TeachOnInPath";
+import StudentProfile from "./components/profiles/student/Home";
  
 function App() {
   const router = createBrowserRouter(
@@ -92,6 +93,10 @@ function App() {
           <Route path="/page-not-found" element={<PageNotFound />}></Route>
           <Route path="/exploredcourses/:id" element={<ExploredCourses />}></Route>
           <Route path="/teachoninpath" element={<TeachOnInPath />}></Route>
+          <Route element={<PrivateRoute allowedRoles={["student"]} />}>
+            <Route path="/dashboard/studentprofile" element={<StudentProfile />} />
+          </Route>
+
         </Route>
         <Route path="/dashboard" element={<DashboardLayout />}>
           <Route element={<PrivateRoute allowedRoles={["student"]} />}>
@@ -139,8 +144,9 @@ function App() {
           <Route element={<PrivateRoute allowedRoles={["instructor"]} />}>
             <Route path="/dashboard/teacherprofile" element={<ProfileHome />} />
           </Route>
+          
         </Route>
-
+       
         <Route path="/dashboard/admin" element={<AdminDashboardLayout />}>
                 
           <Route element={<PrivateRoute allowedRoles={['admin']} />}>
