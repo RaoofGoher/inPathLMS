@@ -5,8 +5,8 @@ import { useNavigate } from "react-router-dom";
 const CourseOfferings = () => {
   const { data: categories, isLoading, isError } = useGetCoursesQuery();
   const [visibleCount, setVisibleCount] = useState(16); // Initially showing 16 categories
-  const [activeCategory, setActiveCategory] = useState(null); // Active category for hover
-  const [activeSubcategory, setActiveSubcategory] = useState(null); // Active subcategory for hover
+  const [activeCategory, setActiveCategory] = useState(null); // Active category for click
+  const [activeSubcategory, setActiveSubcategory] = useState(null); // Active subcategory for click
   const navigate = useNavigate(); // Hook to navigate
 
   const topCategories = categories?.slice(0, 10); // Display top 10 categories
@@ -24,15 +24,17 @@ const CourseOfferings = () => {
   const moreButtonText =
     visibleCount < categories?.length ? "More" : "No More Categories";
 
-  // Handler for category hover
-  const handleCategoryMouseEnter = (index) => {
-    setActiveCategory(index);
-    setActiveSubcategory(null); // Reset subcategory when switching categories
+  // Handler for category click
+  const handleCategoryClick = (index) => {
+    // Toggle the active category, close any previously open subcategory
+    setActiveCategory(index === activeCategory ? null : index); // Toggle active category
+    setActiveSubcategory(null); // Close the previous subcategory if any
   };
 
-  // Handler for subcategory hover
-  const handleSubcategoryMouseEnter = (subIndex) => {
-    setActiveSubcategory(subIndex);
+  // Handler for subcategory click
+  const handleSubcategoryClick = (subIndex) => {
+    // Toggle the active subcategory, close it if it's already open
+    setActiveSubcategory(subIndex === activeSubcategory ? null : subIndex); // Toggle active subcategory
   };
 
   // Navigate to the course page or subcategory-related courses
@@ -51,27 +53,22 @@ const CourseOfferings = () => {
       <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-2 sm:gap-12">
         {/* Categories */}
         {categories?.slice(0, visibleCount).map((category, index) => (
-          <div
-            key={category.id}
-            onMouseEnter={() => handleCategoryMouseEnter(index)} // Track hover
-            onMouseLeave={() => setActiveSubcategory(null)} // Reset hover when leaving category
-            className="relative"
-          >
+          <div key={category.id} className="relative">
             <button
+              onClick={() => handleCategoryClick(index)} // Click to toggle category
               className="w-full h-16 text-xs sm:text-lg font-bold hover:bg-blueColor hover:text-white border-2 hover:border-white hover:ring-2 ring-blueColor border-blueColor text-blueColor px-4 py-2 rounded-xl flex items-center justify-center overflow-hidden text-ellipsis"
             >
               {category.name}
             </button>
 
-            {/* Subcategories */}
+            {/* Subcategories (show on category click) */}
             {activeCategory === index && category.subcategories?.length > 0 && (
-              <div className="absolute top-0 left-0 bg-white p-2 mt-2 rounded-lg shadow-lg z-10">
+              <div className="absolute top-full left-0 w-full bg-white shadow-lg z-10 rounded-lg mt-1">
                 <div className="flex flex-col">
                   {category.subcategories.map((subcategory, subIndex) => (
                     <button
                       key={subcategory.id}
-                      onMouseEnter={() => handleSubcategoryMouseEnter(subIndex)}
-                      // onClick={() => handleCourseClick()} // Navigate to the subcategory
+                      onClick={() => handleSubcategoryClick(subIndex)} // Click to toggle subcategory
                       className="py-2 px-4 text-sm text-blueColor hover:bg-blueColor hover:text-white border-b-2 border-blueColor last:border-0"
                     >
                       {subcategory.name}
@@ -81,11 +78,11 @@ const CourseOfferings = () => {
               </div>
             )}
 
-            {/* Courses for Subcategory */}
+            {/* Courses for Subcategory (show on subcategory click) */}
             {activeSubcategory !== null &&
               category.subcategories[activeSubcategory]?.courses?.length >
                 0 && (
-                <div className="absolute bg-white p-2 mt-6 rounded-lg shadow-lg z-10">
+                <div className="absolute top-full left-0 w-full bg-white shadow-lg z-10 rounded-lg mt-1">
                   <ul>
                     {category.subcategories[activeSubcategory].courses.map(
                       (course) => (
@@ -96,7 +93,7 @@ const CourseOfferings = () => {
                               `/exploredcourses/${category.subcategories[activeSubcategory].id}`
                             );
                           }}
-                          className="py-2 px-4 text-sm text-blueColor hover:bg-blueColor hover:text-white border-b-2 border-blueColor last:border-0"
+                          className="py-2 px-4 text-sm bg-grayColor text-white  hover:bg-blueColor hover:text-white border-b-2 cursor-pointer border-white last:border-0"
                         >
                           {course.title}
                         </li>
