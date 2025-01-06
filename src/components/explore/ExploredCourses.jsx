@@ -3,6 +3,7 @@ import { useSelector } from "react-redux";
 import { useGetCoursesBySubcategoryQuery } from "../../features/searchCourse/courseSlice";
 import CourseCard from "./CourseCard";
 import { useParams } from "react-router-dom";
+import ScrollToTop  from "../ScrollToTop"
 
 const ExploredCourses = () => {
   const subCategoryID = useSelector((state) => state.exploreSubCategoryID.subCategoryID);
@@ -19,11 +20,15 @@ const ExploredCourses = () => {
   if (isError) return <div>Failed to load courses.</div>;
 
   return (
-    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 p-4">
+   <>
+   <ScrollToTop />
+   
+   <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 p-4">
       {courses.map((course) => (
         <CourseCard key={course.id} course={course} />
       ))}
     </div>
+   </>
   );
 };
 
