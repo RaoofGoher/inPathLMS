@@ -51,14 +51,15 @@ import ManageStudents from "./pages/ManageStudents";
 import Analytics from "./pages/Analytics";
 import BlogDetail from "./pages/resources/BlogDetails";
 import ForTeams from "./pages/ForTeams";
-import EnrolledCourses from './components/EnrolledCourses'
+import EnrolledCourses from "./components/EnrolledCourses";
 import ForgotPassword from "./components/forgotPassword/ForgotPassword";
 import ResetPassword from "./components/forgotPassword/ResetPassword";
-import PageNotFound from "./pages/PageNotFound"
+import PageNotFound from "./pages/PageNotFound";
 import ExploredCourses from "./components/explore/ExploredCourses";
 import AdminApproval from "./pages/AdminApproval";
 import TeachOnInPath from "./pages/teachOnInPath/TeachOnInPath";
- 
+import EngagingCourseDetailInTeacherDashboard from "./components/teachOnInPath/EngagingCourseDetailInTeacherDashboard";
+
 function App() {
   const router = createBrowserRouter(
     createRoutesFromElements(
@@ -88,9 +89,15 @@ function App() {
           <Route path="/terms" element={<TermsOfService />}></Route>
           <Route path="/privacy" element={<PrivacyPolicy />}></Route>
           <Route path="/forgotpassword" element={<ForgotPassword />}></Route>
-          <Route path="/resetpassword/:uid/:token" element={<ResetPassword />}></Route>
+          <Route
+            path="/resetpassword/:uid/:token"
+            element={<ResetPassword />}
+          ></Route>
           <Route path="/page-not-found" element={<PageNotFound />}></Route>
-          <Route path="/exploredcourses/:id" element={<ExploredCourses />}></Route>
+          <Route
+            path="/exploredcourses/:id"
+            element={<ExploredCourses />}
+          ></Route>
           <Route path="/teachoninpath" element={<TeachOnInPath />}></Route>
         </Route>
         <Route path="/dashboard" element={<DashboardLayout />}>
@@ -114,6 +121,10 @@ function App() {
               path="/dashboard/teacherdashboard"
               element={<TeacherDashboard />}
             />
+               <Route
+              path="/dashboard/teacherdashboard/engaging-course-detail-teacher-dashboard"
+              element={<EngagingCourseDetailInTeacherDashboard />}
+            ></Route>
             <Route
               path="/dashboard/teacherdashboard/addCourse"
               element={<AddCourseForm />}
@@ -142,16 +153,22 @@ function App() {
         </Route>
 
         <Route path="/dashboard/admin" element={<AdminDashboardLayout />}>
-                
-          <Route element={<PrivateRoute allowedRoles={['admin']} />}>
-          <Route index element={<AdminDashboard />} />
-          <Route path='/dashboard/admin/manage-teachers' element={<ManageTeachers />} />
-          <Route path="/dashboard/admin/manage-students" element={<ManageStudents />} />
-          <Route path="/dashboard/admin/analytics" element={<Analytics />} />
-          <Route path="/dashboard/admin/approval" element={<AdminApproval/>} />
-         </Route>
-
-
+          <Route element={<PrivateRoute allowedRoles={["admin"]} />}>
+            <Route index element={<AdminDashboard />} />
+            <Route
+              path="/dashboard/admin/manage-teachers"
+              element={<ManageTeachers />}
+            />
+            <Route
+              path="/dashboard/admin/manage-students"
+              element={<ManageStudents />}
+            />
+            <Route path="/dashboard/admin/analytics" element={<Analytics />} />
+            <Route
+              path="/dashboard/admin/approval"
+              element={<AdminApproval />}
+            />
+          </Route>
         </Route>
 
         {/* Admin Routes */}
