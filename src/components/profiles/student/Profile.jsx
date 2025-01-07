@@ -5,25 +5,22 @@ import { useGetStudentProfileQuery, useCreateStudentProfileMutation, useUpdateSt
 
 const Profile = ({ id }) => {
   // Fetch existing profile data
-  const { data, isLoading } = useGetStudentProfileQuery(id);
+  const { data, isLoading, refetch } = useGetStudentProfileQuery(id);
   const [createStudentProfile] = useCreateStudentProfileMutation();
   const [updateStudentProfile] = useUpdateStudentProfileMutation();
-
-
-  console.log("hello123",id);
-  console.log("hello123",data);
+console.log("data",data);
   // Formik initial values and validation schema
   const formik = useFormik({
     initialValues: {
       first_name: data?.first_name || "",
       last_name: data?.last_name || "",
-      headline: data?.headline || "",
-      biography: data?.biography || "",
-      website: data?.website || "",
-      facebook: data?.facebook || "",
-      linkedin: data?.linkedin || "",
-      youtube: data?.youtube || "",
-      language: data?.language || "English",
+      headline: data?.profile?.headline || "",
+      biography: data?.profile?.biography || "",
+      website: data?.profile?.website || "",
+      facebook: data?.profile?.facebook || "",
+      linkedin: data?.profile?.linkedin || "",
+      youtube: data?.profile?.youtube || "",
+      language: data?.profile?.language || "English",
     },
     enableReinitialize: true, // Reinitialize form when data changes
     validationSchema: Yup.object({
@@ -39,14 +36,33 @@ const Profile = ({ id }) => {
     }),
     onSubmit: async (values) => {
       try {
+        const profileData = {
+          first_name: values.first_name,
+          last_name: values.last_name,
+          email: data?.email,  // Assuming the email remains unchanged
+          profile: {
+            headline: values.headline,
+            biography: values.biography,
+            website: values.website,
+            facebook: values.facebook,
+            linkedin: values.linkedin,
+            youtube: values.youtube,
+            language: values.language
+          }
+        };
+    
         // Check if profile data exists (i.e., check for a field like 'first_name')
-        if (data?.first_name) {
+        if (data?.profile?.profile_id) {
           // Update the profile
-          await updateStudentProfile({ id, profileData: values }).unwrap();
+          console.log("values",values);
+          const response = await updateStudentProfile({ id, profileData }).unwrap();
+          refetch();
+          console.log("response updated",response);
           alert("Profile updated successfully!");
         } else {
           // Create new profile
-          await createStudentProfile({...values,student_id:id}).unwrap();
+          console.log("values",values);
+          await createStudentProfile({...values,user_id:id}).unwrap();
           alert("Profile saved successfully!");
         }
       } catch (error) {
@@ -197,7 +213,7 @@ const Profile = ({ id }) => {
           type="submit"
           className="bg-blue-500 text-white rounded px-6 py-3 mt-4 w-full"
         >
-          {data?.first_name ?  "update" : "save"}
+          {data?.profile?.profile_id ?  "update" : "save"}
         </button>
       </form>
     </div>
