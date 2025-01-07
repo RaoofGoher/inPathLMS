@@ -50,6 +50,7 @@ const CreateProfile = () => {
   };
 
   return (
+    <>
     <div className="max-w-lg mx-auto bg- shadow-md shadow-grayColor rounded-md p-6 mt-10">
       <h2 className="text-2xl text-center font-semibold text-blueColor text-bold mb-4">
         Create Profile
@@ -233,6 +234,7 @@ const CreateProfile = () => {
         )}
       </Formik>
     </div>
+    </>
   );
 };
 

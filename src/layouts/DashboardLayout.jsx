@@ -6,6 +6,8 @@ import {
   FaUser,
   FaCog,
   FaSignOutAlt,
+  FaFolderOpen,
+  FaWrench,
 } from "react-icons/fa";
 import { Outlet, Link } from "react-router-dom";
 import PrimaryNavbar from "../components/PrimaryNavbar";
@@ -75,20 +77,40 @@ const DashboardLayout = () => {
               <FaUser className="mr-2 " />
               Profile
             </Link>
-            <Link
+            {/* <Link
               to="/settings"
               className="hover:text-blueColor flex items-center py-2 px-4 hover:bg-gray-300 rounded"
             >
               <FaCog className="mr-2 " />
               Settings
-            </Link>
+            </Link> */}
+            {role === "instructor" && (
+              <Link
+                to="/dashboard/teacherdashboard/teacher-tools"
+                className="hover:text-blueColor flex items-center py-2 px-4 hover:bg-gray-300 rounded"
+              >
+                <FaWrench className="mr-2" />
+                Tools
+              </Link>
+            )}
+
+            {role === "instructor" && (
+              <Link
+                to="/dashboard/teacherdashboard/teacher-resources"
+                className="hover:text-blueColor flex items-center py-2 px-4 hover:bg-gray-300 rounded"
+              >
+                <FaFolderOpen className="mr-2" />
+                Resources
+              </Link>
+            )}
+            {/* 
             <Link
               className=" hover:text-blueColor flex items-center py-2 px-4 hover:bg-gray-300 rounded"
               onClick={handleLogout}
             >
               <FaSignOutAlt className="mr-2 " />
               Logout
-            </Link>
+            </Link> */}
           </nav>
         </aside>
 
@@ -107,7 +129,7 @@ const DashboardLayout = () => {
         </main>
       </div>
       <div>
-      <Footer/>
+        <Footer />
       </div>
     </div>
   );

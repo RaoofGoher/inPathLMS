@@ -89,12 +89,15 @@ const ProfileComponent = () => {
   if (isError) return <p>Error fetching profile. Please try again.</p>;
 
   return (
+    <>
+   
     <div className="max-w-2xl mx-auto mt-10 p-6 bg-white">
       <h2 className="text-2xl font-semibold mb-4 text-center text-blueColor">
         Teacher Profile
       </h2>
 
       {isEditing ? (
+        
         // Display Update Form
         <form
           onSubmit={handleSubmit}
@@ -225,6 +228,7 @@ const ProfileComponent = () => {
         </form>
       ) : (
         // Display Profile Data
+        <>
         <div className="max-w-2xl mx-auto bg-white text-blueColor p-6 rounded-lg shadow-lg shadow-grayColor space-y-6">
           <div className="space-y-4">
             <div className="flex justify-between">
@@ -289,8 +293,10 @@ const ProfileComponent = () => {
             </button>
           </div>
         </div>
+        </>
       )}
     </div>
+    </>
   );
 };
 
