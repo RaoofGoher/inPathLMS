@@ -59,6 +59,10 @@ import ExploredCourses from "./components/explore/ExploredCourses";
 import AdminApproval from "./pages/AdminApproval";
 import TeachOnInPath from "./pages/teachOnInPath/TeachOnInPath";
 import EngagingCourseDetailInTeacherDashboard from "./components/teachOnInPath/EngagingCourseDetailInTeacherDashboard";
+import TeacherResources from "./pages/TeacherResources"
+import TeacherTools from "./pages/TeacherTools";
+
+
 
 function App() {
   const router = createBrowserRouter(
@@ -121,6 +125,8 @@ function App() {
               path="/dashboard/teacherdashboard"
               element={<TeacherDashboard />}
             />
+            <Route path="/dashboard/teacherdashboard/teacher-resources" element={<TeacherResources/>} />
+            <Route path="/dashboard/teacherdashboard/teacher-tools" element={<TeacherTools/>} />
                <Route
               path="/dashboard/teacherdashboard/engaging-course-detail-teacher-dashboard"
               element={<EngagingCourseDetailInTeacherDashboard />}

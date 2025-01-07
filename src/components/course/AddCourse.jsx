@@ -7,6 +7,8 @@ import { setCategories } from "../../features/courseCategory/courseCategoriesSli
 import { useGetSubcategoriesQuery } from "../../features/courseCategory/subCategorySlice";
 import { useCreateCourseMutation } from "../../features/courseCategory/createCourseApi";
 import axios from "axios";
+import ScrollToTop from "../../components/ScrollToTop"
+
 
 const StepForm = () => {
   const dispatch = useDispatch();
@@ -180,7 +182,9 @@ const StepForm = () => {
   const progress = (step / 4) * 100;
 
   return (
-    <div className="p-6 mt-8 max-w-lg mx-auto shadow-xl shadow-grayColor rounded-md bg-blueColor ">
+    <>
+    <div className="p-6 sm:my-16 my-8 max-w-lg mx-auto shadow-xl shadow-grayColor rounded-md bg-blueColor ">
+      
       <h1 className="text-2xl font-bold mb-4 text-center text-white">
         Step {step} of 4
       </h1>
@@ -408,6 +412,8 @@ const StepForm = () => {
         </div>
       </form>
     </div>
+    <ScrollToTop/>
+    </>
   );
 };
 

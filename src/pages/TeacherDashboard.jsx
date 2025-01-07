@@ -1,5 +1,7 @@
 import React from "react";
 import engagingCourse from "../assets/course-explore.jpg";
+import VideoCreation from "../assets/Video-Creations.jpg"
+import Audience from "../assets/audience.jpg"
 import {
   FaChalkboardTeacher,
   FaClipboardList,
@@ -7,6 +9,9 @@ import {
   FaUserGraduate,
   FaPlusCircle,
   FaBook,
+  FaVideo,
+  FaUsers,
+  FaHeadset,
 } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import ScrollToTop from "../components/ScrollToTop";
@@ -25,7 +30,7 @@ function TeacherDashboard() {
         Teacher Dashboard
       </h1> */}
 
-      <div className="grid gap-6 grid-cols-1">
+      <div className="grid gap-16 grid-cols-1">
         {/* Add Course */}
 
         <div className="group sm:py-16 flex-col sm:flex-row gap-4  justify-between  duration-300 transition-all hover:translate-y-1  p-6 rounded-lg shadow-md shadow-grayColor flex items-center space-x-4 ">
@@ -40,7 +45,7 @@ function TeacherDashboard() {
           </Link>
         </div>
 
-        <div className=" py-6 sm:py-16 text-center text-dark1">
+        <div className=" py-6  text-center text-dark1">
           <h1>
             Based on your experience, we think these resources will be helpful.
           </h1>
@@ -58,7 +63,7 @@ function TeacherDashboard() {
           </Link>
         </div>
         {/* My Classes */}
-        <div className="group p-6 grid grid-cols-1 md:grid-cols-2 px-6 md:px-16 rounded-lg shadow-md shadow-grayColor">
+        <div className="group p-6 grid grid-cols-1 lg:grid-cols-2 px-6 md:px-16 rounded-lg shadow-md shadow-grayColor">
           <div className="flex justify-center items-center mb-6 md:mb-0">
             <img
               className="w-3/4 md:w-1/2"
@@ -77,11 +82,73 @@ function TeacherDashboard() {
               matter where you're starting.
             </p>
 
-            <Link to={"/dashboard/teacherdashboard/engaging-course-detail-teacher-dashboard"}>
+            <Link
+              to={
+                "/dashboard/teacherdashboard/engaging-course-detail-teacher-dashboard"
+              }
+              className="flex justify-center md:justify-start"
+            >
               <span className="underline cursor-pointer hover:text-blueColor/90 text-blueColor text-center md:text-left">
                 Get Started
               </span>
             </Link>
+          </div>
+        </div>
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 gap-6 md:gap-8">
+          {/* First Card */}
+          <div className=" rounded-lg shadow-md p-6 shadow-grayColor flex flex-col lg:flex-row justify-center items-center mb-6 md:mb-0">
+            <img
+              className="w-3/4 md:w-1/2 mx-auto lg:mx-0"
+              src={VideoCreation}
+              alt="VideoCreation"
+            />
+            <div className="py-6 text-dark1  flex flex-col justify-center gap-6 md:gap-8">
+              <h1 className="text-xl text-blueColor text-center md:text-left">
+                Get Started with Video
+              </h1>
+              <p className="text-center md:text-left">
+                Quality video lectures can set your course apart. Use our
+                resources to learn the basics.
+              </p>
+              <Link
+                to={
+                  "/dashboard/teacherdashboard/engaging-course-detail-teacher-dashboard"
+                }
+                className="flex justify-center md:justify-start"
+              >
+                <span className="underline cursor-pointer hover:text-blueColor/90 text-blueColor text-center md:text-left">
+                  Get Started
+                </span>
+              </Link>
+            </div>
+          </div>
+
+          {/* Second Card */}
+          <div className="rounded-lg shadow-md p-6 shadow-grayColor flex flex-col lg:flex-row justify-center items-center mb-6 md:mb-0">
+            <img
+              className="w-3/4 md:w-1/2 mx-auto lg:mx-0"
+              src={Audience}
+              alt="Audience"
+            />
+            <div className="py-6 text-dark1 flex flex-col  justify-center gap-6 md:gap-8">
+              <h1 className="text-xl text-blueColor text-center md:text-left">
+                Build Your Audience
+              </h1>
+              <p className="text-center md:text-left">
+                Build Your Audience. Set your course up for success by building
+                your audience.
+              </p>
+              <Link
+                to={
+                  "/dashboard/teacherdashboard/engaging-course-detail-teacher-dashboard"
+                }
+                className="flex justify-center md:justify-start"
+              >
+                <span className="underline cursor-pointer hover:text-blueColor/90 text-blueColor text-center md:text-left">
+                  Get Started
+                </span>
+              </Link>
+            </div>
           </div>
         </div>
 
@@ -117,8 +184,68 @@ function TeacherDashboard() {
             View and manage students in your classes.
           </p>
         </div> */}
+        <div className=" pt-6 text-center text-dark1">
+          <h1>
+            Have questions? Here are our most popular instructor resources.
+          </h1>
+        </div>
+        <div className="py-8 px-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2  lg:grid-cols-3 gap-6 justify-center">
+            {/* Test Video Card */}
+            <div className="p-2 flex flex-col items-center">
+              <FaVideo size={40} className="text-dark1 mb-4" />
+              <h3 className="text-lg text-center text-blueColor mb-2 underline cursor-no-drop">Test Video</h3>
+              <p className="text-center text-dark1 mb-2">
+                Send us a sample video and get expert feedback.
+              </p>
+            </div>
 
-        
+            {/* Instructor Community Card */}
+            <div className="p-2 flex flex-col items-center">
+              <FaUsers size={40} className="text-dark1 mb-4" />
+              <h3 className="text-lg text-center text-blueColor underline mb-2 cursor-no-drop">
+                Instructor Community
+              </h3>
+              <p className="text-center text-dark1 mb-2">
+                Connect with experienced instructors. Ask questions, browse
+                discussions, and more.
+              </p>
+            </div>
+
+            {/* Teaching Center Card */}
+            <div className="p-2 flex flex-col items-center">
+              <FaChalkboardTeacher size={40} className="text-dark1 mb-4" />
+              <h3 className="text-lg text-center text-blueColor mb-2 underline cursor-no-drop">Teaching Center</h3>
+              <p className="text-center text-dark1 mb-2">
+                Learn about best practices for teaching on INPATH LMS.
+              </p>
+            </div>
+
+            {/* Marketplace Insights Card */}
+            <div className="p-2 flex flex-col items-center">
+              <FaChartLine size={40} className="text-dark1 mb-4" />
+              <h3 className="text-lg text-center text-blueColor mb-2 underline cursor-no-drop">
+                Marketplace Insights
+              </h3>
+              <p className="text-center text-dark1 mb-2">
+                Validate your course topic by exploring our marketplace supply
+                and demand.
+              </p>
+            </div>
+
+            {/* Help and Support Card */}
+            <div className="p-2 flex flex-col items-center">
+              <FaHeadset size={40} className="text-dark1 mb-4 " />
+              <h3 className="text-lg text-center text-blueColor mb-2 underline cursor-no-drop">
+                Help and Support
+              </h3>
+              <p className="text-center text-dark1 mb-4">
+                Browse our Help Center or contact our support team.
+              </p>
+            </div>
+          </div>
+        </div>
+
         {/* are you ready */}
         <div className="py-8 gap-6 sm:py-16 flex justify-center items-center flex-col">
           <h1 className="text-dark1">Are You Ready to Begin?</h1>
