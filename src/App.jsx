@@ -58,12 +58,17 @@ import PageNotFound from "./pages/PageNotFound";
 import ExploredCourses from "./components/explore/ExploredCourses";
 import AdminApproval from "./pages/AdminApproval";
 import TeachOnInPath from "./pages/teachOnInPath/TeachOnInPath";
+<<<<<<< HEAD
 import EngagingCourseDetailInTeacherDashboard from "./components/teachOnInPath/EngagingCourseDetailInTeacherDashboard";
 import TeacherResources from "./pages/TeacherResources"
 import TeacherTools from "./pages/TeacherTools";
 
 
 
+=======
+import StudentProfile from "./components/profiles/student/Home";
+ 
+>>>>>>> ffe3cf7 (work in progress)
 function App() {
   const router = createBrowserRouter(
     createRoutesFromElements(
@@ -103,6 +108,10 @@ function App() {
             element={<ExploredCourses />}
           ></Route>
           <Route path="/teachoninpath" element={<TeachOnInPath />}></Route>
+          <Route element={<PrivateRoute allowedRoles={["student"]} />}>
+            <Route path="/dashboard/studentprofile" element={<StudentProfile />} />
+          </Route>
+
         </Route>
         <Route path="/dashboard" element={<DashboardLayout />}>
           <Route element={<PrivateRoute allowedRoles={["student"]} />}>
@@ -156,8 +165,9 @@ function App() {
           <Route element={<PrivateRoute allowedRoles={["instructor"]} />}>
             <Route path="/dashboard/teacherprofile" element={<ProfileHome />} />
           </Route>
+          
         </Route>
-
+       
         <Route path="/dashboard/admin" element={<AdminDashboardLayout />}>
           <Route element={<PrivateRoute allowedRoles={["admin"]} />}>
             <Route index element={<AdminDashboard />} />
