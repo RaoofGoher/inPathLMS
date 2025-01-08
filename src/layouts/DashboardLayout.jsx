@@ -71,7 +71,15 @@ const DashboardLayout = () => {
             </Link>
 
             <Link
-              to="/dashboard/teacherprofile"
+              to={
+              role === "admin"
+              ? "/adminprofile"
+              : role === "instructor"
+              ? "/dashboard/teacherprofile"
+              : role === "student"
+              ? "/dashboard/studentprofile"
+              : "/login"
+          }
               className=" hover:text-blueColor flex items-center py-2 px-4 hover:bg-gray-300 rounded"
             >
               <FaUser className="mr-2 " />
