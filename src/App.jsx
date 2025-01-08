@@ -61,6 +61,7 @@ import TeachOnInPath from "./pages/teachOnInPath/TeachOnInPath";
 import EngagingCourseDetailInTeacherDashboard from "./components/teachOnInPath/EngagingCourseDetailInTeacherDashboard";
 import TeacherResources from "./pages/TeacherResources"
 import TeacherTools from "./pages/TeacherTools";
+import ProfileComponent from "./components/profiles/teacher/Profile";
 
 
 
@@ -194,6 +195,8 @@ function App() {
         {/* Blog Routes */}
         <Route path="/" element={<Blogs />} />
         <Route path="/blogs/:id" element={<BlogDetail />} />
+
+        <Route path="/profile" element={<ProfileComponent/>} /> 
       </>
     )
   );
