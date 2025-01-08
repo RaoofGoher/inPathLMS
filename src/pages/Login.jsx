@@ -32,6 +32,7 @@ const LoginForm = () => {
   const handleLogin = async (values, { resetForm }) => {
     try {
       const response = await loginUser(values).unwrap();
+      console.log("Login response:", response);
       const { token, role, user_id } = response;
       dispatch(setAuth({ token, role, user_id }));
 
