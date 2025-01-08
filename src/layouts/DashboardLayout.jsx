@@ -69,19 +69,11 @@ const DashboardLayout = () => {
               <FaTachometerAlt className="mr-2" />
               {role === "instructor" ? "Courses" : "Dashboard"}
             </Link>
-<<<<<<< HEAD
 
             <Link
               to="/dashboard/teacherprofile"
               className=" hover:text-blueColor flex items-center py-2 px-4 hover:bg-gray-300 rounded"
             >
-=======
-            <Link to={role === 'teacher'
-              ? 'dashboard/teacherprofile'
-              : role === 'student'
-                ? '/dashboard/studentprofile'
-                  : '/login'} className=" hover:text-blueColor flex items-center py-2 px-4 hover:bg-gray-300 rounded">
->>>>>>> ffe3cf7 (work in progress)
               <FaUser className="mr-2 " />
               Profile
             </Link>
