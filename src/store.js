@@ -17,7 +17,7 @@ import { enrolledCourseApi } from './features/enrollments/enrolledCourseAPi';
 import { enrollApi } from './features/enrollments/enrollApi';
 import {getAllCourses} from "./features/explore/getall";
 import exploreSubCategoryIDReducer from './features/searchCourse/ExploreSubCategoryID'; 
-import { studentProfileApi } from "./features/studentProfile/studentProfileAPI";
+import { studentProfileApi } from "./features/studentProfile/studentProfileApi";
 // Define the persist configuration for auth state
 const persistAuthConfig = {
   key: 'auth',
