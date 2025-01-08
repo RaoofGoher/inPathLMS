@@ -58,17 +58,14 @@ import PageNotFound from "./pages/PageNotFound";
 import ExploredCourses from "./components/explore/ExploredCourses";
 import AdminApproval from "./pages/AdminApproval";
 import TeachOnInPath from "./pages/teachOnInPath/TeachOnInPath";
-<<<<<<< HEAD
 import EngagingCourseDetailInTeacherDashboard from "./components/teachOnInPath/EngagingCourseDetailInTeacherDashboard";
 import TeacherResources from "./pages/TeacherResources"
 import TeacherTools from "./pages/TeacherTools";
 
 
 
-=======
 import StudentProfile from "./components/profiles/student/Home";
  
->>>>>>> ffe3cf7 (work in progress)
 function App() {
   const router = createBrowserRouter(
     createRoutesFromElements(
