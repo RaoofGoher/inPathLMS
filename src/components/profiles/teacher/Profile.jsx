@@ -11,7 +11,7 @@ const Profile = () => {
           <h1 className="text-2xl sm:text-3xl md:text-4xl font-montserrat font-semibold">
             Jhon Son
           </h1>
-          <p className="text-sm sm:text-base md:text-lg max-w-xl">
+          <p className="text-sm sm:text-sm md:text-lg max-w-xl">
             Passionate educator and lifelong learner, helping individuals unlock
             their potential through accessible and engaging learning
             experiences.
