@@ -17,7 +17,7 @@ const TeacherTools = () => {
           </h3>
           <p className="text-gray-600">
             Get free feedback from Udemy video experts on your audio, video, and
-            delivery.
+            delivery
           </p>
         </div>
 
