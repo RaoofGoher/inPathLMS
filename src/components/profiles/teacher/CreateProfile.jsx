@@ -107,14 +107,14 @@ const CreateProfile = () => {
           >
             Profile Picture
           </li>
-          <li
-            className={`cursor-pointer px-4 py-2 rounded-md ${
-              activeTab === 2 ? "bg-blueColor text-white" : "text-dark1"
-            }`}
-            onClick={() => setActiveTab(2)}
-          >
-            Privacy Settings
-          </li>
+            <li
+              className={`cursor-pointer px-4 py-2 rounded-md ${
+                activeTab === 2 ? "bg-blueColor text-white" : "text-dark1"
+              }`}
+              onClick={() => setActiveTab(2)}
+            >
+              Privacy Settings
+            </li>
         </ul>
       </div>
       <hr />
