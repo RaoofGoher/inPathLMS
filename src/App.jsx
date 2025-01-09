@@ -59,14 +59,14 @@ import ExploredCourses from "./components/explore/ExploredCourses";
 import AdminApproval from "./pages/AdminApproval";
 import TeachOnInPath from "./pages/teachOnInPath/TeachOnInPath";
 import EngagingCourseDetailInTeacherDashboard from "./components/teachOnInPath/EngagingCourseDetailInTeacherDashboard";
-import TeacherResources from "./pages/TeacherResources"
+import TeacherResources from "./pages/TeacherResources";
 import TeacherTools from "./pages/TeacherTools";
 import ProfileComponent from "./components/profiles/teacher/Profile";
 
-
-
 import StudentProfile from "./components/profiles/student/Home";
- 
+import StartedWithVideoDetailInTeacherDashboard from "./components/teachOnInPath/StartedWithVideoDetailInTeacherDashboard";
+import BuildAudienceDetailInTeacherDashboard from "./components/teachOnInPath/BuildAudienceDetailInTeacherDashboard";
+
 function App() {
   const router = createBrowserRouter(
     createRoutesFromElements(
@@ -107,9 +107,11 @@ function App() {
           ></Route>
           <Route path="/teachoninpath" element={<TeachOnInPath />}></Route>
           <Route element={<PrivateRoute allowedRoles={["student"]} />}>
-            <Route path="/dashboard/studentprofile" element={<StudentProfile />} />
+            <Route
+              path="/dashboard/studentprofile"
+              element={<StudentProfile />}
+            />
           </Route>
-
         </Route>
         <Route path="/dashboard" element={<DashboardLayout />}>
           <Route element={<PrivateRoute allowedRoles={["student"]} />}>
@@ -132,11 +134,25 @@ function App() {
               path="/dashboard/teacherdashboard"
               element={<TeacherDashboard />}
             />
-            <Route path="/dashboard/teacherdashboard/teacher-resources" element={<TeacherResources/>} />
-            <Route path="/dashboard/teacherdashboard/teacher-tools" element={<TeacherTools/>} />
-               <Route
+            <Route
+              path="/dashboard/teacherdashboard/teacher-resources"
+              element={<TeacherResources />}
+            />
+            <Route
+              path="/dashboard/teacherdashboard/teacher-tools"
+              element={<TeacherTools />}
+            />
+            <Route
               path="/dashboard/teacherdashboard/engaging-course-detail-teacher-dashboard"
               element={<EngagingCourseDetailInTeacherDashboard />}
+            ></Route>
+            <Route
+              path="/dashboard/teacherdashboard/started-video-detail-teacher-dashboard"
+              element={<StartedWithVideoDetailInTeacherDashboard />}
+            ></Route>
+            <Route
+              path="/dashboard/teacherdashboard/build-audience-detail-teacher-dashboard"
+              element={<BuildAudienceDetailInTeacherDashboard/>}
             ></Route>
             <Route
               path="/dashboard/teacherdashboard/addCourse"
@@ -163,9 +179,8 @@ function App() {
           <Route element={<PrivateRoute allowedRoles={["instructor"]} />}>
             <Route path="/dashboard/teacherprofile" element={<ProfileHome />} />
           </Route>
-          
         </Route>
-       
+
         <Route path="/dashboard/admin" element={<AdminDashboardLayout />}>
           <Route element={<PrivateRoute allowedRoles={["admin"]} />}>
             <Route index element={<AdminDashboard />} />
@@ -196,7 +211,7 @@ function App() {
         <Route path="/" element={<Blogs />} />
         <Route path="/blogs/:id" element={<BlogDetail />} />
 
-        <Route path="/profile" element={<ProfileComponent/>} /> 
+        <Route path="/profile" element={<ProfileComponent />} />
       </>
     )
   );

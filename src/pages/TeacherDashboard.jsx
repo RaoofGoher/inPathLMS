@@ -112,7 +112,7 @@ function TeacherDashboard() {
               </p>
               <Link
                 to={
-                  "/dashboard/teacherdashboard/engaging-course-detail-teacher-dashboard"
+                  "/dashboard/teacherdashboard/started-video-detail-teacher-dashboard"
                 }
                 className="flex justify-center md:justify-start"
               >
@@ -140,7 +140,7 @@ function TeacherDashboard() {
               </p>
               <Link
                 to={
-                  "/dashboard/teacherdashboard/engaging-course-detail-teacher-dashboard"
+                  "/dashboard/teacherdashboard/build-audience-detail-teacher-dashboard"
                 }
                 className="flex justify-center md:justify-start"
               >
