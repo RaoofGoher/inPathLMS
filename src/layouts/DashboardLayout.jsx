@@ -92,7 +92,7 @@ const DashboardLayout = () => {
               <FaCog className="mr-2 " />
               Settings
             </Link> */}
-            {role === "instructor" && (
+            {/* {role === "instructor" && (
               <Link
                 to="/dashboard/teacherdashboard/teacher-tools"
                 className="hover:text-blueColor flex items-center py-2 px-4 hover:bg-gray-300 rounded"
@@ -100,9 +100,9 @@ const DashboardLayout = () => {
                 <FaWrench className="mr-2" />
                 Tools
               </Link>
-            )}
+            )} */}
 
-            {role === "instructor" && (
+            {/* {role === "instructor" && (
               <Link
                 to="/dashboard/teacherdashboard/teacher-resources"
                 className="hover:text-blueColor flex items-center py-2 px-4 hover:bg-gray-300 rounded"
@@ -110,7 +110,7 @@ const DashboardLayout = () => {
                 <FaFolderOpen className="mr-2" />
                 Resources
               </Link>
-            )}
+            )} */}
             {/* 
             <Link
               className=" hover:text-blueColor flex items-center py-2 px-4 hover:bg-gray-300 rounded"

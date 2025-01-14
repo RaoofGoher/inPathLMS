@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useReducer, useState } from "react";
 import {
   FaCcVisa,
   FaCcMastercard,
@@ -11,7 +11,6 @@ import { removeFromCart as removeItem } from "../features/cart/cartSlice"; // Re
 import { useEnrollMultipleCoursesMutation } from "../features/enrollments/enrollApi";
 import { clearCart } from '../features/cart/cartSlice';
 import { useNavigate } from "react-router-dom";
-
 
 const ShoppingPage = () => {
   const [enrollMultipleCourses, { isLoading, isSuccess, isError, error }] = useEnrollMultipleCoursesMutation();
@@ -26,15 +25,22 @@ const ShoppingPage = () => {
   const [cvv, setCvv] = useState("");
   const navigate = useNavigate();
 
-  // Rename the local function to avoid conflict with the Redux action
+  // Utility function to calculate discount price
+  const calculateDiscountPrice = (price, discountPercentage) => {
+    const priceNumber = parseFloat(price);
+    const discount = parseFloat(discountPercentage);
+    return (priceNumber - (priceNumber * (discount / 100))).toFixed(2);
+  };
+
   const handleRemoveFromCart = (id) => {
     dispatch(removeItem(id)); // Dispatching the Redux action here
   };
 
-  const totalPrice = cartItems.reduce(
-    (total, item) => total + item.discountPrice * item.quantity,
-    0
-  );
+  // Calculate total price considering discount price
+  const totalPrice = cartItems.reduce((total, item) => {
+    const discountPrice = calculateDiscountPrice(item.price, item.discount_percentage);
+    return total + parseFloat(discountPrice) * item.quantity;
+  }, 0);
 
   const totalItems = cartItems.reduce(
     (total, item) => total + item.quantity,
@@ -47,12 +53,11 @@ const ShoppingPage = () => {
   const handleEnroll = async () => {
     // Extract course IDs from cartItems
     const course_ids = cartItems.map((item) => item.id);
-   
 
     try {
       const response = await enrollMultipleCourses({ user_id, course_ids }).unwrap();
       dispatch(clearCart());
-      navigate("/")
+      navigate("/");
     } catch (err) {
       console.error('Failed to enroll:', err);
     }
@@ -77,49 +82,50 @@ const ShoppingPage = () => {
               </button>
             </div>
             <ul className="space-y-4">
-              {cartItems.map((item) => (
-                <li
-                  key={item.id}
-                  className="flex flex-col sm:flex-row gap-4 justify-between items-center border-b border-grayColor pb-4"
-                >
-                  <img
-                    src={item.image}
-                    alt={item.name}
-                    className="w-24 h-24 object-cover rounded-md"
-                  />
+              {cartItems.map((item) => {
+                const discountPrice = calculateDiscountPrice(item.price, item.discount_percentage);
+                return (
+                  <li
+                    key={item.id}
+                    className="flex flex-col sm:flex-row gap-4 justify-between items-center border-b border-grayColor pb-4"
+                  >
+                    <img
+                      src={item.image}
+                      alt={item.name}
+                      className="w-24 h-24 object-cover rounded-md"
+                    />
 
-                  <div className="flex-1">
-                    <span className="font-medium text-dark1">{item.name}</span>
-                    <p className="text-sm text-grayColor">{item.description}</p>
-                  </div>
-                  <div className="flex flex-col sm:flex-row gap-2 sm:gap-4 text-right">
-                    {/* Price Information */}
-                    <div className="text-sm sm:text-base">
-                      <div className="line-through text-grayColor">
-                        <span className="text-xs">Actual Price:</span> $ {item.price}
-                      </div>
-                      <div className="text-lg text-secondaryColor">
-                        <span className="text-xs">Discount Price:</span> $
-                        {item.discountPrice * item.quantity}
-                      </div>
-                      <div className="text-xs text-grayColor">
-                        <span className="text-xs">Quantity:</span> x
-                        {item.quantity}
-                      </div>
+                    <div className="flex-1">
+                      <span className="font-medium text-dark1">{item.name}</span>
+                      <p className="text-sm text-grayColor">{item.description}</p>
                     </div>
-                    <button
-                      onClick={() => handleRemoveFromCart(item)} // Updated function call
-                      className="mt-2 sm:mt-0 text-red-500 hover:text-red-700"
-                    >
-                      Remove
-                    </button>
-                  </div>
-                </li>
-              ))}
+                    <div className="flex flex-col sm:flex-row gap-2 sm:gap-4 text-right">
+                      {/* Price Information */}
+                      <div className="text-sm sm:text-base">
+                        <div className="text-grayColor">
+                          <span className="text-xs">Actual Price:</span> $ {item.price}
+                        </div>
+                        <div className="text-lg text-secondaryColor">
+                          <span className="text-xs">Discount Price:</span> $ {discountPrice * item.quantity}
+                        </div>
+                        <div className="text-xs text-grayColor">
+                          <span className="text-xs">Quantity:</span> x {item.quantity}
+                        </div>
+                      </div>
+                      <button
+                        onClick={() => handleRemoveFromCart(item.id)} // Updated function call
+                        className="mt-2 sm:mt-0 text-red-500 hover:text-red-700"
+                      >
+                        Remove
+                      </button>
+                    </div>
+                  </li>
+                );
+              })}
             </ul>
             <div className="mt-6 text-xl font-semibold text-dark1">
               <span>Total Price: </span>
-              <span className="text-grayColor">${totalPrice}</span>
+              <span className="text-grayColor">${totalPrice.toFixed(2)}</span>
             </div>
           </div>
 
@@ -138,22 +144,16 @@ const ShoppingPage = () => {
                 <span className="line-through text-grayColor">
                   $
                   {cartItems.reduce(
-                    (total, item) => total + item.price * item.quantity,
+                    (total, item) => total + parseFloat(item.price) * item.quantity,
                     0
                   )}
                 </span>
               </div>
               <div className="flex justify-between">
                 <span className="text-dark1">Discount Price:</span>
-                <span className="text-blueColor">${totalPrice}</span>
+                <span className="text-blueColor">${totalPrice.toFixed(2)}</span>
               </div>
             </div>
-            {/* <button
-              onClick={openModal}
-              className="w-full py-3 bg-lightColor1 text-white font-semibold rounded-md hover:bg-primaryColor transition"
-            >
-              Proceed to Checkout
-            </button> */}
             <button
               onClick={handleEnroll}
               className="w-full py-3 bg-lightColor1 text-white font-semibold rounded-md hover:bg-lightColor1/90 transition"
@@ -210,23 +210,20 @@ const ShoppingPage = () => {
               </div>
               <div className="flex justify-between">
                 <span className="font-medium">Total: </span>
-                <span className="text-blueColor">${totalPrice}</span>
+                <span className="text-blueColor">${totalPrice.toFixed(2)}</span>
               </div>
               <div className="mt-4 flex justify-between gap-4">
                 <button
                   onClick={closeModal}
-                  className="w-1/2 py-2 bg-grayColor text-dark1 rounded-md hover:bg-grayColor/90"
+                  className="w-full py-2 px-4 bg-grayColor text-white rounded-md hover:bg-grayColor/80"
                 >
                   Cancel
                 </button>
                 <button
-                  onClick={() => {
-                    closeModal();
-                    alert("Payment Completed!");
-                  }}
-                  className="w-1/2 py-2 bg-blueColor text-white font-semibold rounded-md hover:bg-blueColor/90"
+                  onClick={handleEnroll}
+                  className="w-full py-2 px-4 bg-blueColor text-white rounded-md hover:bg-blueColor/90"
                 >
-                  Complete Payment
+                  Confirm Payment
                 </button>
               </div>
             </div>

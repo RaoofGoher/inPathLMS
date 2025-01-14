@@ -5,6 +5,7 @@ const CartDetails = ({ closeOverlay }) => {
   // Example cart state from Redux
   const navigate = useNavigate()
   const cartItems = useSelector((state) => state.cart?.items || []);
+  console.log("cartItems",cartItems)
 const shopping = ()=>{
   navigate("/shopping")
 }
@@ -32,7 +33,7 @@ const shopping = ()=>{
                   Quantity: {item.quantity}
                 </p>
               </div>
-              <p className="font-semibold">${item.price * item.quantity}</p>
+              <p className="font-semibold">{item.price * item.quantity}</p>
             </li>
           ))}
         </ul>
