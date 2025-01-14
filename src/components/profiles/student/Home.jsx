@@ -29,14 +29,6 @@ console.log("user_id",user_id);
           >
             Photo
           </li>
-          <li
-            className={`cursor-pointer p-2 ${
-              activeSection === "Subscriptions" ? "bg-blue-500 text-white" : ""
-            }`}
-            onClick={() => setActiveSection("Subscriptions")}
-          >
-            Subscriptions
-          </li>
         </ul>
       </div>
 

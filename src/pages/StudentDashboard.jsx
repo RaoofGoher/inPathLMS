@@ -26,22 +26,22 @@ function StudentDashboard() {
         </div>
 
         {/* Assignments */}
-        <div className="bg-blueColor p-6 rounded-lg shadow-md flex items-center space-x-4">
+        {/* <div className="bg-blueColor p-6 rounded-lg shadow-md flex items-center space-x-4">
           <FaClipboardList className="text-white text-3xl" />
           <div>
             <h2 className="text-xl text-white font-semibold">Assignments</h2>
             <p className="text-white">Check and submit assignments.</p>
           </div>
-        </div>
+        </div> */}
 
         {/* Grades */}
-        <div className="bg-blueColor p-6 rounded-lg shadow-md flex items-center space-x-4">
+        {/* <div className="bg-blueColor p-6 rounded-lg shadow-md flex items-center space-x-4">
           <FaChartLine className="text-white text-3xl" />
           <div>
             <h2 className="text-xl text-white font-semibold">Grades</h2>
             <p className="text-white">Review your academic performance.</p>
           </div>
-        </div>
+        </div> */}
       </div>
       <ScrollToTop />
     </div>
