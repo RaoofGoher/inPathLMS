@@ -89,11 +89,11 @@ const ShoppingPage = () => {
                     key={item.id}
                     className="flex flex-col sm:flex-row gap-4 justify-between items-center border-b border-grayColor pb-4"
                   >
-                    <img
+                    {/* <img
                       src={item.image}
                       alt={item.name}
                       className="w-24 h-24 object-cover rounded-md"
-                    />
+                    /> */}
 
                     <div className="flex-1">
                       <span className="font-medium text-dark1">{item.name}</span>
