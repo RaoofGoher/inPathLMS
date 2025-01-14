@@ -194,7 +194,7 @@ const StepForm = () => {
           style={{ width: `${progress}%` }}
         ></div>
       </div>
-      <form onSubmit={formik.handleSubmit}>
+      <form onSubmit={formik.handleSubmit1}>
         {step === 1 && (
           <>
             <div>

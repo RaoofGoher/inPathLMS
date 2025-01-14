@@ -15,7 +15,7 @@ export const getcoursesByTeacherApi = createApi({
   }),
   endpoints: (builder) => ({
     getCoursesByTeacherId: builder.query({
-      query: (teacherId) => `/teacher/get/courses/${teacherId}`,
+      query: (teacherId) => `/teacher/courses/${teacherId}`,
     }),
   }),
 });

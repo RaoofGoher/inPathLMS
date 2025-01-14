@@ -1,14 +1,16 @@
 import React, { useState, useEffect } from "react";
 import { useParams, Link } from "react-router-dom";
 import { useGetCourseSectionsQuery } from "../../features/courseCategory/getCourseSection";
+import { useSelector } from "react-redux";
 
 const ViewCourse = () => {
-  const { courseId } = useParams();
+  const { course_id } = useParams();
   const {
     data: courses,
     isLoading,
     isError,
-  } = useGetCourseSectionsQuery(courseId);
+  } = useGetCourseSectionsQuery(course_id);
+  const { user_id } = useSelector((state) => state.auth);
 
   const [currentVideo, setCurrentVideo] = useState(null);
   const [expandedSections, setExpandedSections] = useState({});
@@ -98,9 +100,9 @@ const ViewCourse = () => {
         }}  
       >
         <div className="flex items-center justify-end w-full">
-        <Link to={"/dashboard/teacherdashboard/viewCourse"}>
+        <Link to={`/dashboard/studentdashboard/mycourses/${course_id}`} >
           <button
-            className="  bg-blueColor font-semibold text-white px-2 py-2 rounded-md shadow-md 
+            className="bg-blueColor font-semibold text-white px-2 py-2 rounded-md shadow-md 
                  hover:bg-blueColor/90 transition-all"
           >
           Back
