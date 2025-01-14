@@ -5,13 +5,13 @@ import { useNavigate } from "react-router-dom";
 
 const EnrolledCourses = () => {
   const { user_id } = useSelector((state) => state.auth);
-  const { data: courses = [], error, isLoading } = useGetEnrolledCoursesQuery(user_id, {
+  const { data: courses, error, isLoading } = useGetEnrolledCoursesQuery(user_id, {
     skip: !user_id, // Skip query if user_id is not available
   });
   const navigate = useNavigate()
-
+console.log(courses, user_id)
   if (isLoading) return <div>Loading...</div>;
-  if (error) return <div>Error: {error.message || "Failed to load courses."}</div>;
+  if (error) return <div>Error: {error.message || "Failed to load coursesss."}</div>;
   const handleViewCourse = (course_id)=>{
     navigate(`/dashboard/studentdashboard/mycourses/viewcourse/${course_id}`)
   } 
