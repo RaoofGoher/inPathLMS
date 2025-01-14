@@ -43,7 +43,7 @@ console.log("user_id",user_id);
       {/* Main Content */}
       <div className="w-3/4 p-4">
         {activeSection === "Profile" && <Profile id={user_id} />}
-        {activeSection === "Photo" && <Photo />}
+        {activeSection === "Photo" && <Photo id={user_id} />}
         {activeSection === "Subscriptions" && <Subscriptions />}
       </div>
     </div>

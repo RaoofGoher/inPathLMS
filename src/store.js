@@ -18,6 +18,7 @@ import { enrollApi } from './features/enrollments/enrollApi';
 import {getAllCourses} from "./features/explore/getall";
 import exploreSubCategoryIDReducer from './features/searchCourse/ExploreSubCategoryID'; 
 import { studentProfileApi } from "./features/studentProfile/studentProfileApi";
+import { studentProfileImageApi } from "./features/studentProfile/studentProfileImageApi";
 // Define the persist configuration for auth state
 const persistAuthConfig = {
   key: 'auth',
@@ -53,6 +54,7 @@ export const store = configureStore({
     [getAllCourses.reducerPath]: getAllCourses.reducer,
     exploreSubCategoryID: exploreSubCategoryIDReducer,
     [studentProfileApi.reducerPath]: studentProfileApi.reducer,
+    [studentProfileImageApi.reducerPath]: studentProfileImageApi.reducer,
   },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware()
@@ -69,6 +71,7 @@ export const store = configureStore({
       .concat(enrolledCourseApi.middleware)
       .concat(getAllCourses.middleware)
       .concat(studentProfileApi.middleware)
+      .concat(studentProfileImageApi.middleware)
       ,
 });
 
