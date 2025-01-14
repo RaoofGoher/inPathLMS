@@ -8,7 +8,7 @@ const Profile = ({ id }) => {
   const { data, isLoading, refetch } = useGetStudentProfileQuery(id);
   const [createStudentProfile] = useCreateStudentProfileMutation();
   const [updateStudentProfile] = useUpdateStudentProfileMutation();
-console.log("data",data);
+
   // Formik initial values and validation schema
   const formik = useFormik({
     initialValues: {
