@@ -11,7 +11,6 @@ const ViewCourse = () => {
     isError,
   } = useGetCourseSectionsQuery(courseId);
   const { user_id } = useSelector((state) => state.auth);
-console.log("here is course id",courseId)
   const [currentVideo, setCurrentVideo] = useState(null);
   const [expandedSections, setExpandedSections] = useState({});
 
