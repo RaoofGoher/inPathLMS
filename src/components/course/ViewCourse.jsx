@@ -13,7 +13,7 @@ const ViewCourse = () => {
   const { user_id } = useSelector((state) => state.auth);
   const [currentVideo, setCurrentVideo] = useState(null);
   const [expandedSections, setExpandedSections] = useState({});
-
+console.log("hello courses",courses, courseId)
   // Initialize with the first video when data is loaded
   useEffect(() => {
     if (courses && courses.sections && courses.sections.length > 0) {
