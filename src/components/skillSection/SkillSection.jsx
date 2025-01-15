@@ -34,7 +34,6 @@ const SliderWithPopup = () => {
     left: false,
     right: false,
   });
-console.log("course data",data)
   // Function to check scroll visibility
   const checkScrollButtons = (ref, setShowScroll) => {
     if (ref.current) {
@@ -55,9 +54,9 @@ console.log("course data",data)
 
       // Temporarily pause auto scrolling
       setIsAutoScrolling(false);
-      setTimeout(() => setIsAutoScrolling(true), 3000); // Resume after 3 seconds
+      setTimeout(() => setIsAutoScrolling(true), 8000); // Resume after 3 seconds
 
-      setTimeout(() => checkScrollButtons(ref, setShowScroll), 300);
+      setTimeout(() => checkScrollButtons(ref, setShowScroll), 8000);
     }
   };
   useEffect(() => {

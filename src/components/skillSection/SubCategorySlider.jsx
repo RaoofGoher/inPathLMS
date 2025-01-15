@@ -6,10 +6,22 @@ import { Autoplay, Navigation } from "swiper/modules";
 
 const SubCategorySlider = ({ subcategories, onSubCategorySelect }) => {
   const [selectedSubCategory, setSelectedSubCategory] = useState(null); // State to track the selected subcategory
+  const [paused, setPaused] = useState(false); // State to track whether autoplay is paused
+  const [swiperInstance, setSwiperInstance] = useState(null); // Store the swiper instance
 
   const handleSubCategoryClick = (subcategory) => {
     setSelectedSubCategory(subcategory.id); // Set the selected subcategory
     onSubCategorySelect(subcategory); // Call the parent handler
+
+    // Pause or resume autoplay when a subcategory is clicked
+    if (swiperInstance) {
+      if (paused) {
+        swiperInstance.autoplay.start();
+      } else {
+        swiperInstance.autoplay.stop();
+      }
+      setPaused(!paused); // Toggle the paused state
+    }
   };
 
   return (
@@ -38,6 +50,7 @@ const SubCategorySlider = ({ subcategories, onSubCategorySelect }) => {
           spaceBetween: 50,
         },
       }}
+      onSwiper={setSwiperInstance} // Get the swiper instance
     >
       {subcategories.map((subcategory) => (
         <SwiperSlide key={subcategory.id}>

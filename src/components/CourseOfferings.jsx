@@ -6,7 +6,7 @@ const CourseOfferings = () => {
   const { data: categories, isLoading, isError } = useGetCoursesQuery();
   const [visibleCount, setVisibleCount] = useState(16); // Initially showing 16 categories
   const [activeCategory, setActiveCategory] = useState(null); // Active category for click
-  const [activeSubcategory, setActiveSubcategory] = useState(null); // Active subcategory for click
+  const [activeSubcategories, setActiveSubcategories] = useState({}); // Map of active subcategories for each category
   const navigate = useNavigate(); // Hook to navigate
 
   const topCategories = categories?.slice(0, 10); // Display top 10 categories
@@ -26,20 +26,16 @@ const CourseOfferings = () => {
 
   // Handler for category click
   const handleCategoryClick = (index) => {
-    // Toggle the active category, close any previously open subcategory
     setActiveCategory(index === activeCategory ? null : index); // Toggle active category
-    setActiveSubcategory(null); // Close the previous subcategory if any
+    setActiveSubcategories({}); // Reset active subcategories
   };
 
   // Handler for subcategory click
-  const handleSubcategoryClick = (subIndex) => {
-    // Toggle the active subcategory, close it if it's already open
-    setActiveSubcategory(subIndex === activeSubcategory ? null : subIndex); // Toggle active subcategory
-  };
-
-  // Navigate to the course page or subcategory-related courses
-  const handleCourseClick = (subcategoryId) => {
-    navigate(`/exploredcourses/subcategory/${subcategoryId}`);
+  const handleSubcategoryClick = (categoryIndex, subIndex) => {
+    setActiveSubcategories((prevState) => ({
+      ...prevState,
+      [categoryIndex]: subIndex === prevState[categoryIndex] ? null : subIndex,
+    }));
   };
 
   return (
@@ -52,23 +48,25 @@ const CourseOfferings = () => {
 
       <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-2 sm:gap-12">
         {/* Categories */}
-        {categories?.slice(0, visibleCount).map((category, index) => (
+        {categories?.slice(0, visibleCount).map((category, categoryIndex) => (
           <div key={category.id} className="relative">
             <button
-              onClick={() => handleCategoryClick(index)} // Click to toggle category
+              onClick={() => handleCategoryClick(categoryIndex)} // Click to toggle category
               className="w-full h-16 text-xs sm:text-lg font-bold hover:bg-blueColor hover:text-white border-2 hover:border-white hover:ring-2 ring-blueColor border-blueColor text-blueColor px-4 py-2 rounded-xl flex items-center justify-center overflow-hidden text-ellipsis"
             >
               {category.name}
             </button>
 
             {/* Subcategories (show on category click) */}
-            {activeCategory === index && category.subcategories?.length > 0 && (
+            {activeCategory === categoryIndex && category.subcategories?.length > 0 && (
               <div className="absolute top-full left-0 w-full bg-white shadow-lg z-10 rounded-lg mt-1">
                 <div className="flex flex-col">
                   {category.subcategories.map((subcategory, subIndex) => (
                     <button
                       key={subcategory.id}
-                      onClick={() => handleSubcategoryClick(subIndex)} // Click to toggle subcategory
+                      onClick={() =>
+                        handleSubcategoryClick(categoryIndex, subIndex)
+                      } // Click to toggle subcategory
                       className="py-2 px-4 text-sm text-blueColor hover:bg-blueColor hover:text-white border-b-2 border-blueColor last:border-0"
                     >
                       {subcategory.name}
@@ -79,26 +77,26 @@ const CourseOfferings = () => {
             )}
 
             {/* Courses for Subcategory (show on subcategory click) */}
-            {activeSubcategory !== null &&
-              category.subcategories[activeSubcategory]?.courses?.length >
-                0 && (
+            {activeSubcategories[categoryIndex] !== undefined &&
+              category.subcategories[activeSubcategories[categoryIndex]]?.courses
+                ?.length > 0 && (
                 <div className="absolute top-full left-0 w-full bg-white shadow-lg z-10 rounded-lg mt-1">
                   <ul>
-                    {category.subcategories[activeSubcategory].courses.map(
-                      (course) => (
-                        <li
-                          key={course.id}
-                          onClick={() => {
-                            navigate(
-                              `/exploredcourses/${category.subcategories[activeSubcategory].id}`
-                            );
-                          }}
-                          className="py-2 px-4 text-sm bg-grayColor text-white  hover:bg-blueColor hover:text-white border-b-2 cursor-pointer border-white last:border-0"
-                        >
-                          {course.title}
-                        </li>
-                      )
-                    )}
+                    {category.subcategories[
+                      activeSubcategories[categoryIndex]
+                    ].courses.map((course) => (
+                      <li
+                        key={course.id}
+                        onClick={() =>
+                          navigate(
+                            `/exploredcourses/${category.subcategories[activeSubcategories[categoryIndex]].id}`
+                          )
+                        }
+                        className="py-2 px-4 text-sm bg-grayColor text-white hover:bg-blueColor hover:text-white border-b-2 cursor-pointer border-white last:border-0"
+                      >
+                        {course.title}
+                      </li>
+                    ))}
                   </ul>
                 </div>
               )}
