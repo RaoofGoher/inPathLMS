@@ -13,7 +13,7 @@ function ProfileHome() {
 
   return (
     <div>
-      {role === "instructor" && data ? <ProfileComponent/> : <CreateProfile/>}
+      {role === "instructor" && data ? <ProfileComponent data={data}/> : <CreateProfile/>}
     </div>
   )
 }
