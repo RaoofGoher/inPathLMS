@@ -34,7 +34,7 @@ const { user_id } = useSelector((state) => state.auth); // Get teacherId from Re
 
   return (
     <div className="fixed inset-0 bg-gray-800 bg-opacity-50 flex justify-center items-center">
-      <div className="bg-white p-6 rounded shadow-lg w-1/3">
+      <div className="bg-white p-6 rounded shadow-lg">
         <h2 className="text-2xl font-bold mb-4 text-blueColor">Add Course Section</h2>
         <form onSubmit={handleSubmit}>
           <div className="mb-4">

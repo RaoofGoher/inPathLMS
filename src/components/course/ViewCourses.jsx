@@ -1,9 +1,10 @@
-import React from "react";
+import React, {useState} from "react";
 import { useSelector } from "react-redux";
 import { useGetCoursesByTeacherIdQuery } from "../../features/courseCategory/getCourse";
 import { useNavigate, Link } from "react-router-dom";
 import { useGetTeacherProfileQuery } from "../../features/profile/teacher/teacherProfile";
 import CompleteCourseButton from "./CompleteCoursesButton";
+import AddSectionOverlay from './AddSectionOverlay';
 
 const ViewCourses = () => {
   const { user_id } = useSelector((state) => state.auth);
@@ -11,6 +12,10 @@ const ViewCourses = () => {
   const { data: profile } = useGetTeacherProfileQuery(user_id, {
     skip: !user_id,
   });
+ const [isOverlayOpen, setIsOverlayOpen] = useState(false);
+ const handleOpenOverlay = () => setIsOverlayOpen(true);
+  const handleCloseOverlay = () => setIsOverlayOpen(false);
+  console.log("hello courses",courses,user_id);
   const navigate = useNavigate();
 
   const handleAddCourseSection = (courseId) => {
@@ -82,7 +87,7 @@ const ViewCourses = () => {
                     </button>
                     <button
                       className="flex-1 bg-grayColor text-white text-sm py-2 rounded hover:bg-grayColor/90 transition-all"
-                      onClick={() => handleAddCourseSection(course.id)}
+                      onClick={handleOpenOverlay}
                     >
                       Add Section
                     </button>
@@ -97,7 +102,9 @@ const ViewCourses = () => {
                     </div>
                   </div>
                 </div>
+                <AddSectionOverlay isOpen={isOverlayOpen} onClose={handleCloseOverlay} courseId={course.id} />
               </div>
+              
             ))}
           </div>
         ) : (
