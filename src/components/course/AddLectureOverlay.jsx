@@ -66,7 +66,7 @@ const AddLectureOverlay = ({ sectionId, onClose, onSuccess }) => {
               name="title"
               value={formData.title}
               onChange={handleInputChange}
-              className="w-full rounded p-2 text-dark1 focus:outline-none focus:ring-2 focus:ring-blueColor"
+              className="w-full border border-lightColor3 rounded p-2 text-dark1 focus:outline-none focus:ring-2 focus:ring-blueColor"
               required
             />
           </div>

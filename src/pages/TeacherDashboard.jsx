@@ -33,8 +33,8 @@ function TeacherDashboard() {
       <div className="grid gap-16 grid-cols-1">
         {/* Add Course */}
 
-        <div className="group sm:py-16 flex-col sm:flex-row gap-4  justify-between  duration-300 transition-all hover:translate-y-1  p-6 rounded-lg shadow-md shadow-grayColor flex items-center space-x-4 ">
-          <h2 className="flex gap-2 text-xl font-semibold text-dark1">
+        <div className="border border-blueColor rounded-lg group sm:py-16 flex-col sm:flex-row gap-4  justify-between  duration-300 transition-all hover:translate-y-1  p-6 rounded-lg shadow-md shadow-grayColor flex items-center space-x-4 ">
+          <h2 className="flex gap-2 text-xl font-semibold text-dark1 ">
             <FaPlusCircle className=" text-3xl" />
             Jump Into Course Creation
           </h2>
@@ -47,7 +47,7 @@ function TeacherDashboard() {
 
       
         {/* View Course */}
-        <div className="group sm:py-16 flex-col sm:flex-row gap-4  justify-between  duration-300 transition-all hover:translate-y-1  p-6 rounded-lg shadow-md shadow-grayColor flex items-center space-x-4  ">
+        <div className="border border-blueColor rounded-lg group sm:py-16 flex-col sm:flex-row gap-4  justify-between  duration-300 transition-all hover:translate-y-1  p-6 rounded-lg shadow-md shadow-grayColor flex items-center space-x-4  ">
           <h2 className="flex gap-2 text-xl font-semibold text-dark1">
             <FaBook className=" text-3xl" />
             View My Courses

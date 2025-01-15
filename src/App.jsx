@@ -124,7 +124,7 @@ function App() {
               element={<EnrolledCourses />}
             />
             <Route
-              path="/dashboard/studentdashboard/mycourses/viewcourse/:course_id"
+              path="/dashboard/studentdashboard/mycourses/viewcourse/:courseId"
               element={<ViewCourse />}
             />
           </Route>

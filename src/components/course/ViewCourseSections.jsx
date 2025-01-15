@@ -121,7 +121,7 @@ const ViewCourseSection = () => {
             {sections.map((section) => (
               <div
                 key={section.section_id}
-                className="shadow-md border-blueColor border-x-2 rounded-lg p-4 bg-white text-grayColor hover:shadow-lg transition-shadow"
+                className="border-2 shadow-md border-blueColor border-x-2 rounded-lg p-4 bg-white text-grayColor hover:shadow-lg transition-shadow"
               >
                 <h2 className="font-semibold text-lg text-blueColor">
                   {section.section_title}

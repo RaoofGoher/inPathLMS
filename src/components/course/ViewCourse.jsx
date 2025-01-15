@@ -4,17 +4,16 @@ import { useGetCourseSectionsQuery } from "../../features/courseCategory/getCour
 import { useSelector } from "react-redux";
 
 const ViewCourse = () => {
-  const { course_id } = useParams();
+  const { courseId } = useParams();
   const {
     data: courses,
     isLoading,
     isError,
-  } = useGetCourseSectionsQuery(course_id);
-  const { user_id } = useSelector((state) => state.auth);
-
+  } = useGetCourseSectionsQuery(courseId);
+  const { user_id,role } = useSelector((state) => state.auth);
   const [currentVideo, setCurrentVideo] = useState(null);
   const [expandedSections, setExpandedSections] = useState({});
-
+console.log("hello courses",role)
   // Initialize with the first video when data is loaded
   useEffect(() => {
     if (courses && courses.sections && courses.sections.length > 0) {
@@ -100,7 +99,7 @@ const ViewCourse = () => {
         }}  
       >
         <div className="flex items-center justify-end w-full">
-        <Link to={`/dashboard/studentdashboard/mycourses/${course_id}`} >
+        <Link to={role === "student" ? `/dashboard/studentdashboard/mycourses/${user_id}` :"/dashboard/teacherdashboard/viewcourse"} >
           <button
             className="bg-blueColor font-semibold text-white px-2 py-2 rounded-md shadow-md 
                  hover:bg-blueColor/90 transition-all"
