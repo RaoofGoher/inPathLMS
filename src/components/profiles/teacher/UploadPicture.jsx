@@ -43,7 +43,7 @@ const UploadProfilePicture = () => {
   };
 
   return (
-    <div className="p-6 bg-white rounded-lg shadow-md max-w-md mx-auto">
+    <div className="p-6 bg-white rounded-lg shadow-md max-w-md mx-auto border-2">
       <h2 className="text-xl font-bold mb-4">Upload Profile Picture</h2>
       <input
         type="file"

@@ -50,11 +50,11 @@ const ProfileUpdateModal = ({ isOpen, onClose, profileData, onSuccess }) => {
 
   return (
     <div className="fixed top-0 left-0 w-full h-full bg-black bg-opacity-50 flex justify-center items-center">
-      <div className="bg-white p-8 rounded-lg max-w-3xl w-full">
-        <h2 className="text-xl font-bold mb-4">Edit Profile</h2>
+      <div className="bg-white p-8 rounded-lg max-w-4xl w-full h-[90vh]">
+        <h2 className="text-xl font-bold mb-2">Edit Profile</h2>
         <UploadProfilePicture />
 
-        <form onSubmit={handleSubmit} className="space-y-4">
+        <form onSubmit={handleSubmit} className="space-y-4 mt-4">
           {/* First Row */}
           <div className="grid grid-cols-3 gap-4">
             <div>
@@ -150,16 +150,17 @@ const ProfileUpdateModal = ({ isOpen, onClose, profileData, onSuccess }) => {
           <div className="mt-4">
             <button
               type="submit"
-              className="w-full bg-blue-600 text-white px-4 py-2 rounded-lg"
+              className="bg-blue-600 text-white px-4 py-2 rounded-lg"
               disabled={isLoading}
             >
               {isLoading ? 'Updating...' : 'Update Profile'}
             </button>
+            <button onClick={onClose} className="mt-4 bg-gray-500 text-white px-4 py-2 rounded-lg ml-2">Close</button>
           </div>
         </form>
 
         {error && <p className="text-red-500 text-sm mt-2">Failed to update profile. Please try again.</p>}
-        <button onClick={onClose} className="mt-4 w-full bg-gray-500 text-white px-4 py-2 rounded-lg">Close</button>
+        
       </div>
     </div>
   );
