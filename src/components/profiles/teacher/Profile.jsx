@@ -2,6 +2,7 @@
 import { FaFacebook, FaLinkedin, FaYoutube } from "react-icons/fa";
 import ProfileUpdateModal from "./UpdateProfile";
 import React, { useState, useEffect } from 'react';
+import Default from ".././../../assets/profile1.jpg"
 
 const Profile = ({ data }) => {
   const { full_name, bio, degrees, teaching_experience, specialization, teaching_history, profile_picture } = data;
@@ -38,7 +39,7 @@ const Profile = ({ data }) => {
         <div className="flex flex-col items-center text-center sm:text-left">
           <img
             className="rounded-full w-28 h-28 sm:w-36 sm:h-36 shadow-lg"
-            src={profile_picture || "../../../assets/profile1.jpg"}
+            src={profile_picture || Default}
             alt={`Profile picture of ${full_name || "John Son"}`}
           />
           <div className="mt-4 flex gap-4 justify-center sm:justify-start items-center">
