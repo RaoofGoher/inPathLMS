@@ -115,20 +115,19 @@ const Navbar = () => {
           </button>
           {isAuthenticated === true ? (
             <>
-
+{/* 
               <div
                 className="relative flex justify-center items-center mr-4"
                 onClick={handleNotificationClick} // Open or close dropdown when clicked
               >
                 <FaBell size={20} className="text-blueColor cursor-pointer" />
-                {/* Notification Badge */}
                 <span className="absolute -top-2 -right-2 flex justify-center items-center w-4 h-4 bg-red-600 text-white text-xs rounded-full">
                   {notifications.length}
                 </span>
-              </div>
+              </div> */}
 
               {/* Notifications Dropdown */}
-              {isDropdownOpen1 && (
+              {/* {isDropdownOpen1 && (
                 <div className="z-50 absolute top-16 right-0 bg-white shadow-xl rounded-lg w-80 p-4 border border-grayColor">
                   <h3 className="font-bold text-sm mb-2 text-blueColor">
                     Recent Notifications
@@ -150,14 +149,14 @@ const Navbar = () => {
                         />
                         <div>
                           <p className="font-semibold">{notification.name}</p>{" "}
-                          {/* User Name */}
-                          <p>{notification.message}</p> {/* Notification Message */}
+                          
+                          <p>{notification.message}</p> 
                         </div>
                       </li>
                     ))}
                   </ul>
                 </div>
-              )}
+              )} */}
 
 
               {/* {/ buttons after login /} */}
