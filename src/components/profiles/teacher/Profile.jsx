@@ -2,7 +2,7 @@
 import { FaFacebook, FaLinkedin, FaYoutube } from "react-icons/fa";
 import ProfileUpdateModal from "./UpdateProfile";
 import React, { useState, useEffect } from 'react';
-import Default from ".././../../assets/profile1.jpg"
+import Default from ".././../../assets/vector.png"
 
 const Profile = ({ data }) => {
   const { full_name, bio, degrees, teaching_experience, specialization, teaching_history, profile_picture } = data;
