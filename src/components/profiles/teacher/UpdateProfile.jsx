@@ -49,8 +49,8 @@ const ProfileUpdateModal = ({ isOpen, onClose, profileData, onSuccess }) => {
   if (!isOpen) return null;
 
   return (
-    <div className="fixed top-0 left-0 w-full h-full bg-black bg-opacity-50 flex justify-center items-center">
-      <div className="bg-white p-8 rounded-lg max-w-4xl w-full h-[90vh]">
+    <div className="fixed top-0 left-0 w-full h-full z-50  bg-black bg-opacity-50 flex justify-center items-center">
+      <div className="bg-white p-8 rounded-lg max-w-4xl w-full h-auto max-h-[90vh]  overflow-y-auto">
         <h2 className="text-xl font-bold mb-2">Edit Profile</h2>
         <UploadProfilePicture />
 
