@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, { useState } from "react";
 import { useSelector } from "react-redux";
 import { useGetCoursesByTeacherIdQuery } from "../../features/courseCategory/getCourse";
 import { useNavigate, Link } from "react-router-dom";
@@ -12,30 +12,39 @@ const ViewCourses = () => {
   const { data: profile } = useGetTeacherProfileQuery(user_id, {
     skip: !user_id,
   });
- const [isOverlayOpen, setIsOverlayOpen] = useState(false);
- const handleOpenOverlay = () => setIsOverlayOpen(true);
-  const handleCloseOverlay = () => setIsOverlayOpen(false);
-  console.log("hello courses",courses,user_id);
+
+  const [overlayCourseId, setOverlayCourseId] = useState(null);
+
   const navigate = useNavigate();
+
+  const handleOpenOverlay = (courseId) => {
+    setOverlayCourseId(courseId); // Set the course ID for which the overlay should open
+  };
+
+  const handleCloseOverlay = () => {
+    setOverlayCourseId(null); // Close the overlay
+  };
 
   const handleAddCourseSection = (courseId) => {
     navigate(`/dashboard/teacherdashboard/editcourse/${courseId}`);
   };
+
   const handleViewCourseSection = (courseId) => {
     navigate(
       `/dashboard/teacherdashboard/viewcourse/viecoursesections/${courseId}`
     );
   };
+
   const handleViewCourse = (courseId) => {
     navigate(`/dashboard/teacherdashboard/viewcourse/${courseId}`);
   };
 
   return (
     <div className="container mx-auto p-6">
-      <div className="w-full flex   justify-end  items-baseline ">
+      <div className="w-full flex justify-end items-baseline">
         <Link to={"/dashboard/teacherdashboard"}>
           <button
-            className="  bg-blueColor font-semibold text-white px-2 py-2 rounded-md shadow-md 
+            className="bg-blueColor font-semibold text-white px-2 py-2 rounded-md shadow-md 
                   hover:bg-blueColor/90 transition-all"
           >
             Back
@@ -87,7 +96,7 @@ const ViewCourses = () => {
                     </button>
                     <button
                       className="flex-1 bg-grayColor text-white text-sm py-2 rounded hover:bg-grayColor/90 transition-all"
-                      onClick={handleOpenOverlay}
+                      onClick={() => handleOpenOverlay(course.id)}
                     >
                       Add Section
                     </button>
@@ -102,9 +111,14 @@ const ViewCourses = () => {
                     </div>
                   </div>
                 </div>
-                <AddSectionOverlay isOpen={isOverlayOpen} onClose={handleCloseOverlay} courseId={course.id} />
+                {overlayCourseId === course.id && (
+                  <AddSectionOverlay
+                    isOpen={overlayCourseId === course.id}
+                    onClose={handleCloseOverlay}
+                    courseId={course.id}
+                  />
+                )}
               </div>
-              
             ))}
           </div>
         ) : (
