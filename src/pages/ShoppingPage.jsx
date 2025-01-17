@@ -11,7 +11,7 @@ import { removeFromCart as removeItem } from "../features/cart/cartSlice"; // Re
 import { useEnrollMultipleCoursesMutation } from "../features/enrollments/enrollApi";
 import { clearCart } from '../features/cart/cartSlice';
 import { useNavigate } from "react-router-dom";
-
+import { Link } from "react-router-dom";
 const ShoppingPage = () => {
   const [enrollMultipleCourses, { isLoading, isSuccess, isError, error }] = useEnrollMultipleCoursesMutation();
   const cartItems = useSelector((state) => state.cart.items);
@@ -33,7 +33,8 @@ const ShoppingPage = () => {
   };
 
   const handleRemoveFromCart = (id) => {
-    dispatch(removeItem(id)); // Dispatching the Redux action here
+    alert("Item removed from cart");
+    dispatch(removeItem({id})); // Dispatching the Redux action here
   };
 
   // Calculate total price considering discount price
@@ -53,15 +54,23 @@ const ShoppingPage = () => {
   const handleEnroll = async () => {
     // Extract course IDs from cartItems
     const course_ids = cartItems.map((item) => item.id);
-
+  
     try {
       const response = await enrollMultipleCourses({ user_id, course_ids }).unwrap();
+      alert(`Enrollment Successful: ${JSON.stringify(response)}`); // Alert the response on success
       dispatch(clearCart());
       navigate("/");
     } catch (err) {
-      console.error('Failed to enroll:', err);
+      // Handle the error response
+      if (err.status === 400 && err.data && err.data.non_field_errors) {
+        alert(`Enrollment Failed: ${err.data.non_field_errors.join(', ')}`);
+      } else {
+        alert(`Failed to enroll: ${err.message || err}`);
+      }
+      console.error("Failed to enroll:", err);
     }
   };
+  
 
   return (
     <>
@@ -77,9 +86,10 @@ const ShoppingPage = () => {
               <h2 className="text-2xl font-bold text-blueColor mb-4">
                 Shopping Cart
               </h2>
-              <button className="py-2 px-4 bg-blueColor text-white font-semibold rounded-md hover:bg-blueColor/90">
+              <Link to="/"><button  className="py-2 px-4 bg-blueColor text-white font-semibold rounded-md hover:bg-blueColor/90">
                 View More
               </button>
+              </Link>
             </div>
             <ul className="space-y-4">
               {cartItems.map((item) => {
