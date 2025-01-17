@@ -45,7 +45,7 @@ const Profile = ({ data }) => {
           <div className="mt-4 flex gap-4 justify-center sm:justify-start items-center">
             {/* Social Media Icons */}
             <a
-              href="https://facebook.com"
+              href=""
               target="_blank"
               rel="noopener noreferrer"
               aria-label="Facebook"
@@ -53,7 +53,7 @@ const Profile = ({ data }) => {
               <FaFacebook className="text-gray-600 text-2xl hover:text-blue-600 transition-all duration-300" />
             </a>
             <a
-              href="https://linkedin.com"
+              href=""
               target="_blank"
               rel="noopener noreferrer"
               aria-label="LinkedIn"
@@ -61,7 +61,7 @@ const Profile = ({ data }) => {
               <FaLinkedin className="text-gray-600 text-2xl hover:text-blue-700 transition-all duration-300" />
             </a>
             <a
-              href="https://youtube.com"
+              href=""
               target="_blank"
               rel="noopener noreferrer"
               aria-label="YouTube"
