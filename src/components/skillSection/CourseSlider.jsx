@@ -14,8 +14,8 @@ const { token, role, isAuthenticated, user_id } = useSelector(
     (state) => state.auth
   );
   const cartItems = useSelector((state) => state.cart.items);
-
   const handleAddToCart = (course) => {
+    console.log("Adding to cartttt...", course);
     if (isAuthenticated) {
       const existingItem = cartItems.find((item) => item.id === course.id);
 
@@ -26,7 +26,8 @@ const { token, role, isAuthenticated, user_id } = useSelector(
           addToCart({
             id: course.id,
             name: course.title,
-            price: course.final_price,
+            price: course.price,
+            discount_percentage: course.discount_percentage,
             quantity: 1,
           })
         );
@@ -60,6 +61,7 @@ const { token, role, isAuthenticated, user_id } = useSelector(
         }}
       >
         {courses.map((course) => (
+          
           <SwiperSlide
             key={course.id}
             onMouseEnter={() => setHoveredCourse(course)}

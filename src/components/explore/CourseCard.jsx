@@ -15,7 +15,7 @@ const CourseCard = ({ course }) => {
     const dispatch = useDispatch();
   // Function to handle Add to Cart
   const handleAddToCart = (course) => {
-    console.log("Adding to cart...",course);
+    console.log("Adding to cartttt...",course);
     if (isAuthenticated) {
       const existingItem = cartItems.find((item) => item.id === course.id);
 
@@ -29,6 +29,7 @@ const CourseCard = ({ course }) => {
             price: course.price,
             discount_percentage: course.discount_percentage,
             quantity: 1,
+          
           })
         );
       }
