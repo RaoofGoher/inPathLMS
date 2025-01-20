@@ -18,11 +18,13 @@ function StudentDashboard() {
       <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
         {/* My Courses */}
         <div className="bg-blueColor p-6 rounded-lg shadow-md flex items-center space-x-4">
+        <Link to={`/dashboard/studentdashboard/mycourses/${user_id}`} className='flex items-center space-x-4'>
           <FaBook className="text-white text-3xl" />
           <div>
             <h2 className="text-xl text-white font-semibold">My Courses</h2>
-            <Link to={`/dashboard/studentdashboard/mycourses/${user_id}`}> <p className="text-white">View all enrolled courses.</p> </Link>
+             <p className="text-white">View all enrolled courses.</p> 
           </div>
+          </Link>
         </div>
 
         {/* Assignments */}

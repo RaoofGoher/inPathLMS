@@ -17,7 +17,7 @@ const FAQs = () => {
       <section>
         <div className="bg-white py-14 text-center ">
           {/* Content Section */}
-          <div className="relative z-10">
+          <div className="relative">
             <h1 className="text-5xl font-bold mb-6 text-blueColor leading-tight transform transition-transform duration-500 hover:scale-105">
               Frequently Asked Questions
             </h1>

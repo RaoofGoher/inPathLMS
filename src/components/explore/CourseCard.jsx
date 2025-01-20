@@ -2,7 +2,9 @@ import React, { useState } from "react";
 import Modal from "./Modal"; // Assuming you have a separate Modal component for the video
 import { useDispatch, useSelector } from "react-redux";
 import { addToCart } from "../../features/cart/cartSlice";
+import { useNavigate } from "react-router-dom";
 const CourseCard = ({ course }) => {
+  const navigate = useNavigate();
   const [isHovered, setIsHovered] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false); // For controlling the modal
   const [isAddedToCart, setIsAddedToCart] = useState(false); // To track if course is added to cart
@@ -13,7 +15,7 @@ const CourseCard = ({ course }) => {
     const dispatch = useDispatch();
   // Function to handle Add to Cart
   const handleAddToCart = (course) => {
-    console.log("Adding to cart...",course);
+    console.log("Adding to cartttt...",course);
     if (isAuthenticated) {
       const existingItem = cartItems.find((item) => item.id === course.id);
 
@@ -27,6 +29,7 @@ const CourseCard = ({ course }) => {
             price: course.price,
             discount_percentage: course.discount_percentage,
             quantity: 1,
+          
           })
         );
       }
@@ -42,7 +45,7 @@ const CourseCard = ({ course }) => {
   // Function to handle Checkout
   const handleCheckout = () => {
     // Implement the logic for proceeding to checkout
-    console.log("Proceeding to checkout...");
+navigate("/shopping");
   };
 
   // Close modal
