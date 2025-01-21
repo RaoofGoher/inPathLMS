@@ -109,21 +109,21 @@ const AdminDashboardLayout = () => {
             </Link>
 
             {/* Analytics Link */}
-            <Link
+            {/* <Link
               to="/dashboard/admin/analytics"
               className="flex group items-center py-3 px-4 text-lg rounded-lg font-semibold transition-colors duration-200 hover:bg-gray-300 hover:text-blueColor"
             >
               <FaChartPie className="mr-2 group-hover:text-blueColor text-white" />
               Analytics
-            </Link>
-            <Link
+            </Link> */}
+            {/* <Link
               to={"/dashboard/admin/approval"}
               className="flex group items-center py-3 px-4 text-lg rounded-lg font-semibold transition-colors duration-200 hover:bg-gray-300 hover:text-blueColor"
             >
-              {/* Update icon to FaCheckCircle for approval */}
+              
               <FaCheckCircle className="mr-2 group-hover:text-blueColor text-white" />
               Approval
-            </Link>
+            </Link> */}
 
             {/* Logout Link */}
             <Link

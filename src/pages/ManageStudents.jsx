@@ -110,12 +110,12 @@ const ManageStudents = () => {
         {error && <p className="text-red-500">{error}</p>}
 
         {/* Pie Chart Section */}
-        <div className="mb-6 hidden md:flex flex-col justify-center items-center">
+        {/* <div className="mb-6 hidden md:flex flex-col justify-center items-center">
           <h2 className="text-xl font-semibold mb-4 text-blueColor">Student Language Distribution</h2>
           <div className="w-1/3">
             <Pie data={chartData} />
           </div>
-        </div>
+        </div> */}
 
         {/* Search Section */}
         <div className="mb-6 flex justify-between items-center">
