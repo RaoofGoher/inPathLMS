@@ -12,6 +12,8 @@ const ManageTeachers = () => {
   const [selectedTeacher, setSelectedTeacher] = useState(null);
   const [searchTerm, setSearchTerm] = useState("");
   const [error, setError] = useState(null); // For error handling
+  const [currentPage, setCurrentPage] = useState(1); // Track the current page
+  const [teachersPerPage, setTeachersPerPage] = useState(5); // Number of teachers per page
 
   // Fetch teachers from API
   useEffect(() => {
@@ -20,7 +22,6 @@ const ManageTeachers = () => {
         const response = await axios.get(
           "https://api.inpath.us/teacher/all/profile/"
         );
-        console.log("Fetched teachers:", response.data); // Log the API response
         setTeachers(response.data); // Assuming the API returns an array of teachers
       } catch (error) {
         setError("Error fetching teacher data");
@@ -33,24 +34,26 @@ const ManageTeachers = () => {
 
   const handleSearch = (e) => {
     setSearchTerm(e.target.value);
+    setCurrentPage(1); // Reset to first page when search term changes
   };
 
   const handleViewDetails = (teacher) => {
     setSelectedTeacher(teacher);
   };
 
-  const handleDeleteTeacher = (id) => {
-    // Ensure that the id is valid before deleting
-    if (id) {
-      setTeachers(teachers.filter((teacher) => teacher.user !== id));
-    } else {
-      console.error("No valid ID to delete");
-    }
+  const handleCloseModal = () => {
+    setSelectedTeacher(null);
   };
 
+  // Filter teachers based on the search term
   const filteredTeachers = teachers.filter((teacher) =>
     `${teacher.full_name}`.toLowerCase().includes(searchTerm.toLowerCase())
   );
+
+  // Paginate the filtered teachers
+  const indexOfLastTeacher = currentPage * teachersPerPage;
+  const indexOfFirstTeacher = indexOfLastTeacher - teachersPerPage;
+  const currentTeachers = filteredTeachers.slice(indexOfFirstTeacher, indexOfLastTeacher);
 
   // Prepare data for the pie chart (distribution by specialization)
   const specializationCount = teachers.reduce((acc, teacher) => {
@@ -82,6 +85,13 @@ const ManageTeachers = () => {
     ],
   };
 
+  // Pagination logic
+  const totalPages = Math.ceil(filteredTeachers.length / teachersPerPage);
+
+  const handlePageChange = (page) => {
+    setCurrentPage(page);
+  };
+
   return (
     <>
       <ScrollToTop />
@@ -92,16 +102,17 @@ const ManageTeachers = () => {
 
         {/* Error Message */}
         {error && <p className="text-red-500">{error}</p>}
-        {/* Pie Chart Section */}
 
+        {/* Pie Chart Section */}
         <div className="mb-6 hidden md:flex flex-col justify-center items-center ">
           <h2 className="text-xl font-semibold mb-4 text-blueColor">
             Teacher Specialization Distribution
           </h2>
-          <div >
+          <div>
             <Pie data={chartData} />
           </div>
         </div>
+
         {/* Search Section */}
         <div className="mb-6 flex justify-between items-center">
           <input
@@ -129,7 +140,7 @@ const ManageTeachers = () => {
                 </tr>
               </thead>
               <tbody>
-                {filteredTeachers.map((teacher) => (
+                {currentTeachers.map((teacher) => (
                   <tr
                     key={teacher.user}
                     className="hover:bg-blueColor group text-grayColor hover:text-white"
@@ -148,12 +159,6 @@ const ManageTeachers = () => {
                       >
                         View Details
                       </button>
-                      <button
-                        className="ml-4 text-dark2 hover:underline"
-                        onClick={() => handleDeleteTeacher(teacher.user)}
-                      >
-                        Delete
-                      </button>
                     </td>
                   </tr>
                 ))}
@@ -162,105 +167,82 @@ const ManageTeachers = () => {
           </div>
         </div>
 
-        {/* Teacher Details Section */}
-        {selectedTeacher && (
-          <div className="mt-6 bg-white p-6 shadow-grayColor rounded-lg shadow-lg">
-            <h2 className="text-2xl font-semibold mb-4 text-blueColor">
-              Teacher Details
-            </h2>
-            <div className="space-y-4 text-grayColor">
-              <div>
-                <strong className="text-dark1">Name:</strong>{" "}
-                {selectedTeacher.full_name}
-              </div>
-              <div>
-                <strong className="text-dark1">Email:</strong>{" "}
-                {selectedTeacher.email || "Not available"}
-              </div>
-              <div>
-                <strong className="text-dark1">Specialization:</strong>{" "}
-                {selectedTeacher.specialization || "Not available"}
-              </div>
-              <div>
-                <strong className="text-dark1">Biography:</strong>{" "}
-                {selectedTeacher.bio || "Not available"}
-              </div>
-              <div>
-                <strong className="text-dark1">Teaching Experience:</strong>{" "}
-                {selectedTeacher.teaching_experience || "Not available"}
-              </div>
-              <div>
-                <strong className="text-dark1">Degrees:</strong>{" "}
-                {selectedTeacher.degrees || "Not available"}
-              </div>
-              <div>
-                <strong className="text-dark1">Teaching History:</strong>{" "}
-                {selectedTeacher.teaching_history || "Not available"}
-              </div>
-              <div>
-                <strong className="text-dark1">Website:</strong>{" "}
-                <a
-                  href={selectedTeacher.website}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  {selectedTeacher.website}
-                </a>
-              </div>
-              <div>
-                <strong className="text-dark1">Social Links:</strong>
-                <ul>
-                  {selectedTeacher.facebook && (
-                    <li>
-                      <a
-                        href={selectedTeacher.facebook}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                      >
-                        Facebook
-                      </a>
-                    </li>
-                  )}
-                  {selectedTeacher.linkedin && (
-                    <li>
-                      <a
-                        href={selectedTeacher.linkedin}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                      >
-                        LinkedIn
-                      </a>
-                    </li>
-                  )}
-                  {selectedTeacher.youtube && (
-                    <li>
-                      <a
-                        href={selectedTeacher.youtube}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                      >
-                        YouTube
-                      </a>
-                    </li>
-                  )}
-                </ul>
-              </div>
-              <div>
-                <strong className="text-dark1">Profile Picture:</strong>
-                <img
-                  src={selectedTeacher.profile_picture || "fallback-image-url"}
-                  alt="Profile"
-                  className="w-32 h-32 rounded-full"
-                />
-              </div>
-            </div>
+        {/* Pagination Section */}
+        <div className="flex justify-center">
+          <button
+            onClick={() => handlePageChange(currentPage - 1)}
+            disabled={currentPage === 1}
+            className="px-4 py-2 mx-2 bg-blue-500 text-white rounded-md"
+          >
+            Prev
+          </button>
+          <span className="px-4 py-2">{currentPage}</span>
+          <button
+            onClick={() => handlePageChange(currentPage + 1)}
+            disabled={currentPage === totalPages}
+            className="px-4 py-2 mx-2 bg-blue-500 text-white rounded-md"
+          >
+            Next
+          </button>
+        </div>
 
-            <button
-              onClick={() => setSelectedTeacher(null)} // Close details
-              className="mt-4 text-dark2 hover:underline"
-            >
-              Close Details
-            </button>
+        {/* Modal for Teacher Details */}
+        {selectedTeacher && (
+          <div className="fixed inset-0 bg-gray-800 bg-opacity-75 flex justify-center items-center">
+            <div className="bg-white p-6 rounded-lg shadow-lg w-3/4 md:w-1/2">
+              <h2 className="text-2xl font-semibold mb-4 text-blueColor">
+                Teacher Details
+              </h2>
+              <div className="space-y-4 text-grayColor">
+                <div>
+                  <strong>Name:</strong> {selectedTeacher.full_name}
+                </div>
+                <div>
+                  <strong>Email:</strong>{" "}
+                  {selectedTeacher.email || "Not available"}
+                </div>
+                <div>
+                  <strong>Specialization:</strong>{" "}
+                  {selectedTeacher.specialization || "Not available"}
+                </div>
+                <div>
+                  <strong>Biography:</strong>{" "}
+                  {selectedTeacher.bio || "Not available"}
+                </div>
+                <div>
+                  <strong>Teaching Experience:</strong>{" "}
+                  {selectedTeacher.teaching_experience || "Not available"}
+                </div>
+                <div>
+                  <strong>Degrees:</strong>{" "}
+                  {selectedTeacher.degrees || "Not available"}
+                </div>
+                <div>
+                  <strong>Website:</strong>{" "}
+                  <a
+                    href={selectedTeacher.website}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    {selectedTeacher.website}
+                  </a>
+                </div>
+                <div>
+                  <strong>Profile Picture:</strong>
+                  <img
+                    src={selectedTeacher.profile_picture || "fallback-image-url"}
+                    alt="Profile"
+                    className="w-32 h-32 rounded-full"
+                  />
+                </div>
+              </div>
+              <button
+                onClick={handleCloseModal}
+                className="mt-4 text-red-500 hover:underline"
+              >
+                Close
+              </button>
+            </div>
           </div>
         )}
       </div>
