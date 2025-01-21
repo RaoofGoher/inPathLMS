@@ -19,6 +19,7 @@ import {
 } from "react-icons/fa";
 import axios from "axios";
 import { Link } from "react-router-dom";
+import { use } from "react";
 
 // Register Chart.js components
 ChartJS.register(
@@ -93,11 +94,13 @@ const AdminDashboard = () => {
         const teacherResponse = await axios.get(
           "https://api.inpath.us/teacher/all/profile/"
         );
+        
         const studentResponse = await axios.get(
-          "https://api.inpath.us/students/create/profile/"
+          "https://api.inpath.us/students/details/"
         );
         setTeachers(teacherResponse.data); // Assuming data is an array of teachers
         setStudents(studentResponse.data); // Assuming data is an array of students
+        console.log("studentssss:", students );
         setLoading(false);
       } catch (error) {
         console.error("Error fetching teacher or student data:", error);
@@ -108,6 +111,8 @@ const AdminDashboard = () => {
     fetchTeachersAndStudents();
   }, []);
 
+
+  
   return (
     <div className="p-4 sm:p-6 bg-white min-h-screen">
       {/* Header Section */}
@@ -167,14 +172,14 @@ const AdminDashboard = () => {
 
       {/* Charts Section */}
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 mb-8">
-        <div className="bg-white shadow-lg shadow-grayColor rounded-lg p-6">
+        {/* <div className="bg-white shadow-lg shadow-grayColor rounded-lg p-6">
           <h2 className="text-lg sm:text-2xl font-bold text-blueColor mb-4">
             Approval Requests - Pie Chart
           </h2>
           <div className="h-64 sm:h-80">
             <Pie data={pieChartData} options={chartOptions} />
           </div>
-        </div>
+        </div> */}
         <div className="bg-white shadow-lg shadow-grayColor rounded-lg p-6">
           <h2 className="text-lg sm:text-2xl font-bold text-blueColor mb-4">
             Total Members - Bar Chart
@@ -186,14 +191,14 @@ const AdminDashboard = () => {
       </div>
 
       {/* Payments Section */}
-      <div className="bg-white shadow-lg shadow-grayColor rounded-lg p-6 mb-8">
+      {/* <div className="bg-white shadow-lg shadow-grayColor rounded-lg p-6 mb-8">
         <h2 className="text-lg sm:text-2xl font-bold text-blueColor mb-4">
           Monthly Payments - Line Chart
         </h2>
         <div className="h-64 sm:h-80">
           <Line data={lineChartData} options={chartOptions} />
         </div>
-      </div>
+      </div> */}
 
       {/* Teachers and Students Tables Section */}
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
@@ -243,14 +248,14 @@ const AdminDashboard = () => {
             <thead className="text-dark1">
               <tr>
                 <th className="p-2 border-b">Name</th>
-                <th className="p-2 border-b">Course</th>
+                <th className="p-2 border-b">Email</th>
               </tr>
             </thead>
             <tbody>
               {students.slice(0, 5).map((student) => ( // Show only top 5 students
                 <tr key={student.id}>
                   <td className="p-2 border-b">{student.first_name} {student.last_name}</td>
-                  <td className="p-2 border-b">{student.headline}</td>
+                  <td className="p-2 border-b">{student.email}</td>
                 </tr>
               ))}
             </tbody>

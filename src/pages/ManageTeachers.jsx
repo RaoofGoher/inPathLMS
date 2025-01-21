@@ -20,7 +20,6 @@ const ManageTeachers = () => {
         const response = await axios.get(
           "https://api.inpath.us/teacher/all/profile/"
         );
-        console.log("Fetched teachers:", response.data); // Log the API response
         setTeachers(response.data); // Assuming the API returns an array of teachers
       } catch (error) {
         setError("Error fetching teacher data");
@@ -148,12 +147,12 @@ const ManageTeachers = () => {
                       >
                         View Details
                       </button>
-                      <button
+                      {/* <button
                         className="ml-4 text-dark2 hover:underline"
                         onClick={() => handleDeleteTeacher(teacher.user)}
                       >
                         Delete
-                      </button>
+                      </button> */}
                     </td>
                   </tr>
                 ))}
