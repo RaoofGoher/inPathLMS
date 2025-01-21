@@ -12,6 +12,8 @@ const ManageStudents = () => {
   const [selectedStudent, setSelectedStudent] = useState(null);
   const [searchTerm, setSearchTerm] = useState("");
   const [error, setError] = useState(null);
+  const [currentPage, setCurrentPage] = useState(1); // New state for pagination
+  const [studentsPerPage] = useState(10); // Number of students per page
 
   // Fetch students from API
   useEffect(() => {
@@ -35,6 +37,7 @@ const ManageStudents = () => {
 
   const handleSearch = (e) => {
     setSearchTerm(e.target.value);
+    setCurrentPage(1); // Reset to first page when search term changes
   };
 
   const handleViewDetails = (student) => {
@@ -54,6 +57,11 @@ const ManageStudents = () => {
       .toLowerCase()
       .includes(searchTerm.toLowerCase())
   );
+
+  // Pagination logic: Get the current page's students
+  const indexOfLastStudent = currentPage * studentsPerPage;
+  const indexOfFirstStudent = indexOfLastStudent - studentsPerPage;
+  const currentStudents = filteredStudents.slice(indexOfFirstStudent, indexOfLastStudent);
 
   // Pie Chart Data: Distribution of students by language
   const languageCount = students.reduce((acc, student) => {
@@ -85,22 +93,25 @@ const ManageStudents = () => {
     ],
   };
 
+  // Handle page change
+  const handlePageChange = (pageNumber) => {
+    setCurrentPage(pageNumber);
+  };
+
+  const totalPages = Math.ceil(filteredStudents.length / studentsPerPage);
+
   return (
     <>
       <ScrollToTop />
       <div className="p-6">
-        <h1 className="text-3xl font-semibold mb-6 text-blueColor">
-          Manage Students
-        </h1>
+        <h1 className="text-3xl font-semibold mb-6 text-blueColor">Manage Students</h1>
 
         {/* Error Message */}
         {error && <p className="text-red-500">{error}</p>}
 
         {/* Pie Chart Section */}
-        <div className="mb-6 hidden md:flex flex-col justify-center items-center ">
-          <h2 className="text-xl  font-semibold mb-4 text-blueColor">
-            Student Language Distribution
-          </h2>
+        <div className="mb-6 hidden md:flex flex-col justify-center items-center">
+          <h2 className="text-xl font-semibold mb-4 text-blueColor">Student Language Distribution</h2>
           <div className="w-1/3">
             <Pie data={chartData} />
           </div>
@@ -119,9 +130,7 @@ const ManageStudents = () => {
 
         {/* Student List Section */}
         <div className="mb-6">
-          <h2 className="text-xl font-semibold mb-4 text-blueColor">
-            Student List
-          </h2>
+          <h2 className="text-xl font-semibold mb-4 text-blueColor">Student List</h2>
           <div className="overflow-x-auto">
             <table className="w-full table-auto rounded-lg">
               <thead>
@@ -134,21 +143,15 @@ const ManageStudents = () => {
                 </tr>
               </thead>
               <tbody className="overflow-y-auto" style={{ maxHeight: "300px" }}>
-                {filteredStudents.slice(0, 10).map((student) => (
+                {currentStudents.map((student) => (
                   <tr
                     key={student.id}
                     className="hover:bg-blueColor group text-grayColor hover:text-white"
                   >
                     <td className="border px-6 py-3">{`${student.first_name} ${student.last_name}`}</td>
-                    <td className="border px-6 py-3">
-                      {student.email || "Not available"}
-                    </td>
-                    <td className="border px-6 py-3">
-                      {student.profile?.language || "Not available"}
-                    </td>
-                    <td className="border px-6 py-3">
-                      {student.profile?.headline || "Not available"}
-                    </td>
+                    <td className="border px-6 py-3">{student.email || "Not available"}</td>
+                    <td className="border px-6 py-3">{student.profile?.language || "Not available"}</td>
+                    <td className="border px-6 py-3">{student.profile?.headline || "Not available"}</td>
                     <td className="border px-6 py-3">
                       <button
                         className="text-blueColor group-hover:text-white hover:underline"
@@ -164,13 +167,32 @@ const ManageStudents = () => {
           </div>
         </div>
 
+        {/* Pagination Controls */}
+        <div className="flex justify-center mb-6">
+          <button
+            onClick={() => handlePageChange(currentPage - 1)}
+            disabled={currentPage === 1}
+            className="px-4 py-2 bg-blueColor text-white rounded-lg mx-2"
+          >
+            Previous
+          </button>
+          <span className="mx-2 text-gray-700">
+            Page {currentPage} of {totalPages}
+          </span>
+          <button
+            onClick={() => handlePageChange(currentPage + 1)}
+            disabled={currentPage === totalPages}
+            className="px-4 py-2 bg-blueColor text-white rounded-lg mx-2"
+          >
+            Next
+          </button>
+        </div>
+
         {/* Student Details Modal */}
         {selectedStudent && (
           <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50">
             <div className="bg-white p-6 rounded-lg shadow-lg w-11/12 md:w-1/2">
-              <h2 className="text-2xl font-semibold mb-4 text-blueColor">
-                Student Details
-              </h2>
+              <h2 className="text-2xl font-semibold mb-4 text-blueColor">Student Details</h2>
               <div className="space-y-4 text-grayColor">
                 <div>
                   <strong className="text-dark1">Name:</strong> {`${selectedStudent.first_name} ${selectedStudent.last_name}`}
@@ -188,49 +210,24 @@ const ManageStudents = () => {
                   <strong className="text-dark1">Language:</strong> {selectedStudent.language || "Not available"}
                 </div>
                 <div>
-                  <strong className="text-dark1">Website:</strong> {" "}
-                  <a
-                    href={selectedStudent.website}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    {selectedStudent.website}
-                  </a>
+                  <strong className="text-dark1">Website:</strong> <a href={selectedStudent.website} target="_blank" rel="noopener noreferrer">{selectedStudent.website}</a>
                 </div>
                 <div>
                   <strong className="text-dark1">Social Links:</strong>
                   <ul>
                     {selectedStudent.facebook && (
                       <li>
-                        <a
-                          href={selectedStudent.facebook}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                        >
-                          Facebook
-                        </a>
+                        <a href={selectedStudent.facebook} target="_blank" rel="noopener noreferrer">Facebook</a>
                       </li>
                     )}
                     {selectedStudent.linkedin && (
                       <li>
-                        <a
-                          href={selectedStudent.linkedin}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                        >
-                          LinkedIn
-                        </a>
+                        <a href={selectedStudent.linkedin} target="_blank" rel="noopener noreferrer">LinkedIn</a>
                       </li>
                     )}
                     {selectedStudent.youtube && (
                       <li>
-                        <a
-                          href={selectedStudent.youtube}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                        >
-                          YouTube
-                        </a>
+                        <a href={selectedStudent.youtube} target="_blank" rel="noopener noreferrer">YouTube</a>
                       </li>
                     )}
                   </ul>
@@ -244,10 +241,7 @@ const ManageStudents = () => {
                   />
                 </div>
               </div>
-              <button
-                onClick={() => setSelectedStudent(null)}
-                className="mt-4 text-dark2 hover:underline"
-              >
+              <button onClick={() => setSelectedStudent(null)} className="mt-4 text-dark2 hover:underline">
                 Close
               </button>
             </div>
