@@ -12,6 +12,8 @@ const ManageTeachers = () => {
   const [selectedTeacher, setSelectedTeacher] = useState(null);
   const [searchTerm, setSearchTerm] = useState("");
   const [error, setError] = useState(null); // For error handling
+  const [currentPage, setCurrentPage] = useState(1); // Track the current page
+  const [teachersPerPage, setTeachersPerPage] = useState(5); // Number of teachers per page
 
   // Fetch teachers from API
   useEffect(() => {
@@ -32,6 +34,7 @@ const ManageTeachers = () => {
 
   const handleSearch = (e) => {
     setSearchTerm(e.target.value);
+    setCurrentPage(1); // Reset to first page when search term changes
   };
 
   const handleViewDetails = (teacher) => {
@@ -42,9 +45,15 @@ const ManageTeachers = () => {
     setSelectedTeacher(null);
   };
 
+  // Filter teachers based on the search term
   const filteredTeachers = teachers.filter((teacher) =>
     `${teacher.full_name}`.toLowerCase().includes(searchTerm.toLowerCase())
   );
+
+  // Paginate the filtered teachers
+  const indexOfLastTeacher = currentPage * teachersPerPage;
+  const indexOfFirstTeacher = indexOfLastTeacher - teachersPerPage;
+  const currentTeachers = filteredTeachers.slice(indexOfFirstTeacher, indexOfLastTeacher);
 
   // Prepare data for the pie chart (distribution by specialization)
   const specializationCount = teachers.reduce((acc, teacher) => {
@@ -74,6 +83,13 @@ const ManageTeachers = () => {
         ],
       },
     ],
+  };
+
+  // Pagination logic
+  const totalPages = Math.ceil(filteredTeachers.length / teachersPerPage);
+
+  const handlePageChange = (page) => {
+    setCurrentPage(page);
   };
 
   return (
@@ -124,7 +140,7 @@ const ManageTeachers = () => {
                 </tr>
               </thead>
               <tbody>
-                {filteredTeachers.map((teacher) => (
+                {currentTeachers.map((teacher) => (
                   <tr
                     key={teacher.user}
                     className="hover:bg-blueColor group text-grayColor hover:text-white"
@@ -149,7 +165,25 @@ const ManageTeachers = () => {
               </tbody>
             </table>
           </div>
-          
+        </div>
+
+        {/* Pagination Section */}
+        <div className="flex justify-center">
+          <button
+            onClick={() => handlePageChange(currentPage - 1)}
+            disabled={currentPage === 1}
+            className="px-4 py-2 mx-2 bg-blue-500 text-white rounded-md"
+          >
+            Prev
+          </button>
+          <span className="px-4 py-2">{currentPage}</span>
+          <button
+            onClick={() => handlePageChange(currentPage + 1)}
+            disabled={currentPage === totalPages}
+            className="px-4 py-2 mx-2 bg-blue-500 text-white rounded-md"
+          >
+            Next
+          </button>
         </div>
 
         {/* Modal for Teacher Details */}
