@@ -18,7 +18,7 @@ const ManageStudents = () => {
     const fetchStudents = async () => {
       try {
         const response = await axios.get(
-          "https://api.inpath.us/students/create/profile/"
+          "https://api.inpath.us/students/details/"
         );
         console.log("Fetched students:", response.data);
         setStudents(
@@ -102,8 +102,7 @@ const ManageStudents = () => {
             Student Language Distribution
           </h2>
           <div className="w-1/3">
-            <Pie data={chartData}   />{" "}
-            {/* Changed from w-1/2 to w-1/3 */}
+            <Pie data={chartData} />
           </div>
         </div>
 
@@ -145,10 +144,10 @@ const ManageStudents = () => {
                       {student.email || "Not available"}
                     </td>
                     <td className="border px-6 py-3">
-                      {student.language || "Not available"}
+                      {student.profile?.language || "Not available"}
                     </td>
                     <td className="border px-6 py-3">
-                      {student.headline || "Not available"}
+                      {student.profile?.headline || "Not available"}
                     </td>
                     <td className="border px-6 py-3">
                       <button
@@ -156,12 +155,6 @@ const ManageStudents = () => {
                         onClick={() => handleViewDetails(student)}
                       >
                         View Details
-                      </button>
-                      <button
-                        className="ml-4 text-dark2 hover:underline"
-                        onClick={() => handleDeleteStudent(student.id)}
-                      >
-                        Delete
                       </button>
                     </td>
                   </tr>
@@ -171,97 +164,93 @@ const ManageStudents = () => {
           </div>
         </div>
 
-        {/* Student Details Section */}
+        {/* Student Details Modal */}
         {selectedStudent && (
-          <div className="mt-6 bg-white p-6 shadow-grayColor rounded-lg shadow-lg">
-            <h2 className="text-2xl font-semibold mb-4 text-blueColor">
-              Student Details
-            </h2>
-            <div className="space-y-4 text-grayColor">
-              <div>
-                <strong className="text-dark1">Name:</strong>{" "}
-                {`${selectedStudent.first_name} ${selectedStudent.last_name}`}
+          <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50">
+            <div className="bg-white p-6 rounded-lg shadow-lg w-11/12 md:w-1/2">
+              <h2 className="text-2xl font-semibold mb-4 text-blueColor">
+                Student Details
+              </h2>
+              <div className="space-y-4 text-grayColor">
+                <div>
+                  <strong className="text-dark1">Name:</strong> {`${selectedStudent.first_name} ${selectedStudent.last_name}`}
+                </div>
+                <div>
+                  <strong className="text-dark1">Email:</strong> {selectedStudent.email || "Not available"}
+                </div>
+                <div>
+                  <strong className="text-dark1">Headline:</strong> {selectedStudent.headline || "Not available"}
+                </div>
+                <div>
+                  <strong className="text-dark1">Biography:</strong> {selectedStudent.biography || "Not available"}
+                </div>
+                <div>
+                  <strong className="text-dark1">Language:</strong> {selectedStudent.language || "Not available"}
+                </div>
+                <div>
+                  <strong className="text-dark1">Website:</strong> {" "}
+                  <a
+                    href={selectedStudent.website}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    {selectedStudent.website}
+                  </a>
+                </div>
+                <div>
+                  <strong className="text-dark1">Social Links:</strong>
+                  <ul>
+                    {selectedStudent.facebook && (
+                      <li>
+                        <a
+                          href={selectedStudent.facebook}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                        >
+                          Facebook
+                        </a>
+                      </li>
+                    )}
+                    {selectedStudent.linkedin && (
+                      <li>
+                        <a
+                          href={selectedStudent.linkedin}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                        >
+                          LinkedIn
+                        </a>
+                      </li>
+                    )}
+                    {selectedStudent.youtube && (
+                      <li>
+                        <a
+                          href={selectedStudent.youtube}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                        >
+                          YouTube
+                        </a>
+                      </li>
+                    )}
+                  </ul>
+                </div>
+                <div>
+                  <strong className="text-dark1">Profile Picture:</strong>
+                  <img
+                    src={selectedStudent.profile_picture || "fallback-image-url"}
+                    alt="Profile"
+                    className="w-32 h-32 rounded-full"
+                  />
+                </div>
               </div>
-              <div>
-                <strong className="text-dark1">Email:</strong>{" "}
-                {selectedStudent.email || "Not available"}
-              </div>
-              <div>
-                <strong className="text-dark1">Headline:</strong>{" "}
-                {selectedStudent.headline || "Not available"}
-              </div>
-              <div>
-                <strong className="text-dark1">Biography:</strong>{" "}
-                {selectedStudent.biography || "Not available"}
-              </div>
-              <div>
-                <strong className="text-dark1">Language:</strong>{" "}
-                {selectedStudent.language || "Not available"}
-              </div>
-              <div>
-                <strong className="text-dark1">Website:</strong>{" "}
-                <a
-                  href={selectedStudent.website}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  {selectedStudent.website}
-                </a>
-              </div>
-              <div>
-                <strong className="text-dark1">Social Links:</strong>
-                <ul>
-                  {selectedStudent.facebook && (
-                    <li>
-                      <a
-                        href={selectedStudent.facebook}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                      >
-                        Facebook
-                      </a>
-                    </li>
-                  )}
-                  {selectedStudent.linkedin && (
-                    <li>
-                      <a
-                        href={selectedStudent.linkedin}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                      >
-                        LinkedIn
-                      </a>
-                    </li>
-                  )}
-                  {selectedStudent.youtube && (
-                    <li>
-                      <a
-                        href={selectedStudent.youtube}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                      >
-                        YouTube
-                      </a>
-                    </li>
-                  )}
-                </ul>
-              </div>
-              <div>
-                <strong className="text-dark1">Profile Picture:</strong>
-                <img
-                  src={selectedStudent.profile_picture || "fallback-image-url"}
-                  alt="Profile"
-                  className="w-32 h-32 rounded-full"
-                />
-              </div>
+              <button
+                onClick={() => setSelectedStudent(null)}
+                className="mt-4 text-dark2 hover:underline"
+              >
+                Close
+              </button>
             </div>
-
-            <button
-              onClick={() => setSelectedStudent(null)} // Close details
-              className="mt-4 text-dark2 hover:underline"
-            >
-              Close Details
-            </button>
           </div>
         )}
       </div>
